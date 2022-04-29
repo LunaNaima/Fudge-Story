@@ -13,7 +13,7 @@ declare namespace Template {
         click: string;
     };
     let locations: {
-        Forestwood: {
+        nighttime_sil: {
             name: string;
             background: string;
         };
