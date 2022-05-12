@@ -1,53 +1,54 @@
-declare namespace Template {
+declare namespace LunasNamespace {
+    function Kap01_01_Intro_Marktplatz(): ƒS.SceneReturn;
+}
+declare namespace LunasNamespace {
     export import ƒ = FudgeCore;
     export import ƒS = FudgeStory;
-    let transition: {
-        puzzle: {
-            duration: number;
-            alpha: string;
-            edge: number;
-        };
+    function NameDerFunktion(): void;
+    function Addition(Zahl1?: number, Zahl2?: number): void;
+    let dataForSave: {
+        nameProtagonist: string;
+        score: number;
     };
-    let sound: {
-        backgroundTheme: string;
-        click: string;
-    };
-    let locations: {
-        nighttime_sil: {
-            name: string;
-            background: string;
-        };
-        starry: {
-            name: string;
-            background: string;
-        };
-    };
+    function showCredits(): void;
+}
+declare namespace LunasNamespace {
+    function Scene(): ƒS.SceneReturn;
+}
+declare namespace LunasNamespace {
     let characters: {
         narrator: {
+            name: string;
+        };
+        maincharacter: {
             name: string;
         };
         Mama: {
             name: string;
             origin: ƒ.ORIGIN2D;
-            pose: {
-                angry: string;
-                happy: string;
-                sad: string;
-            };
         };
         Mutti: {
             name: string;
             origin: ƒ.ORIGIN2D;
-            pose: {
-                angry: string;
-            };
         };
     };
-    let dataForSave: {
-        nameProtagonist: string;
-        score: number;
+}
+declare namespace LunasNamespace {
+}
+declare namespace LunasNamespace {
+    let score: {
+        punkte: number;
+        teeGetrunken: boolean;
+    };
+    let scoreMutti: {
+        punkte: number;
+        affection: number;
+        vorgestellt: boolean;
     };
 }
-declare namespace Template {
-    function Scene(): ƒS.SceneReturn;
+declare namespace LunasNamespace {
+    function ScnTestzene01(): ƒS.SceneReturn;
+}
+declare namespace LunasNamespace {
+    function ScnTestzene02(): ƒS.SceneReturn;
 }

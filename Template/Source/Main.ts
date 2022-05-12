@@ -1,65 +1,42 @@
-namespace Template {
-  export import ƒ = FudgeCore;
+namespace LunasNamespace {
+  export import ƒ = FudgeCore; //importiert teile, die nicht in typescript sind, sondern außerhalb in fudge
   export import ƒS = FudgeStory;
 
   console.log("FudgeStory template starting");
+  console.log("was anderes");
 
-  //vorher kommentieren, was man hier macht, in dem fall export transitions
+  let weihnachtsdeko = "Lichterketten, Baumkerzen, Lebkuchen, kerzen"; //let bedeutet: ich hab hier eine neue box, die ich beschriften muss (weihnachtsdekobox); = "was ist in der kiste", danach sit der befehl vorbei, also ;
+  console.log(weihnachtsdeko); //
+  console.log("weihnachtsdeko"); //
 
-  export let transition = {
-    puzzle: {
-      duration: 1,
-      alpha: "/Tutorial_WS21/FreeTransitions/Jigsaw", // wenn ./ steht, dann suche ich Datei im aktuellen Ordner. Sonst /, allerdings kam da bei mir nichts
-      edge: 1,
-    },
-  };
+  let x = 2; //variablen haben immer einen typus, zb strings "" lange zeichenketten. bei einer zahl ohne "" = number. Object auch ein typ
+  let y = 7;
+  let z = x + y;
+  console.log(z);
+  z = z + 1;
+  console.log(z);
 
-  export let sound = {
-    //themes
-    backgroundTheme: "/Tutorial_WS21/Audio/Nightclub.ogg", // immer detaillierter benennen! Theme genauer benennen
+  // funktionen machen was mit Zeug innendrin, Fabrik mit Heinzelmännchen, ich leg denen was rein und die machen was damit
+  export function NameDerFunktion() {
+    // hiermit habe ich funktionen initiiert, aber ich benutze sie nirgendwo
+    console.log("irgendwas");
+  } // export heißt, dass diese funktion auch von anderen szenen aufrufbar ist
+  NameDerFunktion();
+  NameDerFunktion();
+  NameDerFunktion();
+  NameDerFunktion();
+  NameDerFunktion();
 
-    //Soundeffekte SFX
-    click: "Pfad",
-  };
-
-  export let locations = {
-    nighttime_sil: {
-      name: "",
-      background: "./Images/nighttime_sil.jpg",
-    },
-    starry: {
-      name: "starry",
-      background: "Pfad",
-    },
-  };
-
-  export let characters = {
-    narrator: {
-      //welcher character
-      name: "Name",
-    },
-    Mama: {
-      name: "Leijla",
-      origin: ƒS.ORIGIN.BOTTOMCENTER,
-      pose: {
-        angry: "/Pfad", //nicht nur pose, sondern auch Mimik beschreiben
-        happy: "/Pfad",
-        sad: "/Pfad",
-      },
-    },
-    Mutti: {
-      name: "Elena",
-      origin: ƒS.ORIGIN.BOTTOMCENTER,
-      pose: {
-        angry: "",
-      },
-    },
-  };
-
-  // let scenes: ƒS.Scenes = [ //Hier wird auf meine szenen verwiesen // Linear
-  // { scene: Scene, name: "Luna Scene" },
-  // ];
-  // ƒS.Progress.go(scenes);
+  export function Addition(Zahl1: number = 1, Zahl2: number = 2) {
+    // 1 und 2 sind nur default werte
+    let summe = Zahl1 + Zahl2;
+    console.log("Die Summe von Zahl1 und Zahl2 ist");
+    console.log(summe);
+  }
+  Addition();
+  Addition(4, 7);
+  Addition(x, y);
+  // //vorher kommentieren, was man hier macht, in dem fall export transitions
 
   export let dataForSave = {
     // hier kommt alles rein, was gespeichert werden soll. Der Spielstand wird von Beginn der jeweiligen Szene gespeichert.
@@ -139,12 +116,30 @@ namespace Template {
       "gameMenuCSSclass"
     );
     buttonFunctionalities("Close");
-    let scenes: ƒS.Scenes = [{ scene: Scene, name: "Scene" }];
+
+    let scenes: ƒS.Scenes = [
+      { scene: ScnTestzene01, name: "Testszene 01" }, // scene: hier muss name von funktion rein! Name ist was anderes, kann spaces enthalten wegen string
+      { scene: Chp01_01_IntroMarketplace, name: "01_01_Intro Marktplatz" },
+      { scene: Chp01_E_FlowerMerchant, name: "01_E_Blumenhändler" },
+      { scene: Chp01_E_LeatherMerchant, name: "01_E_Schuhhändlerin" },
+      { scene: Chp01_02_ConvoMother, name: "01_03_MitMamaReden" },
+      { scene: Chp01_03_IntroMirror, name: "01_04_VorstellungSpiegel" },
+
+      { scene: Chp02_01_Dinner, name: "02_01_Abendessen" },
+      { scene: Chp02_021_TestWithElena, name: "02_021_ElenaSpiegel" },
+      { scene: Chp02_022_TestWithKailani, name:"02_022_KailaniSpiegel"},
+      { scene: Chp02_03_FightNeighbor, name:"02_03_StreitNachbarin"},
+      
+      { scene: Chp03_01_Dressmaker, name: "03_01_JackeSchneiderin"},
+
+
+
+    ];
+
+    let uiElement: HTMLElement = document.querySelector("[type=interface]");
+    dataForSave = ƒS.Progress.setData(dataForSave, uiElement);
 
     // start the sequence
     ƒS.Progress.go(scenes);
   }
-
-  let uiElement: HTMLElement = document.querySelector("[type=interface]");
-  dataForSave = ƒS.Progress.setData(dataForSave, uiElement);
 }
