@@ -44,6 +44,9 @@ namespace LunasNamespace {
     score: 0, // wenn es zb Punktestand gibt
   };
 
+  // dataForSave.score;
+  // dataForSave.nameProtagonist = await ƒS.Speech.getInput(); 
+
   export function showCredits(): void {
     ƒS.Text.setClass("class2"); // setclass = löscht vorherige Klasse und übergeht formatierungen davor (vorherige infos werden gelöscht und nur die setclass wird angezeigt). addclass fügt Klasse hinzu
     // (wenns vorher eine addclass gab, dann wird vorherige gestaltung nicht gelöscht. also alte formatierung von css option sehen wir noch) bei szenenwechsel können wir addclass nehmen.
@@ -119,21 +122,27 @@ namespace LunasNamespace {
 
     let scenes: ƒS.Scenes = [
       { scene: ScnTestzene01, name: "Testszene 01" }, // scene: hier muss name von funktion rein! Name ist was anderes, kann spaces enthalten wegen string
-      { scene: Chp01_01_IntroMarketplace, name: "01_01_Intro Marktplatz" },
-      { scene: Chp01_E_FlowerMerchant, name: "01_E_Blumenhändler" },
-      { scene: Chp01_E_LeatherMerchant, name: "01_E_Schuhhändlerin" },
-      { scene: Chp01_02_ConvoMother, name: "01_03_MitMamaReden" },
-      { scene: Chp01_03_IntroMirror, name: "01_04_VorstellungSpiegel" },
+      { scene: Chp01_01_IntroMarketplace, name: "01_01_IntroMarketplace" },
+      { scene: Chp01_E_FlowerMerchant, name: "E_FlowerMerchant" },
+      { scene: Chp01_E_LeatherMerchant, name: "E_LeatherMerchant" },
+      { scene: Chp01_02_ConvoMother, name: "01_03_ConvoMother" },
+      { scene: Chp01_03_IntroMirror, name: "01_04_IntroMirror" },
 
-      { scene: Chp02_01_Dinner, name: "02_01_Abendessen" },
-      { scene: Chp02_021_TestWithElena, name: "02_021_ElenaSpiegel" },
-      { scene: Chp02_022_TestWithKailani, name:"02_022_KailaniSpiegel"},
-      { scene: Chp02_03_FightNeighbor, name:"02_03_StreitNachbarin"},
-      
-      { scene: Chp03_01_Dressmaker, name: "03_01_JackeSchneiderin"},
+      { scene: Chp02_01_Dinner, name: "02_01_Dinner" },
+      { scene: Chp02_021_TestWithElena, name: "02_021_TestWithElena" },
+      { scene: Chp02_022_TestWithKailani, name: "02_022_TestWithKailani" },
+      { scene: Chp02_03_FightNeighbor, name: "02_03_FightNeighbor" },
+      { scene: Chp02_E_DiscoverBedroom, name: "E_Bedroom" },
+      { scene: Chp02_E_DiscoverGarden, name: "E_Garden" },
+      { scene: Chp02_E_DiscoverKitchen, name: "E_Kitchen" },
 
-
-
+      { scene: Chp03_01_Dressmaker, name: "03_01_Dressmaker" },
+      { scene: Chp03_E_DiscoverDonkey, name: "E_Donkey" },
+      { scene: Chp03_E_DiscoverForest, name: "E_Forest" },
+      { scene: Chp03_E_DiscoverLibrary, name: "E_Library" },
+      { scene: Chp03_021_FirewoodKailani, name: "03_021_FirewoodKailani" },
+      { scene: Chp03_022_WaterWellKailani, name: "03_022_WaterWellKailani" },
+      { scene: Chp03_03_TurmoilMarketplace, name: "03_TurmoilMarketplace" },
     ];
 
     let uiElement: HTMLElement = document.querySelector("[type=interface]");
