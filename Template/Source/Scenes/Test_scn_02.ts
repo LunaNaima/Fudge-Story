@@ -1,4 +1,4 @@
-namespace LunasNamespace {
+namespace Spiegel_VN {
   export async function ScnTestzene02(): ƒS.SceneReturn {
     console.log("Status: ", scoreMutti.introduced);
 

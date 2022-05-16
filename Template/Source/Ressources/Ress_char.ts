@@ -1,9 +1,6 @@
-namespace LunasNamespace {
+namespace Spiegel_VN {
   export let characters = {
     // hier sollten alle char rein
-    narrator: {
-      name: "",
-    },
     maincharacter: {
       name: "DeinNameHier",
     },
@@ -24,6 +21,30 @@ namespace LunasNamespace {
       //   pose: {
       //     angry: "",
       //   },
+    },
+
+    Kailani: {
+      name: "Kailani",
+      origin: ƒS.ORIGIN.BOTTOMRIGHT,
+      // pose: {
+
+      //  }
+    },
+
+    Evarius: {
+      name: "Evarius",
+      origin: ƒS.ORIGIN.BOTTOMCENTER,
+      // pose: {
+
+      // }
+    },
+
+    Flynn: {
+      name: "Flynn",
+      origin: ƒS.ORIGIN.BOTTOMLEFT,
+      // pose: {
+
+      // }
     },
   };
 }

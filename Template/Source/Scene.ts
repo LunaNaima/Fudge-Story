@@ -1,4 +1,4 @@
-namespace LunasNamespace {
+namespace Spiegel_VN {
   export async function Scene(): ƒS.SceneReturn {
     console.log("FudgeStory Template Scene starting");
 

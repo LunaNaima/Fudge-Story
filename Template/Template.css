@@ -3,7 +3,7 @@ html, body {
   height: 100vh;
   margin: 0px;
   padding: 0px;
-  background-color: black;
+  background-color: rgb(167, 4, 4);
   overflow: hidden;
   font-family: Arial, Helvetica, sans-serif;
   font-weight: normal;
@@ -61,4 +61,26 @@ name {
 .decisionButtons {
   padding: 2%;
   background-color: blueviolet;
+}
+
+dialog[type="inventory"]>ul>li>amount { /*ändert amount spezfisch*/
+  background-color: rgb(255, 255, 255);
+  left: 0px;
+  width: 20px;
+  margin-top: 5px;
+  margin-left: 50px;
+  margin-right: 50px;
+  font-size: large;
+  border:rgb(0, 0, 0);
+  border-width: 2px;
+  padding: 10px;
+
+}
+dialog[type="inventory"] {
+  background-color: rgb(240, 18, 103);
+  left: 0px;
+  width: 90%;
+  height: 90%;
+  font-size: large;
+
 }

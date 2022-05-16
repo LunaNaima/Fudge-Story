@@ -1,4 +1,4 @@
-namespace LunasNamespace {
+namespace Spiegel_VN {
   export let score = {
     //score ist ein objekt
     punkte: 0,

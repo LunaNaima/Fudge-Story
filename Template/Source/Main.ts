@@ -1,4 +1,4 @@
-namespace LunasNamespace {
+namespace Spiegel_VN {
   export import ƒ = FudgeCore; //importiert teile, die nicht in typescript sind, sondern außerhalb in fudge
   export import ƒS = FudgeStory;
 
@@ -44,8 +44,17 @@ namespace LunasNamespace {
     score: 0, // wenn es zb Punktestand gibt
   };
 
+  export let inventory = {
+    apple: {
+      name: "Apfel",
+      description: "fruit",
+      image: "./Assets/Items/apple.png",
+      static: true, // so wird es nicht konsumiert. wenn ich static ausklammere, kann ich drauf klicken und es ist weg
+    },
+  };
+
   // dataForSave.score;
-  // dataForSave.nameProtagonist = await ƒS.Speech.getInput(); 
+  // dataForSave.nameProtagonist = await ƒS.Speech.getInput();
 
   export function showCredits(): void {
     ƒS.Text.setClass("class2"); // setclass = löscht vorherige Klasse und übergeht formatierungen davor (vorherige infos werden gelöscht und nur die setclass wird angezeigt). addclass fügt Klasse hinzu
@@ -65,6 +74,7 @@ namespace LunasNamespace {
   let gameMenu: ƒS.Menu; // später, wenn wir das menu erstellen, heißt das hier: wir erstellen es mit den und den buttons
 
   let menuIsOpen: boolean = true; // abfragen, ob menu offen (true) oder geschlossen (false) ist
+  let InventoryIsOpen: boolean = false;
 
   // asynchrone Funktionen, 1x für button, 1x für eventlistener (für shortcuts)
   async function buttonFunctionalities(_option: string): Promise<void> {
@@ -108,6 +118,19 @@ namespace LunasNamespace {
           menuIsOpen = true;
         }
         break;
+      // INVENTORY MENU
+      case ƒ.KEYBOARD_CODE.I:
+        console.log("Inventory");
+        if (InventoryIsOpen) {
+          console.log("Inventory Close");
+          ƒS.Inventory.close();
+          InventoryIsOpen = false; // wenn ich m drücke, und das menu geöffnet is, schließe das menu. wenn es offen ist:
+        } else {
+          console.log("Inventory Open");
+          ƒS.Inventory.open();
+          InventoryIsOpen = true;
+        }
+        break;
     }
   }
 
@@ -121,7 +144,7 @@ namespace LunasNamespace {
     buttonFunctionalities("Close");
 
     let scenes: ƒS.Scenes = [
-      { scene: ScnTestzene01, name: "Testszene 01" }, // scene: hier muss name von funktion rein! Name ist was anderes, kann spaces enthalten wegen string
+      // { scene: ScnTestzene01, name: "Testszene 01" }, // scene: hier muss name von funktion rein! Name ist was anderes, kann spaces enthalten wegen string
       { scene: Chp01_01_IntroMarketplace, name: "01_01_IntroMarketplace" },
       { scene: Chp01_E_FlowerMerchant, name: "E_FlowerMerchant" },
       { scene: Chp01_E_LeatherMerchant, name: "E_LeatherMerchant" },
