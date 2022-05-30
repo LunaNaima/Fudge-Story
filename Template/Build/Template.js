@@ -367,7 +367,7 @@ var Spiegel_VN;
     Spiegel_VN.characters = {
         // hier sollten alle char rein
         maincharacter: {
-            name: "DeinNameHier",
+            name: "Player",
         },
         Mama: {
             name: "Leijla",
@@ -472,7 +472,7 @@ var Spiegel_VN;
             T0001: "Test 0001 Marketplace bla.",
         },
         Mama: {
-            T0000: "Test Mama Dialogue Chpater01_01.",
+            T0000: "Test Mama Dialogue Chapter01_01.",
             T0001: "Test Mama dlg t0001.",
         },
     };
@@ -598,6 +598,8 @@ var Spiegel_VN;
         await Spiegel_VN.ƒS.Location.show(Spiegel_VN.locations.Chp01_01_IntroMarketplace); //unsere locations, die szenen. nach dem Punkt sind die Methoden! also tell und show ist eine Methode. Die klammer dahinter ist eine Methodenaufruf, also eine Variable. Der Hingergrund sollte da angezeigt werden
         // await ƒS.Location.show(location.Chp01_01_IntroMarketplace);
         // await ƒS.update(2, "./Assets/Transitions/Black.png", 1);
+        Spiegel_VN.dataForSave.nameProtagonist = await Spiegel_VN.ƒS.Speech.getInput();
+        Spiegel_VN.characters.maincharacter.name = Spiegel_VN.dataForSave.nameProtagonist;
         await Spiegel_VN.ƒS.update(Spiegel_VN.transitions.fade.duration, Spiegel_VN.transitions.fade.alpha, Spiegel_VN.transitions.fade.edge //edge ist der Härtegrad
         );
         Spiegel_VN.ƒS.Sound.fade(Spiegel_VN.Music.backgroundTheme_default, 0.8, 0.1, true);

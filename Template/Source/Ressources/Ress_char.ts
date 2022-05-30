@@ -2,7 +2,7 @@ namespace Spiegel_VN {
   export let characters = {
     // hier sollten alle char rein
     maincharacter: {
-      name: "DeinNameHier",
+      name: "Player",
     },
 
     Mama: {

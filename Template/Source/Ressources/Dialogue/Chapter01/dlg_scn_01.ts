@@ -5,7 +5,7 @@ namespace Spiegel_VN {
       T0001: "Test 0001 Marketplace bla.",
     },
     Mama: {
-      T0000: "Test Mama Dialogue Chpater01_01.",
+      T0000: "Test Mama Dialogue Chapter01_01.",
       T0001: "Test Mama dlg t0001.",
     },
   };

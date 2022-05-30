@@ -5,6 +5,9 @@ namespace Spiegel_VN {
     // await ƒS.Location.show(location.Chp01_01_IntroMarketplace);
     // await ƒS.update(2, "./Assets/Transitions/Black.png", 1);
 
+    dataForSave.nameProtagonist = await ƒS.Speech.getInput();
+    characters.maincharacter.name = dataForSave.nameProtagonist;
+
     await ƒS.update(
       transitions.fade.duration,
       transitions.fade.alpha,
@@ -90,7 +93,6 @@ namespace Spiegel_VN {
         break;
     }
 
-    
     return Chp01_02_ConvoMother();
   }
 }
