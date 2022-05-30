@@ -39,7 +39,7 @@ namespace Spiegel_VN {
       points += num;
     }
 
-    ƒS.Sound.play(sound.sanity, 0.025, false);
+    // ƒS.Sound.play(sound.sanity, 0.025, false);
     UpdateBar();
   }
   export function SubPoints(num: number) {

@@ -6,10 +6,13 @@ namespace Spiegel_VN {
     // await ƒS.update(2, "./Assets/Transitions/Black.png", 1);
 
     await ƒS.update(
-      transitions.puzzle.duration,
-      transitions.puzzle.alpha,
-      transitions.puzzle.edge //edge ist der Härtegrad
+      transitions.fade.duration,
+      transitions.fade.alpha,
+      transitions.fade.edge //edge ist der Härtegrad
     );
+
+    ƒS.Sound.fade(Music.backgroundTheme_default, 0.8, 0.1, true);
+
     // ***TEST-INVENTORY***
     // ƒS.Inventory.add(inventory.apple);
     // await ƒS.Inventory.open;
@@ -59,23 +62,35 @@ namespace Spiegel_VN {
     switch (firstDialogueElement) {
       case firstDialogueElementAnswers.iSayOk:
         // continue path here
-        await ƒS.Speech.tell(characters.Mama, "Hi");
+        await ƒS.Speech.tell(
+          characters.Mama,
+          "Choice Okay + Empathypoints 10."
+        );
+        dataForSave.score.scoreEmpathyPoints += 10;
+        console.log(dataForSave.score.scoreEmpathyPoints);
         ƒS.Speech.clear();
+
+        return Chp01_02_ConvoMother();
         break;
       case firstDialogueElementAnswers.iSayYes:
         // continue path here
-        await ƒS.Speech.tell(characters.Mama, "HiToYes");
+        if (dataForSave.score.scoreCouragePoints === 50)
+          // wie mindestens 50?
+          await ƒS.Speech.tell(characters.Mama, "Choice Yes");
         ƒS.Speech.clear();
         // await ƒS.Character.show(characters.Mama, characters.aisaka.pose.happy, ƒS.positions.bottomcenter);
         // ƒS.Character.hide(characters.Mama);
+        return Chp01_02_ConvoMother();
         break;
       case firstDialogueElementAnswers.iSayNo:
         // continue path here
-        await ƒS.Speech.tell(characters.Mama, "Hi");
+        await ƒS.Speech.tell(characters.Mama, "Choice No");
         ƒS.Speech.clear();
+        return Chp01_02_ConvoMother();
         break;
     }
 
-    return ScnTestzene02();
+    
+    return Chp01_02_ConvoMother();
   }
 }

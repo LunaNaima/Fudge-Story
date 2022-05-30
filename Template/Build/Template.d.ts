@@ -4,11 +4,15 @@ declare namespace Spiegel_VN {
 declare namespace Spiegel_VN {
     export import ƒ = FudgeCore;
     export import ƒS = FudgeStory;
-    function NameDerFunktion(): void;
     function Addition(Zahl1?: number, Zahl2?: number): void;
     let dataForSave: {
         nameProtagonist: string;
-        score: number;
+        score: {
+            scoreEmpathyPoints: number;
+            scoreKnowledgePoints: number;
+            scoreCouragePoints: number;
+        };
+        pickedThisScene: boolean;
     };
     let inventory: {
         apple: {
@@ -64,11 +68,27 @@ declare namespace Spiegel_VN {
     };
 }
 declare namespace Spiegel_VN {
+}
+declare namespace Spiegel_VN {
     let locations: {
         Chp01_01_IntroMarketplace: {
             name: string;
             background: string;
         };
+        Chp01_02_ConvoMother: {
+            name: string;
+            background: string;
+        };
+        black: {
+            name: string;
+            background: string;
+        };
+    };
+}
+declare namespace Spiegel_VN {
+    let Music: {
+        backgroundTheme_default: string;
+        click: string;
     };
 }
 declare namespace Spiegel_VN {
@@ -83,8 +103,13 @@ declare namespace Spiegel_VN {
     };
 }
 declare namespace Spiegel_VN {
+    let Soundeffekte: {
+        click: string;
+    };
+}
+declare namespace Spiegel_VN {
     let transitions: {
-        puzzle: {
+        fade: {
             duration: number;
             alpha: string;
             edge: number;
@@ -110,6 +135,22 @@ declare namespace Spiegel_VN {
             T0001: string;
         };
         Mama: {
+            T0000: string;
+            T0001: string;
+        };
+    };
+}
+declare namespace Spiegel_VN {
+    let dlg_scn_E_10EmpathyPoints: {
+        maincharacter: {
+            T0000: string;
+            T0001: string;
+        };
+    };
+}
+declare namespace Spiegel_VN {
+    let dlg_scn_E_Marketplace: {
+        descr_1: {
             T0000: string;
             T0001: string;
         };

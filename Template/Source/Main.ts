@@ -16,16 +16,16 @@ namespace Spiegel_VN {
   z = z + 1;
   console.log(z);
 
-  // funktionen machen was mit Zeug innendrin, Fabrik mit Heinzelmännchen, ich leg denen was rein und die machen was damit
-  export function NameDerFunktion() {
-    // hiermit habe ich funktionen initiiert, aber ich benutze sie nirgendwo
-    console.log("irgendwas");
-  } // export heißt, dass diese funktion auch von anderen szenen aufrufbar ist
-  NameDerFunktion();
-  NameDerFunktion();
-  NameDerFunktion();
-  NameDerFunktion();
-  NameDerFunktion();
+  // // funktionen machen was mit Zeug innendrin, Fabrik mit Heinzelmännchen, ich leg denen was rein und die machen was damit
+  // export function NameDerFunktion() {
+  //   // hiermit habe ich funktionen initiiert, aber ich benutze sie nirgendwo
+  //   console.log("irgendwas");
+  // } // export heißt, dass diese funktion auch von anderen szenen aufrufbar ist
+  // NameDerFunktion();
+
+  // export function randomNum(min: number = 1, max: number = 4): number {
+
+  // }
 
   export function Addition(Zahl1: number = 1, Zahl2: number = 2) {
     // 1 und 2 sind nur default werte
@@ -41,7 +41,13 @@ namespace Spiegel_VN {
   export let dataForSave = {
     // hier kommt alles rein, was gespeichert werden soll. Der Spielstand wird von Beginn der jeweiligen Szene gespeichert.
     nameProtagonist: "", // können Eingabefeld machen, wo die Spielerin den Name eingeben kann
-    score: 0, // wenn es zb Punktestand gibt
+    score: {
+      // wenn es zb Punktestand gibt
+      scoreEmpathyPoints: 0,
+      scoreKnowledgePoints: 0,
+      scoreCouragePoints: 0,
+    },
+    pickedThisScene: false, // hier setze ich diesen wert auf falsch, wenn ich den weiterverwerten will (zb spielerin überprüfen, ob diese szene besucht wurde)
   };
 
   export let inventory = {
@@ -134,6 +140,15 @@ namespace Spiegel_VN {
     }
   }
 
+  // export function func_RPGRandomNumberRange(
+  //   min: number = 0,
+  //   max: number = 10
+  // ): number {
+  //   min = Math.ceil(min);
+  //   max = Math.floor(max);
+  //   return Math.floor(Math.random() * (max - min + 1)) + min;
+  // }
+
   window.addEventListener("load", start);
   function start(_event: Event): void {
     gameMenu = ƒS.Menu.create(
@@ -145,11 +160,18 @@ namespace Spiegel_VN {
 
     let scenes: ƒS.Scenes = [
       // { scene: ScnTestzene01, name: "Testszene 01" }, // scene: hier muss name von funktion rein! Name ist was anderes, kann spaces enthalten wegen string
-      { scene: Chp01_01_IntroMarketplace, name: "01_01_IntroMarketplace" },
+      {
+        scene: Chp01_01_IntroMarketplace,
+        name: "01_01_IntroMarketplace",
+      }, // next ist optional, hier kann ich festlegen, welche szene als nächstes abgespielt wird
       { scene: Chp01_E_FlowerMerchant, name: "E_FlowerMerchant" },
       { scene: Chp01_E_LeatherMerchant, name: "E_LeatherMerchant" },
-      { scene: Chp01_02_ConvoMother, name: "01_03_ConvoMother" },
-      { scene: Chp01_03_IntroMirror, name: "01_04_IntroMirror" },
+      {
+        id: "Chp01_02_ConvoMother",
+        scene: Chp01_02_ConvoMother,
+        name: "01_02_ConvoMother",
+      },
+      { scene: Chp01_03_IntroMirror, name: "01_03_IntroMirror" },
 
       { scene: Chp02_01_Dinner, name: "02_01_Dinner" },
       { scene: Chp02_021_TestWithElena, name: "02_021_TestWithElena" },
