@@ -5,8 +5,7 @@ namespace Spiegel_VN {
     // await ƒS.Location.show(location.Chp01_01_IntroMarketplace);
     // await ƒS.update(2, "./Assets/Transitions/Black.png", 1);
 
-    dataForSave.nameProtagonist = await ƒS.Speech.getInput();
-    characters.maincharacter.name = dataForSave.nameProtagonist;
+    // if (dataForSave.pickedThisScene = true)
 
     await ƒS.update(
       transitions.fade.duration,
@@ -52,9 +51,12 @@ namespace Spiegel_VN {
     // );
 
     let firstDialogueElementAnswers = {
-      iSayOk: "Okay.",
-      iSayYes: "Ja.",
-      iSayNo: "Nein.",
+      iSayTalkToMama: "Rede mit Mama.",
+      iSayTalkToMirrorMerchant: "Mit Spiegelhändler unterhalten.",
+      iSayExploreFlowerMerchant:
+        "(Erkunden) Was gibt es Neues beim Blumenhändler?",
+      iSayExploreLeatherMerchant:
+        "(Erkunden) Was gibt es Neues beim Lederhändler?",
     };
 
     let firstDialogueElement = await ƒS.Menu.getInput(
@@ -63,33 +65,47 @@ namespace Spiegel_VN {
     );
 
     switch (firstDialogueElement) {
-      case firstDialogueElementAnswers.iSayOk:
+      case firstDialogueElementAnswers.iSayTalkToMama:
         // continue path here
         await ƒS.Speech.tell(
           characters.Mama,
-          "Choice Okay + Empathypoints 10."
+          "Choice TalkToMama + Empathypoints 10."
         );
         dataForSave.score.scoreEmpathyPoints += 10;
         console.log(dataForSave.score.scoreEmpathyPoints);
         ƒS.Speech.clear();
-
         return Chp01_02_ConvoMother();
         break;
-      case firstDialogueElementAnswers.iSayYes:
+
+      case firstDialogueElementAnswers.iSayTalkToMirrorMerchant:
         // continue path here
-        if (dataForSave.score.scoreCouragePoints === 50)
-          // wie mindestens 50?
-          await ƒS.Speech.tell(characters.Mama, "Choice Yes");
+        // if (dataForSave.score.scoreCouragePoints === 50)
+        // wie mindestens 50?
+        await ƒS.Speech.tell(characters.Mama, "Choice Talk to Mirrormerchant");
         ƒS.Speech.clear();
         // await ƒS.Character.show(characters.Mama, characters.aisaka.pose.happy, ƒS.positions.bottomcenter);
         // ƒS.Character.hide(characters.Mama);
         return Chp01_02_ConvoMother();
         break;
-      case firstDialogueElementAnswers.iSayNo:
+
+      case firstDialogueElementAnswers.iSayExploreFlowerMerchant:
         // continue path here
-        await ƒS.Speech.tell(characters.Mama, "Choice No");
+        await ƒS.Speech.tell(
+          characters.Mama,
+          "Choice (Explore) Talk to flower merchant."
+        );
         ƒS.Speech.clear();
-        return Chp01_02_ConvoMother();
+        return Chp01_E_FlowerMerchant();
+        break;
+
+      case firstDialogueElementAnswers.iSayExploreLeatherMerchant:
+        // continue path here
+        await ƒS.Speech.tell(
+          characters.Mama,
+          "Choice (Explore) Talk to leather merchant."
+        );
+        ƒS.Speech.clear();
+        return Chp01_E_LeatherMerchant();
         break;
     }
 

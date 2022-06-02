@@ -46,5 +46,15 @@ namespace Spiegel_VN {
 
       // }
     },
+
+    flowerMerchant: {
+      name: "Blumenhändler",
+      origin: ƒS.ORIGIN.BOTTOMCENTER,
+    },
+
+    leatherMerchant: {
+      name: "Lederhändler",
+      origin: ƒS.ORIGIN.BOTTOMRIGHT,
+    },
   };
 }

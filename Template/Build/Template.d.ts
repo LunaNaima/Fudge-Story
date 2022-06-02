@@ -12,7 +12,7 @@ declare namespace Spiegel_VN {
             scoreKnowledgePoints: number;
             scoreCouragePoints: number;
         };
-        pickedThisScene: boolean;
+        pickedChp01_E_FlowerMerchantScene: boolean;
     };
     let inventory: {
         apple: {
@@ -62,6 +62,14 @@ declare namespace Spiegel_VN {
             origin: ƒ.ORIGIN2D;
         };
         Flynn: {
+            name: string;
+            origin: ƒ.ORIGIN2D;
+        };
+        flowerMerchant: {
+            name: string;
+            origin: ƒ.ORIGIN2D;
+        };
+        leatherMerchant: {
             name: string;
             origin: ƒ.ORIGIN2D;
         };
@@ -149,10 +157,24 @@ declare namespace Spiegel_VN {
     };
 }
 declare namespace Spiegel_VN {
-    let dlg_scn_E_Marketplace: {
-        descr_1: {
+    let dlg_scn_E_Flowermerchant: {
+        maincharacter: {
             T0000: string;
             T0001: string;
+        };
+        flowerMerchant: {
+            T0000: string;
+        };
+    };
+}
+declare namespace Spiegel_VN {
+    let dlg_scn_E_Leathermerchant: {
+        maincharacter: {
+            T0000: string;
+            T0001: string;
+        };
+        leatherMerchant: {
+            T0000: string;
         };
     };
 }
@@ -161,6 +183,9 @@ declare namespace Spiegel_VN {
 }
 declare namespace Spiegel_VN {
     function ScnTestzene02(): ƒS.SceneReturn;
+}
+declare namespace Spiegel_VN {
+    function Chp00_00_NameEntry(): ƒS.SceneReturn;
 }
 declare namespace Spiegel_VN {
     function Chp01_01_IntroMarketplace(): ƒS.SceneReturn;

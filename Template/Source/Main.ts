@@ -48,7 +48,7 @@ namespace Spiegel_VN {
       scoreKnowledgePoints: 0,
       scoreCouragePoints: 0,
     },
-    pickedThisScene: false, // hier setze ich diesen wert auf falsch, wenn ich den weiterverwerten will (zb spielerin überprüfen, ob diese szene besucht wurde)
+    pickedChp01_E_FlowerMerchantScene: false, // hier setze ich diesen wert auf falsch, wenn ich den weiterverwerten will (zb spielerin überprüfen, ob diese szene besucht wurde)
   };
 
   export let inventory = {
@@ -161,10 +161,8 @@ namespace Spiegel_VN {
 
     let scenes: ƒS.Scenes = [
       // { scene: ScnTestzene01, name: "Testszene 01" }, // scene: hier muss name von funktion rein! Name ist was anderes, kann spaces enthalten wegen string
-      {
-        scene: Chp01_01_IntroMarketplace,
-        name: "01_01_IntroMarketplace",
-      }, // next ist optional, hier kann ich festlegen, welche szene als nächstes abgespielt wird
+      { scene: Chp00_00_NameEntry, name: "00_NameEntry",},
+      { scene: Chp01_01_IntroMarketplace,name: "01_01_IntroMarketplace",}, // next ist optional, hier kann ich festlegen, welche szene als nächstes abgespielt wird
       { scene: Chp01_E_FlowerMerchant, name: "E_FlowerMerchant" },
       { scene: Chp01_E_LeatherMerchant, name: "E_LeatherMerchant" },
       {
