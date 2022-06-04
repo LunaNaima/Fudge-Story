@@ -50,6 +50,13 @@ namespace Spiegel_VN {
     //   // ƒS.positionPercent(70,100)
     // );
 
+    if (
+      dataForSave.pickedChp01_ConvoMother &&
+      dataForSave.pickedChp01_E_FlowerMerchantScene &&
+      dataForSave.pickedChp01_E_LeatherMerchantScene
+    ) {
+      return Chp01_CS_ArrivalHome();
+    }
     // *** DIALOGUE OPTIONS ***
     let firstDialogueElementAnswers = {
       iSayTalkToMama: "Rede mit Mama.",
@@ -59,6 +66,29 @@ namespace Spiegel_VN {
       iSayExploreLeatherMerchant:
         "(Erkunden) Was gibt es Neues beim Lederhändler?",
     };
+
+    // LÖSUNG IST SCHLECHT (NUR HANNAHS WORTE; ICH FIND SIE TOLL WEIL TUT)
+    // if (dataForSave.pickedChp01_ConvoMother) {
+    //   if (dataForSave.pickedChp01_E_FlowerMerchantScene) {
+    //      let firstDialogueElementAnswers = {
+    //         iSayTalkToMirrorMerchant: "Mit Spiegelhändler unterhalten.",
+    //         iSayExploreLeatherMerchant:
+    //           "(Erkunden) Was gibt es Neues beim Lederhändler?",
+    //     }, else {
+
+    //     }
+    //   };
+    // };
+
+    // if (dataForSave.pickedChp01_E_FlowerMerchantScene) {
+    //   if (dataForSave.pickedChp01_E_LeatherMerchantScene){
+
+    //   };
+    // };
+
+    // if (dataForSave.pickedChp01_E_LeatherMerchantScene){
+
+    // };
 
     let firstDialogueElement = await ƒS.Menu.getInput(
       firstDialogueElementAnswers,

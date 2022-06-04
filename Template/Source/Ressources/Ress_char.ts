@@ -1,6 +1,6 @@
 namespace Spiegel_VN {
   export let characters = {
-    // hier sollten alle char rein
+    // hier sollten alle char rein // char in richtiger größe! 
     maincharacter: {
       name: "Player",
     },

@@ -98,7 +98,9 @@ var Spiegel_VN;
             scoreCouragePoints: 0,
         },
         pickedRightChoice: false,
-        pickedChp01_E_FlowerMerchantScene: false, // hier setze ich diesen wert auf falsch, wenn ich den weiterverwerten will (zb spielerin überprüfen, ob diese szene besucht wurde)
+        pickedChp01_E_FlowerMerchantScene: false,
+        pickedChp01_E_LeatherMerchantScene: false,
+        pickedChp01_ConvoMother: false,
     };
     Spiegel_VN.inventory = {
         apple: {
@@ -185,14 +187,6 @@ var Spiegel_VN;
                 break;
         }
     }
-    // export function func_RPGRandomNumberRange(
-    //   min: number = 0,
-    //   max: number = 10
-    // ): number {
-    //   min = Math.ceil(min);
-    //   max = Math.floor(max);
-    //   return Math.floor(Math.random() * (max - min + 1)) + min;
-    // }
     window.addEventListener("load", start);
     function start(_event) {
         gameMenu = Spiegel_VN.ƒS.Menu.create(inGameMenuButtons, buttonFunctionalities, "gameMenuCSSclass");
@@ -201,9 +195,12 @@ var Spiegel_VN;
             // { scene: ScnTestzene01, name: "Testszene 01" }, // scene: hier muss name von funktion rein! Name ist was anderes, kann spaces enthalten wegen string
             // *** INTRO ***
             { id: "00 Name Entry", scene: Spiegel_VN.Chp00_00_NameEntry, name: "NameEntry" },
-            { id: "03_01 Build A Raft", scene: Spiegel_VN.Chp09_01_BuildARaft, name: "Build a raft" },
             // ***CHAPTER 01 ***
-            { id: "01_01 Intro Marketplace", scene: Spiegel_VN.Chp01_01_IntroMarketplace, name: "IntroMarketplace" },
+            {
+                id: "01_01 Intro Marketplace",
+                scene: Spiegel_VN.Chp01_01_IntroMarketplace,
+                name: "IntroMarketplace",
+            },
             { scene: Spiegel_VN.Chp01_E_FlowerMerchant, name: "E_FlowerMerchant" },
             { scene: Spiegel_VN.Chp01_E_LeatherMerchant, name: "E_LeatherMerchant" },
             { scene: Spiegel_VN.Chp01_02_ConvoMother, name: "01_02_ConvoMother" },
@@ -233,6 +230,11 @@ var Spiegel_VN;
             { scene: Spiegel_VN.Chp03_CS_TurmoilMarketplace, name: "03_CS_TurmoilMarketplace" },
             { scene: Spiegel_VN.Chp03_CS_KailaniMissing, name: "03_CS_Kailani is missing" },
             // *** CHAPTER 09
+            {
+                id: "03_01 Build A Raft",
+                scene: Spiegel_VN.Chp09_01_BuildARaft,
+                name: "Build a raft",
+            },
         ];
         let uiElement = document.querySelector("[type=interface]");
         Spiegel_VN.dataForSave = Spiegel_VN.ƒS.Progress.setData(Spiegel_VN.dataForSave, uiElement);
@@ -374,7 +376,7 @@ var Spiegel_VN;
 var Spiegel_VN;
 (function (Spiegel_VN) {
     Spiegel_VN.characters = {
-        // hier sollten alle char rein
+        // hier sollten alle char rein // char in richtiger größe! 
         maincharacter: {
             name: "Player",
         },
@@ -421,6 +423,17 @@ var Spiegel_VN;
             origin: Spiegel_VN.ƒS.ORIGIN.BOTTOMRIGHT,
         },
     };
+})(Spiegel_VN || (Spiegel_VN = {}));
+var Spiegel_VN;
+(function (Spiegel_VN) {
+    // *** RANDOMIZER ***
+    function func_RandomNumberRange(// random nr zw 0-10. macht
+    min = 0, max = 10) {
+        min = Math.ceil(min);
+        max = Math.floor(max);
+        return Math.floor(Math.random() * (max - min + 1)) + min;
+    }
+    Spiegel_VN.func_RandomNumberRange = func_RandomNumberRange;
 })(Spiegel_VN || (Spiegel_VN = {}));
 var Spiegel_VN;
 (function (Spiegel_VN) {
@@ -668,6 +681,11 @@ var Spiegel_VN;
         //   ƒS.positions.bottomcenter //bei positions: gibts die normalen angaben (topleft ..) bei positionpercentage: gebe ich koordinaten an in pixel 70 in x und 100 in y
         //   // ƒS.positionPercent(70,100)
         // );
+        if (Spiegel_VN.dataForSave.pickedChp01_ConvoMother &&
+            Spiegel_VN.dataForSave.pickedChp01_E_FlowerMerchantScene &&
+            Spiegel_VN.dataForSave.pickedChp01_E_LeatherMerchantScene) {
+            return Spiegel_VN.Chp01_CS_ArrivalHome();
+        }
         // *** DIALOGUE OPTIONS ***
         let firstDialogueElementAnswers = {
             iSayTalkToMama: "Rede mit Mama.",
@@ -675,6 +693,23 @@ var Spiegel_VN;
             iSayExploreFlowerMerchant: "(Erkunden) Was gibt es Neues beim Blumenhändler?",
             iSayExploreLeatherMerchant: "(Erkunden) Was gibt es Neues beim Lederhändler?",
         };
+        // LÖSUNG IST SCHLECHT (NUR HANNAHS WORTE; ICH FIND SIE TOLL WEIL TUT)
+        // if (dataForSave.pickedChp01_ConvoMother) {
+        //   if (dataForSave.pickedChp01_E_FlowerMerchantScene) {
+        //      let firstDialogueElementAnswers = {
+        //         iSayTalkToMirrorMerchant: "Mit Spiegelhändler unterhalten.",
+        //         iSayExploreLeatherMerchant:
+        //           "(Erkunden) Was gibt es Neues beim Lederhändler?",
+        //     }, else {
+        //     }
+        //   };
+        // };
+        // if (dataForSave.pickedChp01_E_FlowerMerchantScene) {
+        //   if (dataForSave.pickedChp01_E_LeatherMerchantScene){
+        //   };
+        // };
+        // if (dataForSave.pickedChp01_E_LeatherMerchantScene){
+        // };
         let firstDialogueElement = await Spiegel_VN.ƒS.Menu.getInput(firstDialogueElementAnswers, "choicesCSSclass");
         // *** RESPONSES ***
         switch (firstDialogueElement) {
@@ -717,33 +752,13 @@ var Spiegel_VN;
 (function (Spiegel_VN) {
     async function Chp01_02_ConvoMother() {
         console.log(Spiegel_VN.dlg_scn_02);
-        await Spiegel_VN.ƒS.Location.show(Spiegel_VN.locations.black);
+        // VAR
+        (Spiegel_VN.dataForSave.pickedChp01_ConvoMother = true),
+            await Spiegel_VN.ƒS.Location.show(Spiegel_VN.locations.black);
         await Spiegel_VN.ƒS.update(2);
         await Spiegel_VN.ƒS.Location.show(Spiegel_VN.locations.Chp01_02_ConvoMother);
         await Spiegel_VN.ƒS.update(2, Spiegel_VN.transitions.fade.alpha, Spiegel_VN.transitions.fade.edge);
-        // let y = ƒ.Random.default.getRangeFloored(1, 3); //FUDGE EINGEBAUTER RANDOMIZER
-        // console.log(y);
-        // let r = func_RPGRandomNumberRange(1, 3);
-        // switch (r) {
-        //     case 1:
-        //         for (let diaSequence of Object.values(dlg_scn_E_Marketplace.descr_1)) {
-        //             await ƒS.Speech.tell(rpgCharacters.text, diaSequence);
-        //         }
-        //         break;
-        //     case 2:
-        //         for (let diaSequence of Object.values(rpgDiaCamp.description02)) {
-        //             await ƒS.Speech.tell(rpgCharacters.text, diaSequence);
-        //         }
-        //         break;
-        //     case 3:
-        //         for (let diaSequence of Object.values(rpgDiaCamp.description03)) {
-        //             await ƒS.Speech.tell(rpgCharacters.text, diaSequence);
-        //         }
-        //         break;
-        //     default:
-        //         await ƒS.Speech.tell(rpgCharacters.text, "Somehow, you wound up in the default option. Curious.");
-        //         break;
-        // }
+        await Spiegel_VN.ƒS.Speech.tell("Hannahhhh", "Hier reden wir mit Mama");
         // *** BEGIN DIALOGUE ***
         await Spiegel_VN.ƒS.Speech.tell(Spiegel_VN.characters.maincharacter.name, Spiegel_VN.dlg_scn_02.maincharacter.T0000);
         await Spiegel_VN.ƒS.Speech.tell(Spiegel_VN.characters.Mama.name, Spiegel_VN.dlg_scn_02.Mama.T0000);
@@ -752,23 +767,26 @@ var Spiegel_VN;
             iSayOk: "Okay.",
             iSayYes: "Ja.",
         };
+        await Spiegel_VN.ƒS.Speech.tell("Hannahhhh", "Choices sind set");
         if (Spiegel_VN.dataForSave.score.scoreEmpathyPoints === 10) {
-            let secondDialogueElementAnswers = {
-                iSayOk: "Freigeschaltete Option 10 EmpathyPoints.",
-            };
-            //*** CSS-CLASS */
-            let secondDialogueElement = await Spiegel_VN.ƒS.Menu.getInput(secondDialogueElementAnswers, "choicesCSSclass");
-            //*** RESPONSES */
-            switch (secondDialogueElement) {
-                case secondDialogueElementAnswers.iSayOk:
-                    // continue path here
-                    await Spiegel_VN.ƒS.Speech.tell(Spiegel_VN.characters.Mama, "Choice Okay.");
-                    Spiegel_VN.dataForSave.score.scoreEmpathyPoints += 10;
-                    console.log(Spiegel_VN.dataForSave.score.scoreEmpathyPoints);
-                    Spiegel_VN.ƒS.Speech.clear();
-                    return Chp01_02_ConvoMother();
-                    break;
-                // case secondDialogueElementAnswers.iSayYes:
+            //   let secondDialogueElementAnswers = {
+            //     iSayOk: "Freigeschaltete Option 10 EmpathyPoints.",
+        }
+        ;
+        //*** CSS-CLASS */
+        let secondDialogueElement = await Spiegel_VN.ƒS.Menu.getInput(secondDialogueElementAnswers, "choicesCSSclass");
+        await Spiegel_VN.ƒS.Speech.tell("Hannahhhh", "Hier hätten wir auswählen können :(( O___o");
+        //*** RESPONSES */
+        switch (secondDialogueElement) {
+            case secondDialogueElementAnswers.iSayOk:
+                // continue path here
+                await Spiegel_VN.ƒS.Speech.tell(Spiegel_VN.characters.Mama, "Choice Okay.");
+                Spiegel_VN.dataForSave.score.scoreEmpathyPoints += 10;
+                console.log(Spiegel_VN.dataForSave.score.scoreEmpathyPoints);
+                Spiegel_VN.ƒS.Speech.clear();
+                return Spiegel_VN.Chp01_01_IntroMarketplace();
+                break;
+            case secondDialogueElementAnswers.iSayYes:
                 //   // continue path here
                 //   if (dataForSave.score.scoreCouragePoints === 50)
                 //     // wie mindestens 50?
@@ -776,17 +794,16 @@ var Spiegel_VN;
                 //   ƒS.Speech.clear();
                 //   // await ƒS.Character.show(characters.Mama, characters.aisaka.pose.happy, ƒS.positions.bottomcenter);
                 //   // ƒS.Character.hide(characters.Mama);
-                //   return Chp01_02_ConvoMother();
-                //   break;
-                // case secondDialogueElementAnswers.iSayNo:
-                //   // continue path here
-                //   await ƒS.Speech.tell(characters.Mama, "Choice No");
-                //   ƒS.Speech.clear();
-                //   return Chp01_02_ConvoMother();
-                //   break;
-            }
-            return Chp01_02_ConvoMother();
+                return Spiegel_VN.Chp01_01_IntroMarketplace();
+                break;
+            // case secondDialogueElementAnswers.iSayNo:
+            //   // continue path here
+            //   await ƒS.Speech.tell(characters.Mama, "Choice No");
+            //   ƒS.Speech.clear();
+            //   return Chp01_02_ConvoMother();
+            //   break;
         }
+        return Spiegel_VN.Chp01_01_IntroMarketplace();
     }
     Spiegel_VN.Chp01_02_ConvoMother = Chp01_02_ConvoMother;
 })(Spiegel_VN || (Spiegel_VN = {}));
@@ -808,13 +825,28 @@ var Spiegel_VN;
 var Spiegel_VN;
 (function (Spiegel_VN) {
     async function Chp01_E_FlowerMerchant() {
-        await Spiegel_VN.ƒS.Location.show(Spiegel_VN.locations.Chp01_01_IntroMarketplace); //unsere locations, die szenen. nach dem Punkt sind die Methoden! also tell und show ist eine Methode. Die klammer dahinter ist eine Methodenaufruf, also eine Variable. Der Hingergrund sollte da angezeigt werden
+        (Spiegel_VN.dataForSave.pickedChp01_E_FlowerMerchantScene = true),
+            await Spiegel_VN.ƒS.Location.show(Spiegel_VN.locations.Chp01_01_IntroMarketplace); //unsere locations, die szenen. nach dem Punkt sind die Methoden! also tell und show ist eine Methode. Die klammer dahinter ist eine Methodenaufruf, also eine Variable. Der Hingergrund sollte da angezeigt werden
         // await ƒS.Location.show(location.Chp01_01_IntroMarketplace);
         // await ƒS.update(2, "./Assets/Transitions/Black.png", 1);
-        // if (dataForSave.pickedThisScene = true)
         await Spiegel_VN.ƒS.update(Spiegel_VN.transitions.fade.duration, Spiegel_VN.transitions.fade.alpha, Spiegel_VN.transitions.fade.edge //edge ist der Härtegrad
         );
         // ***BEGINN DIALOG ***
+        let randomTextWithNewEntry = Spiegel_VN.ƒ.Random.default.getRangeFloored(1, 3); //gerundet
+        switch (randomTextWithNewEntry) {
+            case 1:
+                await Spiegel_VN.ƒS.Speech.tell(Spiegel_VN.characters.Evarius.name, "Zahl 1--------------------");
+                break;
+            case 2:
+                await Spiegel_VN.ƒS.Speech.tell(Spiegel_VN.characters.Evarius.name, "Zahl 2--------------------");
+                break;
+            case 3:
+                await Spiegel_VN.ƒS.Speech.tell(Spiegel_VN.characters.Evarius.name, "Zahl 3--------------------");
+                break;
+            default:
+                await Spiegel_VN.ƒS.Speech.tell(Spiegel_VN.characters.Evarius.name, "Default--------------------");
+                break;
+        }
         await Spiegel_VN.ƒS.Speech.tell(Spiegel_VN.characters.maincharacter.name, Spiegel_VN.dlg_scn_E_Flowermerchant.maincharacter.T0000);
         await Spiegel_VN.ƒS.Speech.tell(Spiegel_VN.characters.flowerMerchant.name, Spiegel_VN.dlg_scn_E_Flowermerchant.flowerMerchant.T0000);
         // *** DIALOGUE OPTIONS ***
@@ -848,7 +880,7 @@ var Spiegel_VN;
                 // continue path here
                 // await ƒS.Speech.tell(characters.maincharacter, "Machen Sies gut.");
                 Spiegel_VN.ƒS.Speech.clear();
-                return Spiegel_VN.Chp01_02_ConvoMother();
+                return Spiegel_VN.Chp01_01_IntroMarketplace();
                 break;
             // case firstDialogueElementAnswers.iSayExploreLeatherMerchant:
             //   // continue path here
@@ -866,7 +898,8 @@ var Spiegel_VN;
 var Spiegel_VN;
 (function (Spiegel_VN) {
     async function Chp01_E_LeatherMerchant() {
-        await Spiegel_VN.ƒS.Location.show(Spiegel_VN.locations.Chp01_01_IntroMarketplace); //unsere locations, die szenen. nach dem Punkt sind die Methoden! also tell und show ist eine Methode. Die klammer dahinter ist eine Methodenaufruf, also eine Variable. Der Hingergrund sollte da angezeigt werden
+        (Spiegel_VN.dataForSave.pickedChp01_E_LeatherMerchantScene = true),
+            await Spiegel_VN.ƒS.Location.show(Spiegel_VN.locations.Chp01_01_IntroMarketplace); //unsere locations, die szenen. nach dem Punkt sind die Methoden! also tell und show ist eine Methode. Die klammer dahinter ist eine Methodenaufruf, also eine Variable. Der Hingergrund sollte da angezeigt werden
         // await ƒS.Location.show(location.Chp01_01_IntroMarketplace);
         // await ƒS.update(2, "./Assets/Transitions/Black.png", 1);
         // if (dataForSave.pickedThisScene = true)
@@ -906,7 +939,7 @@ var Spiegel_VN;
                 // continue path here
                 // await ƒS.Speech.tell(characters.maincharacter, "Machen Sies gut.");
                 Spiegel_VN.ƒS.Speech.clear();
-                return Spiegel_VN.Chp01_02_ConvoMother();
+                return Spiegel_VN.Chp01_01_IntroMarketplace();
                 break;
             // case firstDialogueElementAnswers.iSayExploreLeatherMerchant:
             //   // continue path here
@@ -923,7 +956,9 @@ var Spiegel_VN;
 })(Spiegel_VN || (Spiegel_VN = {}));
 var Spiegel_VN;
 (function (Spiegel_VN) {
-    async function Chp01_CS_ArrivalHome() { }
+    async function Chp01_CS_ArrivalHome() {
+        await Spiegel_VN.ƒS.Speech.tell("Hannah", "Schleife gelungen bei CS angekommen ------------- AAAAAAAAAAAA");
+    }
     Spiegel_VN.Chp01_CS_ArrivalHome = Chp01_CS_ArrivalHome;
 })(Spiegel_VN || (Spiegel_VN = {}));
 var Spiegel_VN;

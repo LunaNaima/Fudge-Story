@@ -50,6 +50,8 @@ namespace Spiegel_VN {
     },
     pickedRightChoice: false,
     pickedChp01_E_FlowerMerchantScene: false, // hier setze ich diesen wert auf falsch, wenn ich den weiterverwerten will (zb spielerin überprüfen, ob diese szene besucht wurde)
+    pickedChp01_E_LeatherMerchantScene: false,
+    pickedChp01_ConvoMother: false,
   };
 
   export let inventory = {
@@ -142,15 +144,6 @@ namespace Spiegel_VN {
     }
   }
 
-  // export function func_RPGRandomNumberRange(
-  //   min: number = 0,
-  //   max: number = 10
-  // ): number {
-  //   min = Math.ceil(min);
-  //   max = Math.floor(max);
-  //   return Math.floor(Math.random() * (max - min + 1)) + min;
-  // }
-
   window.addEventListener("load", start);
   function start(_event: Event): void {
     gameMenu = ƒS.Menu.create(
@@ -164,10 +157,13 @@ namespace Spiegel_VN {
       // { scene: ScnTestzene01, name: "Testszene 01" }, // scene: hier muss name von funktion rein! Name ist was anderes, kann spaces enthalten wegen string
       // *** INTRO ***
       { id: "00 Name Entry", scene: Chp00_00_NameEntry, name: "NameEntry" },
-      { id: "03_01 Build A Raft", scene: Chp09_01_BuildARaft, name: "Build a raft" },
 
       // ***CHAPTER 01 ***
-      { id: "01_01 Intro Marketplace", scene: Chp01_01_IntroMarketplace, name: "IntroMarketplace" }, // next ist optional, hier kann ich festlegen, welche szene als nächstes abgespielt wird
+      {
+        id: "01_01 Intro Marketplace",
+        scene: Chp01_01_IntroMarketplace,
+        name: "IntroMarketplace",
+      }, // next ist optional, hier kann ich festlegen, welche szene als nächstes abgespielt wird
       { scene: Chp01_E_FlowerMerchant, name: "E_FlowerMerchant" },
       { scene: Chp01_E_LeatherMerchant, name: "E_LeatherMerchant" },
       { scene: Chp01_02_ConvoMother, name: "01_02_ConvoMother" },
@@ -200,6 +196,11 @@ namespace Spiegel_VN {
       { scene: Chp03_CS_KailaniMissing, name: "03_CS_Kailani is missing" },
 
       // *** CHAPTER 09
+      {
+        id: "03_01 Build A Raft",
+        scene: Chp09_01_BuildARaft,
+        name: "Build a raft",
+      },
     ];
 
     let uiElement: HTMLElement = document.querySelector("[type=interface]");

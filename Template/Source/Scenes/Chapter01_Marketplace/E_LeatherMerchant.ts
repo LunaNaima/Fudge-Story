@@ -1,6 +1,7 @@
 namespace Spiegel_VN {
   export async function Chp01_E_LeatherMerchant(): ƒS.SceneReturn {
-    await ƒS.Location.show(locations.Chp01_01_IntroMarketplace); //unsere locations, die szenen. nach dem Punkt sind die Methoden! also tell und show ist eine Methode. Die klammer dahinter ist eine Methodenaufruf, also eine Variable. Der Hingergrund sollte da angezeigt werden
+    (dataForSave.pickedChp01_E_LeatherMerchantScene = true),
+      await ƒS.Location.show(locations.Chp01_01_IntroMarketplace); //unsere locations, die szenen. nach dem Punkt sind die Methoden! also tell und show ist eine Methode. Die klammer dahinter ist eine Methodenaufruf, also eine Variable. Der Hingergrund sollte da angezeigt werden
 
     // await ƒS.Location.show(location.Chp01_01_IntroMarketplace);
     // await ƒS.update(2, "./Assets/Transitions/Black.png", 1);
@@ -64,7 +65,7 @@ namespace Spiegel_VN {
         // continue path here
         // await ƒS.Speech.tell(characters.maincharacter, "Machen Sies gut.");
         ƒS.Speech.clear();
-        return Chp01_02_ConvoMother();
+        return Chp01_01_IntroMarketplace();
         break;
 
       // case firstDialogueElementAnswers.iSayExploreLeatherMerchant:

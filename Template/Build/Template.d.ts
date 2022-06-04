@@ -13,6 +13,8 @@ declare namespace Spiegel_VN {
         };
         pickedRightChoice: boolean;
         pickedChp01_E_FlowerMerchantScene: boolean;
+        pickedChp01_E_LeatherMerchantScene: boolean;
+        pickedChp01_ConvoMother: boolean;
     };
     let inventory: {
         apple: {
@@ -76,6 +78,8 @@ declare namespace Spiegel_VN {
     };
 }
 declare namespace Spiegel_VN {
+    function func_RandomNumberRange(// random nr zw 0-10. macht
+    min?: number, max?: number): number;
 }
 declare namespace Spiegel_VN {
     let locations: {

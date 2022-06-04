@@ -1,11 +1,11 @@
 namespace Spiegel_VN {
   export async function Chp01_E_FlowerMerchant(): ƒS.SceneReturn {
-    await ƒS.Location.show(locations.Chp01_01_IntroMarketplace); //unsere locations, die szenen. nach dem Punkt sind die Methoden! also tell und show ist eine Methode. Die klammer dahinter ist eine Methodenaufruf, also eine Variable. Der Hingergrund sollte da angezeigt werden
+    
+    (dataForSave.pickedChp01_E_FlowerMerchantScene = true),
+      await ƒS.Location.show(locations.Chp01_01_IntroMarketplace); //unsere locations, die szenen. nach dem Punkt sind die Methoden! also tell und show ist eine Methode. Die klammer dahinter ist eine Methodenaufruf, also eine Variable. Der Hingergrund sollte da angezeigt werden
 
     // await ƒS.Location.show(location.Chp01_01_IntroMarketplace);
     // await ƒS.update(2, "./Assets/Transitions/Black.png", 1);
-
-    // if (dataForSave.pickedThisScene = true)
 
     await ƒS.update(
       transitions.fade.duration,
@@ -14,6 +14,35 @@ namespace Spiegel_VN {
     );
 
     // ***BEGINN DIALOG ***
+
+    let randomTextWithNewEntry = ƒ.Random.default.getRangeFloored(1, 3); //gerundet
+    switch (randomTextWithNewEntry) {
+      case 1:
+        await ƒS.Speech.tell(
+          characters.Evarius.name,
+          "Zahl 1--------------------"
+        );
+        break;
+      case 2:
+        await ƒS.Speech.tell(
+          characters.Evarius.name,
+          "Zahl 2--------------------"
+        );
+        break;
+      case 3:
+        await ƒS.Speech.tell(
+          characters.Evarius.name,
+          "Zahl 3--------------------"
+        );
+        break;
+      default:
+        await ƒS.Speech.tell(
+          characters.Evarius.name,
+          "Default--------------------"
+        );
+        break;
+    }
+
     await ƒS.Speech.tell(
       characters.maincharacter.name,
       dlg_scn_E_Flowermerchant.maincharacter.T0000
@@ -64,7 +93,7 @@ namespace Spiegel_VN {
         // continue path here
         // await ƒS.Speech.tell(characters.maincharacter, "Machen Sies gut.");
         ƒS.Speech.clear();
-        return Chp01_02_ConvoMother();
+        return Chp01_01_IntroMarketplace();
         break;
 
       // case firstDialogueElementAnswers.iSayExploreLeatherMerchant:
