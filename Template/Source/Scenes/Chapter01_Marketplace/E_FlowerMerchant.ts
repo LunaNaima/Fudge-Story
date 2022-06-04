@@ -35,7 +35,7 @@ namespace Spiegel_VN {
       "choicesCSSclass"
     );
 
-    // *** SWITCHCASE DIALOGUE OPTIONS ***
+    // *** RESPONSES ***
     switch (FlowerMerchantDialogueElement) {
       case FlowerMerchantDialogueElementAnswers.iSayAskAboutTrip:
         // continue path here

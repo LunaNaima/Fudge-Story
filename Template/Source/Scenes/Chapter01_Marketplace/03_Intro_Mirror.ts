@@ -5,7 +5,7 @@ namespace Spiegel_VN {
     //   let Chp01_03_IntroMirror = await ƒS.Menu.getInput(Chp01_02_ConvoMother, "css-class");
     //   // switch accordingly
     //   switch(Chp01_03_IntroMirror) {
-    //     case iAskForMoreInfo.iAskAboutTwins:
+    //     case AskForMoreInfo.iAskAboutTwins:
     //      ƒS.Sound.play(sound.click, 1);
     //    await ƒS.Speech.tell(characters.maincharacter.name, dlg_scn_01.maincharacter.T0000);
     //   }

@@ -50,6 +50,7 @@ namespace Spiegel_VN {
     //   // ƒS.positionPercent(70,100)
     // );
 
+    // *** DIALOGUE OPTIONS ***
     let firstDialogueElementAnswers = {
       iSayTalkToMama: "Rede mit Mama.",
       iSayTalkToMirrorMerchant: "Mit Spiegelhändler unterhalten.",
@@ -64,6 +65,7 @@ namespace Spiegel_VN {
       "choicesCSSclass"
     );
 
+    // *** RESPONSES ***
     switch (firstDialogueElement) {
       case firstDialogueElementAnswers.iSayTalkToMama:
         // continue path here
@@ -74,7 +76,7 @@ namespace Spiegel_VN {
         dataForSave.score.scoreEmpathyPoints += 10;
         console.log(dataForSave.score.scoreEmpathyPoints);
         ƒS.Speech.clear();
-        return Chp01_02_ConvoMother();
+        return Chp01_02_ConvoMother(); // hier lieber: return "Chp ...";
         break;
 
       case firstDialogueElementAnswers.iSayTalkToMirrorMerchant:

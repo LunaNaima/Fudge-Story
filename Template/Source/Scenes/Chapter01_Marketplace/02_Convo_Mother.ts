@@ -32,7 +32,8 @@ namespace Spiegel_VN {
     //         await ƒS.Speech.tell(rpgCharacters.text, "Somehow, you wound up in the default option. Curious.");
     //         break;
     // }
-
+    
+    // *** BEGIN DIALOGUE ***
     await ƒS.Speech.tell(
       characters.maincharacter.name,
       dlg_scn_02.maincharacter.T0000
@@ -49,6 +50,7 @@ namespace Spiegel_VN {
       let secondDialogueElementAnswers = {
         iSayOk: "Freigeschaltete Option 10 EmpathyPoints.",
       };
+
       //*** CSS-CLASS */
       let secondDialogueElement = await ƒS.Menu.getInput(
         secondDialogueElementAnswers,

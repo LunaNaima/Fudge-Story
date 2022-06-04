@@ -4,7 +4,6 @@ declare namespace Spiegel_VN {
 declare namespace Spiegel_VN {
     export import ƒ = FudgeCore;
     export import ƒS = FudgeStory;
-    function Addition(Zahl1?: number, Zahl2?: number): void;
     let dataForSave: {
         nameProtagonist: string;
         score: {
@@ -203,6 +202,12 @@ declare namespace Spiegel_VN {
     function Chp01_E_LeatherMerchant(): ƒS.SceneReturn;
 }
 declare namespace Spiegel_VN {
+    function Chp01_CS_ArrivalHome(): ƒS.SceneReturn;
+}
+declare namespace Spiegel_VN {
+    function Chp01_CS_PerchaseMirror(): ƒS.SceneReturn;
+}
+declare namespace Spiegel_VN {
     function Chp02_01_Dinner(): ƒS.SceneReturn;
 }
 declare namespace Spiegel_VN {
@@ -212,16 +217,22 @@ declare namespace Spiegel_VN {
     function Chp02_022_TestWithKailani(): ƒS.SceneReturn;
 }
 declare namespace Spiegel_VN {
+    function Chp02_E_DiscoverGarden(): ƒS.SceneReturn;
+}
+declare namespace Spiegel_VN {
     function Chp02_03_FightNeighbor(): ƒS.SceneReturn;
 }
 declare namespace Spiegel_VN {
     function Chp02_E_DiscoverBedroom(): ƒS.SceneReturn;
 }
 declare namespace Spiegel_VN {
-    function Chp02_E_DiscoverGarden(): ƒS.SceneReturn;
+    function Chp02_E_DiscoverKitchen(): ƒS.SceneReturn;
 }
 declare namespace Spiegel_VN {
-    function Chp02_E_DiscoverKitchen(): ƒS.SceneReturn;
+    function Chp02_CS_NewDay(): ƒS.SceneReturn;
+}
+declare namespace Spiegel_VN {
+    function Chp02_CS_Sleep(): ƒS.SceneReturn;
 }
 declare namespace Spiegel_VN {
     function Chp03_01_Dressmaker(): ƒS.SceneReturn;
@@ -233,9 +244,6 @@ declare namespace Spiegel_VN {
     function Chp03_022_WaterWellKailani(): ƒS.SceneReturn;
 }
 declare namespace Spiegel_VN {
-    function Chp03_03_TurmoilMarketplace(): ƒS.SceneReturn;
-}
-declare namespace Spiegel_VN {
     function Chp03_E_DiscoverDonkey(): ƒS.SceneReturn;
 }
 declare namespace Spiegel_VN {
@@ -243,4 +251,10 @@ declare namespace Spiegel_VN {
 }
 declare namespace Spiegel_VN {
     function Chp03_E_DiscoverLibrary(): ƒS.SceneReturn;
+}
+declare namespace Spiegel_VN {
+    function Chp03_CS_KailaniMissing(): ƒS.SceneReturn;
+}
+declare namespace Spiegel_VN {
+    function Chp03_CS_TurmoilMarketplace(): ƒS.SceneReturn;
 }

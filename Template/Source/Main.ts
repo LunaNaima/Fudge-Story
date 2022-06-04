@@ -1,7 +1,6 @@
 namespace Spiegel_VN {
   export import ƒ = FudgeCore; //importiert teile, die nicht in typescript sind, sondern außerhalb in fudge
   export import ƒS = FudgeStory;
-  
 
   console.log("FudgeStory template starting");
   console.log("was anderes");
@@ -28,23 +27,23 @@ namespace Spiegel_VN {
 
   // }
 
-  export function Addition(Zahl1: number = 1, Zahl2: number = 2) {
-    // 1 und 2 sind nur default werte
-    let summe = Zahl1 + Zahl2;
-    console.log("Die Summe von Zahl1 und Zahl2 ist");
-    console.log(summe);
-  }
-  Addition();
-  Addition(4, 7);
-  Addition(x, y);
+  // export function Addition(Zahl1: number = 1, Zahl2: number = 2) {
+  //   // 1 und 2 sind nur default werte
+  //   let summe = Zahl1 + Zahl2;
+  //   console.log("Die Summe von Zahl1 und Zahl2 ist");
+  //   console.log(summe);
+  // }
+  // Addition();
+  // Addition(4, 7);
+  // Addition(x, y);
   // //vorher kommentieren, was man hier macht, in dem fall export transitions
 
+  // *** DATA THAT WILL BE SAVED ***
   export let dataForSave = {
     // hier kommt alles rein, was gespeichert werden soll. Der Spielstand wird von Beginn der jeweiligen Szene gespeichert.
-    nameProtagonist: "", // können Eingabefeld machen, wo die Spielerin den Name eingeben kann
+    nameProtagonist: "",
     score: {
-      // wenn es zb Punktestand gibt
-      scoreEmpathyPoints: 0,
+      scoreEmpathyPoints: 20,
       scoreKnowledgePoints: 0,
       scoreCouragePoints: 0,
     },
@@ -161,17 +160,20 @@ namespace Spiegel_VN {
 
     let scenes: ƒS.Scenes = [
       // { scene: ScnTestzene01, name: "Testszene 01" }, // scene: hier muss name von funktion rein! Name ist was anderes, kann spaces enthalten wegen string
-      { scene: Chp00_00_NameEntry, name: "00_NameEntry",},
-      { scene: Chp01_01_IntroMarketplace,name: "01_01_IntroMarketplace",}, // next ist optional, hier kann ich festlegen, welche szene als nächstes abgespielt wird
+      // *** INTRO ***
+      { scene: Chp00_00_NameEntry, name: "00_NameEntry" },
+
+      // ***CHAPTER 1 ***
+      { scene: Chp01_01_IntroMarketplace, name: "01_01_IntroMarketplace" }, // next ist optional, hier kann ich festlegen, welche szene als nächstes abgespielt wird
       { scene: Chp01_E_FlowerMerchant, name: "E_FlowerMerchant" },
       { scene: Chp01_E_LeatherMerchant, name: "E_LeatherMerchant" },
-      {
-        id: "Chp01_02_ConvoMother",
-        scene: Chp01_02_ConvoMother,
-        name: "01_02_ConvoMother",
-      },
+      { scene: Chp01_02_ConvoMother, name: "01_02_ConvoMother" },
       { scene: Chp01_03_IntroMirror, name: "01_03_IntroMirror" },
+      // *** CUTSCENES ***
+      { scene: Chp01_CS_PerchaseMirror, name: "01_CS_PerchaseMirror" },
+      { scene: Chp01_CS_ArrivalHome, name: "01_CS_ArrivalHome" },
 
+      // ***CHAPTER 2 ***
       { scene: Chp02_01_Dinner, name: "02_01_Dinner" },
       { scene: Chp02_021_TestWithElena, name: "02_021_TestWithElena" },
       { scene: Chp02_022_TestWithKailani, name: "02_022_TestWithKailani" },
@@ -179,14 +181,20 @@ namespace Spiegel_VN {
       { scene: Chp02_E_DiscoverBedroom, name: "E_Bedroom" },
       { scene: Chp02_E_DiscoverGarden, name: "E_Garden" },
       { scene: Chp02_E_DiscoverKitchen, name: "E_Kitchen" },
+      // CUTSCENES ***
+      { scene: Chp02_CS_Sleep, name: "02_CS_Sleep" },
+      { scene: Chp02_CS_NewDay, name: "02_CS_New Day" },
 
+      // *** CHAPTER 3 ***
       { scene: Chp03_01_Dressmaker, name: "03_01_Dressmaker" },
       { scene: Chp03_E_DiscoverDonkey, name: "E_Donkey" },
       { scene: Chp03_E_DiscoverForest, name: "E_Forest" },
       { scene: Chp03_E_DiscoverLibrary, name: "E_Library" },
       { scene: Chp03_021_FirewoodKailani, name: "03_021_FirewoodKailani" },
       { scene: Chp03_022_WaterWellKailani, name: "03_022_WaterWellKailani" },
-      { scene: Chp03_03_TurmoilMarketplace, name: "03_TurmoilMarketplace" },
+      // *** CUTSCENES ***
+      { scene: Chp03_CS_TurmoilMarketplace, name: "03_CS_TurmoilMarketplace" },
+      { scene: Chp03_CS_KailaniMissing, name: "03_CS_Kailani is missing" },
     ];
 
     let uiElement: HTMLElement = document.querySelector("[type=interface]");

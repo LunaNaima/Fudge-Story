@@ -77,23 +77,22 @@ var Spiegel_VN;
     // NameDerFunktion();
     // export function randomNum(min: number = 1, max: number = 4): number {
     // }
-    function Addition(Zahl1 = 1, Zahl2 = 2) {
-        // 1 und 2 sind nur default werte
-        let summe = Zahl1 + Zahl2;
-        console.log("Die Summe von Zahl1 und Zahl2 ist");
-        console.log(summe);
-    }
-    Spiegel_VN.Addition = Addition;
-    Addition();
-    Addition(4, 7);
-    Addition(x, y);
+    // export function Addition(Zahl1: number = 1, Zahl2: number = 2) {
+    //   // 1 und 2 sind nur default werte
+    //   let summe = Zahl1 + Zahl2;
+    //   console.log("Die Summe von Zahl1 und Zahl2 ist");
+    //   console.log(summe);
+    // }
+    // Addition();
+    // Addition(4, 7);
+    // Addition(x, y);
     // //vorher kommentieren, was man hier macht, in dem fall export transitions
+    // *** DATA THAT WILL BE SAVED ***
     Spiegel_VN.dataForSave = {
         // hier kommt alles rein, was gespeichert werden soll. Der Spielstand wird von Beginn der jeweiligen Szene gespeichert.
         nameProtagonist: "",
         score: {
-            // wenn es zb Punktestand gibt
-            scoreEmpathyPoints: 0,
+            scoreEmpathyPoints: 20,
             scoreKnowledgePoints: 0,
             scoreCouragePoints: 0,
         },
@@ -198,16 +197,18 @@ var Spiegel_VN;
         buttonFunctionalities("Close");
         let scenes = [
             // { scene: ScnTestzene01, name: "Testszene 01" }, // scene: hier muss name von funktion rein! Name ist was anderes, kann spaces enthalten wegen string
-            { scene: Spiegel_VN.Chp00_00_NameEntry, name: "00_NameEntry", },
-            { scene: Spiegel_VN.Chp01_01_IntroMarketplace, name: "01_01_IntroMarketplace", },
+            // *** INTRO ***
+            { scene: Spiegel_VN.Chp00_00_NameEntry, name: "00_NameEntry" },
+            // ***CHAPTER 1 ***
+            { scene: Spiegel_VN.Chp01_01_IntroMarketplace, name: "01_01_IntroMarketplace" },
             { scene: Spiegel_VN.Chp01_E_FlowerMerchant, name: "E_FlowerMerchant" },
             { scene: Spiegel_VN.Chp01_E_LeatherMerchant, name: "E_LeatherMerchant" },
-            {
-                id: "Chp01_02_ConvoMother",
-                scene: Spiegel_VN.Chp01_02_ConvoMother,
-                name: "01_02_ConvoMother",
-            },
+            { scene: Spiegel_VN.Chp01_02_ConvoMother, name: "01_02_ConvoMother" },
             { scene: Spiegel_VN.Chp01_03_IntroMirror, name: "01_03_IntroMirror" },
+            // *** CUTSCENES ***
+            { scene: Spiegel_VN.Chp01_CS_PerchaseMirror, name: "01_CS_PerchaseMirror" },
+            { scene: Spiegel_VN.Chp01_CS_ArrivalHome, name: "01_CS_ArrivalHome" },
+            // ***CHAPTER 2 ***
             { scene: Spiegel_VN.Chp02_01_Dinner, name: "02_01_Dinner" },
             { scene: Spiegel_VN.Chp02_021_TestWithElena, name: "02_021_TestWithElena" },
             { scene: Spiegel_VN.Chp02_022_TestWithKailani, name: "02_022_TestWithKailani" },
@@ -215,13 +216,19 @@ var Spiegel_VN;
             { scene: Spiegel_VN.Chp02_E_DiscoverBedroom, name: "E_Bedroom" },
             { scene: Spiegel_VN.Chp02_E_DiscoverGarden, name: "E_Garden" },
             { scene: Spiegel_VN.Chp02_E_DiscoverKitchen, name: "E_Kitchen" },
+            // CUTSCENES ***
+            { scene: Spiegel_VN.Chp02_CS_Sleep, name: "02_CS_Sleep" },
+            { scene: Spiegel_VN.Chp02_CS_NewDay, name: "02_CS_New Day" },
+            // *** CHAPTER 3 ***
             { scene: Spiegel_VN.Chp03_01_Dressmaker, name: "03_01_Dressmaker" },
             { scene: Spiegel_VN.Chp03_E_DiscoverDonkey, name: "E_Donkey" },
             { scene: Spiegel_VN.Chp03_E_DiscoverForest, name: "E_Forest" },
             { scene: Spiegel_VN.Chp03_E_DiscoverLibrary, name: "E_Library" },
             { scene: Spiegel_VN.Chp03_021_FirewoodKailani, name: "03_021_FirewoodKailani" },
             { scene: Spiegel_VN.Chp03_022_WaterWellKailani, name: "03_022_WaterWellKailani" },
-            { scene: Spiegel_VN.Chp03_03_TurmoilMarketplace, name: "03_TurmoilMarketplace" },
+            // *** CUTSCENES ***
+            { scene: Spiegel_VN.Chp03_CS_TurmoilMarketplace, name: "03_CS_TurmoilMarketplace" },
+            { scene: Spiegel_VN.Chp03_CS_KailaniMissing, name: "03_CS_Kailani is missing" },
         ];
         let uiElement = document.querySelector("[type=interface]");
         Spiegel_VN.dataForSave = Spiegel_VN.ƒS.Progress.setData(Spiegel_VN.dataForSave, uiElement);
@@ -657,6 +664,7 @@ var Spiegel_VN;
         //   ƒS.positions.bottomcenter //bei positions: gibts die normalen angaben (topleft ..) bei positionpercentage: gebe ich koordinaten an in pixel 70 in x und 100 in y
         //   // ƒS.positionPercent(70,100)
         // );
+        // *** DIALOGUE OPTIONS ***
         let firstDialogueElementAnswers = {
             iSayTalkToMama: "Rede mit Mama.",
             iSayTalkToMirrorMerchant: "Mit Spiegelhändler unterhalten.",
@@ -664,6 +672,7 @@ var Spiegel_VN;
             iSayExploreLeatherMerchant: "(Erkunden) Was gibt es Neues beim Lederhändler?",
         };
         let firstDialogueElement = await Spiegel_VN.ƒS.Menu.getInput(firstDialogueElementAnswers, "choicesCSSclass");
+        // *** RESPONSES ***
         switch (firstDialogueElement) {
             case firstDialogueElementAnswers.iSayTalkToMama:
                 // continue path here
@@ -671,7 +680,7 @@ var Spiegel_VN;
                 Spiegel_VN.dataForSave.score.scoreEmpathyPoints += 10;
                 console.log(Spiegel_VN.dataForSave.score.scoreEmpathyPoints);
                 Spiegel_VN.ƒS.Speech.clear();
-                return Spiegel_VN.Chp01_02_ConvoMother();
+                return Spiegel_VN.Chp01_02_ConvoMother(); // hier lieber: return "Chp ...";
                 break;
             case firstDialogueElementAnswers.iSayTalkToMirrorMerchant:
                 // continue path here
@@ -731,6 +740,7 @@ var Spiegel_VN;
         //         await ƒS.Speech.tell(rpgCharacters.text, "Somehow, you wound up in the default option. Curious.");
         //         break;
         // }
+        // *** BEGIN DIALOGUE ***
         await Spiegel_VN.ƒS.Speech.tell(Spiegel_VN.characters.maincharacter.name, Spiegel_VN.dlg_scn_02.maincharacter.T0000);
         await Spiegel_VN.ƒS.Speech.tell(Spiegel_VN.characters.Mama.name, Spiegel_VN.dlg_scn_02.Mama.T0000);
         //*** OPTIONS *//
@@ -784,7 +794,7 @@ var Spiegel_VN;
         //   let Chp01_03_IntroMirror = await ƒS.Menu.getInput(Chp01_02_ConvoMother, "css-class");
         //   // switch accordingly
         //   switch(Chp01_03_IntroMirror) {
-        //     case iAskForMoreInfo.iAskAboutTwins:
+        //     case AskForMoreInfo.iAskAboutTwins:
         //      ƒS.Sound.play(sound.click, 1);
         //    await ƒS.Speech.tell(characters.maincharacter.name, dlg_scn_01.maincharacter.T0000);
         //   }
@@ -810,7 +820,7 @@ var Spiegel_VN;
             iSayLeave: "Auf Wiedersehen!",
         };
         let FlowerMerchantDialogueElement = await Spiegel_VN.ƒS.Menu.getInput(FlowerMerchantDialogueElementAnswers, "choicesCSSclass");
-        // *** SWITCHCASE DIALOGUE OPTIONS ***
+        // *** RESPONSES ***
         switch (FlowerMerchantDialogueElement) {
             case FlowerMerchantDialogueElementAnswers.iSayAskAboutTrip:
                 // continue path here
@@ -909,6 +919,16 @@ var Spiegel_VN;
 })(Spiegel_VN || (Spiegel_VN = {}));
 var Spiegel_VN;
 (function (Spiegel_VN) {
+    async function Chp01_CS_ArrivalHome() { }
+    Spiegel_VN.Chp01_CS_ArrivalHome = Chp01_CS_ArrivalHome;
+})(Spiegel_VN || (Spiegel_VN = {}));
+var Spiegel_VN;
+(function (Spiegel_VN) {
+    async function Chp01_CS_PerchaseMirror() { }
+    Spiegel_VN.Chp01_CS_PerchaseMirror = Chp01_CS_PerchaseMirror;
+})(Spiegel_VN || (Spiegel_VN = {}));
+var Spiegel_VN;
+(function (Spiegel_VN) {
     async function Chp02_01_Dinner() { }
     Spiegel_VN.Chp02_01_Dinner = Chp02_01_Dinner;
 })(Spiegel_VN || (Spiegel_VN = {}));
@@ -924,6 +944,11 @@ var Spiegel_VN;
 })(Spiegel_VN || (Spiegel_VN = {}));
 var Spiegel_VN;
 (function (Spiegel_VN) {
+    async function Chp02_E_DiscoverGarden() { }
+    Spiegel_VN.Chp02_E_DiscoverGarden = Chp02_E_DiscoverGarden;
+})(Spiegel_VN || (Spiegel_VN = {}));
+var Spiegel_VN;
+(function (Spiegel_VN) {
     async function Chp02_03_FightNeighbor() { }
     Spiegel_VN.Chp02_03_FightNeighbor = Chp02_03_FightNeighbor;
 })(Spiegel_VN || (Spiegel_VN = {}));
@@ -934,13 +959,18 @@ var Spiegel_VN;
 })(Spiegel_VN || (Spiegel_VN = {}));
 var Spiegel_VN;
 (function (Spiegel_VN) {
-    async function Chp02_E_DiscoverGarden() { }
-    Spiegel_VN.Chp02_E_DiscoverGarden = Chp02_E_DiscoverGarden;
+    async function Chp02_E_DiscoverKitchen() { }
+    Spiegel_VN.Chp02_E_DiscoverKitchen = Chp02_E_DiscoverKitchen;
 })(Spiegel_VN || (Spiegel_VN = {}));
 var Spiegel_VN;
 (function (Spiegel_VN) {
-    async function Chp02_E_DiscoverKitchen() { }
-    Spiegel_VN.Chp02_E_DiscoverKitchen = Chp02_E_DiscoverKitchen;
+    async function Chp02_CS_NewDay() { }
+    Spiegel_VN.Chp02_CS_NewDay = Chp02_CS_NewDay;
+})(Spiegel_VN || (Spiegel_VN = {}));
+var Spiegel_VN;
+(function (Spiegel_VN) {
+    async function Chp02_CS_Sleep() { }
+    Spiegel_VN.Chp02_CS_Sleep = Chp02_CS_Sleep;
 })(Spiegel_VN || (Spiegel_VN = {}));
 var Spiegel_VN;
 (function (Spiegel_VN) {
@@ -959,11 +989,6 @@ var Spiegel_VN;
 })(Spiegel_VN || (Spiegel_VN = {}));
 var Spiegel_VN;
 (function (Spiegel_VN) {
-    async function Chp03_03_TurmoilMarketplace() { }
-    Spiegel_VN.Chp03_03_TurmoilMarketplace = Chp03_03_TurmoilMarketplace;
-})(Spiegel_VN || (Spiegel_VN = {}));
-var Spiegel_VN;
-(function (Spiegel_VN) {
     async function Chp03_E_DiscoverDonkey() { }
     Spiegel_VN.Chp03_E_DiscoverDonkey = Chp03_E_DiscoverDonkey;
 })(Spiegel_VN || (Spiegel_VN = {}));
@@ -976,5 +1001,15 @@ var Spiegel_VN;
 (function (Spiegel_VN) {
     async function Chp03_E_DiscoverLibrary() { }
     Spiegel_VN.Chp03_E_DiscoverLibrary = Chp03_E_DiscoverLibrary;
+})(Spiegel_VN || (Spiegel_VN = {}));
+var Spiegel_VN;
+(function (Spiegel_VN) {
+    async function Chp03_CS_KailaniMissing() { }
+    Spiegel_VN.Chp03_CS_KailaniMissing = Chp03_CS_KailaniMissing;
+})(Spiegel_VN || (Spiegel_VN = {}));
+var Spiegel_VN;
+(function (Spiegel_VN) {
+    async function Chp03_CS_TurmoilMarketplace() { }
+    Spiegel_VN.Chp03_CS_TurmoilMarketplace = Chp03_CS_TurmoilMarketplace;
 })(Spiegel_VN || (Spiegel_VN = {}));
 //# sourceMappingURL=Template.js.map
