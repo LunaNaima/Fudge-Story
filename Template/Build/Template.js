@@ -92,10 +92,12 @@ var Spiegel_VN;
         // hier kommt alles rein, was gespeichert werden soll. Der Spielstand wird von Beginn der jeweiligen Szene gespeichert.
         nameProtagonist: "",
         score: {
+            // so geht nicht! muss die einzeln aufschreiben und nicht als Objekt scoreEmpathyPoints: 20 usw. und dann wo ichs aufruf ändern (ohne score)
             scoreEmpathyPoints: 20,
             scoreKnowledgePoints: 0,
             scoreCouragePoints: 0,
         },
+        pickedRightChoice: false,
         pickedChp01_E_FlowerMerchantScene: false, // hier setze ich diesen wert auf falsch, wenn ich den weiterverwerten will (zb spielerin überprüfen, ob diese szene besucht wurde)
     };
     Spiegel_VN.inventory = {
@@ -198,9 +200,10 @@ var Spiegel_VN;
         let scenes = [
             // { scene: ScnTestzene01, name: "Testszene 01" }, // scene: hier muss name von funktion rein! Name ist was anderes, kann spaces enthalten wegen string
             // *** INTRO ***
-            { scene: Spiegel_VN.Chp00_00_NameEntry, name: "00_NameEntry" },
-            // ***CHAPTER 1 ***
-            { scene: Spiegel_VN.Chp01_01_IntroMarketplace, name: "01_01_IntroMarketplace" },
+            { id: "00 Name Entry", scene: Spiegel_VN.Chp00_00_NameEntry, name: "NameEntry" },
+            { id: "03_01 Build A Raft", scene: Spiegel_VN.Chp09_01_BuildARaft, name: "Build a raft" },
+            // ***CHAPTER 01 ***
+            { id: "01_01 Intro Marketplace", scene: Spiegel_VN.Chp01_01_IntroMarketplace, name: "IntroMarketplace" },
             { scene: Spiegel_VN.Chp01_E_FlowerMerchant, name: "E_FlowerMerchant" },
             { scene: Spiegel_VN.Chp01_E_LeatherMerchant, name: "E_LeatherMerchant" },
             { scene: Spiegel_VN.Chp01_02_ConvoMother, name: "01_02_ConvoMother" },
@@ -208,7 +211,7 @@ var Spiegel_VN;
             // *** CUTSCENES ***
             { scene: Spiegel_VN.Chp01_CS_PerchaseMirror, name: "01_CS_PerchaseMirror" },
             { scene: Spiegel_VN.Chp01_CS_ArrivalHome, name: "01_CS_ArrivalHome" },
-            // ***CHAPTER 2 ***
+            // ***CHAPTER 02 ***
             { scene: Spiegel_VN.Chp02_01_Dinner, name: "02_01_Dinner" },
             { scene: Spiegel_VN.Chp02_021_TestWithElena, name: "02_021_TestWithElena" },
             { scene: Spiegel_VN.Chp02_022_TestWithKailani, name: "02_022_TestWithKailani" },
@@ -219,7 +222,7 @@ var Spiegel_VN;
             // CUTSCENES ***
             { scene: Spiegel_VN.Chp02_CS_Sleep, name: "02_CS_Sleep" },
             { scene: Spiegel_VN.Chp02_CS_NewDay, name: "02_CS_New Day" },
-            // *** CHAPTER 3 ***
+            // *** CHAPTER 03 ***
             { scene: Spiegel_VN.Chp03_01_Dressmaker, name: "03_01_Dressmaker" },
             { scene: Spiegel_VN.Chp03_E_DiscoverDonkey, name: "E_Donkey" },
             { scene: Spiegel_VN.Chp03_E_DiscoverForest, name: "E_Forest" },
@@ -229,6 +232,7 @@ var Spiegel_VN;
             // *** CUTSCENES ***
             { scene: Spiegel_VN.Chp03_CS_TurmoilMarketplace, name: "03_CS_TurmoilMarketplace" },
             { scene: Spiegel_VN.Chp03_CS_KailaniMissing, name: "03_CS_Kailani is missing" },
+            // *** CHAPTER 09
         ];
         let uiElement = document.querySelector("[type=interface]");
         Spiegel_VN.dataForSave = Spiegel_VN.ƒS.Progress.setData(Spiegel_VN.dataForSave, uiElement);
@@ -680,7 +684,7 @@ var Spiegel_VN;
                 Spiegel_VN.dataForSave.score.scoreEmpathyPoints += 10;
                 console.log(Spiegel_VN.dataForSave.score.scoreEmpathyPoints);
                 Spiegel_VN.ƒS.Speech.clear();
-                return Spiegel_VN.Chp01_02_ConvoMother(); // hier lieber: return "Chp ...";
+                return Spiegel_VN.Chp01_02_ConvoMother(); // hier lieber: return "Chp ..."; if clause: ich nehm versch keys und sage: if dataforsave.pciekd = alle true, dann in der if clause return. if (dataforsave.pickedChoice, pickedotherchoice, usw. = true), dann gehts weiter
                 break;
             case firstDialogueElementAnswers.iSayTalkToMirrorMerchant:
                 // continue path here
@@ -1011,5 +1015,56 @@ var Spiegel_VN;
 (function (Spiegel_VN) {
     async function Chp03_CS_TurmoilMarketplace() { }
     Spiegel_VN.Chp03_CS_TurmoilMarketplace = Chp03_CS_TurmoilMarketplace;
+})(Spiegel_VN || (Spiegel_VN = {}));
+var Spiegel_VN;
+(function (Spiegel_VN) {
+    async function Chp09_01_BuildARaft() {
+        let Chp09RaftElementAnswers = {
+            iSayOk: "Okay.",
+            iSayYes: "Ja.",
+            iSayNo: "Nein.",
+            iSayBla: "Bla",
+        };
+        // *** RESPONSES ***
+        do {
+            let Chp09RaftElement = await Spiegel_VN.ƒS.Menu.getInput(Chp09RaftElementAnswers, "choicesCSSclass");
+            switch (Chp09RaftElement) {
+                case Chp09RaftElementAnswers.iSayOk:
+                    // continue path here
+                    await Spiegel_VN.ƒS.Speech.tell(Spiegel_VN.characters.Mama, "Choice Ok + Empathypoints 10.");
+                    Spiegel_VN.dataForSave.score.scoreEmpathyPoints += 10;
+                    console.log(Spiegel_VN.dataForSave.score.scoreEmpathyPoints);
+                    Spiegel_VN.ƒS.Speech.clear();
+                    //   return Chp01_02_ConvoMother(); // hier lieber: return "Chp ..."; if clause: ich nehm versch keys und sage: if dataforsave.pciekd = alle true, dann in der if clause return. if (dataforsave.pickedChoice, pickedotherchoice, usw. = true), dann gehts weiter
+                    break;
+                case Chp09RaftElementAnswers.iSayYes:
+                    // continue path here
+                    // if (dataForSave.score.scoreCouragePoints === 50)
+                    // wie mindestens 50?
+                    await Spiegel_VN.ƒS.Speech.tell(Spiegel_VN.characters.Mama, "Choice Yes");
+                    Spiegel_VN.ƒS.Speech.clear();
+                    // await ƒS.Character.show(characters.Mama, characters.aisaka.pose.happy, ƒS.positions.bottomcenter);
+                    // ƒS.Character.hide(characters.Mama);
+                    //   return Chp01_02_ConvoMother();
+                    break;
+                case Chp09RaftElementAnswers.iSayNo:
+                    // continue path here
+                    await Spiegel_VN.ƒS.Speech.tell(Spiegel_VN.characters.Mama, "Choice No.");
+                    Spiegel_VN.ƒS.Speech.clear();
+                    //   return Chp01_E_FlowerMerchant();
+                    break;
+                case Chp09RaftElementAnswers.iSayBla:
+                    Spiegel_VN.dataForSave.pickedRightChoice = true;
+                    await Spiegel_VN.ƒS.Speech.tell(Spiegel_VN.characters.Mama, "Choice bla.");
+                    Spiegel_VN.ƒS.Speech.clear();
+                    //   return Chp01_E_LeatherMerchant();
+                    break;
+            }
+        } while (!Spiegel_VN.dataForSave.pickedRightChoice);
+        if (Spiegel_VN.dataForSave.pickedRightChoice) {
+            return "01_01 Intro Marketplace";
+        }
+    }
+    Spiegel_VN.Chp09_01_BuildARaft = Chp09_01_BuildARaft;
 })(Spiegel_VN || (Spiegel_VN = {}));
 //# sourceMappingURL=Template.js.map

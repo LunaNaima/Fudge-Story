@@ -43,10 +43,12 @@ namespace Spiegel_VN {
     // hier kommt alles rein, was gespeichert werden soll. Der Spielstand wird von Beginn der jeweiligen Szene gespeichert.
     nameProtagonist: "",
     score: {
+      // so geht nicht! muss die einzeln aufschreiben und nicht als Objekt scoreEmpathyPoints: 20 usw. und dann wo ichs aufruf ändern (ohne score)
       scoreEmpathyPoints: 20,
       scoreKnowledgePoints: 0,
       scoreCouragePoints: 0,
     },
+    pickedRightChoice: false,
     pickedChp01_E_FlowerMerchantScene: false, // hier setze ich diesen wert auf falsch, wenn ich den weiterverwerten will (zb spielerin überprüfen, ob diese szene besucht wurde)
   };
 
@@ -161,10 +163,11 @@ namespace Spiegel_VN {
     let scenes: ƒS.Scenes = [
       // { scene: ScnTestzene01, name: "Testszene 01" }, // scene: hier muss name von funktion rein! Name ist was anderes, kann spaces enthalten wegen string
       // *** INTRO ***
-      { scene: Chp00_00_NameEntry, name: "00_NameEntry" },
+      { id: "00 Name Entry", scene: Chp00_00_NameEntry, name: "NameEntry" },
+      { id: "03_01 Build A Raft", scene: Chp09_01_BuildARaft, name: "Build a raft" },
 
-      // ***CHAPTER 1 ***
-      { scene: Chp01_01_IntroMarketplace, name: "01_01_IntroMarketplace" }, // next ist optional, hier kann ich festlegen, welche szene als nächstes abgespielt wird
+      // ***CHAPTER 01 ***
+      { id: "01_01 Intro Marketplace", scene: Chp01_01_IntroMarketplace, name: "IntroMarketplace" }, // next ist optional, hier kann ich festlegen, welche szene als nächstes abgespielt wird
       { scene: Chp01_E_FlowerMerchant, name: "E_FlowerMerchant" },
       { scene: Chp01_E_LeatherMerchant, name: "E_LeatherMerchant" },
       { scene: Chp01_02_ConvoMother, name: "01_02_ConvoMother" },
@@ -173,7 +176,7 @@ namespace Spiegel_VN {
       { scene: Chp01_CS_PerchaseMirror, name: "01_CS_PerchaseMirror" },
       { scene: Chp01_CS_ArrivalHome, name: "01_CS_ArrivalHome" },
 
-      // ***CHAPTER 2 ***
+      // ***CHAPTER 02 ***
       { scene: Chp02_01_Dinner, name: "02_01_Dinner" },
       { scene: Chp02_021_TestWithElena, name: "02_021_TestWithElena" },
       { scene: Chp02_022_TestWithKailani, name: "02_022_TestWithKailani" },
@@ -185,7 +188,7 @@ namespace Spiegel_VN {
       { scene: Chp02_CS_Sleep, name: "02_CS_Sleep" },
       { scene: Chp02_CS_NewDay, name: "02_CS_New Day" },
 
-      // *** CHAPTER 3 ***
+      // *** CHAPTER 03 ***
       { scene: Chp03_01_Dressmaker, name: "03_01_Dressmaker" },
       { scene: Chp03_E_DiscoverDonkey, name: "E_Donkey" },
       { scene: Chp03_E_DiscoverForest, name: "E_Forest" },
@@ -195,6 +198,8 @@ namespace Spiegel_VN {
       // *** CUTSCENES ***
       { scene: Chp03_CS_TurmoilMarketplace, name: "03_CS_TurmoilMarketplace" },
       { scene: Chp03_CS_KailaniMissing, name: "03_CS_Kailani is missing" },
+
+      // *** CHAPTER 09
     ];
 
     let uiElement: HTMLElement = document.querySelector("[type=interface]");

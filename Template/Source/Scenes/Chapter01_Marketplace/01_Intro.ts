@@ -76,7 +76,7 @@ namespace Spiegel_VN {
         dataForSave.score.scoreEmpathyPoints += 10;
         console.log(dataForSave.score.scoreEmpathyPoints);
         ƒS.Speech.clear();
-        return Chp01_02_ConvoMother(); // hier lieber: return "Chp ...";
+        return Chp01_02_ConvoMother(); // hier lieber: return "Chp ..."; if clause: ich nehm versch keys und sage: if dataforsave.pciekd = alle true, dann in der if clause return. if (dataforsave.pickedChoice, pickedotherchoice, usw. = true), dann gehts weiter
         break;
 
       case firstDialogueElementAnswers.iSayTalkToMirrorMerchant:

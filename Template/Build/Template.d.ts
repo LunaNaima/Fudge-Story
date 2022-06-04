@@ -11,6 +11,7 @@ declare namespace Spiegel_VN {
             scoreKnowledgePoints: number;
             scoreCouragePoints: number;
         };
+        pickedRightChoice: boolean;
         pickedChp01_E_FlowerMerchantScene: boolean;
     };
     let inventory: {
@@ -257,4 +258,7 @@ declare namespace Spiegel_VN {
 }
 declare namespace Spiegel_VN {
     function Chp03_CS_TurmoilMarketplace(): ƒS.SceneReturn;
+}
+declare namespace Spiegel_VN {
+    function Chp09_01_BuildARaft(): ƒS.SceneReturn;
 }
