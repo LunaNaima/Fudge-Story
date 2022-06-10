@@ -1,8 +1,12 @@
 namespace Spiegel_VN {
   export let characters = {
-    // hier sollten alle char rein // char in richtiger größe! 
+    // hier sollten alle char rein // char in richtiger größe!
     maincharacter: {
       name: "Player",
+    },
+
+    narrator: {
+      name: "Erzählerin",
     },
 
     Mama: {

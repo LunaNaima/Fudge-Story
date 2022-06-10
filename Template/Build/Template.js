@@ -97,10 +97,30 @@ var Spiegel_VN;
             scoreKnowledgePoints: 0,
             scoreCouragePoints: 0,
         },
+        // *** RIGHT OPTION PICKED ***
         pickedRightChoice: false,
+        // *** DELETE OPTION AFTER PICKED ***
+        // *** Chapter 01 - Flower Merchant ***
+        pickediAskAboutTrip: false,
+        pickediAskAboutDecorations: false,
+        // *** PICKED ALL SCENES CHAPTER 01 ***
         pickedChp01_E_FlowerMerchantScene: false,
         pickedChp01_E_LeatherMerchantScene: false,
         pickedChp01_ConvoMother: false,
+        pickedChp01_MirrorMerchant: false,
+        // // *** PICKED ALL SCENES CHAPTER 02 ***
+        pickedChp02_DinnerScene: false,
+        pickedChp02_TestWithElena: false,
+        pickedChp02_TestWithKailani: false,
+        pickedChp02_PickHerbsGarden: false,
+        pickedChp02_FightNeighbor: false,
+        // // pickedChp02_E_DiscoverBedroom: false,
+        // // pickedChp02_E_DiscoverKitchen: false,
+        // // *** PICKED ALL SCENES CHAPTER 3 ***
+        // pickedChp03_Dressmaker: false,
+        // pickedChp03_FirewoodKailani: false,
+        // pickedChp03_WaterwellKailani: false,
+        // // pickedChp03_E_DiscoverDonkey: false,
     };
     Spiegel_VN.inventory = {
         apple: {
@@ -193,15 +213,22 @@ var Spiegel_VN;
         buttonFunctionalities("Close");
         let scenes = [
             // { scene: ScnTestzene01, name: "Testszene 01" }, // scene: hier muss name von funktion rein! Name ist was anderes, kann spaces enthalten wegen string
+            // { scene: Auswahlmöglichkeiten, name: "Testszene 1" },
             // *** INTRO ***
             { id: "00 Name Entry", scene: Spiegel_VN.Chp00_00_NameEntry, name: "NameEntry" },
             // ***CHAPTER 01 ***
+            {
+                id: "01_00_IntroNarration",
+                scene: Spiegel_VN.Chp01_00_IntroNarration,
+                name: "Intro Narration",
+            },
             {
                 id: "01_01 Intro Marketplace",
                 scene: Spiegel_VN.Chp01_01_IntroMarketplace,
                 name: "IntroMarketplace",
             },
             { scene: Spiegel_VN.Chp01_E_FlowerMerchant, name: "E_FlowerMerchant" },
+            // { scene: Chp01_E_FlowerMerchantpickedTrip, name: "E_FlowerM pickedTrip" },
             { scene: Spiegel_VN.Chp01_E_LeatherMerchant, name: "E_LeatherMerchant" },
             { scene: Spiegel_VN.Chp01_02_ConvoMother, name: "01_02_ConvoMother" },
             { scene: Spiegel_VN.Chp01_03_IntroMirror, name: "01_03_IntroMirror" },
@@ -376,9 +403,12 @@ var Spiegel_VN;
 var Spiegel_VN;
 (function (Spiegel_VN) {
     Spiegel_VN.characters = {
-        // hier sollten alle char rein // char in richtiger größe! 
+        // hier sollten alle char rein // char in richtiger größe!
         maincharacter: {
             name: "Player",
+        },
+        narrator: {
+            name: "Erzählerin",
         },
         Mama: {
             name: "Leijla",
@@ -437,14 +467,23 @@ var Spiegel_VN;
 })(Spiegel_VN || (Spiegel_VN = {}));
 var Spiegel_VN;
 (function (Spiegel_VN) {
+    // *** BACKGROUNDS ***
     Spiegel_VN.locations = {
         Chp01_01_IntroMarketplace: {
             name: "Intro_Marktplatz",
-            background: "./Assets/Backgrounds/Kap01_01_Intro_Marktplatz.png",
+            background: "./Assets/Backgrounds/Chapter 01/01_IntroMarketplace/Kap01_01_Intro_Marktplatz.png",
         },
         Chp01_02_ConvoMother: {
             name: "Convo_Mother",
             background: "./Assets/Backgrounds/BG_Wald_Test1.png",
+        },
+        Chp02_E_DiscoverBedroom: {
+            name: "My Bedroom",
+            background: "./Assets/Backgrounds/Chapter 02/E_DiscoverBedroom/MyBedroom.jpg",
+        },
+        Chp02_01_Dinner: {
+            name: "Dinnertable",
+            background: "./Assets/Backgrounds/Chapter 02/Dinner/Diningtable.jpg",
         },
         black: {
             name: "Black_BG",
@@ -496,27 +535,43 @@ var Spiegel_VN;
 })(Spiegel_VN || (Spiegel_VN = {}));
 var Spiegel_VN;
 (function (Spiegel_VN) {
+    Spiegel_VN.dlg_scn_00_IntroNarrator = {
+        narratorEntry: {
+            T0000: "Willkommen zur Visual Novel",
+            T0001: "Das ist der Beginn deiner Geschichte.",
+            T0002: "Es war einmal ...",
+        },
+        maincharacter: {
+            T0000: "Die Händler sind im Dorf! Nach einem langen und grauen Winter reihen sich endlich wieder die farbigen Wagons der fahrenden Händler am Marktplatz ein.",
+            T0001: "Auch wenn die Luft noch eisig in meinen Lungen ist, die Waren der Händler und die Sonne, die manchmal durch die Wolken blitzt, erschaffen ein schon fast frühlingshaftes Gefühl von Freude.",
+            T0002: "Meine Geschwister rennen herum wie die Irren.",
+            T0003: "",
+        },
+    };
+})(Spiegel_VN || (Spiegel_VN = {}));
+var Spiegel_VN;
+(function (Spiegel_VN) {
     Spiegel_VN.dlg_scn_01 = {
         maincharacter: {
-            T0000: "Test Intro Marketplace bla.",
-            T0001: "Test 0001 Marketplace bla.",
+            T0000: "Intro into marketplace.",
+            T0001: "Das ist meine erste Szene yay.",
         },
-        Mama: {
-            T0000: "Test Mama Dialogue Chapter01_01.",
-            T0001: "Test Mama dlg t0001.",
-        },
+        // Mama: {
+        //   T0000: "Hallo mein Kind.",
+        //   T0001: "Test Mama dlg t0001.",
+        // },
     };
 })(Spiegel_VN || (Spiegel_VN = {}));
 var Spiegel_VN;
 (function (Spiegel_VN) {
     Spiegel_VN.dlg_scn_02 = {
         maincharacter: {
-            T0000: "Dialogue scene 2.",
-            T0001: "Dialogue scene 2 T0001.",
+            T0000: "Jetzt rede ich mit Mama.",
+            T0001: "Zweite Szene T0001.",
         },
         Mama: {
-            T0000: "Test Mama Dialogue Chapter01_02.",
-            T0001: "Test Mama dlg t0001.",
+            T0000: "Ich rede mit meinem Kind.",
+            T0001: "In der zweiten Szene.",
         },
     };
 })(Spiegel_VN || (Spiegel_VN = {}));
@@ -647,6 +702,24 @@ var Spiegel_VN;
 })(Spiegel_VN || (Spiegel_VN = {}));
 var Spiegel_VN;
 (function (Spiegel_VN) {
+    async function Chp01_00_IntroNarration() {
+        Spiegel_VN.ƒS.Sound.fade(Spiegel_VN.Music.backgroundTheme_default, 0.8, 0.1, true);
+        // ***BEGINN SZENE***
+        for (let diaSequence of Object.values(Spiegel_VN.dlg_scn_00_IntroNarrator.narratorEntry)) {
+            await Spiegel_VN.ƒS.Speech.tell(Spiegel_VN.characters.narrator.name, diaSequence);
+        }
+        await Spiegel_VN.ƒS.Location.show(Spiegel_VN.locations.Chp01_01_IntroMarketplace);
+        await Spiegel_VN.ƒS.update(Spiegel_VN.transitions.fade.duration, Spiegel_VN.transitions.fade.alpha, Spiegel_VN.transitions.fade.edge //edge ist der Härtegrad
+        );
+        await Spiegel_VN.ƒS.Speech.tell(Spiegel_VN.characters.maincharacter.name, Spiegel_VN.dlg_scn_00_IntroNarrator.maincharacter.T0000);
+        await Spiegel_VN.ƒS.Speech.tell(Spiegel_VN.characters.maincharacter.name, Spiegel_VN.dlg_scn_00_IntroNarrator.maincharacter.T0001);
+        await Spiegel_VN.ƒS.Speech.tell(Spiegel_VN.characters.maincharacter.name, Spiegel_VN.dlg_scn_00_IntroNarrator.maincharacter.T0002);
+        return "01_01 Intro Marketplace";
+    }
+    Spiegel_VN.Chp01_00_IntroNarration = Chp01_00_IntroNarration;
+})(Spiegel_VN || (Spiegel_VN = {}));
+var Spiegel_VN;
+(function (Spiegel_VN) {
     async function Chp01_01_IntroMarketplace() {
         await Spiegel_VN.ƒS.Location.show(Spiegel_VN.locations.Chp01_01_IntroMarketplace); //unsere locations, die szenen. nach dem Punkt sind die Methoden! also tell und show ist eine Methode. Die klammer dahinter ist eine Methodenaufruf, also eine Variable. Der Hingergrund sollte da angezeigt werden
         // await ƒS.Location.show(location.Chp01_01_IntroMarketplace);
@@ -654,7 +727,6 @@ var Spiegel_VN;
         // if (dataForSave.pickedThisScene = true)
         await Spiegel_VN.ƒS.update(Spiegel_VN.transitions.fade.duration, Spiegel_VN.transitions.fade.alpha, Spiegel_VN.transitions.fade.edge //edge ist der Härtegrad
         );
-        Spiegel_VN.ƒS.Sound.fade(Spiegel_VN.Music.backgroundTheme_default, 0.8, 0.1, true);
         // ***TEST-INVENTORY***
         // ƒS.Inventory.add(inventory.apple);
         // await ƒS.Inventory.open;
@@ -668,8 +740,32 @@ var Spiegel_VN;
         //   "Hallo, ich bin Dein Name."
         // );
         // ***BEGINN SZENE***
-        await Spiegel_VN.ƒS.Speech.tell(Spiegel_VN.characters.maincharacter.name, Spiegel_VN.dlg_scn_01.maincharacter.T0000);
-        await Spiegel_VN.ƒS.Speech.tell(Spiegel_VN.characters.Mama.name, Spiegel_VN.dlg_scn_01.Mama.T0000);
+        let randomTextWithNewEntryMarketplace = Spiegel_VN.ƒ.Random.default.getRangeFloored(1, 5); //gerundet
+        switch (randomTextWithNewEntryMarketplace) {
+            case 1:
+                await Spiegel_VN.ƒS.Speech.tell(Spiegel_VN.characters.Mama.name, "Random dialogue 1 -----------");
+                break;
+            case 2:
+                await Spiegel_VN.ƒS.Speech.tell(Spiegel_VN.characters.Mama.name, "Random dialogue 2 -----------");
+                break;
+            case 3:
+                await Spiegel_VN.ƒS.Speech.tell(Spiegel_VN.characters.Mama.name, "Random dialogue 3 -----------");
+                break;
+            case 4:
+                await Spiegel_VN.ƒS.Speech.tell(Spiegel_VN.characters.Mama.name, "Random dialogue 4 -----------");
+                break;
+            case 5:
+                await Spiegel_VN.ƒS.Speech.tell(Spiegel_VN.characters.Mama.name, "Random dialogue 5 -----------");
+                break;
+            default:
+                await Spiegel_VN.ƒS.Speech.tell(Spiegel_VN.characters.Mama.name, "Default--------------------");
+                break;
+        }
+        // await ƒS.Speech.tell(
+        //   characters.maincharacter.name,
+        //   dlg_scn_01.maincharacter.T0000
+        // );
+        // await ƒS.Speech.tell(characters.Mama.name, dlg_scn_01.Mama.T0000);
         // await ƒS.update(
         //   transition.puzzle.duration,
         //   transition.puzzle.alpha,
@@ -681,29 +777,23 @@ var Spiegel_VN;
         //   ƒS.positions.bottomcenter //bei positions: gibts die normalen angaben (topleft ..) bei positionpercentage: gebe ich koordinaten an in pixel 70 in x und 100 in y
         //   // ƒS.positionPercent(70,100)
         // );
-        if (Spiegel_VN.dataForSave.pickedChp01_ConvoMother &&
-            Spiegel_VN.dataForSave.pickedChp01_E_FlowerMerchantScene &&
-            Spiegel_VN.dataForSave.pickedChp01_E_LeatherMerchantScene) {
-            return Spiegel_VN.Chp01_CS_ArrivalHome();
-        }
         // *** DIALOGUE OPTIONS ***
         let firstDialogueElementAnswers = {
             iSayTalkToMama: "Rede mit Mama.",
             iSayTalkToMirrorMerchant: "Mit Spiegelhändler unterhalten.",
             iSayExploreFlowerMerchant: "(Erkunden) Was gibt es Neues beim Blumenhändler?",
             iSayExploreLeatherMerchant: "(Erkunden) Was gibt es Neues beim Lederhändler?",
+            iSayContinue: "Weiter",
         };
-        // LÖSUNG IST SCHLECHT (NUR HANNAHS WORTE; ICH FIND SIE TOLL WEIL TUT)
-        // if (dataForSave.pickedChp01_ConvoMother) {
-        //   if (dataForSave.pickedChp01_E_FlowerMerchantScene) {
-        //      let firstDialogueElementAnswers = {
-        //         iSayTalkToMirrorMerchant: "Mit Spiegelhändler unterhalten.",
-        //         iSayExploreLeatherMerchant:
-        //           "(Erkunden) Was gibt es Neues beim Lederhändler?",
-        //     }, else {
-        //     }
-        //   };
-        // };
+        console.log("boolean Mama gesprochen: ");
+        console.log(Spiegel_VN.dataForSave.pickedChp01_ConvoMother);
+        console.log("boolean Mirrormerhant besucht: ");
+        console.log(Spiegel_VN.dataForSave.pickedChp01_MirrorMerchant);
+        if (!Spiegel_VN.dataForSave.pickedChp01_ConvoMother || // ! heißt not: es wird nach entgegengesetztem Zustand gefragt // || = oder; && = und
+            !Spiegel_VN.dataForSave.pickedChp01_MirrorMerchant) {
+            delete firstDialogueElementAnswers.iSayContinue;
+            // return Chp01_CS_ArrivalHome();
+        }
         // if (dataForSave.pickedChp01_E_FlowerMerchantScene) {
         //   if (dataForSave.pickedChp01_E_LeatherMerchantScene){
         //   };
@@ -729,7 +819,7 @@ var Spiegel_VN;
                 Spiegel_VN.ƒS.Speech.clear();
                 // await ƒS.Character.show(characters.Mama, characters.aisaka.pose.happy, ƒS.positions.bottomcenter);
                 // ƒS.Character.hide(characters.Mama);
-                return Spiegel_VN.Chp01_02_ConvoMother();
+                return Spiegel_VN.Chp01_03_IntroMirror();
                 break;
             case firstDialogueElementAnswers.iSayExploreFlowerMerchant:
                 // continue path here
@@ -753,12 +843,11 @@ var Spiegel_VN;
     async function Chp01_02_ConvoMother() {
         console.log(Spiegel_VN.dlg_scn_02);
         // VAR
-        (Spiegel_VN.dataForSave.pickedChp01_ConvoMother = true),
-            await Spiegel_VN.ƒS.Location.show(Spiegel_VN.locations.black);
+        Spiegel_VN.dataForSave.pickedChp01_ConvoMother = true;
+        await Spiegel_VN.ƒS.Location.show(Spiegel_VN.locations.black);
         await Spiegel_VN.ƒS.update(2);
         await Spiegel_VN.ƒS.Location.show(Spiegel_VN.locations.Chp01_02_ConvoMother);
         await Spiegel_VN.ƒS.update(2, Spiegel_VN.transitions.fade.alpha, Spiegel_VN.transitions.fade.edge);
-        await Spiegel_VN.ƒS.Speech.tell("Hannahhhh", "Hier reden wir mit Mama");
         // *** BEGIN DIALOGUE ***
         await Spiegel_VN.ƒS.Speech.tell(Spiegel_VN.characters.maincharacter.name, Spiegel_VN.dlg_scn_02.maincharacter.T0000);
         await Spiegel_VN.ƒS.Speech.tell(Spiegel_VN.characters.Mama.name, Spiegel_VN.dlg_scn_02.Mama.T0000);
@@ -772,10 +861,8 @@ var Spiegel_VN;
             //   let secondDialogueElementAnswers = {
             //     iSayOk: "Freigeschaltete Option 10 EmpathyPoints.",
         }
-        ;
         //*** CSS-CLASS */
         let secondDialogueElement = await Spiegel_VN.ƒS.Menu.getInput(secondDialogueElementAnswers, "choicesCSSclass");
-        await Spiegel_VN.ƒS.Speech.tell("Hannahhhh", "Hier hätten wir auswählen können :(( O___o");
         //*** RESPONSES */
         switch (secondDialogueElement) {
             case secondDialogueElementAnswers.iSayOk:
@@ -810,15 +897,9 @@ var Spiegel_VN;
 var Spiegel_VN;
 (function (Spiegel_VN) {
     async function Chp01_03_IntroMirror() {
-        // do while Schleife
-        // do {
-        //   let Chp01_03_IntroMirror = await ƒS.Menu.getInput(Chp01_02_ConvoMother, "css-class");
-        //   // switch accordingly
-        //   switch(Chp01_03_IntroMirror) {
-        //     case AskForMoreInfo.iAskAboutTwins:
-        //      ƒS.Sound.play(sound.click, 1);
-        //    await ƒS.Speech.tell(characters.maincharacter.name, dlg_scn_01.maincharacter.T0000);
-        //   }
+        Spiegel_VN.dataForSave.pickedChp01_MirrorMerchant = true;
+        await Spiegel_VN.ƒS.Speech.tell("Spiegelhändler", "Hallo ich bin der Spiegelhändler");
+        return Spiegel_VN.Chp01_01_IntroMarketplace();
     }
     Spiegel_VN.Chp01_03_IntroMirror = Chp01_03_IntroMirror;
 })(Spiegel_VN || (Spiegel_VN = {}));
@@ -832,21 +913,6 @@ var Spiegel_VN;
         await Spiegel_VN.ƒS.update(Spiegel_VN.transitions.fade.duration, Spiegel_VN.transitions.fade.alpha, Spiegel_VN.transitions.fade.edge //edge ist der Härtegrad
         );
         // ***BEGINN DIALOG ***
-        let randomTextWithNewEntry = Spiegel_VN.ƒ.Random.default.getRangeFloored(1, 3); //gerundet
-        switch (randomTextWithNewEntry) {
-            case 1:
-                await Spiegel_VN.ƒS.Speech.tell(Spiegel_VN.characters.Evarius.name, "Zahl 1--------------------");
-                break;
-            case 2:
-                await Spiegel_VN.ƒS.Speech.tell(Spiegel_VN.characters.Evarius.name, "Zahl 2--------------------");
-                break;
-            case 3:
-                await Spiegel_VN.ƒS.Speech.tell(Spiegel_VN.characters.Evarius.name, "Zahl 3--------------------");
-                break;
-            default:
-                await Spiegel_VN.ƒS.Speech.tell(Spiegel_VN.characters.Evarius.name, "Default--------------------");
-                break;
-        }
         await Spiegel_VN.ƒS.Speech.tell(Spiegel_VN.characters.maincharacter.name, Spiegel_VN.dlg_scn_E_Flowermerchant.maincharacter.T0000);
         await Spiegel_VN.ƒS.Speech.tell(Spiegel_VN.characters.flowerMerchant.name, Spiegel_VN.dlg_scn_E_Flowermerchant.flowerMerchant.T0000);
         // *** DIALOGUE OPTIONS ***
@@ -855,22 +921,60 @@ var Spiegel_VN;
             iSayAskAboutDecorations: "(Erkunden) Warum habt ihr so wenige Blumen da?",
             iSayLeave: "Auf Wiedersehen!",
         };
+        // if (dataForSave.pickedChp01_ConvoMother) {
+        //   let FlowerMerchantDialogueElementAnswersItem = {
+        //     iBuyFlowers: "Ich möchte ein paar Blumen kaufen!",
+        //   };
         let FlowerMerchantDialogueElement = await Spiegel_VN.ƒS.Menu.getInput(FlowerMerchantDialogueElementAnswers, "choicesCSSclass");
+        // TRY: IF ELSE FOR DIALOGUE
+        // let FlowerMerchantTestDialogue = 5;
+        // if (dataForSave.pickediAskAboutTrip) {
+        //   let randomTextWithNewEntryMarketplace = ƒ.Random.default.getRangeFloored(
+        //     1,
+        //     3
+        //   ); //gerundet
+        //   switch (randomTextWithNewEntryMarketplace) {
+        //     case 1:
+        //       await ƒS.Speech.tell(
+        //         characters.flowerMerchant.name,
+        //         "Random dialogue 1 -----------"
+        //       );
+        //       break;
+        //     case 2:
+        //       await ƒS.Speech.tell(
+        //         characters.flowerMerchant.name,
+        //         "Random dialogue 2 -----------"
+        //       );
+        //       break;
+        //     case 3:
+        //       await ƒS.Speech.tell(
+        //         characters.flowerMerchant.name,
+        //         "Random dialogue 3 -----------"
+        //       );
+        //       break;
+        //     default:
+        //       await ƒS.Speech.tell(
+        //         characters.flowerMerchant.name,
+        //         "Defautl dialogue ... how did you get here"
+        //       );
+        //   }
         // *** RESPONSES ***
         switch (FlowerMerchantDialogueElement) {
             case FlowerMerchantDialogueElementAnswers.iSayAskAboutTrip:
                 // continue path here
-                await Spiegel_VN.ƒS.Speech.tell(Spiegel_VN.characters.flowerMerchant, "Oh je ... blabla.");
+                (Spiegel_VN.dataForSave.pickediAskAboutTrip = true),
+                    await Spiegel_VN.ƒS.Speech.tell(Spiegel_VN.characters.flowerMerchant, "Antwort auf Frage nach Reise.");
                 // dataForSave.score.scoreEmpathyPoints += 10;
                 // console.log(dataForSave.score.scoreEmpathyPoints);
                 Spiegel_VN.ƒS.Speech.clear();
-                return Spiegel_VN.Chp01_02_ConvoMother();
+                return Chp01_E_FlowerMerchant();
                 break;
             case FlowerMerchantDialogueElementAnswers.iSayAskAboutDecorations:
-                // continue path here
-                // if (dataForSave.score.scoreCouragePoints === 50)
-                // wie mindestens 50?
-                await Spiegel_VN.ƒS.Speech.tell(Spiegel_VN.characters.flowerMerchant, "Answer ask about decorations");
+                (Spiegel_VN.dataForSave.pickediAskAboutDecorations = true),
+                    // continue path here
+                    // if (dataForSave.score.scoreCouragePoints === 50)
+                    // wie mindestens 50?
+                    await Spiegel_VN.ƒS.Speech.tell(Spiegel_VN.characters.flowerMerchant, "Answer ask about decorations");
                 Spiegel_VN.ƒS.Speech.clear();
                 // await ƒS.Character.show(characters.Mama, characters.aisaka.pose.happy, ƒS.positions.bottomcenter);
                 // ƒS.Character.hide(characters.Mama);
@@ -892,6 +996,23 @@ var Spiegel_VN;
             //   return Chp01_E_LeatherMerchant();
             //   break;
         }
+        // *** FIRST TRY: DELETE OPTION AFTER PICKED
+        // let pickediAskAboutTrip: boolean;
+        // let pickediAskAboutDecorations: boolean;
+        // do {
+        //   if (pickediAskAboutTrip) {
+        //     delete FlowerMerchantDialogueElementAnswers.iSayAskAboutTrip;
+        //   } else if (pickediAskAboutDecorations) {
+        //     delete FlowerMerchantDialogueElementAnswers.iSayAskAboutDecorations;
+        //   }
+        // } while ();
+        // SECOND TRY: DELETE OPTION AFTER PICKED
+        // let pickediAskAboutTrip: boolean;
+        // let pickediAskAboutDecorations: boolean;
+        // if (pickediAskAboutDecorations && pickediAskAboutTrip) {
+        //   delete FlowerMerchantDialogueElementAnswers.iSayAskAboutDecorations;
+        //   delete FlowerMerchantDialogueElementAnswers.iSayAskAboutTrip;
+        // }
     }
     Spiegel_VN.Chp01_E_FlowerMerchant = Chp01_E_FlowerMerchant;
 })(Spiegel_VN || (Spiegel_VN = {}));
@@ -968,12 +1089,25 @@ var Spiegel_VN;
 })(Spiegel_VN || (Spiegel_VN = {}));
 var Spiegel_VN;
 (function (Spiegel_VN) {
-    async function Chp02_01_Dinner() { }
+    async function Chp02_01_Dinner() {
+        (Spiegel_VN.dataForSave.pickedChp02_DinnerScene = true),
+            await Spiegel_VN.ƒS.Location.show(Spiegel_VN.locations.Chp01_01_IntroMarketplace); //unsere locations, die szenen. nach dem Punkt sind die Methoden! also tell und show ist eine Methode. Die klammer dahinter ist eine Methodenaufruf, also eine Variable. Der Hingergrund sollte da angezeigt werden
+        // await ƒS.Location.show(location.Chp01_01_IntroMarketplace);
+        // await ƒS.update(2, "./Assets/Transitions/Black.png", 1);
+        await Spiegel_VN.ƒS.update(Spiegel_VN.transitions.fade.duration, Spiegel_VN.transitions.fade.alpha, Spiegel_VN.transitions.fade.edge //edge ist der Härtegrad
+        );
+        // ***BEGINN DIALOG ***
+        // *** EITHER/OR OPTION ***
+        // if (pickedYes || pickedBla || pickedNo || pickedOk || pickedYes) {
+        //  delete firstDialogueElementAnswers.iSayYes;
+        // }
+    }
     Spiegel_VN.Chp02_01_Dinner = Chp02_01_Dinner;
 })(Spiegel_VN || (Spiegel_VN = {}));
 var Spiegel_VN;
 (function (Spiegel_VN) {
-    async function Chp02_021_TestWithElena() { }
+    async function Chp02_021_TestWithElena() {
+    }
     Spiegel_VN.Chp02_021_TestWithElena = Chp02_021_TestWithElena;
 })(Spiegel_VN || (Spiegel_VN = {}));
 var Spiegel_VN;
@@ -993,7 +1127,14 @@ var Spiegel_VN;
 })(Spiegel_VN || (Spiegel_VN = {}));
 var Spiegel_VN;
 (function (Spiegel_VN) {
-    async function Chp02_E_DiscoverBedroom() { }
+    async function Chp02_E_DiscoverBedroom() {
+        await Spiegel_VN.ƒS.Location.show(Spiegel_VN.locations.Chp02_E_DiscoverBedroom); //unsere locations, die szenen. nach dem Punkt sind die Methoden! also tell und show ist eine Methode. Die klammer dahinter ist eine Methodenaufruf, also eine Variable. Der Hingergrund sollte da angezeigt werden
+        // await ƒS.Location.show(location.Chp01_01_IntroMarketplace);
+        // await ƒS.update(2, "./Assets/Transitions/Black.png", 1);
+        await Spiegel_VN.ƒS.update(Spiegel_VN.transitions.fade.duration, Spiegel_VN.transitions.fade.alpha, Spiegel_VN.transitions.fade.edge //edge ist der Härtegrad
+        );
+        await Spiegel_VN.ƒS.Speech.tell("Player", "My eigenes Reich. Wenigstens hier habe ich ein bisschen Privatsphäre...");
+    }
     Spiegel_VN.Chp02_E_DiscoverBedroom = Chp02_E_DiscoverBedroom;
 })(Spiegel_VN || (Spiegel_VN = {}));
 var Spiegel_VN;
@@ -1101,5 +1242,38 @@ var Spiegel_VN;
         }
     }
     Spiegel_VN.Chp09_01_BuildARaft = Chp09_01_BuildARaft;
+})(Spiegel_VN || (Spiegel_VN = {}));
+var Spiegel_VN;
+(function (Spiegel_VN) {
+    async function Auswahlmöglichkeiten() {
+        console.log("Test Szene Auswahlmöglichkeiten");
+        await Spiegel_VN.ƒS.Speech.tell("Luna", "Test Choices");
+        // ---
+        let score = 13;
+        let TestDialogueAnswers = {
+            iSayGreen: "Green.",
+            iSayBlue: "Blue",
+            iSayEyes: "I luv eyez",
+        };
+        if (score <= 10) {
+            //   delete TestDialogueAnswers.iSayBlue;
+            delete TestDialogueAnswers.iSayEyes;
+        }
+        let TestDialogue = await Spiegel_VN.ƒS.Menu.getInput(TestDialogueAnswers, "choicesCSSclass");
+        switch (TestDialogue) {
+            case TestDialogueAnswers.iSayBlue:
+                // continue path here
+                await Spiegel_VN.ƒS.Speech.tell("Hannahh", "I love blue yay");
+                break;
+            case TestDialogueAnswers.iSayGreen:
+                // continue path here
+                await Spiegel_VN.ƒS.Speech.tell("Luna", "I love green yay");
+                break;
+            case TestDialogueAnswers.iSayEyes:
+                await Spiegel_VN.ƒS.Speech.tell("Hanahhh", "YOUR COLOR EYEZ ARE MY FAVORITE");
+                break;
+        }
+    }
+    Spiegel_VN.Auswahlmöglichkeiten = Auswahlmöglichkeiten;
 })(Spiegel_VN || (Spiegel_VN = {}));
 //# sourceMappingURL=Template.js.map

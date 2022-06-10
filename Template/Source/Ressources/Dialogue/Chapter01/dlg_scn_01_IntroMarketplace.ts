@@ -1,12 +1,12 @@
 namespace Spiegel_VN {
   export let dlg_scn_01 = {
     maincharacter: {
-      T0000: "Test Intro Marketplace bla.",
-      T0001: "Test 0001 Marketplace bla.",
+      T0000: "Intro into marketplace.",
+      T0001: "Das ist meine erste Szene yay.",
     },
-    Mama: {
-      T0000: "Test Mama Dialogue Chapter01_01.",
-      T0001: "Test Mama dlg t0001.",
-    },
+    // Mama: {
+    //   T0000: "Hallo mein Kind.",
+    //   T0001: "Test Mama dlg t0001.",
+    // },
   };
 }

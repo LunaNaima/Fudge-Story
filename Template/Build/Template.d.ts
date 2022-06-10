@@ -12,9 +12,17 @@ declare namespace Spiegel_VN {
             scoreCouragePoints: number;
         };
         pickedRightChoice: boolean;
+        pickediAskAboutTrip: boolean;
+        pickediAskAboutDecorations: boolean;
         pickedChp01_E_FlowerMerchantScene: boolean;
         pickedChp01_E_LeatherMerchantScene: boolean;
         pickedChp01_ConvoMother: boolean;
+        pickedChp01_MirrorMerchant: boolean;
+        pickedChp02_DinnerScene: boolean;
+        pickedChp02_TestWithElena: boolean;
+        pickedChp02_TestWithKailani: boolean;
+        pickedChp02_PickHerbsGarden: boolean;
+        pickedChp02_FightNeighbor: boolean;
     };
     let inventory: {
         apple: {
@@ -45,6 +53,9 @@ declare namespace Spiegel_VN {
 declare namespace Spiegel_VN {
     let characters: {
         maincharacter: {
+            name: string;
+        };
+        narrator: {
             name: string;
         };
         Mama: {
@@ -91,6 +102,14 @@ declare namespace Spiegel_VN {
             name: string;
             background: string;
         };
+        Chp02_E_DiscoverBedroom: {
+            name: string;
+            background: string;
+        };
+        Chp02_01_Dinner: {
+            name: string;
+            background: string;
+        };
         black: {
             name: string;
             background: string;
@@ -129,12 +148,23 @@ declare namespace Spiegel_VN {
     };
 }
 declare namespace Spiegel_VN {
-    let dlg_scn_01: {
+    let dlg_scn_00_IntroNarrator: {
+        narratorEntry: {
+            T0000: string;
+            T0001: string;
+            T0002: string;
+        };
         maincharacter: {
             T0000: string;
             T0001: string;
+            T0002: string;
+            T0003: string;
         };
-        Mama: {
+    };
+}
+declare namespace Spiegel_VN {
+    let dlg_scn_01: {
+        maincharacter: {
             T0000: string;
             T0001: string;
         };
@@ -190,6 +220,9 @@ declare namespace Spiegel_VN {
 }
 declare namespace Spiegel_VN {
     function Chp00_00_NameEntry(): ƒS.SceneReturn;
+}
+declare namespace Spiegel_VN {
+    function Chp01_00_IntroNarration(): ƒS.SceneReturn;
 }
 declare namespace Spiegel_VN {
     function Chp01_01_IntroMarketplace(): ƒS.SceneReturn;
@@ -265,4 +298,7 @@ declare namespace Spiegel_VN {
 }
 declare namespace Spiegel_VN {
     function Chp09_01_BuildARaft(): ƒS.SceneReturn;
+}
+declare namespace Spiegel_VN {
+    function Auswahlmöglichkeiten(): ƒS.SceneReturn;
 }

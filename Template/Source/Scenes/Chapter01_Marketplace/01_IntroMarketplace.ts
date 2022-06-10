@@ -13,8 +13,6 @@ namespace Spiegel_VN {
       transitions.fade.edge //edge ist der Härtegrad
     );
 
-    ƒS.Sound.fade(Music.backgroundTheme_default, 0.8, 0.1, true);
-
     // ***TEST-INVENTORY***
     // ƒS.Inventory.add(inventory.apple);
     // await ƒS.Inventory.open;
@@ -31,11 +29,60 @@ namespace Spiegel_VN {
     // );
 
     // ***BEGINN SZENE***
-    await ƒS.Speech.tell(
-      characters.maincharacter.name,
-      dlg_scn_01.maincharacter.T0000
-    );
-    await ƒS.Speech.tell(characters.Mama.name, dlg_scn_01.Mama.T0000);
+
+    let randomTextWithNewEntryMarketplace = ƒ.Random.default.getRangeFloored(
+      1,
+      5
+    ); //gerundet
+    switch (randomTextWithNewEntryMarketplace) {
+      case 1:
+        await ƒS.Speech.tell(
+          characters.Mama.name,
+          "Random dialogue 1 -----------"
+        );
+        break;
+
+      case 2:
+        await ƒS.Speech.tell(
+          characters.Mama.name,
+          "Random dialogue 2 -----------"
+        );
+        break;
+
+      case 3:
+        await ƒS.Speech.tell(
+          characters.Mama.name,
+          "Random dialogue 3 -----------"
+        );
+        break;
+
+      case 4:
+        await ƒS.Speech.tell(
+          characters.Mama.name,
+          "Random dialogue 4 -----------"
+        );
+        break;
+
+      case 5:
+        await ƒS.Speech.tell(
+          characters.Mama.name,
+          "Random dialogue 5 -----------"
+        );
+        break;
+
+      default:
+        await ƒS.Speech.tell(
+          characters.Mama.name,
+          "Default--------------------"
+        );
+        break;
+    }
+
+    // await ƒS.Speech.tell(
+    //   characters.maincharacter.name,
+    //   dlg_scn_01.maincharacter.T0000
+    // );
+    // await ƒS.Speech.tell(characters.Mama.name, dlg_scn_01.Mama.T0000);
 
     // await ƒS.update(
     //   transition.puzzle.duration,
@@ -50,13 +97,6 @@ namespace Spiegel_VN {
     //   // ƒS.positionPercent(70,100)
     // );
 
-    if (
-      dataForSave.pickedChp01_ConvoMother &&
-      dataForSave.pickedChp01_E_FlowerMerchantScene &&
-      dataForSave.pickedChp01_E_LeatherMerchantScene
-    ) {
-      return Chp01_CS_ArrivalHome();
-    }
     // *** DIALOGUE OPTIONS ***
     let firstDialogueElementAnswers = {
       iSayTalkToMama: "Rede mit Mama.",
@@ -65,20 +105,21 @@ namespace Spiegel_VN {
         "(Erkunden) Was gibt es Neues beim Blumenhändler?",
       iSayExploreLeatherMerchant:
         "(Erkunden) Was gibt es Neues beim Lederhändler?",
+      iSayContinue: "Weiter",
     };
+    console.log("boolean Mama gesprochen: ");
+    console.log(dataForSave.pickedChp01_ConvoMother);
 
-    // LÖSUNG IST SCHLECHT (NUR HANNAHS WORTE; ICH FIND SIE TOLL WEIL TUT)
-    // if (dataForSave.pickedChp01_ConvoMother) {
-    //   if (dataForSave.pickedChp01_E_FlowerMerchantScene) {
-    //      let firstDialogueElementAnswers = {
-    //         iSayTalkToMirrorMerchant: "Mit Spiegelhändler unterhalten.",
-    //         iSayExploreLeatherMerchant:
-    //           "(Erkunden) Was gibt es Neues beim Lederhändler?",
-    //     }, else {
+    console.log("boolean Mirrormerhant besucht: ");
+    console.log(dataForSave.pickedChp01_MirrorMerchant);
 
-    //     }
-    //   };
-    // };
+    if (
+      !dataForSave.pickedChp01_ConvoMother || // ! heißt not: es wird nach entgegengesetztem Zustand gefragt // || = oder; && = und
+      !dataForSave.pickedChp01_MirrorMerchant
+    ) {
+      delete firstDialogueElementAnswers.iSayContinue;
+      // return Chp01_CS_ArrivalHome();
+    }
 
     // if (dataForSave.pickedChp01_E_FlowerMerchantScene) {
     //   if (dataForSave.pickedChp01_E_LeatherMerchantScene){
@@ -117,7 +158,7 @@ namespace Spiegel_VN {
         ƒS.Speech.clear();
         // await ƒS.Character.show(characters.Mama, characters.aisaka.pose.happy, ƒS.positions.bottomcenter);
         // ƒS.Character.hide(characters.Mama);
-        return Chp01_02_ConvoMother();
+        return Chp01_03_IntroMirror();
         break;
 
       case firstDialogueElementAnswers.iSayExploreFlowerMerchant:

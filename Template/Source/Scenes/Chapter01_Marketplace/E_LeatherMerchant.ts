@@ -40,11 +40,11 @@ namespace Spiegel_VN {
     switch (LeatherMerchantDialogueElement) {
       case LeatherMerchantDialogueElementAnswers.iSayAskAboutTrip:
         // continue path here
-        await ƒS.Speech.tell(characters.leatherMerchant, "Oh je ... blabla.");
+        await ƒS.Speech.tell(characters.leatherMerchant, "Antwort Reise.");
         // dataForSave.score.scoreEmpathyPoints += 10;
         // console.log(dataForSave.score.scoreEmpathyPoints);
         ƒS.Speech.clear();
-        return Chp01_02_ConvoMother();
+        return Chp01_01_IntroMarketplace();
         break;
 
       case LeatherMerchantDialogueElementAnswers.iSayAskAboutDecorations:
@@ -58,12 +58,12 @@ namespace Spiegel_VN {
         ƒS.Speech.clear();
         // await ƒS.Character.show(characters.Mama, characters.aisaka.pose.happy, ƒS.positions.bottomcenter);
         // ƒS.Character.hide(characters.Mama);
-        return Chp01_02_ConvoMother();
+        return Chp01_01_IntroMarketplace();
         break;
 
       case LeatherMerchantDialogueElementAnswers.iSayLeave:
         // continue path here
-        // await ƒS.Speech.tell(characters.maincharacter, "Machen Sies gut.");
+        await ƒS.Speech.tell(characters.maincharacter, "Machen Sies gut.");
         ƒS.Speech.clear();
         return Chp01_01_IntroMarketplace();
         break;

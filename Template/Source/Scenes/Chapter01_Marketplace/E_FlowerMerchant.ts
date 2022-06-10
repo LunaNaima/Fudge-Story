@@ -1,6 +1,5 @@
 namespace Spiegel_VN {
   export async function Chp01_E_FlowerMerchant(): ƒS.SceneReturn {
-    
     (dataForSave.pickedChp01_E_FlowerMerchantScene = true),
       await ƒS.Location.show(locations.Chp01_01_IntroMarketplace); //unsere locations, die szenen. nach dem Punkt sind die Methoden! also tell und show ist eine Methode. Die klammer dahinter ist eine Methodenaufruf, also eine Variable. Der Hingergrund sollte da angezeigt werden
 
@@ -14,34 +13,6 @@ namespace Spiegel_VN {
     );
 
     // ***BEGINN DIALOG ***
-
-    let randomTextWithNewEntry = ƒ.Random.default.getRangeFloored(1, 3); //gerundet
-    switch (randomTextWithNewEntry) {
-      case 1:
-        await ƒS.Speech.tell(
-          characters.Evarius.name,
-          "Zahl 1--------------------"
-        );
-        break;
-      case 2:
-        await ƒS.Speech.tell(
-          characters.Evarius.name,
-          "Zahl 2--------------------"
-        );
-        break;
-      case 3:
-        await ƒS.Speech.tell(
-          characters.Evarius.name,
-          "Zahl 3--------------------"
-        );
-        break;
-      default:
-        await ƒS.Speech.tell(
-          characters.Evarius.name,
-          "Default--------------------"
-        );
-        break;
-    }
 
     await ƒS.Speech.tell(
       characters.maincharacter.name,
@@ -59,39 +30,82 @@ namespace Spiegel_VN {
       iSayLeave: "Auf Wiedersehen!",
     };
 
+    // if (dataForSave.pickedChp01_ConvoMother) {
+    //   let FlowerMerchantDialogueElementAnswersItem = {
+    //     iBuyFlowers: "Ich möchte ein paar Blumen kaufen!",
+    //   };
+
     let FlowerMerchantDialogueElement = await ƒS.Menu.getInput(
       FlowerMerchantDialogueElementAnswers,
       "choicesCSSclass"
     );
 
+    // TRY: IF ELSE FOR DIALOGUE
+    // let FlowerMerchantTestDialogue = 5;
+    // if (dataForSave.pickediAskAboutTrip) {
+    //   let randomTextWithNewEntryMarketplace = ƒ.Random.default.getRangeFloored(
+    //     1,
+    //     3
+    //   ); //gerundet
+    //   switch (randomTextWithNewEntryMarketplace) {
+    //     case 1:
+    //       await ƒS.Speech.tell(
+    //         characters.flowerMerchant.name,
+    //         "Random dialogue 1 -----------"
+    //       );
+    //       break;
+    //     case 2:
+    //       await ƒS.Speech.tell(
+    //         characters.flowerMerchant.name,
+    //         "Random dialogue 2 -----------"
+    //       );
+    //       break;
+    //     case 3:
+    //       await ƒS.Speech.tell(
+    //         characters.flowerMerchant.name,
+    //         "Random dialogue 3 -----------"
+    //       );
+    //       break;
+    //     default:
+    //       await ƒS.Speech.tell(
+    //         characters.flowerMerchant.name,
+    //         "Defautl dialogue ... how did you get here"
+    //       );
+    //   }
+
     // *** RESPONSES ***
     switch (FlowerMerchantDialogueElement) {
       case FlowerMerchantDialogueElementAnswers.iSayAskAboutTrip:
         // continue path here
-        await ƒS.Speech.tell(characters.flowerMerchant, "Oh je ... blabla.");
+        (dataForSave.pickediAskAboutTrip = true),
+          await ƒS.Speech.tell(
+            characters.flowerMerchant,
+            "Antwort auf Frage nach Reise."
+          );
         // dataForSave.score.scoreEmpathyPoints += 10;
         // console.log(dataForSave.score.scoreEmpathyPoints);
         ƒS.Speech.clear();
-        return Chp01_02_ConvoMother();
+        return Chp01_E_FlowerMerchant();
         break;
 
       case FlowerMerchantDialogueElementAnswers.iSayAskAboutDecorations:
-        // continue path here
-        // if (dataForSave.score.scoreCouragePoints === 50)
-        // wie mindestens 50?
-        await ƒS.Speech.tell(
-          characters.flowerMerchant,
-          "Answer ask about decorations"
-        );
+        (dataForSave.pickediAskAboutDecorations = true),
+          // continue path here
+          // if (dataForSave.score.scoreCouragePoints === 50)
+          // wie mindestens 50?
+          await ƒS.Speech.tell(
+            characters.flowerMerchant,
+            "Answer ask about decorations"
+          );
         ƒS.Speech.clear();
         // await ƒS.Character.show(characters.Mama, characters.aisaka.pose.happy, ƒS.positions.bottomcenter);
         // ƒS.Character.hide(characters.Mama);
-        return Chp01_02_ConvoMother();
+        return Chp01_E_FlowerMerchant();
         break;
 
       case FlowerMerchantDialogueElementAnswers.iSayLeave:
         // continue path here
-        // await ƒS.Speech.tell(characters.maincharacter, "Machen Sies gut.");
+        await ƒS.Speech.tell(characters.maincharacter, "Machen Sies gut.");
         ƒS.Speech.clear();
         return Chp01_01_IntroMarketplace();
         break;
@@ -106,5 +120,25 @@ namespace Spiegel_VN {
       //   return Chp01_E_LeatherMerchant();
       //   break;
     }
+
+    // *** FIRST TRY: DELETE OPTION AFTER PICKED
+
+    // let pickediAskAboutTrip: boolean;
+    // let pickediAskAboutDecorations: boolean;
+    // do {
+    //   if (pickediAskAboutTrip) {
+    //     delete FlowerMerchantDialogueElementAnswers.iSayAskAboutTrip;
+    //   } else if (pickediAskAboutDecorations) {
+    //     delete FlowerMerchantDialogueElementAnswers.iSayAskAboutDecorations;
+    //   }
+    // } while ();
+
+    // SECOND TRY: DELETE OPTION AFTER PICKED
+    // let pickediAskAboutTrip: boolean;
+    // let pickediAskAboutDecorations: boolean;
+    // if (pickediAskAboutDecorations && pickediAskAboutTrip) {
+    //   delete FlowerMerchantDialogueElementAnswers.iSayAskAboutDecorations;
+    //   delete FlowerMerchantDialogueElementAnswers.iSayAskAboutTrip;
+    // }
   }
 }
