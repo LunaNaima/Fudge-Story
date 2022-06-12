@@ -348,8 +348,14 @@ namespace Spiegel_VN {
         name: "Entry forest",
       },
 
-      // *** CHAPTER 05: RESEARCH FOREST
-      { id: "05_01 Clearing", scene: Chp05_Clearing, name: "Clearing" },
+      // *** CHAPTER 05: FOREST
+      { id: "05_01 Clearing", scene: Chp05_01_Clearing, name: "Clearing" },
+      {
+        id: "05_02 Sing to birds",
+        scene: Chp05_02_SingToBirds,
+        name: "Sing to birds",
+      },
+      { id: "05_03 Feed birds", scene: Chp05_03_FeedBirds, name: "Feed birds" },
       {
         id: "05_E Discover oak",
         scene: Chp05_E_DiscoverOak,
@@ -361,7 +367,43 @@ namespace Spiegel_VN {
         name: "Discover river",
       },
 
-      // *** CHAPTER 09
+      // *** CHAPTER 06: DEPARTURE
+      {
+        id: "06_CS Departure home",
+        scene: Chp06_CS_DepartureHome,
+        name: "Departure home",
+      },
+      {
+        id: "06_CS Recieve item",
+        scene: Chp06_CS_ReceiveItemMama,
+        name: "Recieve item from Mama",
+      },
+      { id: "06_CS Departure", scene: Chp06_CS_DepartureRiver, name: "Departure" },
+
+      // *** CHAPTER 07: ARRIVAL
+
+      {
+        id: "07_01 Arrival Meadow",
+        scene: Chp07_01_ArrivalMeadow,
+        name: "Arrival meadow",
+      },
+      {
+        id: "07_01 Departure to Whary",
+        scene: Chp07_02_DepartureWhary,
+        name: "Departure city",
+      },
+      {
+        id: "07_E Discover flowers",
+        scene: Chp07_E_DiscoverFlowers,
+        name: "Discover flowers",
+      },
+      {
+        id: "07_E Discover bees",
+        scene: Chp07_E_DiscoverBees,
+        name: "Discover bees",
+      },
+
+      // *** CHAPTER 09:
       {
         id: "03_01 Build A Raft",
         scene: Chp09_01_BuildARaft,
