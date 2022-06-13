@@ -1,3 +1,3 @@
 namespace Spiegel_VN {
-  export async function Chp06_CS_DepartureHome(): ƒS.SceneReturn {}
+  export async function Chp06_01_DepartureHome(): ƒS.SceneReturn {}
 }

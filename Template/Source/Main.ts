@@ -366,27 +366,36 @@ namespace Spiegel_VN {
         scene: Chp05_E_DiscoverRiver,
         name: "Discover river",
       },
+      {
+        id: "05_CS Go home",
+        scene: Chp05_CS_GoHome,
+        name: "Go home",
+      },
 
       // *** CHAPTER 06: DEPARTURE
       {
-        id: "06_CS Departure home",
-        scene: Chp06_CS_DepartureHome,
+        id: "06_01 Departure home",
+        scene: Chp06_01_DepartureHome,
         name: "Departure home",
       },
       {
-        id: "06_CS Recieve item",
-        scene: Chp06_CS_ReceiveItemMama,
+        id: "06_02 Recieve item",
+        scene: Chp06_02_ReceiveItemMama,
         name: "Recieve item from Mama",
       },
-      { id: "06_CS Departure", scene: Chp06_CS_DepartureRiver, name: "Departure" },
-
-      // *** CHAPTER 07: ARRIVAL
-
       {
-        id: "07_01 Arrival Meadow",
-        scene: Chp07_01_ArrivalMeadow,
+        id: "06_03 Departure",
+        scene: Chp06_03_DepartureRiver,
+        name: "Departure",
+      },
+      {
+        id: "06_CS Arrival Meadow",
+        scene: Chp06_CS_ArrivalMeadow,
         name: "Arrival meadow",
       },
+
+      // *** CHAPTER 07: ARRIVAL MIRRORWORLD
+
       {
         id: "07_01 Departure to Whary",
         scene: Chp07_02_DepartureWhary,
@@ -402,12 +411,438 @@ namespace Spiegel_VN {
         scene: Chp07_E_DiscoverBees,
         name: "Discover bees",
       },
+      {
+        id: "07_CS Line at gates",
+        scene: Chp07_CS_LineAtGates,
+        name: "Line at the gates",
+      },
+
+      // *** CHAPTER 08: In Whary ***
+      {
+        id: "08_01 Meet Flynn gates",
+        scene: Chp08_01_MeetFlynnAtGates,
+        name: "Meet Flynn at the gates",
+      },
+      {
+        id: "08_02 Meet Flynn in alley",
+        scene: Chp08_02_MeetFlynnInAlley,
+        name: "Meet Flynn in alley",
+      },
+      {
+        id: "08_03 Enter City",
+        scene: Chp08_03_EnterCity,
+        name: "Enter city",
+      },
+      {
+        id: "08_04 Choose stay",
+        scene: Chp08_04_ChooseStay,
+        name: "Choose stay",
+      },
+      {
+        id: "08_041 Choose nice stay",
+        scene: Chp08_041_ChooseNiceStay,
+        name: "Choose nice stay",
+      },
+      {
+        id: "08_042 Choose ugly stay",
+        scene: Chp08_042_ChooseUglyStay,
+        name: "Choose ugly stay",
+      },
+      {
+        id: "08_0411 Nice stay with Flynn",
+        scene: Chp08_0411_NiceStayFlynn,
+        name: "Nice stay with Flynn",
+      },
+      {
+        id: "08_0421 Ugly stay with Flynn",
+        scene: Chp08_0421_UglyStayFlynn,
+        name: "Ugly stay with Flynn",
+      },
+      {
+        id: "08_E Discover Hay",
+        scene: Chp08_E_DiscoverHay,
+        name: "Discover hay",
+      },
+      {
+        id: "08_E Discover Villagers",
+        scene: Chp08_E_DiscoverVillagers,
+        name: "Discover villagers",
+      },
+      {
+        id: "08_E Discover windows",
+        scene: Chp08_E_DiscoverWindows,
+        name: "Discover windows",
+      },
+      {
+        id: "08_CS TalkToFlynn",
+        scene: Chp08_CS_TalkToFlynn,
+        name: "Talk to Flynn",
+      },
+      {
+        id: "08_CS Sleep",
+        scene: Chp08_CS_Sleep,
+        name: "Go to sleep",
+      },
 
       // *** CHAPTER 09:
       {
-        id: "03_01 Build A Raft",
-        scene: Chp09_01_BuildARaft,
+        id: "09_01 Research Marketplace",
+        scene: Chp09_01_ResearchMarketplace,
+        name: "Research Marketplace",
+      },
+      {
+        id: "09_011 Talk to Beggar",
+        scene: Chp09_011_TalkToBeggar,
+        name: "Talk to Beggar",
+      },
+      {
+        id: "09_012 Make a wish",
+        scene: Chp09_012_MakeAWish,
+        name: "Make a wish",
+      },
+      {
+        id: "09_02 TalkToInnkeeper",
+        scene: Chp09_02_TalkToInnkeeper,
+        name: "Talk to innkeeper",
+      },
+      {
+        id: "09_03 TalkToCook",
+        scene: Chp09_03_TalkToCook,
+        name: "Talk to cook",
+      },
+      {
+        id: "09_04 Talk to stablehand",
+        scene: Chp09_04_TalkToStablehand,
+        name: "Talk to stablehand",
+      },
+      {
+        id: "09_E Listen to villagers",
+        scene: Chp09_E_ListenToVillagers,
+        name: "Listen to villagers",
+      },
+      {
+        id: "09_E Talk to merchants",
+        scene: Chp09_E_TalkToMerchants,
+        name: "Talk to merchants",
+      },
+      {
+        id: "09_E Talk to villagers",
+        scene: Chp09_E_TalkToVillagers,
+        name: "Talk to villagers",
+      },
+      {
+        id: "09_CS Arrival lake",
+        scene: Chp09_CS_ArrivalLake,
+        name: "Arrival at lake",
+      },
+      // *** CHAPTER 10: CROSSING LAKE ***
+      {
+        id: "10_01 Build a raft",
+        scene: Chp10_01_BuildARaft,
         name: "Build a raft",
+      },
+      {
+        id: "10_02 Cross lake",
+        scene: Chp10_02_CrossLake,
+        name: "Crossing the lake",
+      },
+      {
+        id: "10_03 Attack birds",
+        scene: Chp10_03_AttackBirds,
+        name: "Attack from birds",
+      },
+      {
+        id: "10_031 Sing to birds",
+        scene: Chp10_031_SingToBirds,
+        name: "Sing to birds",
+      },
+      {
+        id: "10_032 UseMirror",
+        scene: Chp10_032_UseMirror,
+        name: "Use the mirror",
+      },
+      {
+        id: "10_041 Birds become friendly",
+        scene: Chp10_041_FriendlyBirds,
+        name: "Birds become friendly",
+      },
+      {
+        id: "10_042 Birds disappear",
+        scene: Chp10_042_BirdsDisappear,
+        name: "Birds disappear",
+      },
+      {
+        id: "10_E Discover City lights Whary",
+        scene: Chp10_E_CityLightsWhary,
+        name: "Discover city lights",
+      },
+      {
+        id: "10_E Discover lake",
+        scene: Chp10_E_DiscoverLake,
+        name: "Discover lake",
+      },
+      {
+        id: "10_E Discover lakewater",
+        scene: Chp10_E_DiscoverLakewater,
+        name: "Discover lakewater",
+      },
+      {
+        id: "10_CS Arrival other side",
+        scene: Chp10_CS_ArrivalOtherSide,
+        name: "Arrival other side",
+      },
+
+      // *** CHAPTER 11: SCOUTING FACTORY ***
+      {
+        id: "11_01 Search for hiding place",
+        scene: Chp11_01_SearchHidingPlace,
+        name: "Search for hiding place",
+      },
+      {
+        id: "11_02 Find iron",
+        scene: Chp11_02_FindIron,
+        name: "Find iron",
+      },
+      {
+        id: "11_03 Watch factory",
+        scene: Chp11_03_WatchFactory,
+        name: "WatchFactory",
+      },
+      {
+        id: "11_04 Try break-in",
+        scene: Chp11_04_TryBreakIn,
+        name: "Try to break-in",
+      },
+      {
+        id: "11_E Discover forest",
+        scene: Chp11_E_DiscoverForest,
+        name: "Discover forest",
+      },
+      {
+        id: "11_E Discover huts",
+        scene: Chp11_E_DiscoverHuts,
+        name: "Discover huts",
+      },
+      {
+        id: "11_E Discover tower",
+        scene: Chp11_E_DiscoverTower,
+        name: "Discover tower",
+      },
+      {
+        id: "11_CS Sleep",
+        scene: Chp11_CS_Sleep,
+        name: "Sleep",
+      },
+
+      // *** CHAPTER 12: ENTRY FACTORY
+      {
+        id: "12_011 Sneak-in",
+        scene: Chp12_011_SneakIn,
+        name: "Sneak-in",
+      },
+      {
+        id: "12_012 Sneak-in amongst slaves",
+        scene: Chp12_012_SneakAmongSlaves,
+        name: "Sneak-in amongst slaves",
+      },
+      {
+        id: "12_02 Talk to slaves",
+        scene: Chp12_02_TalkToSlaves,
+        name: "Talk to slaves",
+      },
+      {
+        id: "12_03 Search for Kailani",
+        scene: Chp12_03_SearchForKailani,
+        name: "Search for Kailani",
+      },
+      {
+        id: "12_04 Listen to guards",
+        scene: Chp12_04_ListenToGuards,
+        name: "Listen to guards",
+      },
+      {
+        id: "12_05 Back to hiding place",
+        scene: Chp12_05_BackToHidingPlace,
+        name: "Back to hiding place",
+      },
+      {
+        id: "12_061 Birds offer help",
+        scene: Chp12_061_BirdsOfferHelp,
+        name: "Birds offer help",
+      },
+      {
+        id: "12_062 Make a wish",
+        scene: Chp12_062_MakeAWish,
+        name: "Make a wish",
+      },
+      {
+        id: "12_E Discover village",
+        scene: Chp12_E_DiscoverVillage,
+        name: "Discover village",
+      },
+      {
+        id: "12_E Discover production site",
+        scene: Chp12_E_Productionsite,
+        name: "Production site",
+      },
+      {
+        id: "12_E Discover slaves",
+        scene: Chp12_E_DiscoverSlaves,
+        name: "Discover slaves",
+      },
+      {
+        id: "12_CS Talk to Flynn",
+        scene: Chp12_CS_TalkToFlynn,
+        name: "Talk to Flynn",
+      },
+
+      // *** CHAPTER 13: THE GREAT ORDEAL ***
+      {
+        id: "13_01 Entry village",
+        scene: Chp13_01_EntryVillage,
+        name: "Entry village",
+      },
+      {
+        id: "13_02 Go to tower",
+        scene: Chp13_02_GoToTower,
+        name: "Go to tower",
+      },
+      {
+        id: "13_03 Entry tower",
+        scene: Chp13_03_EntryTower,
+        name: "Entry tower",
+      },
+      {
+        id: "10_04 Sneak past demon",
+        scene: Chp13_04_SneakPastDemon,
+        name: "Sneak past demon",
+      },
+      {
+        id: "13_E Discover family portrait",
+        scene: Chp13_E_DiscoverFamilyPortrait,
+        name: "Discover family portrait",
+      },
+      {
+        id: "13_E Discover locked door",
+        scene: Chp13_E_DiscoverLockedDoor,
+        name: "Discover locked door",
+      },
+      {
+        id: "13_E Sneak around tower",
+        scene: Chp13_E_DiscoverSneakAround,
+        name: "Discover sneak around tower",
+      },
+      {
+        id: "13_E Discover tower window",
+        scene: Chp13_E_DiscoverTowerWindow,
+        name: "Discover tower window",
+      },
+      {
+        id: "13_E Discover Watch guard",
+        scene: Chp13_E_DiscoverWatchGuard,
+        name: "Discover watch guard",
+      },
+      {
+        id: "13_CS Entry mirror room",
+        scene: Chp13_CS_EntryMirrorRoom,
+        name: "Entry mirror room",
+      },
+
+      // *** CHAPTER 14.1: GOOD ENDING
+      {
+        id: "14.1_01 Destroy mirror",
+        scene: Chp141_01_DestroyMirror,
+        name: "Destroy mirror",
+      },
+      {
+        id: "14.1_02 Demon dies",
+        scene: Chp141_02_DemonDies,
+        name: "Demon dies",
+      },
+      {
+        id: "14.1_CS Balcony tower",
+        scene: Chp14_CS_BalconyTower,
+        name: "Balcony tower",
+      },
+
+      // CHAPTER 14.2: BAD ENDING
+      {
+        id: "14.2_01 Realization mirror",
+        scene: Chp142_01_RealizationMirror,
+        name: "Realization mirror",
+      },
+      {
+        id: "14.2_02 Caught by demon",
+        scene: Chp142_02_CaughtByDemon,
+        name: "Caught by demon",
+      },
+      {
+        id: "14.2_03 Transformation into slaves",
+        scene: Chp142_03_TransformationSlaves,
+        name: "Transformation into slaves",
+      },
+      {
+        id: "14.2_End Empty Scene",
+        scene: Chp142_End_EmptyScene,
+        name: "End empty scene",
+      },
+
+      // *** CHAPTER 15: THE PRIZE
+      {
+        id: "15_01 Reunion Kailani",
+        scene: Chp15_01_ReunionKailani,
+        name: "Reunion Kailani",
+      },
+      {
+        id: "15_E Discover demon room",
+        scene: Chp15_E_DiscoverDemonRoom,
+        name: "Discover demon room",
+      },
+      {
+        id: "15_E Discover mirror room",
+        scene: Chp15_E_DiscoverMirrorRoom,
+        name: "Discover mirror room",
+      },
+      {
+        id: "15_E Talk to freed villagers",
+        scene: Chp15_E_TalkToFreedVillagers,
+        name: "Talk to freed villagers",
+      },
+      {
+        id: "15_CS GoToLake",
+        scene: Chp15_CS_GoToLake,
+        name: "Go to lake",
+      },
+      // *** CHAPTER 16: ROAD HOME
+      {
+        id: "16_01 Confrontation Flynn",
+        scene: Chp16_01_ConfrontationFlynn,
+        name: "Confrontation Flynn",
+      },
+      {
+        id: "16_02 Make a wish",
+        scene: Chp16_02_MakeAWish,
+        name: "Make a wish",
+      },
+      {
+        id: "16_021 Go home alone",
+        scene: Chp16_021_GoHomeAlone,
+        name: "Go home alone",
+      },
+      {
+        id: "16_022 Go home with Flynn",
+        scene: Chp16_022_GoHomeWithFlynn,
+        name: "Go home with Flynn",
+      },
+      {
+        id: "16_CS Reunion family",
+        scene: Chp16_CS_ReunionFamily,
+        name: "Reunion family",
+      },
+      {
+        id: "16_End Empty Scene",
+        scene: Chp16_End_EmptyScene,
+        name: "End Empty Scene",
       },
     ];
 
