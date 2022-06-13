@@ -30,11 +30,11 @@ namespace Spiegel_VN {
 
     // ***BEGINN SZENE***
 
-    let randomTextWithNewEntryMarketplace = ƒ.Random.default.getRangeFloored(
+    let randomTextChp01yMarketplace = ƒ.Random.default.getRangeFloored(
       1,
       5
     ); //gerundet
-    switch (randomTextWithNewEntryMarketplace) {
+    switch (randomTextChp01yMarketplace) {
       case 1:
         await ƒS.Speech.tell(
           characters.Mama.name,
@@ -97,8 +97,8 @@ namespace Spiegel_VN {
     //   // ƒS.positionPercent(70,100)
     // );
 
-    // *** DIALOGUE OPTIONS ***
-    let firstDialogueElementAnswers = {
+    // *** SCENE OPTIONS ***
+    let Chp01PickSceneElementAnswers = {
       iSayTalkToMama: "Rede mit Mama.",
       iSayTalkToMirrorMerchant: "Mit Spiegelhändler unterhalten.",
       iSayExploreFlowerMerchant:
@@ -117,28 +117,18 @@ namespace Spiegel_VN {
       !dataForSave.pickedChp01_ConvoMother || // ! heißt not: es wird nach entgegengesetztem Zustand gefragt // || = oder; && = und
       !dataForSave.pickedChp01_MirrorMerchant
     ) {
-      delete firstDialogueElementAnswers.iSayContinue;
+      delete Chp01PickSceneElementAnswers.iSayContinue;
       // return Chp01_CS_ArrivalHome();
     }
 
-    // if (dataForSave.pickedChp01_E_FlowerMerchantScene) {
-    //   if (dataForSave.pickedChp01_E_LeatherMerchantScene){
-
-    //   };
-    // };
-
-    // if (dataForSave.pickedChp01_E_LeatherMerchantScene){
-
-    // };
-
-    let firstDialogueElement = await ƒS.Menu.getInput(
-      firstDialogueElementAnswers,
+    let Chp01SceneElement = await ƒS.Menu.getInput(
+      Chp01PickSceneElementAnswers,
       "choicesCSSclass"
     );
 
     // *** RESPONSES ***
-    switch (firstDialogueElement) {
-      case firstDialogueElementAnswers.iSayTalkToMama:
+    switch (Chp01SceneElement) {
+      case Chp01PickSceneElementAnswers.iSayTalkToMama:
         // continue path here
         await ƒS.Speech.tell(
           characters.Mama,
@@ -150,7 +140,7 @@ namespace Spiegel_VN {
         return Chp01_02_ConvoMother(); // hier lieber: return "Chp ..."; if clause: ich nehm versch keys und sage: if dataforsave.pciekd = alle true, dann in der if clause return. if (dataforsave.pickedChoice, pickedotherchoice, usw. = true), dann gehts weiter
         break;
 
-      case firstDialogueElementAnswers.iSayTalkToMirrorMerchant:
+      case Chp01PickSceneElementAnswers.iSayTalkToMirrorMerchant:
         // continue path here
         // if (dataForSave.score.scoreCouragePoints === 50)
         // wie mindestens 50?
@@ -161,7 +151,7 @@ namespace Spiegel_VN {
         return Chp01_03_IntroMirror();
         break;
 
-      case firstDialogueElementAnswers.iSayExploreFlowerMerchant:
+      case Chp01PickSceneElementAnswers.iSayExploreFlowerMerchant:
         // continue path here
         await ƒS.Speech.tell(
           characters.Mama,
@@ -171,7 +161,7 @@ namespace Spiegel_VN {
         return Chp01_E_FlowerMerchant();
         break;
 
-      case firstDialogueElementAnswers.iSayExploreLeatherMerchant:
+      case Chp01PickSceneElementAnswers.iSayExploreLeatherMerchant:
         // continue path here
         await ƒS.Speech.tell(
           characters.Mama,
@@ -179,6 +169,16 @@ namespace Spiegel_VN {
         );
         ƒS.Speech.clear();
         return Chp01_E_LeatherMerchant();
+        break;
+
+      case Chp01PickSceneElementAnswers.iSayContinue:
+        // continue path here
+        await ƒS.Speech.tell(
+          characters.Mama,
+          "Choice (Explore) Talk to mirror merchant."
+        );
+        ƒS.Speech.clear();
+        return Chp01_CS_PerchaseMirror();
         break;
     }
 

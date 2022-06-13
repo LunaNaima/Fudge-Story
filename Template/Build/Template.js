@@ -1,61 +1,6 @@
 "use strict";
 var Spiegel_VN;
 (function (Spiegel_VN) {
-    async function HowToMakeChoices() {
-        console.log("Let's make some choices!");
-        //   let text = {
-        //     Narrator: {
-        //       T0000: "",
-        //       T0001: "",
-        //       T0002: ""
-        //     },
-        //     Aisaka: {
-        //       T0000: "Heute wird sich alles um Auswahlmöglichkeiten drehen.",
-        //       T0001: "Schön, dass du dabei warst!"
-        //     }
-        //   };
-        //   // ƒS.Sound.fade(sound.nightclub, 1, 2, true);
-        //   ƒS.Speech.hide();
-        //   await ƒS.Location.show(locations.nightpark);
-        //   await ƒS.update(transitions.puzzle.duration, transitions.puzzle.alpha, transitions.puzzle.edge);
-        //   await ƒS.Character.show(characters.aisaka, characters.aisaka.pose.happy, ƒS.positions.bottomcenter);
-        //   await ƒS.Character.show(characters.aisaka, characters.aisaka.pose.happy, ƒS.positionPercent(70, 100));
-        //   // ƒS.Character.hide(characters.aisaka);
-        //   // ƒS.Character.hideAll();
-        //   await ƒS.Speech.tell(characters.aisaka, text.Aisaka.T0000);
-        //   ƒS.Speech.clear();
-        //   ƒS.Speech.hide();
-        //   await ƒS.update(3);
-        //   let firstDialogueElementAnswers = {
-        //     iSayOk: "Okay.",
-        //     iSayYes: "Ja.",
-        //     iSayNo: "Nein."
-        //   };
-        //   let firstDialogueElement = await ƒS.Menu.getInput(firstDialogueElementAnswers, "choicesCSSclass");
-        //   switch (firstDialogueElement) {
-        //     case firstDialogueElementAnswers.iSayOk:
-        //       // continue path here
-        //       await ƒS.Speech.tell(characters.aisaka, "Hi");
-        //       ƒS.Speech.clear();
-        //       break;
-        //     case firstDialogueElementAnswers.iSayYes:
-        //       // continue path here
-        //       await ƒS.Character.show(characters.aisaka, characters.aisaka.pose.happy, ƒS.positions.bottomcenter);
-        //       ƒS.Character.hide(characters.aisaka);
-        //       break;
-        //     case firstDialogueElementAnswers.iSayNo:
-        //       // continue path here
-        //       await ƒS.Speech.tell(characters.aisaka, "Hi");
-        //       ƒS.Speech.clear();
-        //       break;
-        //   }
-        //   // You can continue your story right after the choice definitions
-        //   await ƒS.Speech.tell(characters.aisaka, text.Aisaka.T0001);
-    }
-    Spiegel_VN.HowToMakeChoices = HowToMakeChoices;
-})(Spiegel_VN || (Spiegel_VN = {}));
-var Spiegel_VN;
-(function (Spiegel_VN) {
     Spiegel_VN.ƒ = FudgeCore; //importiert teile, die nicht in typescript sind, sondern außerhalb in fudge
     Spiegel_VN.ƒS = FudgeStory;
     console.log("FudgeStory template starting");
@@ -103,12 +48,12 @@ var Spiegel_VN;
         // *** Chapter 01 - Flower Merchant ***
         pickediAskAboutTrip: false,
         pickediAskAboutDecorations: false,
-        // *** PICKED ALL SCENES CHAPTER 01 ***
+        // *** CHAPTER 01: PICKED ALL SCENES ***
         pickedChp01_E_FlowerMerchantScene: false,
         pickedChp01_E_LeatherMerchantScene: false,
         pickedChp01_ConvoMother: false,
         pickedChp01_MirrorMerchant: false,
-        // // *** PICKED ALL SCENES CHAPTER 02 ***
+        // *** CHAPTER 02: PICKED ALL SCENES ***
         pickedChp02_DinnerScene: false,
         pickedChp02_TestWithElena: false,
         pickedChp02_TestWithKailani: false,
@@ -116,11 +61,22 @@ var Spiegel_VN;
         pickedChp02_FightNeighbor: false,
         // // pickedChp02_E_DiscoverBedroom: false,
         // // pickedChp02_E_DiscoverKitchen: false,
-        // // *** PICKED ALL SCENES CHAPTER 3 ***
-        // pickedChp03_Dressmaker: false,
-        // pickedChp03_FirewoodKailani: false,
-        // pickedChp03_WaterwellKailani: false,
-        // // pickedChp03_E_DiscoverDonkey: false,
+        // // *** CHAPTER 03: PICKED ALL SCENES ***
+        pickedChp03_Dressmaker: false,
+        pickedChp03_FirewoodKailani: false,
+        pickedChp03_WaterwellKailani: false,
+        // CHAPTER 04: PICKED ALL SCENES
+        pickedChp04TalkToFamily: false,
+        pickedChp04TalkToElena: false,
+        pickedChp04ResearchLibrary: false,
+        // CHAPTER 05: PICKED ALL SCENES
+        pickedChp05GoToClearing: false,
+        pickedChp05GiveBirdsFood: false,
+        pickedChp05SingToBirds: false,
+        // CHAPTER 07: PICKED ALL SCENES
+        pickedChp07TravelToWhary: false,
+        pickedChp07DiscoverBees: false,
+        pickedChp07DiscoverFlowers: false,
     };
     Spiegel_VN.inventory = {
         apple: {
@@ -218,49 +174,642 @@ var Spiegel_VN;
             { id: "00 Name Entry", scene: Spiegel_VN.Chp00_00_NameEntry, name: "NameEntry" },
             // ***CHAPTER 01 ***
             {
-                id: "01_00_IntroNarration",
+                id: "01_00 IntroNarration",
                 scene: Spiegel_VN.Chp01_00_IntroNarration,
                 name: "Intro Narration",
             },
             {
                 id: "01_01 Intro Marketplace",
                 scene: Spiegel_VN.Chp01_01_IntroMarketplace,
-                name: "IntroMarketplace",
+                name: "Intro marketplace",
             },
-            { scene: Spiegel_VN.Chp01_E_FlowerMerchant, name: "E_FlowerMerchant" },
-            // { scene: Chp01_E_FlowerMerchantpickedTrip, name: "E_FlowerM pickedTrip" },
-            { scene: Spiegel_VN.Chp01_E_LeatherMerchant, name: "E_LeatherMerchant" },
-            { scene: Spiegel_VN.Chp01_02_ConvoMother, name: "01_02_ConvoMother" },
-            { scene: Spiegel_VN.Chp01_03_IntroMirror, name: "01_03_IntroMirror" },
-            // *** CUTSCENES ***
-            { scene: Spiegel_VN.Chp01_CS_PerchaseMirror, name: "01_CS_PerchaseMirror" },
-            { scene: Spiegel_VN.Chp01_CS_ArrivalHome, name: "01_CS_ArrivalHome" },
-            // ***CHAPTER 02 ***
-            { scene: Spiegel_VN.Chp02_01_Dinner, name: "02_01_Dinner" },
-            { scene: Spiegel_VN.Chp02_021_TestWithElena, name: "02_021_TestWithElena" },
-            { scene: Spiegel_VN.Chp02_022_TestWithKailani, name: "02_022_TestWithKailani" },
-            { scene: Spiegel_VN.Chp02_03_FightNeighbor, name: "02_03_FightNeighbor" },
-            { scene: Spiegel_VN.Chp02_E_DiscoverBedroom, name: "E_Bedroom" },
-            { scene: Spiegel_VN.Chp02_E_DiscoverGarden, name: "E_Garden" },
-            { scene: Spiegel_VN.Chp02_E_DiscoverKitchen, name: "E_Kitchen" },
-            // CUTSCENES ***
-            { scene: Spiegel_VN.Chp02_CS_Sleep, name: "02_CS_Sleep" },
-            { scene: Spiegel_VN.Chp02_CS_NewDay, name: "02_CS_New Day" },
-            // *** CHAPTER 03 ***
-            { scene: Spiegel_VN.Chp03_01_Dressmaker, name: "03_01_Dressmaker" },
-            { scene: Spiegel_VN.Chp03_E_DiscoverDonkey, name: "E_Donkey" },
-            { scene: Spiegel_VN.Chp03_E_DiscoverForest, name: "E_Forest" },
-            { scene: Spiegel_VN.Chp03_E_DiscoverLibrary, name: "E_Library" },
-            { scene: Spiegel_VN.Chp03_021_FirewoodKailani, name: "03_021_FirewoodKailani" },
-            { scene: Spiegel_VN.Chp03_022_WaterWellKailani, name: "03_022_WaterWellKailani" },
-            // *** CUTSCENES ***
-            { scene: Spiegel_VN.Chp03_CS_TurmoilMarketplace, name: "03_CS_TurmoilMarketplace" },
-            { scene: Spiegel_VN.Chp03_CS_KailaniMissing, name: "03_CS_Kailani is missing" },
-            // *** CHAPTER 09
             {
-                id: "03_01 Build A Raft",
-                scene: Spiegel_VN.Chp09_01_BuildARaft,
+                id: "01_E_FlowerMerchant",
+                scene: Spiegel_VN.Chp01_E_FlowerMerchant,
+                name: "E_FlowerMerchant",
+            },
+            {
+                id: "01_E_LeatherMerchant",
+                scene: Spiegel_VN.Chp01_E_LeatherMerchant,
+                name: "E_LeatherMerchant",
+            },
+            {
+                id: "01_02 Conversation Mama",
+                scene: Spiegel_VN.Chp01_02_ConvoMother,
+                name: "ConvoMother",
+            },
+            {
+                id: "01_03 MirrorMerchant",
+                scene: Spiegel_VN.Chp01_03_IntroMirror,
+                name: "IntroMirror",
+            },
+            // *** CUTSCENES CHP01***
+            {
+                id: "01_CS PerchaseMirror",
+                scene: Spiegel_VN.Chp01_CS_PerchaseMirror,
+                name: "CS: PerchaseMirror",
+            },
+            {
+                id: "01_CS Arrival Home",
+                scene: Spiegel_VN.Chp01_CS_ArrivalHome,
+                name: "CS: ArrivalHome",
+            },
+            // ***CHAPTER 02: FAMILY HOME ***
+            {
+                id: "02_01 Dinner at home",
+                scene: Spiegel_VN.Chp02_01_Dinner,
+                name: "Dinner",
+            },
+            {
+                id: "02_021 Test with Elena",
+                scene: Spiegel_VN.Chp02_021_TestWithElena,
+                name: "Test with Elena",
+            },
+            {
+                id: "02_022 Test with Kailani",
+                scene: Spiegel_VN.Chp02_022_TestWithKailani,
+                name: "Test with Kailani",
+            },
+            {
+                id: "02_03 Fight with neighbor",
+                scene: Spiegel_VN.Chp02_03_FightNeighbor,
+                name: "FightNeighbor",
+            },
+            {
+                id: "02_E Discover bedroom",
+                scene: Spiegel_VN.Chp02_E_DiscoverBedroom,
+                name: "E_Bedroom",
+            },
+            {
+                id: "02_03 Pick Herbs",
+                scene: Spiegel_VN.Chp02_03_PickHerbs,
+                name: "E_Garden",
+            },
+            {
+                id: "02_E Discover Kitchen",
+                scene: Spiegel_VN.Chp02_E_DiscoverKitchen,
+                name: "E_Kitchen",
+            },
+            // CUTSCENES ***
+            { id: "02_CS Sleep", scene: Spiegel_VN.Chp02_CS_Sleep, name: "CS: Sleep" },
+            { id: "02_CS New day", scene: Spiegel_VN.Chp02_CS_NewDay, name: "CS: New Day" },
+            // *** CHAPTER 03: VILLAGE ***
+            {
+                id: "03_01 Dressmaker",
+                scene: Spiegel_VN.Chp03_01_Dressmaker,
+                name: "Dressmaker",
+            },
+            {
+                id: "03_E Discover donkey",
+                scene: Spiegel_VN.Chp03_E_DiscoverDonkey,
+                name: "E_Donkey",
+            },
+            {
+                id: "03_E Discover Forest",
+                scene: Spiegel_VN.Chp03_E_DiscoverForest,
+                name: "E_Forest",
+            },
+            {
+                id: "03_E Discover Library",
+                scene: Spiegel_VN.Chp03_E_DiscoverLibrary,
+                name: "E_Library",
+            },
+            {
+                id: "03_021 Firewood with Kailani",
+                scene: Spiegel_VN.Chp03_021_FirewoodKailani,
+                name: "Firewood Kailani",
+            },
+            {
+                id: "03_022 Waterwell with Kailani",
+                scene: Spiegel_VN.Chp03_022_WaterWellKailani,
+                name: "Waterwell Kailani",
+            },
+            // *** CUTSCENES ***
+            {
+                id: "03_CS Turmoil marketplace",
+                scene: Spiegel_VN.Chp03_CS_TurmoilMarketplace,
+                name: "CS: TurmoilMarketplace",
+            },
+            {
+                id: "03_CS Kailani is missing",
+                scene: Spiegel_VN.Chp03_CS_KailaniMissing,
+                name: "CS: Kailani is missing",
+            },
+            // *** CHAPTER 04 RESEARCH ***
+            {
+                id: "04_01 Talk with family",
+                scene: Spiegel_VN.Chp04_01_TalkWithFamily,
+                name: "Talk with family",
+            },
+            {
+                id: "04_02 Talk with Elena",
+                scene: Spiegel_VN.Chp04_02_TalkWithElena,
+                name: "Talk with Elena",
+            },
+            {
+                id: "04_03 Research library",
+                scene: Spiegel_VN.Chp04_03_ResearchLibrary,
+                name: "Research library",
+            },
+            {
+                id: "04_E_Examine mirror",
+                scene: Spiegel_VN.Chp04_E_ExamineMirror,
+                name: "Examine Mirror",
+            },
+            {
+                id: "04_E Search garden",
+                scene: Spiegel_VN.Chp04_E_SearchGarden,
+                name: "Search garden",
+            },
+            {
+                id: "04_E Search ground floor",
+                scene: Spiegel_VN.Chp04_E_SearchGroundFloor,
+                name: "Search ground floor",
+            },
+            {
+                id: "04_CS Entry forest",
+                scene: Spiegel_VN.Chp04_CS_EntryForest,
+                name: "Entry forest",
+            },
+            // *** CHAPTER 05: FOREST
+            { id: "05_01 Clearing", scene: Spiegel_VN.Chp05_01_Clearing, name: "Clearing" },
+            {
+                id: "05_02 Sing to birds",
+                scene: Spiegel_VN.Chp05_02_SingToBirds,
+                name: "Sing to birds",
+            },
+            { id: "05_03 Feed birds", scene: Spiegel_VN.Chp05_03_FeedBirds, name: "Feed birds" },
+            {
+                id: "05_E Discover oak",
+                scene: Spiegel_VN.Chp05_E_DiscoverOak,
+                name: "Discover oak",
+            },
+            {
+                id: "05_E Discover river",
+                scene: Spiegel_VN.Chp05_E_DiscoverRiver,
+                name: "Discover river",
+            },
+            {
+                id: "05_CS Go home",
+                scene: Spiegel_VN.Chp05_CS_GoHome,
+                name: "Go home",
+            },
+            // *** CHAPTER 06: DEPARTURE
+            {
+                id: "06_02 Recieve iron",
+                scene: Spiegel_VN.Chp06_02_ReceiveItemMama,
+                name: "Recieve item from Mama",
+            },
+            {
+                id: "06_03 Departure",
+                scene: Spiegel_VN.Chp06_03_DepartureRiver,
+                name: "Departure",
+            },
+            {
+                id: "06_CS Arrival Meadow",
+                scene: Spiegel_VN.Chp06_CS_ArrivalMeadow,
+                name: "Arrival meadow",
+            },
+            // *** CHAPTER 07: ARRIVAL MIRRORWORLD
+            {
+                id: "07_01 Travel to to Whary",
+                scene: Spiegel_VN.Chp07_02_TravelToWhary,
+                name: "Departure city",
+            },
+            {
+                id: "07_E Discover flowers",
+                scene: Spiegel_VN.Chp07_E_DiscoverFlowers,
+                name: "Discover flowers",
+            },
+            {
+                id: "07_E Discover bees",
+                scene: Spiegel_VN.Chp07_E_DiscoverBees,
+                name: "Discover bees",
+            },
+            {
+                id: "07_CS Line at gates",
+                scene: Spiegel_VN.Chp07_CS_LineAtGates,
+                name: "Line at the gates",
+            },
+            // *** CHAPTER 08: In Whary ***
+            {
+                id: "08_01 Meet Flynn gates",
+                scene: Spiegel_VN.Chp08_01_MeetFlynnAtGates,
+                name: "Meet Flynn at the gates",
+            },
+            {
+                id: "08_02 Meet Flynn in alley",
+                scene: Spiegel_VN.Chp08_02_MeetFlynnInAlley,
+                name: "Meet Flynn in alley",
+            },
+            {
+                id: "08_03 Enter City",
+                scene: Spiegel_VN.Chp08_03_EnterCity,
+                name: "Enter city",
+            },
+            {
+                id: "08_04 Choose stay",
+                scene: Spiegel_VN.Chp08_04_ChooseStay,
+                name: "Choose stay",
+            },
+            {
+                id: "08_041 Choose nice stay",
+                scene: Spiegel_VN.Chp08_041_ChooseNiceStay,
+                name: "Choose nice stay",
+            },
+            {
+                id: "08_042 Choose ugly stay",
+                scene: Spiegel_VN.Chp08_042_ChooseUglyStay,
+                name: "Choose ugly stay",
+            },
+            {
+                id: "08_0411 Nice stay with Flynn",
+                scene: Spiegel_VN.Chp08_0411_NiceStayFlynn,
+                name: "Nice stay with Flynn",
+            },
+            {
+                id: "08_0421 Ugly stay with Flynn",
+                scene: Spiegel_VN.Chp08_0421_UglyStayFlynn,
+                name: "Ugly stay with Flynn",
+            },
+            {
+                id: "08_E Discover Hay",
+                scene: Spiegel_VN.Chp08_E_DiscoverHay,
+                name: "Discover hay",
+            },
+            {
+                id: "08_E Discover Villagers",
+                scene: Spiegel_VN.Chp08_E_DiscoverVillagers,
+                name: "Discover villagers",
+            },
+            {
+                id: "08_E Discover windows",
+                scene: Spiegel_VN.Chp08_E_DiscoverWindows,
+                name: "Discover windows",
+            },
+            {
+                id: "08_CS TalkToFlynn",
+                scene: Spiegel_VN.Chp08_CS_TalkToFlynn,
+                name: "Talk to Flynn",
+            },
+            {
+                id: "08_CS Sleep",
+                scene: Spiegel_VN.Chp08_CS_Sleep,
+                name: "Go to sleep",
+            },
+            // *** CHAPTER 09:
+            {
+                id: "09_01 Research Marketplace",
+                scene: Spiegel_VN.Chp09_01_ResearchMarketplace,
+                name: "Research Marketplace",
+            },
+            {
+                id: "09_011 Talk to Beggar",
+                scene: Spiegel_VN.Chp09_011_TalkToBeggar,
+                name: "Talk to Beggar",
+            },
+            {
+                id: "09_012 Make a wish",
+                scene: Spiegel_VN.Chp09_012_MakeAWish,
+                name: "Make a wish",
+            },
+            {
+                id: "09_02 TalkToInnkeeper",
+                scene: Spiegel_VN.Chp09_02_TalkToInnkeeper,
+                name: "Talk to innkeeper",
+            },
+            {
+                id: "09_03 TalkToCook",
+                scene: Spiegel_VN.Chp09_03_TalkToCook,
+                name: "Talk to cook",
+            },
+            {
+                id: "09_04 Talk to stablehand",
+                scene: Spiegel_VN.Chp09_04_TalkToStablehand,
+                name: "Talk to stablehand",
+            },
+            {
+                id: "09_E Listen to villagers",
+                scene: Spiegel_VN.Chp09_E_ListenToVillagers,
+                name: "Listen to villagers",
+            },
+            {
+                id: "09_E Talk to merchants",
+                scene: Spiegel_VN.Chp09_E_TalkToMerchants,
+                name: "Talk to merchants",
+            },
+            {
+                id: "09_E Talk to villagers",
+                scene: Spiegel_VN.Chp09_E_TalkToVillagers,
+                name: "Talk to villagers",
+            },
+            {
+                id: "09_CS Arrival lake",
+                scene: Spiegel_VN.Chp09_CS_ArrivalLake,
+                name: "Arrival at lake",
+            },
+            // *** CHAPTER 10: CROSSING LAKE ***
+            {
+                id: "10_01 Build a raft",
+                scene: Spiegel_VN.Chp10_01_BuildARaft,
                 name: "Build a raft",
+            },
+            {
+                id: "10_02 Cross lake",
+                scene: Spiegel_VN.Chp10_02_CrossLake,
+                name: "Crossing the lake",
+            },
+            {
+                id: "10_03 Attack birds",
+                scene: Spiegel_VN.Chp10_03_AttackBirds,
+                name: "Attack from birds",
+            },
+            {
+                id: "10_031 Sing to birds",
+                scene: Spiegel_VN.Chp10_031_SingToBirds,
+                name: "Sing to birds",
+            },
+            {
+                id: "10_032 UseMirror",
+                scene: Spiegel_VN.Chp10_032_UseMirror,
+                name: "Use the mirror",
+            },
+            {
+                id: "10_041 Birds become friendly",
+                scene: Spiegel_VN.Chp10_041_FriendlyBirds,
+                name: "Birds become friendly",
+            },
+            {
+                id: "10_042 Birds disappear",
+                scene: Spiegel_VN.Chp10_042_BirdsDisappear,
+                name: "Birds disappear",
+            },
+            {
+                id: "10_E Discover City lights Whary",
+                scene: Spiegel_VN.Chp10_E_CityLightsWhary,
+                name: "Discover city lights",
+            },
+            {
+                id: "10_E Discover lake",
+                scene: Spiegel_VN.Chp10_E_DiscoverLake,
+                name: "Discover lake",
+            },
+            {
+                id: "10_E Discover lakewater",
+                scene: Spiegel_VN.Chp10_E_DiscoverLakewater,
+                name: "Discover lakewater",
+            },
+            {
+                id: "10_CS Arrival other side",
+                scene: Spiegel_VN.Chp10_CS_ArrivalOtherSide,
+                name: "Arrival other side",
+            },
+            // *** CHAPTER 11: SCOUTING FACTORY ***
+            {
+                id: "11_01 Search for hiding place",
+                scene: Spiegel_VN.Chp11_01_SearchHidingPlace,
+                name: "Search for hiding place",
+            },
+            {
+                id: "11_02 Find iron",
+                scene: Spiegel_VN.Chp11_02_FindIron,
+                name: "Find iron",
+            },
+            {
+                id: "11_03 Watch factory",
+                scene: Spiegel_VN.Chp11_03_WatchFactory,
+                name: "WatchFactory",
+            },
+            {
+                id: "11_04 Try break-in",
+                scene: Spiegel_VN.Chp11_04_TryBreakIn,
+                name: "Try to break-in",
+            },
+            {
+                id: "11_E Discover forest",
+                scene: Spiegel_VN.Chp11_E_DiscoverForest,
+                name: "Discover forest",
+            },
+            {
+                id: "11_E Discover huts",
+                scene: Spiegel_VN.Chp11_E_DiscoverHuts,
+                name: "Discover huts",
+            },
+            {
+                id: "11_E Discover tower",
+                scene: Spiegel_VN.Chp11_E_DiscoverTower,
+                name: "Discover tower",
+            },
+            {
+                id: "11_CS Sleep",
+                scene: Spiegel_VN.Chp11_CS_Sleep,
+                name: "Sleep",
+            },
+            // *** CHAPTER 12: ENTRY FACTORY
+            {
+                id: "12_011 Sneak-in",
+                scene: Spiegel_VN.Chp12_011_SneakIn,
+                name: "Sneak-in",
+            },
+            {
+                id: "12_012 Sneak-in amongst slaves",
+                scene: Spiegel_VN.Chp12_012_SneakAmongSlaves,
+                name: "Sneak-in amongst slaves",
+            },
+            {
+                id: "12_02 Talk to slaves",
+                scene: Spiegel_VN.Chp12_02_TalkToSlaves,
+                name: "Talk to slaves",
+            },
+            {
+                id: "12_03 Search for Kailani",
+                scene: Spiegel_VN.Chp12_03_SearchForKailani,
+                name: "Search for Kailani",
+            },
+            {
+                id: "12_04 Listen to guards",
+                scene: Spiegel_VN.Chp12_04_ListenToGuards,
+                name: "Listen to guards",
+            },
+            {
+                id: "12_05 Back to hiding place",
+                scene: Spiegel_VN.Chp12_05_BackToHidingPlace,
+                name: "Back to hiding place",
+            },
+            {
+                id: "12_061 Birds offer help",
+                scene: Spiegel_VN.Chp12_061_BirdsOfferHelp,
+                name: "Birds offer help",
+            },
+            {
+                id: "12_062 Make a wish",
+                scene: Spiegel_VN.Chp12_062_MakeAWish,
+                name: "Make a wish",
+            },
+            {
+                id: "12_E Discover village",
+                scene: Spiegel_VN.Chp12_E_DiscoverVillage,
+                name: "Discover village",
+            },
+            {
+                id: "12_E Discover production site",
+                scene: Spiegel_VN.Chp12_E_Productionsite,
+                name: "Production site",
+            },
+            {
+                id: "12_E Discover slaves",
+                scene: Spiegel_VN.Chp12_E_DiscoverSlaves,
+                name: "Discover slaves",
+            },
+            {
+                id: "12_CS Talk to Flynn",
+                scene: Spiegel_VN.Chp12_CS_TalkToFlynn,
+                name: "Talk to Flynn",
+            },
+            // *** CHAPTER 13: THE GREAT ORDEAL ***
+            {
+                id: "13_01 Entry village",
+                scene: Spiegel_VN.Chp13_01_EntryVillage,
+                name: "Entry village",
+            },
+            {
+                id: "13_02 Go to tower",
+                scene: Spiegel_VN.Chp13_02_GoToTower,
+                name: "Go to tower",
+            },
+            {
+                id: "13_03 Entry tower",
+                scene: Spiegel_VN.Chp13_03_EntryTower,
+                name: "Entry tower",
+            },
+            {
+                id: "10_04 Sneak past demon",
+                scene: Spiegel_VN.Chp13_04_SneakPastDemon,
+                name: "Sneak past demon",
+            },
+            {
+                id: "13_E Discover family portrait",
+                scene: Spiegel_VN.Chp13_E_DiscoverFamilyPortrait,
+                name: "Discover family portrait",
+            },
+            {
+                id: "13_E Discover locked door",
+                scene: Spiegel_VN.Chp13_E_DiscoverLockedDoor,
+                name: "Discover locked door",
+            },
+            {
+                id: "13_E Sneak around tower",
+                scene: Spiegel_VN.Chp13_E_DiscoverSneakAround,
+                name: "Discover sneak around tower",
+            },
+            {
+                id: "13_E Discover tower window",
+                scene: Spiegel_VN.Chp13_E_DiscoverTowerWindow,
+                name: "Discover tower window",
+            },
+            {
+                id: "13_E Discover Watch guard",
+                scene: Spiegel_VN.Chp13_E_DiscoverWatchGuard,
+                name: "Discover watch guard",
+            },
+            {
+                id: "13_CS Entry mirror room",
+                scene: Spiegel_VN.Chp13_CS_EntryMirrorRoom,
+                name: "Entry mirror room",
+            },
+            // *** CHAPTER 14.1: GOOD ENDING
+            {
+                id: "14.1_01 Destroy mirror",
+                scene: Spiegel_VN.Chp141_01_DestroyMirror,
+                name: "Destroy mirror",
+            },
+            {
+                id: "14.1_02 Demon dies",
+                scene: Spiegel_VN.Chp141_02_DemonDies,
+                name: "Demon dies",
+            },
+            {
+                id: "14.1_CS Balcony tower",
+                scene: Spiegel_VN.Chp14_CS_BalconyTower,
+                name: "Balcony tower",
+            },
+            // CHAPTER 14.2: BAD ENDING
+            {
+                id: "14.2_01 Realization mirror",
+                scene: Spiegel_VN.Chp142_01_RealizationMirror,
+                name: "Realization mirror",
+            },
+            {
+                id: "14.2_02 Caught by demon",
+                scene: Spiegel_VN.Chp142_02_CaughtByDemon,
+                name: "Caught by demon",
+            },
+            {
+                id: "14.2_03 Transformation into slaves",
+                scene: Spiegel_VN.Chp142_03_TransformationSlaves,
+                name: "Transformation into slaves",
+            },
+            {
+                id: "14.2_End Empty Scene",
+                scene: Spiegel_VN.Chp142_End_EmptyScene,
+                name: "End empty scene",
+            },
+            // *** CHAPTER 15: THE PRIZE
+            {
+                id: "15_01 Reunion Kailani",
+                scene: Spiegel_VN.Chp15_01_ReunionKailani,
+                name: "Reunion Kailani",
+            },
+            {
+                id: "15_E Discover demon room",
+                scene: Spiegel_VN.Chp15_E_DiscoverDemonRoom,
+                name: "Discover demon room",
+            },
+            {
+                id: "15_E Discover mirror room",
+                scene: Spiegel_VN.Chp15_E_DiscoverMirrorRoom,
+                name: "Discover mirror room",
+            },
+            {
+                id: "15_E Talk to freed villagers",
+                scene: Spiegel_VN.Chp15_E_TalkToFreedVillagers,
+                name: "Talk to freed villagers",
+            },
+            {
+                id: "15_CS GoToLake",
+                scene: Spiegel_VN.Chp15_CS_GoToLake,
+                name: "Go to lake",
+            },
+            // *** CHAPTER 16: ROAD HOME
+            {
+                id: "16_01 Confrontation Flynn",
+                scene: Spiegel_VN.Chp16_01_ConfrontationFlynn,
+                name: "Confrontation Flynn",
+            },
+            {
+                id: "16_02 Make a wish",
+                scene: Spiegel_VN.Chp16_02_MakeAWish,
+                name: "Make a wish",
+            },
+            {
+                id: "16_021 Go home alone",
+                scene: Spiegel_VN.Chp16_021_GoHomeAlone,
+                name: "Go home alone",
+            },
+            {
+                id: "16_022 Go home with Flynn",
+                scene: Spiegel_VN.Chp16_022_GoHomeWithFlynn,
+                name: "Go home with Flynn",
+            },
+            {
+                id: "16_CS Reunion family",
+                scene: Spiegel_VN.Chp16_CS_ReunionFamily,
+                name: "Reunion family",
+            },
+            {
+                id: "16_End Empty Scene",
+                scene: Spiegel_VN.Chp16_End_EmptyScene,
+                name: "End Empty Scene",
             },
         ];
         let uiElement = document.querySelector("[type=interface]");
@@ -471,7 +1020,7 @@ var Spiegel_VN;
     Spiegel_VN.locations = {
         Chp01_01_IntroMarketplace: {
             name: "Intro_Marktplatz",
-            background: "./Assets/Backgrounds/Chapter 01/01_IntroMarketplace/Kap01_01_Intro_Marktplatz.png",
+            background: "./Assets/Backgrounds/Chapter01/Kap01_01_Intro_Marktplatz.png",
         },
         Chp01_02_ConvoMother: {
             name: "Convo_Mother",
@@ -479,11 +1028,11 @@ var Spiegel_VN;
         },
         Chp02_E_DiscoverBedroom: {
             name: "My Bedroom",
-            background: "./Assets/Backgrounds/Chapter 02/E_DiscoverBedroom/MyBedroom.jpg",
+            background: "./Assets/Backgrounds/Chapter02/E_DiscoverBedroom/MyBedroom.jpg",
         },
         Chp02_01_Dinner: {
             name: "Dinnertable",
-            background: "./Assets/Backgrounds/Chapter 02/Dinner/Diningtable.jpg",
+            background: "./Assets/Backgrounds/Chapter02/Dinner/DiningTable.jpg",
         },
         black: {
             name: "Black_BG",
@@ -610,90 +1159,6 @@ var Spiegel_VN;
 })(Spiegel_VN || (Spiegel_VN = {}));
 var Spiegel_VN;
 (function (Spiegel_VN) {
-    async function ScnTestzene01() {
-        await Spiegel_VN.ƒS.Location.show(Spiegel_VN.locations.Chp01_01_IntroMarketplace);
-        await Spiegel_VN.ƒS.update();
-        // ƒS.Inventory.add(inventory.apple);
-        // await ƒS.Inventory.open;
-        //hier wird eine asynch funktion exportiert, wie heißt die funktion? in diesem fall name funktion = name von szene
-        console.log(Spiegel_VN.characters.maincharacter.name); // console = konsole, log = befehl, der sagt, was ausgegeben wird (was in der klammer). was ausgegeben werden soll: heir wird ausgegeben, was ich rein schreibe, zum debuggen udn verstehen, was mein programm tut, wie ein wegweiser. Am ende der Sache kann ich den Namen der jeweiligen Szene eingeben, is nur für mich & für Prof
-        await Spiegel_VN.ƒS.Speech.tell("Bab", "Hallo, ich bin Bab."); //fs = ich greife auf die library zu, was jmdn anders schon für die library programmiert hat.
-        await Spiegel_VN.ƒS.Speech.tell("Xenoi", "Hallo, ich bin Xeni.");
-        await Spiegel_VN.ƒS.Speech.tell(Spiegel_VN.characters.maincharacter.name, "Hallo, ich bin Dein Name.");
-        let firstDialogueElementAnswers = {
-            iSayOk: "Okay.",
-            iSayYes: "Ja.",
-            iSayNo: "Nein.",
-        };
-        let firstDialogueElement = await Spiegel_VN.ƒS.Menu.getInput(firstDialogueElementAnswers, "choicesCSSclass");
-        switch (firstDialogueElement) {
-            case firstDialogueElementAnswers.iSayOk:
-                // continue path here
-                await Spiegel_VN.ƒS.Speech.tell(Spiegel_VN.characters.Mama, "Hi");
-                Spiegel_VN.ƒS.Speech.clear();
-                break;
-            case firstDialogueElementAnswers.iSayYes:
-                // continue path here
-                await Spiegel_VN.ƒS.Speech.tell(Spiegel_VN.characters.Mama, "HiToYes");
-                Spiegel_VN.ƒS.Speech.clear();
-                // await ƒS.Character.show(characters.Mama, characters.aisaka.pose.happy, ƒS.positions.bottomcenter);
-                // ƒS.Character.hide(characters.Mama);
-                break;
-            case firstDialogueElementAnswers.iSayNo:
-                // continue path here
-                await Spiegel_VN.ƒS.Speech.tell(Spiegel_VN.characters.Mama, "Hi");
-                Spiegel_VN.ƒS.Speech.clear();
-                break;
-        }
-        return Spiegel_VN.ScnTestzene02();
-    }
-    Spiegel_VN.ScnTestzene01 = ScnTestzene01;
-})(Spiegel_VN || (Spiegel_VN = {}));
-var Spiegel_VN;
-(function (Spiegel_VN) {
-    async function ScnTestzene02() {
-        console.log("Status: ", Spiegel_VN.scoreMutti.introduced);
-        //hier wird eine asynch funktion exportiert, wie heißt die funktion? in diesem fall name funktion = name von szene
-        console.log("Punktestand Mutti: ", Spiegel_VN.scoreMutti.punkte); // console = konsole, log = befehl, der sagt, was ausgegeben wird (was in der klammer). was ausgegeben werden soll: heir wird ausgegeben, was ich rein schreibe, zum debuggen udn verstehen, was mein programm tut, wie ein wegweiser
-        await Spiegel_VN.ƒS.Speech.tell("Bab", "Neue szene bklqsjhdui."); //fs = ich greife auf die library zu, was jmdn anders (jirka) schon für die library programmiert hat.
-        if (Spiegel_VN.scoreMutti.introduced == true) {
-            // mit == fragen wir, ob etwas true ist. = heißt, wir weisen einen Wert etw zu.
-            await Spiegel_VN.ƒS.Speech.tell(Spiegel_VN.characters.Mutti.name, "Mich kennt ihr ja schon.");
-            Spiegel_VN.scoreMutti.punkte = Spiegel_VN.scoreMutti.punkte + 1;
-        }
-        if (Spiegel_VN.scoreMutti.introduced == false) {
-            await Spiegel_VN.ƒS.Speech.tell(Spiegel_VN.characters.Mutti.name, "Hallo, ich bin Elena.");
-            Spiegel_VN.scoreMutti.introduced = true;
-        }
-        if (Spiegel_VN.scoreMutti.punkte >= 6) {
-            await Spiegel_VN.ƒS.Speech.tell(Spiegel_VN.characters.Mutti.name, "Möchtest du etwas tee?");
-            let decisionButtons01 = {
-                // !hier! wird decisionsbuttons01 definiert, wegen let // decisionsbuttons ist ein Objekt
-                decisionYes: "Yes",
-                decisionNo: "No",
-            };
-            let decision = await Spiegel_VN.ƒS.Menu.getInput(decisionButtons01, "decisionButtons" // hier umbennen und mit css bearbeiten
-            );
-            switch (decision //switch case = besseres if. statt ich 32809x if schreib, fragt switch: was is das ding? dieser input = yes or no. switch kann alles abfragen. muss schauen, was wann nützlich ist
-            ) {
-                case decisionButtons01.decisionYes:
-                    await Spiegel_VN.ƒS.Speech.tell(Spiegel_VN.characters.Mutti.name, "Hier bitte, eine schöne Tasse Tee. Frisch gekocht.");
-                    break;
-                case decisionButtons01.decisionNo:
-                    await Spiegel_VN.ƒS.Speech.tell(Spiegel_VN.characters.Mutti.name, "Nein? Dann hattest du wohl schon Tee. Freut mich zu hören! Viel spaß bei denen Freunden.");
-                    return Spiegel_VN.ScnTestzene01();
-                    break;
-                default:
-                    await Spiegel_VN.ƒS.Speech.tell(Spiegel_VN.characters.Mutti.name, "Default wird verwendet, wenn keiner der Fälle im Switch case zutrifft..");
-                    break;
-            }
-        }
-        return ScnTestzene02();
-    }
-    Spiegel_VN.ScnTestzene02 = ScnTestzene02;
-})(Spiegel_VN || (Spiegel_VN = {}));
-var Spiegel_VN;
-(function (Spiegel_VN) {
     async function Chp00_00_NameEntry() {
         Spiegel_VN.dataForSave.nameProtagonist = await Spiegel_VN.ƒS.Speech.getInput();
         Spiegel_VN.characters.maincharacter.name = Spiegel_VN.dataForSave.nameProtagonist;
@@ -740,8 +1205,8 @@ var Spiegel_VN;
         //   "Hallo, ich bin Dein Name."
         // );
         // ***BEGINN SZENE***
-        let randomTextWithNewEntryMarketplace = Spiegel_VN.ƒ.Random.default.getRangeFloored(1, 5); //gerundet
-        switch (randomTextWithNewEntryMarketplace) {
+        let randomTextChp01yMarketplace = Spiegel_VN.ƒ.Random.default.getRangeFloored(1, 5); //gerundet
+        switch (randomTextChp01yMarketplace) {
             case 1:
                 await Spiegel_VN.ƒS.Speech.tell(Spiegel_VN.characters.Mama.name, "Random dialogue 1 -----------");
                 break;
@@ -777,8 +1242,8 @@ var Spiegel_VN;
         //   ƒS.positions.bottomcenter //bei positions: gibts die normalen angaben (topleft ..) bei positionpercentage: gebe ich koordinaten an in pixel 70 in x und 100 in y
         //   // ƒS.positionPercent(70,100)
         // );
-        // *** DIALOGUE OPTIONS ***
-        let firstDialogueElementAnswers = {
+        // *** SCENE OPTIONS ***
+        let Chp01PickSceneElementAnswers = {
             iSayTalkToMama: "Rede mit Mama.",
             iSayTalkToMirrorMerchant: "Mit Spiegelhändler unterhalten.",
             iSayExploreFlowerMerchant: "(Erkunden) Was gibt es Neues beim Blumenhändler?",
@@ -791,19 +1256,13 @@ var Spiegel_VN;
         console.log(Spiegel_VN.dataForSave.pickedChp01_MirrorMerchant);
         if (!Spiegel_VN.dataForSave.pickedChp01_ConvoMother || // ! heißt not: es wird nach entgegengesetztem Zustand gefragt // || = oder; && = und
             !Spiegel_VN.dataForSave.pickedChp01_MirrorMerchant) {
-            delete firstDialogueElementAnswers.iSayContinue;
+            delete Chp01PickSceneElementAnswers.iSayContinue;
             // return Chp01_CS_ArrivalHome();
         }
-        // if (dataForSave.pickedChp01_E_FlowerMerchantScene) {
-        //   if (dataForSave.pickedChp01_E_LeatherMerchantScene){
-        //   };
-        // };
-        // if (dataForSave.pickedChp01_E_LeatherMerchantScene){
-        // };
-        let firstDialogueElement = await Spiegel_VN.ƒS.Menu.getInput(firstDialogueElementAnswers, "choicesCSSclass");
+        let Chp01SceneElement = await Spiegel_VN.ƒS.Menu.getInput(Chp01PickSceneElementAnswers, "choicesCSSclass");
         // *** RESPONSES ***
-        switch (firstDialogueElement) {
-            case firstDialogueElementAnswers.iSayTalkToMama:
+        switch (Chp01SceneElement) {
+            case Chp01PickSceneElementAnswers.iSayTalkToMama:
                 // continue path here
                 await Spiegel_VN.ƒS.Speech.tell(Spiegel_VN.characters.Mama, "Choice TalkToMama + Empathypoints 10.");
                 Spiegel_VN.dataForSave.score.scoreEmpathyPoints += 10;
@@ -811,7 +1270,7 @@ var Spiegel_VN;
                 Spiegel_VN.ƒS.Speech.clear();
                 return Spiegel_VN.Chp01_02_ConvoMother(); // hier lieber: return "Chp ..."; if clause: ich nehm versch keys und sage: if dataforsave.pciekd = alle true, dann in der if clause return. if (dataforsave.pickedChoice, pickedotherchoice, usw. = true), dann gehts weiter
                 break;
-            case firstDialogueElementAnswers.iSayTalkToMirrorMerchant:
+            case Chp01PickSceneElementAnswers.iSayTalkToMirrorMerchant:
                 // continue path here
                 // if (dataForSave.score.scoreCouragePoints === 50)
                 // wie mindestens 50?
@@ -821,17 +1280,23 @@ var Spiegel_VN;
                 // ƒS.Character.hide(characters.Mama);
                 return Spiegel_VN.Chp01_03_IntroMirror();
                 break;
-            case firstDialogueElementAnswers.iSayExploreFlowerMerchant:
+            case Chp01PickSceneElementAnswers.iSayExploreFlowerMerchant:
                 // continue path here
                 await Spiegel_VN.ƒS.Speech.tell(Spiegel_VN.characters.Mama, "Choice (Explore) Talk to flower merchant.");
                 Spiegel_VN.ƒS.Speech.clear();
                 return Spiegel_VN.Chp01_E_FlowerMerchant();
                 break;
-            case firstDialogueElementAnswers.iSayExploreLeatherMerchant:
+            case Chp01PickSceneElementAnswers.iSayExploreLeatherMerchant:
                 // continue path here
                 await Spiegel_VN.ƒS.Speech.tell(Spiegel_VN.characters.Mama, "Choice (Explore) Talk to leather merchant.");
                 Spiegel_VN.ƒS.Speech.clear();
                 return Spiegel_VN.Chp01_E_LeatherMerchant();
+                break;
+            case Chp01PickSceneElementAnswers.iSayContinue:
+                // continue path here
+                await Spiegel_VN.ƒS.Speech.tell(Spiegel_VN.characters.Mama, "Choice (Explore) Talk to mirror merchant.");
+                Spiegel_VN.ƒS.Speech.clear();
+                return Spiegel_VN.Chp01_CS_PerchaseMirror();
                 break;
         }
         return Spiegel_VN.Chp01_02_ConvoMother();
@@ -978,11 +1443,11 @@ var Spiegel_VN;
                 Spiegel_VN.ƒS.Speech.clear();
                 // await ƒS.Character.show(characters.Mama, characters.aisaka.pose.happy, ƒS.positions.bottomcenter);
                 // ƒS.Character.hide(characters.Mama);
-                return Spiegel_VN.Chp01_02_ConvoMother();
+                return Chp01_E_FlowerMerchant();
                 break;
             case FlowerMerchantDialogueElementAnswers.iSayLeave:
                 // continue path here
-                // await ƒS.Speech.tell(characters.maincharacter, "Machen Sies gut.");
+                await Spiegel_VN.ƒS.Speech.tell(Spiegel_VN.characters.maincharacter, "Machen Sies gut.");
                 Spiegel_VN.ƒS.Speech.clear();
                 return Spiegel_VN.Chp01_01_IntroMarketplace();
                 break;
@@ -1040,11 +1505,11 @@ var Spiegel_VN;
         switch (LeatherMerchantDialogueElement) {
             case LeatherMerchantDialogueElementAnswers.iSayAskAboutTrip:
                 // continue path here
-                await Spiegel_VN.ƒS.Speech.tell(Spiegel_VN.characters.leatherMerchant, "Oh je ... blabla.");
+                await Spiegel_VN.ƒS.Speech.tell(Spiegel_VN.characters.leatherMerchant, "Antwort Reise.");
                 // dataForSave.score.scoreEmpathyPoints += 10;
                 // console.log(dataForSave.score.scoreEmpathyPoints);
                 Spiegel_VN.ƒS.Speech.clear();
-                return Spiegel_VN.Chp01_02_ConvoMother();
+                return Chp01_E_LeatherMerchant();
                 break;
             case LeatherMerchantDialogueElementAnswers.iSayAskAboutDecorations:
                 // continue path here
@@ -1054,11 +1519,11 @@ var Spiegel_VN;
                 Spiegel_VN.ƒS.Speech.clear();
                 // await ƒS.Character.show(characters.Mama, characters.aisaka.pose.happy, ƒS.positions.bottomcenter);
                 // ƒS.Character.hide(characters.Mama);
-                return Spiegel_VN.Chp01_02_ConvoMother();
+                return Chp01_E_LeatherMerchant();
                 break;
             case LeatherMerchantDialogueElementAnswers.iSayLeave:
                 // continue path here
-                // await ƒS.Speech.tell(characters.maincharacter, "Machen Sies gut.");
+                await Spiegel_VN.ƒS.Speech.tell(Spiegel_VN.characters.maincharacter, "Machen Sies gut.");
                 Spiegel_VN.ƒS.Speech.clear();
                 return Spiegel_VN.Chp01_01_IntroMarketplace();
                 break;
@@ -1078,24 +1543,196 @@ var Spiegel_VN;
 var Spiegel_VN;
 (function (Spiegel_VN) {
     async function Chp01_CS_ArrivalHome() {
-        await Spiegel_VN.ƒS.Speech.tell("Hannah", "Schleife gelungen bei CS angekommen ------------- AAAAAAAAAAAA");
+        await Spiegel_VN.ƒS.Speech.tell("Hannah", "Schleife gelungen bei CS angekommen ------------- AAAAAAAAAAAA. Arrival Home");
+        // ** RANDOM TEXT ***
+        let randomTextChp02FamilyHome = Spiegel_VN.ƒ.Random.default.getRangeFloored(1, 5); //gerundet
+        switch (randomTextChp02FamilyHome) {
+            case 1:
+                await Spiegel_VN.ƒS.Speech.tell("Ich", "Random dialogue 1 -----------");
+                break;
+            case 2:
+                await Spiegel_VN.ƒS.Speech.tell("Ich", "Random dialogue 2 -----------");
+                break;
+            case 3:
+                await Spiegel_VN.ƒS.Speech.tell("Ich", "Random dialogue 3 -----------");
+                break;
+            case 4:
+                await Spiegel_VN.ƒS.Speech.tell("Ich", "Random dialogue 4 -----------");
+                break;
+            case 5:
+                await Spiegel_VN.ƒS.Speech.tell("Ich", "Random dialogue 5 -----------");
+                break;
+            default:
+                await Spiegel_VN.ƒS.Speech.tell("Ich", "Default--------------------");
+                break;
+        }
+        let Chp02PickSceneElementAnswers = {
+            iSayHaveDinner: "Abendessen mit Familie.",
+            iSayTryMirrorElena: "Spiegel mit Mutti ausprobieren.",
+            iSayTryMirrorKailani: "Spiegel mit Kailani ausprobieren",
+            iSayPickHerbs: "Kräuter pflücken",
+            iSayDiscoverBedroom: "(Erkunden) Mein Schlafzimmer anschauen",
+            iSayDiscoverKitchen: "(Erkunden) Ab in die Küche",
+            iSayContinue: "Weiter",
+        };
+        console.log("boolean Abendessen: ");
+        console.log(Spiegel_VN.dataForSave.pickedChp02_DinnerScene);
+        console.log("boolean Kräuter gepflückt: ");
+        console.log(Spiegel_VN.dataForSave.pickedChp02_PickHerbsGarden);
+        console.log("boolean Spiegel Elena ausprobiert: ");
+        console.log(Spiegel_VN.dataForSave.pickedChp02_TestWithElena);
+        console.log("boolean Nachbar Streit: ");
+        console.log(Spiegel_VN.dataForSave.pickedChp02_FightNeighbor);
+        if (!Spiegel_VN.dataForSave.pickedChp02_DinnerScene || // ! heißt not: es wird nach entgegengesetztem Zustand gefragt // || = oder; && = und
+            !Spiegel_VN.dataForSave.pickedChp02_PickHerbsGarden ||
+            (!Spiegel_VN.dataForSave.pickedChp02_TestWithElena &&
+                !Spiegel_VN.dataForSave.pickedChp02_TestWithKailani) || // wie mach ich hier: entweder, oder?
+            !Spiegel_VN.dataForSave.pickedChp02_FightNeighbor) {
+            delete Chp02PickSceneElementAnswers.iSayContinue;
+            // return Chp01_CS_ArrivalHome();
+        }
+        let Chp01PickSceneElement = await Spiegel_VN.ƒS.Menu.getInput(Chp02PickSceneElementAnswers, "choicesCSSclass");
+        // *** RESPONSES ***
+        switch (Chp01PickSceneElement) {
+            case Chp02PickSceneElementAnswers.iSayHaveDinner:
+                // continue path here
+                await Spiegel_VN.ƒS.Speech.tell("Ich", "Abendessen hm geil.");
+                Spiegel_VN.dataForSave.score.scoreEmpathyPoints += 10;
+                console.log(Spiegel_VN.dataForSave.score.scoreEmpathyPoints);
+                Spiegel_VN.ƒS.Speech.clear();
+                return "02_01 Dinner at home"; // hier lieber: return "Chp ..."; if clause: ich nehm versch keys und sage: if dataforsave.pciekd = alle true, dann in der if clause return. if (dataforsave.pickedChoice, pickedotherchoice, usw. = true), dann gehts weiter
+                break;
+            case Chp02PickSceneElementAnswers.iSayPickHerbs:
+                // continue path here
+                // if (dataForSave.score.scoreCouragePoints === 50)
+                // wie mindestens 50?
+                await Spiegel_VN.ƒS.Speech.tell("Ich", "Auf geht's Kräuter pflücken");
+                Spiegel_VN.ƒS.Speech.clear();
+                // await ƒS.Character.show(characters.Mama, characters.aisaka.pose.happy, ƒS.positions.bottomcenter);
+                // ƒS.Character.hide(characters.Mama);
+                return "02_03 Pick Herbs";
+                break;
+            case Chp02PickSceneElementAnswers.iSayTryMirrorElena:
+                // continue path here
+                await Spiegel_VN.ƒS.Speech.tell("Ich", "Mit Mutti Spiegel ausprobieren.");
+                Spiegel_VN.ƒS.Speech.clear();
+                return "02_021 Test with Elena";
+                break;
+            case Chp02PickSceneElementAnswers.iSayTryMirrorKailani:
+                // continue path here
+                await Spiegel_VN.ƒS.Speech.tell("Ich", "Spiegel mit Kailani ausprobieren.");
+                Spiegel_VN.ƒS.Speech.clear();
+                return "02_022 Test with Kailani";
+                break;
+            case Chp02PickSceneElementAnswers.iSayDiscoverBedroom:
+                // continue path here
+                await Spiegel_VN.ƒS.Speech.tell("Ich", "Schlafzimmer anschauen yay sleep.");
+                Spiegel_VN.ƒS.Speech.clear();
+                return "02_E Discover bedroom";
+                break;
+            case Chp02PickSceneElementAnswers.iSayDiscoverKitchen:
+                // continue path here
+                await Spiegel_VN.ƒS.Speech.tell("Ich", "Ich hab' Hunger auf geht's.");
+                Spiegel_VN.ƒS.Speech.clear();
+                return "02_E Discover Kitchen";
+                break;
+            case Chp02PickSceneElementAnswers.iSayContinue:
+                // continue path here
+                await Spiegel_VN.ƒS.Speech.tell("Ich", "Weiter zur cut scene.");
+                Spiegel_VN.ƒS.Speech.clear();
+                return "02_CS Sleep";
+                break;
+        }
+        return "";
     }
     Spiegel_VN.Chp01_CS_ArrivalHome = Chp01_CS_ArrivalHome;
 })(Spiegel_VN || (Spiegel_VN = {}));
 var Spiegel_VN;
 (function (Spiegel_VN) {
-    async function Chp01_CS_PerchaseMirror() { }
+    async function Chp01_CS_PerchaseMirror() {
+        await Spiegel_VN.ƒS.Speech.tell("Mirror merchant", "Spiegel ist gekauft");
+        return "01_CS Arrival Home";
+    }
     Spiegel_VN.Chp01_CS_PerchaseMirror = Chp01_CS_PerchaseMirror;
 })(Spiegel_VN || (Spiegel_VN = {}));
 var Spiegel_VN;
 (function (Spiegel_VN) {
     async function Chp02_01_Dinner() {
-        (Spiegel_VN.dataForSave.pickedChp02_DinnerScene = true),
-            await Spiegel_VN.ƒS.Location.show(Spiegel_VN.locations.Chp01_01_IntroMarketplace); //unsere locations, die szenen. nach dem Punkt sind die Methoden! also tell und show ist eine Methode. Die klammer dahinter ist eine Methodenaufruf, also eine Variable. Der Hingergrund sollte da angezeigt werden
+        Spiegel_VN.dataForSave.pickedChp02_DinnerScene = true;
+        // await ƒS.Location.show(locations.Chp02_01_Dinner); //unsere locations, die szenen. nach dem Punkt sind die Methoden! also tell und show ist eine Methode. Die klammer dahinter ist eine Methodenaufruf, also eine Variable. Der Hingergrund sollte da angezeigt werden
         // await ƒS.Location.show(location.Chp01_01_IntroMarketplace);
         // await ƒS.update(2, "./Assets/Transitions/Black.png", 1);
         await Spiegel_VN.ƒS.update(Spiegel_VN.transitions.fade.duration, Spiegel_VN.transitions.fade.alpha, Spiegel_VN.transitions.fade.edge //edge ist der Härtegrad
         );
+        await Spiegel_VN.ƒS.Speech.tell("Ich", "Abendessen mh der Auflauf ist toll.");
+        // // *** SCENE OPTIONS ***
+        // let Chp02PickSceneElementAnswers = {
+        //   iSayTryMirrorElena: "Spiegel mit Mutti ausprobieren.",
+        //   iSayTryMirrorKailani: "Spiegel mit Kailani ausprobieren.",
+        //   iSayPickHerbs: "Kräuter pflücken",
+        //   iSayDiscoverBedroom: "(Erkunden) Mein Schlafzimmer anschauen",
+        //   iSayDiscoverKitchen: "(Erkunden) Küche anschauen",
+        //   iSayContinue: "Weiter",
+        // };
+        // if (
+        //   !dataForSave.pickedChp02_DinnerScene || // ! heißt not: es wird nach entgegengesetztem Zustand gefragt // || = oder; && = und
+        //   !dataForSave.pickedChp02_PickHerbsGarden ||
+        //   !dataForSave.pickedChp02_TestWithElena ||
+        //   !dataForSave.pickedChp02_FightNeighbor
+        // ) {
+        //   delete Chp02PickSceneElementAnswers.iSayContinue;
+        //   // return Chp01_CS_ArrivalHome();
+        // }
+        // let Chp02PickSceneElement = await ƒS.Menu.getInput(
+        //   Chp02PickSceneElementAnswers,
+        //   "choicesCSSclass"
+        // );
+        // // *** RESPONSES ***
+        // switch (Chp02PickSceneElement) {
+        //   case Chp02PickSceneElementAnswers.iSayPickHerbs:
+        //     // continue path here
+        //     await ƒS.Speech.tell("Ich", "Ab in den Garten Kräuter pflücken.");
+        //     dataForSave.score.scoreEmpathyPoints += 10;
+        //     console.log(dataForSave.score.scoreEmpathyPoints);
+        //     ƒS.Speech.clear();
+        //     return "02_03 Pick Herbs"; // hier lieber: return "Chp ..."; if clause: ich nehm versch keys und sage: if dataforsave.pciekd = alle true, dann in der if clause return. if (dataforsave.pickedChoice, pickedotherchoice, usw. = true), dann gehts weiter
+        //     break;
+        //   case Chp02PickSceneElementAnswers.iSayTryMirrorElena:
+        //     // continue path here
+        //     await ƒS.Speech.tell("Ich", "Mit Mutti Spiegel ausprobieren.");
+        //     ƒS.Speech.clear();
+        //     return Chp02_021_TestWithElena();
+        //     break;
+        //   case Chp02PickSceneElementAnswers.iSayTryMirrorKailani:
+        //     // continue path here
+        //     await ƒS.Speech.tell("Ich", "Spiegel mit Kailani ausprobieren.");
+        //     ƒS.Speech.clear();
+        //     return Chp02_022_TestWithKailani();
+        //     break;
+        //   case Chp02PickSceneElementAnswers.iSayDiscoverBedroom:
+        //     // continue path here
+        //     await ƒS.Speech.tell("Ich", "Schlafzimmer anschauen yay sleep.");
+        //     ƒS.Speech.clear();
+        //     return Chp02_E_DiscoverBedroom();
+        //     break;
+        //   case Chp02PickSceneElementAnswers.iSayDiscoverKitchen:
+        //     // continue path here
+        //     await ƒS.Speech.tell("Ich", "Ich hab' Hunger auf geht's.");
+        //     ƒS.Speech.clear();
+        //     return Chp02_E_DiscoverKitchen();
+        //     break;
+        //   case Chp02PickSceneElementAnswers.iSayContinue:
+        //     // continue path here
+        //     // if (dataForSave.score.scoreCouragePoints === 50)
+        //     // wie mindestens 50?
+        //     await ƒS.Speech.tell("Ich", "Es geht weiter");
+        //     ƒS.Speech.clear();
+        //     // await ƒS.Character.show(characters.Mama, characters.aisaka.pose.happy, ƒS.positions.bottomcenter);
+        //     // ƒS.Character.hide(characters.Mama);
+        //     return "02_CS Sleep";
+        //     break;
+        // }
+        return "01_CS Arrival Home";
         // ***BEGINN DIALOG ***
         // *** EITHER/OR OPTION ***
         // if (pickedYes || pickedBla || pickedNo || pickedOk || pickedYes) {
@@ -1107,90 +1744,1182 @@ var Spiegel_VN;
 var Spiegel_VN;
 (function (Spiegel_VN) {
     async function Chp02_021_TestWithElena() {
+        Spiegel_VN.dataForSave.pickedChp02_TestWithElena = true;
+        console.log("boolean picked Test with Elena:");
+        console.log(Spiegel_VN.dataForSave.pickedChp02_TestWithElena);
+        await Spiegel_VN.ƒS.Speech.tell("Ich", "Teste den Spiegel mit Mutti.");
+        return "01_CS Arrival Home";
     }
     Spiegel_VN.Chp02_021_TestWithElena = Chp02_021_TestWithElena;
 })(Spiegel_VN || (Spiegel_VN = {}));
 var Spiegel_VN;
 (function (Spiegel_VN) {
-    async function Chp02_022_TestWithKailani() { }
+    async function Chp02_022_TestWithKailani() {
+        Spiegel_VN.dataForSave.pickedChp02_TestWithKailani = true;
+        await Spiegel_VN.ƒS.Speech.tell("Ich", "Teste den Spiegel mit Kailani.");
+        return "01_CS Arrival Home";
+    }
     Spiegel_VN.Chp02_022_TestWithKailani = Chp02_022_TestWithKailani;
 })(Spiegel_VN || (Spiegel_VN = {}));
 var Spiegel_VN;
 (function (Spiegel_VN) {
-    async function Chp02_E_DiscoverGarden() { }
-    Spiegel_VN.Chp02_E_DiscoverGarden = Chp02_E_DiscoverGarden;
+    async function Chp02_03_PickHerbs() {
+        Spiegel_VN.dataForSave.pickedChp02_PickHerbsGarden = true;
+        await Spiegel_VN.ƒS.Speech.tell("Ich", "Ich pflücke Kräuter yum yum.");
+        return "02_03 Fight with neighbor";
+    }
+    Spiegel_VN.Chp02_03_PickHerbs = Chp02_03_PickHerbs;
 })(Spiegel_VN || (Spiegel_VN = {}));
 var Spiegel_VN;
 (function (Spiegel_VN) {
-    async function Chp02_03_FightNeighbor() { }
+    async function Chp02_03_FightNeighbor() {
+        Spiegel_VN.dataForSave.pickedChp02_FightNeighbor = true;
+        await Spiegel_VN.ƒS.Speech.tell("Ich", "Die Nachbarn streiten und ich hör zu.");
+        return "01_CS Arrival Home";
+    }
     Spiegel_VN.Chp02_03_FightNeighbor = Chp02_03_FightNeighbor;
 })(Spiegel_VN || (Spiegel_VN = {}));
 var Spiegel_VN;
 (function (Spiegel_VN) {
     async function Chp02_E_DiscoverBedroom() {
         await Spiegel_VN.ƒS.Location.show(Spiegel_VN.locations.Chp02_E_DiscoverBedroom); //unsere locations, die szenen. nach dem Punkt sind die Methoden! also tell und show ist eine Methode. Die klammer dahinter ist eine Methodenaufruf, also eine Variable. Der Hingergrund sollte da angezeigt werden
-        // await ƒS.Location.show(location.Chp01_01_IntroMarketplace);
         // await ƒS.update(2, "./Assets/Transitions/Black.png", 1);
         await Spiegel_VN.ƒS.update(Spiegel_VN.transitions.fade.duration, Spiegel_VN.transitions.fade.alpha, Spiegel_VN.transitions.fade.edge //edge ist der Härtegrad
         );
-        await Spiegel_VN.ƒS.Speech.tell("Player", "My eigenes Reich. Wenigstens hier habe ich ein bisschen Privatsphäre...");
+        await Spiegel_VN.ƒS.Speech.tell("Ich", "My eigenes Reich. Wenigstens hier habe ich ein bisschen Privatsphäre...");
     }
     Spiegel_VN.Chp02_E_DiscoverBedroom = Chp02_E_DiscoverBedroom;
 })(Spiegel_VN || (Spiegel_VN = {}));
 var Spiegel_VN;
 (function (Spiegel_VN) {
-    async function Chp02_E_DiscoverKitchen() { }
+    async function Chp02_E_DiscoverKitchen() {
+        await Spiegel_VN.ƒS.Speech.tell("Ich", "Ich mache mir in der Küche was zu futtern.");
+        return "01_CS Arrival Home";
+    }
     Spiegel_VN.Chp02_E_DiscoverKitchen = Chp02_E_DiscoverKitchen;
 })(Spiegel_VN || (Spiegel_VN = {}));
 var Spiegel_VN;
 (function (Spiegel_VN) {
-    async function Chp02_CS_NewDay() { }
+    async function Chp02_CS_NewDay() {
+        await Spiegel_VN.ƒS.Speech.tell("Ich", "New Day! New possibilities lol.");
+        // ** RANDOM TEXT ***
+        let randomTextChp03NewDay = Spiegel_VN.ƒ.Random.default.getRangeFloored(1, 5); //gerundet
+        switch (randomTextChp03NewDay) {
+            case 1:
+                await Spiegel_VN.ƒS.Speech.tell("Ich", "Random dialogue 1 -----------");
+                break;
+            case 2:
+                await Spiegel_VN.ƒS.Speech.tell("Ich", "Random dialogue 2 -----------");
+                break;
+            case 3:
+                await Spiegel_VN.ƒS.Speech.tell("Ich", "Random dialogue 3 -----------");
+                break;
+            case 4:
+                await Spiegel_VN.ƒS.Speech.tell("Ich", "Random dialogue 4 -----------");
+                break;
+            case 5:
+                await Spiegel_VN.ƒS.Speech.tell("Ich", "Random dialogue 5 -----------");
+                break;
+            default:
+                await Spiegel_VN.ƒS.Speech.tell("Ich", "Default--------------------");
+                break;
+        }
+        let Chp03PickSceneElementAnswers = {
+            iSayDressmaker: "Jacke abholen",
+            iSayFirewoodKailani: "Mit Kailani Holz hacken",
+            iSayWaterwellKailani: "Wasser holen mit Kailani",
+            iSayDiscoverDonkey: "(Erkunden) Glücksesel streicheln",
+            iSayDiscoverForest: "(Erkunden) Im Wald rumgucken",
+            iSayDiscoverLibrary: "(Erkunden) Die Bücherei erkunden",
+            iSayContinue: "Weiter",
+        };
+        if (!Spiegel_VN.dataForSave.pickedChp03_Dressmaker || // ! heißt not: es wird nach entgegengesetztem Zustand gefragt // || = oder; && = und
+            (!Spiegel_VN.dataForSave.pickedChp03_FirewoodKailani &&
+                !Spiegel_VN.dataForSave.pickedChp03_WaterwellKailani)) {
+            delete Chp03PickSceneElementAnswers.iSayContinue;
+            // return Chp01_CS_ArrivalHome();
+        }
+        let Chp03PickSceneElement = await Spiegel_VN.ƒS.Menu.getInput(Chp03PickSceneElementAnswers, "choicesCSSclass");
+        // *** RESPONSES ***
+        switch (Chp03PickSceneElement) {
+            case Chp03PickSceneElementAnswers.iSayDressmaker:
+                // continue path here
+                await Spiegel_VN.ƒS.Speech.tell("Ich", "Auf zur Schneiderin!");
+                // dataForSave.score.scoreEmpathyPoints += 10;
+                console.log(Spiegel_VN.dataForSave.score.scoreEmpathyPoints);
+                Spiegel_VN.ƒS.Speech.clear();
+                return "03_01 Dressmaker"; // hier lieber: return "Chp ..."; if clause: ich nehm versch keys und sage: if dataforsave.pciekd = alle true, dann in der if clause return. if (dataforsave.pickedChoice, pickedotherchoice, usw. = true), dann gehts weiter
+                break;
+            case Chp03PickSceneElementAnswers.iSayFirewoodKailani:
+                // continue path here
+                // if (dataForSave.score.scoreCouragePoints === 50)
+                // wie mindestens 50?
+                await Spiegel_VN.ƒS.Speech.tell("Ich", "Gehen wir Holz hacken");
+                Spiegel_VN.ƒS.Speech.clear();
+                // await ƒS.Character.show(characters.Mama, characters.aisaka.pose.happy, ƒS.positions.bottomcenter);
+                // ƒS.Character.hide(characters.Mama);
+                return "03_021 Firewood with Kailani";
+                break;
+            case Chp03PickSceneElementAnswers.iSayWaterwellKailani:
+                // continue path here
+                await Spiegel_VN.ƒS.Speech.tell("Ich", "Gehen wir Wasser holen.");
+                Spiegel_VN.ƒS.Speech.clear();
+                return "03_022 Waterwell with Kailani";
+                break;
+            case Chp03PickSceneElementAnswers.iSayDiscoverDonkey:
+                // continue path here
+                await Spiegel_VN.ƒS.Speech.tell("Ich", "Süß, ein Esel!.");
+                Spiegel_VN.ƒS.Speech.clear();
+                return "03_E Discover donkey";
+                break;
+            case Chp03PickSceneElementAnswers.iSayDiscoverForest:
+                // continue path here
+                await Spiegel_VN.ƒS.Speech.tell("Ich", "Gehen wir den Wald anschauen.");
+                Spiegel_VN.ƒS.Speech.clear();
+                return "03_E Discover Forest";
+                break;
+            case Chp03PickSceneElementAnswers.iSayDiscoverLibrary:
+                // continue path here
+                await Spiegel_VN.ƒS.Speech.tell("Ich", "Ich liebe Bücher <3.");
+                Spiegel_VN.ƒS.Speech.clear();
+                return "03_E Discover Library";
+                break;
+            case Chp03PickSceneElementAnswers.iSayContinue:
+                // continue path here
+                await Spiegel_VN.ƒS.Speech.tell("Ich", "Weiter zur cut scene turmoil marketplace.");
+                Spiegel_VN.ƒS.Speech.clear();
+                return "03_CS Turmoil marketplace";
+                break;
+        }
+    }
     Spiegel_VN.Chp02_CS_NewDay = Chp02_CS_NewDay;
 })(Spiegel_VN || (Spiegel_VN = {}));
 var Spiegel_VN;
 (function (Spiegel_VN) {
-    async function Chp02_CS_Sleep() { }
+    async function Chp02_CS_Sleep() {
+        await Spiegel_VN.ƒS.Speech.tell("Ich", "Muss jetzt schlafen gehen.");
+        return "02_CS New day";
+    }
     Spiegel_VN.Chp02_CS_Sleep = Chp02_CS_Sleep;
 })(Spiegel_VN || (Spiegel_VN = {}));
 var Spiegel_VN;
 (function (Spiegel_VN) {
-    async function Chp03_01_Dressmaker() { }
+    async function Chp03_01_Dressmaker() {
+        Spiegel_VN.dataForSave.pickedChp03_Dressmaker = true;
+        await Spiegel_VN.ƒS.Speech.tell("Ich", "Kann jetzt meine Jacke von der Schneiderin abholen, cool.");
+        return "02_CS New day";
+    }
     Spiegel_VN.Chp03_01_Dressmaker = Chp03_01_Dressmaker;
 })(Spiegel_VN || (Spiegel_VN = {}));
 var Spiegel_VN;
 (function (Spiegel_VN) {
-    async function Chp03_021_FirewoodKailani() { }
+    async function Chp03_021_FirewoodKailani() {
+        Spiegel_VN.dataForSave.pickedChp03_FirewoodKailani = true;
+        await Spiegel_VN.ƒS.Speech.tell("Ich", "Kailani und ich gehen Holzhacken.");
+        return "02_CS New day";
+    }
     Spiegel_VN.Chp03_021_FirewoodKailani = Chp03_021_FirewoodKailani;
 })(Spiegel_VN || (Spiegel_VN = {}));
 var Spiegel_VN;
 (function (Spiegel_VN) {
-    async function Chp03_022_WaterWellKailani() { }
+    async function Chp03_022_WaterWellKailani() {
+        Spiegel_VN.dataForSave.pickedChp03_WaterwellKailani = true;
+        await Spiegel_VN.ƒS.Speech.tell("Ich", "Kailani und ich gehen Wasser holen.");
+        return "02_CS New day";
+    }
     Spiegel_VN.Chp03_022_WaterWellKailani = Chp03_022_WaterWellKailani;
 })(Spiegel_VN || (Spiegel_VN = {}));
 var Spiegel_VN;
 (function (Spiegel_VN) {
-    async function Chp03_E_DiscoverDonkey() { }
+    async function Chp03_E_DiscoverDonkey() {
+        await Spiegel_VN.ƒS.Speech.tell("Ich", "Hier kann ich die Nase vom Esel streicheln.");
+        return "02_CS New day";
+    }
     Spiegel_VN.Chp03_E_DiscoverDonkey = Chp03_E_DiscoverDonkey;
 })(Spiegel_VN || (Spiegel_VN = {}));
 var Spiegel_VN;
 (function (Spiegel_VN) {
-    async function Chp03_E_DiscoverForest() { }
+    async function Chp03_E_DiscoverForest() {
+        await Spiegel_VN.ƒS.Speech.tell("Ich", "Was es hier wohl gibt, im Wald?");
+        return "02_CS New day";
+    }
     Spiegel_VN.Chp03_E_DiscoverForest = Chp03_E_DiscoverForest;
 })(Spiegel_VN || (Spiegel_VN = {}));
 var Spiegel_VN;
 (function (Spiegel_VN) {
-    async function Chp03_E_DiscoverLibrary() { }
+    async function Chp03_E_DiscoverLibrary() {
+        await Spiegel_VN.ƒS.Speech.tell("Ich", "Juchuu Bücher.");
+        return "02_CS New day";
+    }
     Spiegel_VN.Chp03_E_DiscoverLibrary = Chp03_E_DiscoverLibrary;
 })(Spiegel_VN || (Spiegel_VN = {}));
 var Spiegel_VN;
 (function (Spiegel_VN) {
-    async function Chp03_CS_KailaniMissing() { }
+    async function Chp03_CS_KailaniMissing() {
+        await Spiegel_VN.ƒS.Speech.tell("Ich", "Kailani ist weg!");
+        // ** RANDOM TEXT ***
+        let randomTextChp04KailaniMissing = Spiegel_VN.ƒ.Random.default.getRangeFloored(1, 5); //gerundet
+        switch (randomTextChp04KailaniMissing) {
+            case 1:
+                await Spiegel_VN.ƒS.Speech.tell("Ich", "Random dialogue 1 -----------");
+                break;
+            case 2:
+                await Spiegel_VN.ƒS.Speech.tell("Ich", "Random dialogue 2 -----------");
+                break;
+            case 3:
+                await Spiegel_VN.ƒS.Speech.tell("Ich", "Random dialogue 3 -----------");
+                break;
+            case 4:
+                await Spiegel_VN.ƒS.Speech.tell("Ich", "Random dialogue 4 -----------");
+                break;
+            case 5:
+                await Spiegel_VN.ƒS.Speech.tell("Ich", "Random dialogue 5 -----------");
+                break;
+            default:
+                await Spiegel_VN.ƒS.Speech.tell("Ich", "Default--------------------");
+                break;
+        }
+        let Chp04PickSceneElementAnswers = {
+            iSayTalkToFamily: "Zuerst muss ich mit meiner Familie reden",
+            iSayTalkToElena: "Vielleicht sollte ich Mutti fragen ...",
+            iSayResearchLibrary: "Zur Bücherei",
+            iSayDiscoverGarden: "(Erkunden) Im Garten nach Kailani suchen",
+            iSayDiscoverMirror: "(Erkunden) Den Spiegel genauer anschauen",
+            iSayDiscoverGroundFloor: "(Erkunden) Das Erdgeschoss absuchen",
+            iSayContinue: "Weiter",
+        };
+        if (!Spiegel_VN.dataForSave.pickedChp04TalkToFamily || // ! heißt not: es wird nach entgegengesetztem Zustand gefragt // || = oder; && = und
+            !Spiegel_VN.dataForSave.pickedChp04TalkToElena ||
+            !Spiegel_VN.dataForSave.pickedChp04ResearchLibrary) {
+            delete Chp04PickSceneElementAnswers.iSayContinue;
+            // return Chp01_CS_ArrivalHome();
+        }
+        let Chp04PickSceneElement = await Spiegel_VN.ƒS.Menu.getInput(Chp04PickSceneElementAnswers, "choicesCSSclass");
+        // *** RESPONSES ***
+        switch (Chp04PickSceneElement) {
+            case Chp04PickSceneElementAnswers.iSayTalkToFamily:
+                // continue path here
+                await Spiegel_VN.ƒS.Speech.tell("Ich", "Wir treffen uns im Esszimmer zum reden");
+                // dataForSave.score.scoreEmpathyPoints += 10;
+                console.log(Spiegel_VN.dataForSave.score.scoreEmpathyPoints);
+                Spiegel_VN.ƒS.Speech.clear();
+                return "04_01 Talk with family"; // hier lieber: return "Chp ..."; if clause: ich nehm versch keys und sage: if dataforsave.pciekd = alle true, dann in der if clause return. if (dataforsave.pickedChoice, pickedotherchoice, usw. = true), dann gehts weiter
+                break;
+            case Chp04PickSceneElementAnswers.iSayTalkToElena:
+                // continue path here
+                // if (dataForSave.score.scoreCouragePoints === 50)
+                // wie mindestens 50?
+                await Spiegel_VN.ƒS.Speech.tell("Ich", "Ich muss zuerst mit Mutti reden");
+                Spiegel_VN.ƒS.Speech.clear();
+                // await ƒS.Character.show(characters.Mama, characters.aisaka.pose.happy, ƒS.positions.bottomcenter);
+                // ƒS.Character.hide(characters.Mama);
+                return "04_02 Talk with Elena";
+                break;
+            case Chp04PickSceneElementAnswers.iSayResearchLibrary:
+                // continue path here
+                await Spiegel_VN.ƒS.Speech.tell("Ich", "In der Bücherei finde ich bestimmt Infos.");
+                Spiegel_VN.ƒS.Speech.clear();
+                return "04_03 Research library";
+                break;
+            case Chp04PickSceneElementAnswers.iSayDiscoverMirror:
+                // continue path here
+                await Spiegel_VN.ƒS.Speech.tell("Ich", "Diesen Spiegel muss ich mir genauer anschauen ...");
+                Spiegel_VN.ƒS.Speech.clear();
+                return "04_E_Examine mirror";
+                break;
+            case Chp04PickSceneElementAnswers.iSayDiscoverGroundFloor:
+                // continue path here
+                await Spiegel_VN.ƒS.Speech.tell("Ich", "Ich suche erstmal das Erdgeschoss ab.");
+                Spiegel_VN.ƒS.Speech.clear();
+                return "04_E Search ground floor";
+                break;
+            case Chp04PickSceneElementAnswers.iSayDiscoverGarden:
+                // continue path here
+                await Spiegel_VN.ƒS.Speech.tell("Ich", "Ich suche mal den Garten ab.");
+                Spiegel_VN.ƒS.Speech.clear();
+                return "04_E Search garden";
+                break;
+            case Chp04PickSceneElementAnswers.iSayContinue:
+                // continue path here
+                await Spiegel_VN.ƒS.Speech.tell("Ich", "Ich gehe jetzt in den Wald cut scene.");
+                Spiegel_VN.ƒS.Speech.clear();
+                return "04_CS Entry forest";
+                break;
+        }
+    }
     Spiegel_VN.Chp03_CS_KailaniMissing = Chp03_CS_KailaniMissing;
 })(Spiegel_VN || (Spiegel_VN = {}));
 var Spiegel_VN;
 (function (Spiegel_VN) {
-    async function Chp03_CS_TurmoilMarketplace() { }
+    async function Chp03_CS_TurmoilMarketplace() {
+        await Spiegel_VN.ƒS.Speech.tell("Ich", "Auf dem Marktplatz ist ja was los ...");
+        return "03_CS Kailani is missing";
+    }
     Spiegel_VN.Chp03_CS_TurmoilMarketplace = Chp03_CS_TurmoilMarketplace;
+})(Spiegel_VN || (Spiegel_VN = {}));
+var Spiegel_VN;
+(function (Spiegel_VN) {
+    async function Chp04_01_TalkWithFamily() {
+        Spiegel_VN.dataForSave.pickedChp04TalkToFamily = true;
+        await Spiegel_VN.ƒS.Speech.tell("Ich", "Wir reden und reden und reden ... Kailani ist trotzdem einfach weg!");
+        return "03_CS Kailani is missing";
+    }
+    Spiegel_VN.Chp04_01_TalkWithFamily = Chp04_01_TalkWithFamily;
+})(Spiegel_VN || (Spiegel_VN = {}));
+var Spiegel_VN;
+(function (Spiegel_VN) {
+    async function Chp04_02_TalkWithElena() {
+        Spiegel_VN.dataForSave.pickedChp04TalkToElena = true;
+        await Spiegel_VN.ƒS.Speech.tell("Ich", "Mutti, kann ich mit dir reden?");
+        return "03_CS Kailani is missing";
+    }
+    Spiegel_VN.Chp04_02_TalkWithElena = Chp04_02_TalkWithElena;
+})(Spiegel_VN || (Spiegel_VN = {}));
+var Spiegel_VN;
+(function (Spiegel_VN) {
+    async function Chp04_03_ResearchLibrary() {
+        Spiegel_VN.dataForSave.pickedChp04ResearchLibrary = true;
+        await Spiegel_VN.ƒS.Speech.tell("Ich", "In der Bücherei finde ich bestimmt was.");
+        return "03_CS Kailani is missing";
+    }
+    Spiegel_VN.Chp04_03_ResearchLibrary = Chp04_03_ResearchLibrary;
+})(Spiegel_VN || (Spiegel_VN = {}));
+var Spiegel_VN;
+(function (Spiegel_VN) {
+    async function Chp04_E_ExamineMirror() {
+        await Spiegel_VN.ƒS.Speech.tell("Ich", "Der Spiegel glitzert so komisch ...");
+        return "03_CS Kailani is missing";
+    }
+    Spiegel_VN.Chp04_E_ExamineMirror = Chp04_E_ExamineMirror;
+})(Spiegel_VN || (Spiegel_VN = {}));
+var Spiegel_VN;
+(function (Spiegel_VN) {
+    async function Chp04_E_SearchGarden() {
+        await Spiegel_VN.ƒS.Speech.tell("Ich", "Vielleicht ist sie im Garten?");
+        return "03_CS Kailani is missing";
+    }
+    Spiegel_VN.Chp04_E_SearchGarden = Chp04_E_SearchGarden;
+})(Spiegel_VN || (Spiegel_VN = {}));
+var Spiegel_VN;
+(function (Spiegel_VN) {
+    async function Chp04_E_SearchGroundFloor() {
+        await Spiegel_VN.ƒS.Speech.tell("Ich", "Vielleicht ist sie im Erdgeschoss?");
+        return "03_CS Kailani is missing";
+    }
+    Spiegel_VN.Chp04_E_SearchGroundFloor = Chp04_E_SearchGroundFloor;
+})(Spiegel_VN || (Spiegel_VN = {}));
+var Spiegel_VN;
+(function (Spiegel_VN) {
+    async function Chp04_CS_EntryForest() {
+        await Spiegel_VN.ƒS.Speech.tell("Ich", "Cut scene: ab in den Wald");
+        // ** RANDOM TEXT ***
+        let randomTextChp05EntryForest = Spiegel_VN.ƒ.Random.default.getRangeFloored(1, 5); //gerundet
+        switch (randomTextChp05EntryForest) {
+            case 1:
+                await Spiegel_VN.ƒS.Speech.tell("Ich", "Random dialogue 1 -----------");
+                break;
+            case 2:
+                await Spiegel_VN.ƒS.Speech.tell("Ich", "Random dialogue 2 -----------");
+                break;
+            case 3:
+                await Spiegel_VN.ƒS.Speech.tell("Ich", "Random dialogue 3 -----------");
+                break;
+            case 4:
+                await Spiegel_VN.ƒS.Speech.tell("Ich", "Random dialogue 4 -----------");
+                break;
+            case 5:
+                await Spiegel_VN.ƒS.Speech.tell("Ich", "Random dialogue 5 -----------");
+                break;
+            default:
+                await Spiegel_VN.ƒS.Speech.tell("Ich", "Default--------------------");
+                break;
+        }
+        let Chp05PickSceneElementAnswers = {
+            iSayGoToClearing: "Hier geht's zur Lichtung",
+            iSayDiscoverOak: "(Erkunden) Schau mal diese alte Eiche an",
+            iSayDiscoverRiver: "(Erkunden) Ein kleines Bächlein gibts auch",
+            iSayContinue: "Weiter",
+        };
+        if (!Spiegel_VN.dataForSave.pickedChp05GoToClearing || // ! heißt not: es wird nach entgegengesetztem Zustand gefragt // || = oder; && = und
+            !Spiegel_VN.dataForSave.pickedChp05GiveBirdsFood ||
+            !Spiegel_VN.dataForSave.pickedChp05SingToBirds) {
+            delete Chp05PickSceneElementAnswers.iSayContinue;
+            // return Chp01_CS_ArrivalHome();
+        }
+        let Chp05PickSceneElement = await Spiegel_VN.ƒS.Menu.getInput(Chp05PickSceneElementAnswers, "choicesCSSclass");
+        // *** RESPONSES ***
+        switch (Chp05PickSceneElement) {
+            case Chp05PickSceneElementAnswers.iSayGoToClearing:
+                // continue path here
+                await Spiegel_VN.ƒS.Speech.tell("Ich", "Zur Lichtung gehen");
+                // dataForSave.score.scoreEmpathyPoints += 10;
+                console.log(Spiegel_VN.dataForSave.score.scoreEmpathyPoints);
+                Spiegel_VN.ƒS.Speech.clear();
+                return "05_01 Clearing"; // hier lieber: return "Chp ..."; if clause: ich nehm versch keys und sage: if dataforsave.pciekd = alle true, dann in der if clause return. if (dataforsave.pickedChoice, pickedotherchoice, usw. = true), dann gehts weiter
+                break;
+            case Chp05PickSceneElementAnswers.iSayDiscoverOak:
+                // continue path here
+                // if (dataForSave.score.scoreCouragePoints === 50)
+                // wie mindestens 50?
+                await Spiegel_VN.ƒS.Speech.tell("Ich", "(Erkunden) Eiche anschauen");
+                Spiegel_VN.ƒS.Speech.clear();
+                // await ƒS.Character.show(characters.Mama, characters.aisaka.pose.happy, ƒS.positions.bottomcenter);
+                // ƒS.Character.hide(characters.Mama);
+                return "05_E Discover oak";
+                break;
+            case Chp05PickSceneElementAnswers.iSayDiscoverRiver:
+                // continue path here
+                await Spiegel_VN.ƒS.Speech.tell("Ich", "Bächlein anschauen.");
+                Spiegel_VN.ƒS.Speech.clear();
+                return "05_E Discover river";
+                break;
+            case Chp05PickSceneElementAnswers.iSayContinue:
+                // continue path here
+                await Spiegel_VN.ƒS.Speech.tell("Ich", "Weiter zur cut scene: go home.");
+                Spiegel_VN.ƒS.Speech.clear();
+                return "05_CS Go home";
+                break;
+        }
+    }
+    Spiegel_VN.Chp04_CS_EntryForest = Chp04_CS_EntryForest;
+})(Spiegel_VN || (Spiegel_VN = {}));
+var Spiegel_VN;
+(function (Spiegel_VN) {
+    async function Chp05_01_Clearing() {
+        Spiegel_VN.dataForSave.pickedChp05GoToClearing = true;
+        await Spiegel_VN.ƒS.Speech.tell("Ich", "Diese Lichtung ist irgendwie magisch");
+        let Chp05ClearingPickSceneElementAnswers = {
+            iSaySingToBirds: "Zu Vögeln singen",
+            iSayGiveBirdsFood: "Zu fressen geben",
+            // iSayDiscoverOak: "(Erkunden) Eiche anschauen",
+            // iSayDiscoverRiver: "(Erkunden) Bächlein anschauen",
+            iSayContinue: "Weiter",
+        };
+        if (!Spiegel_VN.dataForSave.pickedChp05GoToClearing || // ! heißt not: es wird nach entgegengesetztem Zustand gefragt // || = oder; && = und
+            !Spiegel_VN.dataForSave.pickedChp05GiveBirdsFood ||
+            !Spiegel_VN.dataForSave.pickedChp05SingToBirds) {
+            delete Chp05ClearingPickSceneElementAnswers.iSayContinue;
+            // return Chp01_CS_ArrivalHome();
+        }
+        let Chp05ClearingPickSceneElement = await Spiegel_VN.ƒS.Menu.getInput(Chp05ClearingPickSceneElementAnswers, "choicesCSSclass");
+        // *** RESPONSES ***
+        switch (Chp05ClearingPickSceneElement) {
+            case Chp05ClearingPickSceneElementAnswers.iSaySingToBirds:
+                // continue path here
+                await Spiegel_VN.ƒS.Speech.tell("Ich", "Ich singe mal zu den Vögeln");
+                // dataForSave.score.scoreEmpathyPoints += 10;
+                console.log(Spiegel_VN.dataForSave.score.scoreEmpathyPoints);
+                Spiegel_VN.ƒS.Speech.clear();
+                return "05_02 Sing to birds"; // hier lieber: return "Chp ..."; if clause: ich nehm versch keys und sage: if dataforsave.pciekd = alle true, dann in der if clause return. if (dataforsave.pickedChoice, pickedotherchoice, usw. = true), dann gehts weiter
+                break;
+            case Chp05ClearingPickSceneElementAnswers.iSayGiveBirdsFood:
+                // continue path here
+                await Spiegel_VN.ƒS.Speech.tell("Ich", "Ich gebe den Vögeln mal zu fressen");
+                // dataForSave.score.scoreEmpathyPoints += 10;
+                console.log(Spiegel_VN.dataForSave.score.scoreEmpathyPoints);
+                Spiegel_VN.ƒS.Speech.clear();
+                return "05_03 Feed birds"; // hier lieber: return "Chp ..."; if clause: ich nehm versch keys und sage: if dataforsave.pciekd = alle true, dann in der if clause return. if (dataforsave.pickedChoice, pickedotherchoice, usw. = true), dann gehts weiter
+                break;
+            // case Chp05ClearingPickSceneElementAnswers.iSayDiscoverOak:
+            //   // continue path here
+            //   // if (dataForSave.score.scoreCouragePoints === 50)
+            //   // wie mindestens 50?
+            //   await ƒS.Speech.tell("Ich", "(Erkunden) Eiche anschauen");
+            //   ƒS.Speech.clear();
+            //   // await ƒS.Character.show(characters.Mama, characters.aisaka.pose.happy, ƒS.positions.bottomcenter);
+            //   // ƒS.Character.hide(characters.Mama);
+            //   return "05_E Discover oak";
+            //   break;
+            // case Chp05ClearingPickSceneElementAnswers.iSayDiscoverRiver:
+            //   // continue path here
+            //   await ƒS.Speech.tell("Ich", "Bächlein anschauen.");
+            //   ƒS.Speech.clear();
+            //   return "05_E Discover river";
+            //   break;
+            case Chp05ClearingPickSceneElementAnswers.iSayContinue:
+                // continue path here
+                await Spiegel_VN.ƒS.Speech.tell("Ich", "Nochmal zurück zur Ursprungsszene entry forest.");
+                Spiegel_VN.ƒS.Speech.clear();
+                return "04_CS Entry forest";
+                break;
+        }
+    }
+    Spiegel_VN.Chp05_01_Clearing = Chp05_01_Clearing;
+})(Spiegel_VN || (Spiegel_VN = {}));
+var Spiegel_VN;
+(function (Spiegel_VN) {
+    async function Chp05_02_SingToBirds() {
+        Spiegel_VN.dataForSave.pickedChp05SingToBirds = true;
+        await Spiegel_VN.ƒS.Speech.tell("Ich", "Hier singe ich zu den Vögeln");
+        return "05_01 Clearing";
+    }
+    Spiegel_VN.Chp05_02_SingToBirds = Chp05_02_SingToBirds;
+})(Spiegel_VN || (Spiegel_VN = {}));
+var Spiegel_VN;
+(function (Spiegel_VN) {
+    async function Chp05_03_FeedBirds() {
+        Spiegel_VN.dataForSave.pickedChp05GiveBirdsFood = true;
+        await Spiegel_VN.ƒS.Speech.tell("Ich", "Hier füttere ich die Vögel");
+        return "05_01 Clearing";
+    }
+    Spiegel_VN.Chp05_03_FeedBirds = Chp05_03_FeedBirds;
+})(Spiegel_VN || (Spiegel_VN = {}));
+var Spiegel_VN;
+(function (Spiegel_VN) {
+    async function Chp05_E_DiscoverOak() {
+        await Spiegel_VN.ƒS.Speech.tell("Ich", "Die alte Eiche entdecken");
+        return "04_CS Entry forest";
+    }
+    Spiegel_VN.Chp05_E_DiscoverOak = Chp05_E_DiscoverOak;
+})(Spiegel_VN || (Spiegel_VN = {}));
+var Spiegel_VN;
+(function (Spiegel_VN) {
+    async function Chp05_E_DiscoverRiver() {
+        await Spiegel_VN.ƒS.Speech.tell("Ich", "Das kleine Bächlein entdecken");
+        return "04_CS Entry forest";
+    }
+    Spiegel_VN.Chp05_E_DiscoverRiver = Chp05_E_DiscoverRiver;
+})(Spiegel_VN || (Spiegel_VN = {}));
+var Spiegel_VN;
+(function (Spiegel_VN) {
+    async function Chp05_CS_GoHome() {
+        await Spiegel_VN.ƒS.Speech.tell("Ich", "Cut scene: es wird dunkel, ab nach Hause");
+        // ** RANDOM TEXT ***
+        let randomTextChp06GoHome = Spiegel_VN.ƒ.Random.default.getRangeFloored(1, 5); //gerundet
+        switch (randomTextChp06GoHome) {
+            case 1:
+                await Spiegel_VN.ƒS.Speech.tell("Ich", "Random dialogue 1 -----------");
+                break;
+            case 2:
+                await Spiegel_VN.ƒS.Speech.tell("Ich", "Random dialogue 2 -----------");
+                break;
+            case 3:
+                await Spiegel_VN.ƒS.Speech.tell("Ich", "Random dialogue 3 -----------");
+                break;
+            case 4:
+                await Spiegel_VN.ƒS.Speech.tell("Ich", "Random dialogue 4 -----------");
+                break;
+            case 5:
+                await Spiegel_VN.ƒS.Speech.tell("Ich", "Random dialogue 5 -----------");
+                break;
+            default:
+                await Spiegel_VN.ƒS.Speech.tell("Ich", "Default--------------------");
+                break;
+        }
+        let Chp06PickSceneElementAnswers = {
+            iSayTalkToMama: "Mama, was gibt's denn?",
+            iSayDepartureRiver: "Ich muss los ...",
+        };
+        let Chp06PickSceneElement = await Spiegel_VN.ƒS.Menu.getInput(Chp06PickSceneElementAnswers, "choicesCSSclass");
+        // *** RESPONSES ***
+        switch (Chp06PickSceneElement) {
+            case Chp06PickSceneElementAnswers.iSayTalkToMama:
+                // continue path here
+                await Spiegel_VN.ƒS.Speech.tell("Ich", "Hast du etwas für mich?");
+                // dataForSave.score.scoreEmpathyPoints += 10;
+                console.log(Spiegel_VN.dataForSave.score.scoreEmpathyPoints);
+                Spiegel_VN.ƒS.Speech.clear();
+                return "06_02 Recieve iron"; // hier lieber: return "Chp ..."; if clause: ich nehm versch keys und sage: if dataforsave.pciekd = alle true, dann in der if clause return. if (dataforsave.pickedChoice, pickedotherchoice, usw. = true), dann gehts weiter
+                break;
+            case Chp06PickSceneElementAnswers.iSayDepartureRiver:
+                // continue path here
+                // if (dataForSave.score.scoreCouragePoints === 50)
+                // wie mindestens 50?
+                await Spiegel_VN.ƒS.Speech.tell("Ich", "Meine Reise beginnt");
+                Spiegel_VN.ƒS.Speech.clear();
+                // await ƒS.Character.show(characters.Mama, characters.aisaka.pose.happy, ƒS.positions.bottomcenter);
+                // ƒS.Character.hide(characters.Mama);
+                return "06_03 Departure";
+                break;
+        }
+    }
+    Spiegel_VN.Chp05_CS_GoHome = Chp05_CS_GoHome;
+})(Spiegel_VN || (Spiegel_VN = {}));
+var Spiegel_VN;
+(function (Spiegel_VN) {
+    async function Chp06_02_ReceiveItemMama() {
+        await Spiegel_VN.ƒS.Speech.tell("Ich", "Hier bekomme ich was von Mama");
+        return "06_03 Departure";
+    }
+    Spiegel_VN.Chp06_02_ReceiveItemMama = Chp06_02_ReceiveItemMama;
+})(Spiegel_VN || (Spiegel_VN = {}));
+var Spiegel_VN;
+(function (Spiegel_VN) {
+    async function Chp06_03_DepartureRiver() {
+        await Spiegel_VN.ƒS.Speech.tell("Ich", "Jetzt reise ich in die Spiegelwelt");
+        return "06_CS Arrival Meadow";
+    }
+    Spiegel_VN.Chp06_03_DepartureRiver = Chp06_03_DepartureRiver;
+})(Spiegel_VN || (Spiegel_VN = {}));
+var Spiegel_VN;
+(function (Spiegel_VN) {
+    async function Chp06_CS_ArrivalMeadow() {
+        await Spiegel_VN.ƒS.Speech.tell("Ich", "Cut scene: wir sind auf der Wiese angekommen");
+        // ** RANDOM TEXT ***
+        let randomTextChp07ArrivalMeadow = Spiegel_VN.ƒ.Random.default.getRangeFloored(1, 5); //gerundet
+        switch (randomTextChp07ArrivalMeadow) {
+            case 1:
+                await Spiegel_VN.ƒS.Speech.tell("Ich", "Random dialogue 1 -----------");
+                break;
+            case 2:
+                await Spiegel_VN.ƒS.Speech.tell("Ich", "Random dialogue 2 -----------");
+                break;
+            case 3:
+                await Spiegel_VN.ƒS.Speech.tell("Ich", "Random dialogue 3 -----------");
+                break;
+            case 4:
+                await Spiegel_VN.ƒS.Speech.tell("Ich", "Random dialogue 4 -----------");
+                break;
+            case 5:
+                await Spiegel_VN.ƒS.Speech.tell("Ich", "Random dialogue 5 -----------");
+                break;
+            default:
+                await Spiegel_VN.ƒS.Speech.tell("Ich", "Default--------------------");
+                break;
+        }
+        let Chp07PickSceneElementAnswers = {
+            iSayTravelToWhary: "Richtung Stadt gehen",
+            iSayDiscoverBees: "(Erkunden) Bienen anschauen",
+            iSayDiscoverFlowers: "(Erkunden) Blumen anschauen",
+            iSayContinue: "Weiter",
+        };
+        if (!Spiegel_VN.dataForSave.pickedChp07TravelToWhary // ! heißt not: es wird nach entgegengesetztem Zustand gefragt // || = oder; && = und
+        ) {
+            delete Chp07PickSceneElementAnswers.iSayContinue;
+            // return Chp01_CS_ArrivalHome();
+        }
+        let Chp07PickSceneElement = await Spiegel_VN.ƒS.Menu.getInput(Chp07PickSceneElementAnswers, "choicesCSSclass");
+        // *** RESPONSES ***
+        switch (Chp07PickSceneElement) {
+            case Chp07PickSceneElementAnswers.iSayTravelToWhary:
+                // continue path here
+                await Spiegel_VN.ƒS.Speech.tell("Ich", "Lez go to da citayyy");
+                // dataForSave.score.scoreEmpathyPoints += 10;
+                console.log(Spiegel_VN.dataForSave.score.scoreEmpathyPoints);
+                Spiegel_VN.ƒS.Speech.clear();
+                return "07_01 Travel to to Whary"; // hier lieber: return "Chp ..."; if clause: ich nehm versch keys und sage: if dataforsave.pciekd = alle true, dann in der if clause return. if (dataforsave.pickedChoice, pickedotherchoice, usw. = true), dann gehts weiter
+                break;
+            case Chp07PickSceneElementAnswers.iSayDiscoverBees:
+                // continue path here
+                // if (dataForSave.score.scoreCouragePoints === 50)
+                // wie mindestens 50?
+                await Spiegel_VN.ƒS.Speech.tell("Ich", "Die Bienen sind so hübsch!");
+                Spiegel_VN.ƒS.Speech.clear();
+                // await ƒS.Character.show(characters.Mama, characters.aisaka.pose.happy, ƒS.positions.bottomcenter);
+                // ƒS.Character.hide(characters.Mama);
+                return "07_E Discover bees";
+                break;
+            case Chp07PickSceneElementAnswers.iSayDiscoverFlowers:
+                // continue path here
+                await Spiegel_VN.ƒS.Speech.tell("Ich", "Die Blumen sind so farbig ...");
+                Spiegel_VN.ƒS.Speech.clear();
+                return "07_E Discover flowers";
+                break;
+            case Chp07PickSceneElementAnswers.iSayContinue:
+                // continue path here
+                await Spiegel_VN.ƒS.Speech.tell("Ich", "Weiter zur cut scene: Line at city gates.");
+                Spiegel_VN.ƒS.Speech.clear();
+                return "07_CS Line at gates";
+                break;
+        }
+    }
+    Spiegel_VN.Chp06_CS_ArrivalMeadow = Chp06_CS_ArrivalMeadow;
+})(Spiegel_VN || (Spiegel_VN = {}));
+var Spiegel_VN;
+(function (Spiegel_VN) {
+    async function Chp07_02_TravelToWhary() {
+        Spiegel_VN.dataForSave.pickedChp07TravelToWhary = true;
+        await Spiegel_VN.ƒS.Speech.tell("Ich", "Es geht los, es geht los, es geht los nach Wharyyy");
+        return "06_CS Arrival Meadow";
+    }
+    Spiegel_VN.Chp07_02_TravelToWhary = Chp07_02_TravelToWhary;
+})(Spiegel_VN || (Spiegel_VN = {}));
+var Spiegel_VN;
+(function (Spiegel_VN) {
+    async function Chp07_E_DiscoverBees() {
+        await Spiegel_VN.ƒS.Speech.tell("Ich", "Diese Biene ist echt komisch. So fett. Und grellgelb.");
+        return "06_CS Arrival Meadow";
+    }
+    Spiegel_VN.Chp07_E_DiscoverBees = Chp07_E_DiscoverBees;
+})(Spiegel_VN || (Spiegel_VN = {}));
+var Spiegel_VN;
+(function (Spiegel_VN) {
+    async function Chp07_E_DiscoverFlowers() {
+        await Spiegel_VN.ƒS.Speech.tell("Ich", "Oops, die Blume geht ja sofort kaputt.");
+        return "06_CS Arrival Meadow";
+    }
+    Spiegel_VN.Chp07_E_DiscoverFlowers = Chp07_E_DiscoverFlowers;
+})(Spiegel_VN || (Spiegel_VN = {}));
+var Spiegel_VN;
+(function (Spiegel_VN) {
+    async function Chp07_CS_LineAtGates() {
+        await Spiegel_VN.ƒS.Speech.tell("Ich", "Cut scene: wir stehen an vor den Stadttoren und entdecken Flynn");
+        // ** RANDOM TEXT ***
+        let randomTextChp08LineAtGates = Spiegel_VN.ƒ.Random.default.getRangeFloored(1, 5); //gerundet
+        switch (randomTextChp08LineAtGates) {
+            case 1:
+                await Spiegel_VN.ƒS.Speech.tell("Ich", "Random dialogue 1 -----------");
+                break;
+            case 2:
+                await Spiegel_VN.ƒS.Speech.tell("Ich", "Random dialogue 2 -----------");
+                break;
+            case 3:
+                await Spiegel_VN.ƒS.Speech.tell("Ich", "Random dialogue 3 -----------");
+                break;
+            case 4:
+                await Spiegel_VN.ƒS.Speech.tell("Ich", "Random dialogue 4 -----------");
+                break;
+            case 5:
+                await Spiegel_VN.ƒS.Speech.tell("Ich", "Random dialogue 5 -----------");
+                break;
+            default:
+                await Spiegel_VN.ƒS.Speech.tell("Ich", "Default--------------------");
+                break;
+        }
+        let Chp08PickSceneElementAnswers = {
+            iSayCatchFlynnGates: "Flynn gleich ansprechen",
+            iSayEnterCity: "Eintritt Stadt",
+        };
+        // if (
+        //   !dataForSave.pickedChp07TravelToWhary // ! heißt not: es wird nach entgegengesetztem Zustand gefragt // || = oder; && = und
+        // ) {
+        //   delete Chp08PickSceneElementAnswers.iSayContinue;
+        //   // return Chp01_CS_ArrivalHome();
+        // }
+        let Chp08PickSceneElement = await Spiegel_VN.ƒS.Menu.getInput(Chp08PickSceneElementAnswers, "choicesCSSclass");
+        // *** RESPONSES ***
+        switch (Chp08PickSceneElement) {
+            case Chp08PickSceneElementAnswers.iSayCatchFlynnGates:
+                // continue path here
+                await Spiegel_VN.ƒS.Speech.tell("Ich", "Okay, wir sprechen Flynn gleich an");
+                // dataForSave.score.scoreEmpathyPoints += 10;
+                console.log(Spiegel_VN.dataForSave.score.scoreEmpathyPoints);
+                Spiegel_VN.ƒS.Speech.clear();
+                return "08_01 Meet Flynn gates"; // hier lieber: return "Chp ..."; if clause: ich nehm versch keys und sage: if dataforsave.pciekd = alle true, dann in der if clause return. if (dataforsave.pickedChoice, pickedotherchoice, usw. = true), dann gehts weiter
+                break;
+            case Chp08PickSceneElementAnswers.iSayEnterCity:
+                // continue path here
+                // if (dataForSave.score.scoreCouragePoints === 50)
+                // wie mindestens 50?
+                await Spiegel_VN.ƒS.Speech.tell("Ich", "Zuerst will ich in diese blöde Stadt");
+                Spiegel_VN.ƒS.Speech.clear();
+                // await ƒS.Character.show(characters.Mama, characters.aisaka.pose.happy, ƒS.positions.bottomcenter);
+                // ƒS.Character.hide(characters.Mama);
+                return "08_03 Enter City";
+                break;
+        }
+    }
+    Spiegel_VN.Chp07_CS_LineAtGates = Chp07_CS_LineAtGates;
+})(Spiegel_VN || (Spiegel_VN = {}));
+var Spiegel_VN;
+(function (Spiegel_VN) {
+    async function Chp08_01_MeetFlynnAtGates() { }
+    Spiegel_VN.Chp08_01_MeetFlynnAtGates = Chp08_01_MeetFlynnAtGates;
+})(Spiegel_VN || (Spiegel_VN = {}));
+var Spiegel_VN;
+(function (Spiegel_VN) {
+    async function Chp08_02_MeetFlynnInAlley() { }
+    Spiegel_VN.Chp08_02_MeetFlynnInAlley = Chp08_02_MeetFlynnInAlley;
+})(Spiegel_VN || (Spiegel_VN = {}));
+var Spiegel_VN;
+(function (Spiegel_VN) {
+    async function Chp08_03_EnterCity() { }
+    Spiegel_VN.Chp08_03_EnterCity = Chp08_03_EnterCity;
+})(Spiegel_VN || (Spiegel_VN = {}));
+var Spiegel_VN;
+(function (Spiegel_VN) {
+    async function Chp08_0411_NiceStayFlynn() { }
+    Spiegel_VN.Chp08_0411_NiceStayFlynn = Chp08_0411_NiceStayFlynn;
+})(Spiegel_VN || (Spiegel_VN = {}));
+var Spiegel_VN;
+(function (Spiegel_VN) {
+    async function Chp08_041_ChooseNiceStay() { }
+    Spiegel_VN.Chp08_041_ChooseNiceStay = Chp08_041_ChooseNiceStay;
+})(Spiegel_VN || (Spiegel_VN = {}));
+var Spiegel_VN;
+(function (Spiegel_VN) {
+    async function Chp08_0421_UglyStayFlynn() { }
+    Spiegel_VN.Chp08_0421_UglyStayFlynn = Chp08_0421_UglyStayFlynn;
+})(Spiegel_VN || (Spiegel_VN = {}));
+var Spiegel_VN;
+(function (Spiegel_VN) {
+    async function Chp08_042_ChooseUglyStay() { }
+    Spiegel_VN.Chp08_042_ChooseUglyStay = Chp08_042_ChooseUglyStay;
+})(Spiegel_VN || (Spiegel_VN = {}));
+var Spiegel_VN;
+(function (Spiegel_VN) {
+    async function Chp08_04_ChooseStay() { }
+    Spiegel_VN.Chp08_04_ChooseStay = Chp08_04_ChooseStay;
+})(Spiegel_VN || (Spiegel_VN = {}));
+var Spiegel_VN;
+(function (Spiegel_VN) {
+    async function Chp08_E_DiscoverHay() { }
+    Spiegel_VN.Chp08_E_DiscoverHay = Chp08_E_DiscoverHay;
+})(Spiegel_VN || (Spiegel_VN = {}));
+var Spiegel_VN;
+(function (Spiegel_VN) {
+    async function Chp08_E_DiscoverVillagers() { }
+    Spiegel_VN.Chp08_E_DiscoverVillagers = Chp08_E_DiscoverVillagers;
+})(Spiegel_VN || (Spiegel_VN = {}));
+var Spiegel_VN;
+(function (Spiegel_VN) {
+    async function Chp08_E_DiscoverWindows() { }
+    Spiegel_VN.Chp08_E_DiscoverWindows = Chp08_E_DiscoverWindows;
+})(Spiegel_VN || (Spiegel_VN = {}));
+var Spiegel_VN;
+(function (Spiegel_VN) {
+    async function Chp08_CS_TalkToFlynn() { }
+    Spiegel_VN.Chp08_CS_TalkToFlynn = Chp08_CS_TalkToFlynn;
+})(Spiegel_VN || (Spiegel_VN = {}));
+var Spiegel_VN;
+(function (Spiegel_VN) {
+    async function Chp08_CS_Sleep() { }
+    Spiegel_VN.Chp08_CS_Sleep = Chp08_CS_Sleep;
+})(Spiegel_VN || (Spiegel_VN = {}));
+var Spiegel_VN;
+(function (Spiegel_VN) {
+    async function Chp09_011_TalkToBeggar() { }
+    Spiegel_VN.Chp09_011_TalkToBeggar = Chp09_011_TalkToBeggar;
+})(Spiegel_VN || (Spiegel_VN = {}));
+var Spiegel_VN;
+(function (Spiegel_VN) {
+    async function Chp09_012_MakeAWish() { }
+    Spiegel_VN.Chp09_012_MakeAWish = Chp09_012_MakeAWish;
+})(Spiegel_VN || (Spiegel_VN = {}));
+var Spiegel_VN;
+(function (Spiegel_VN) {
+    async function Chp09_01_ResearchMarketplace() { }
+    Spiegel_VN.Chp09_01_ResearchMarketplace = Chp09_01_ResearchMarketplace;
+})(Spiegel_VN || (Spiegel_VN = {}));
+var Spiegel_VN;
+(function (Spiegel_VN) {
+    async function Chp09_02_TalkToInnkeeper() { }
+    Spiegel_VN.Chp09_02_TalkToInnkeeper = Chp09_02_TalkToInnkeeper;
+})(Spiegel_VN || (Spiegel_VN = {}));
+var Spiegel_VN;
+(function (Spiegel_VN) {
+    async function Chp09_03_TalkToCook() { }
+    Spiegel_VN.Chp09_03_TalkToCook = Chp09_03_TalkToCook;
+})(Spiegel_VN || (Spiegel_VN = {}));
+var Spiegel_VN;
+(function (Spiegel_VN) {
+    async function Chp09_04_TalkToStablehand() { }
+    Spiegel_VN.Chp09_04_TalkToStablehand = Chp09_04_TalkToStablehand;
+})(Spiegel_VN || (Spiegel_VN = {}));
+var Spiegel_VN;
+(function (Spiegel_VN) {
+    async function Chp09_E_ListenToVillagers() { }
+    Spiegel_VN.Chp09_E_ListenToVillagers = Chp09_E_ListenToVillagers;
+})(Spiegel_VN || (Spiegel_VN = {}));
+var Spiegel_VN;
+(function (Spiegel_VN) {
+    async function Chp09_E_TalkToMerchants() { }
+    Spiegel_VN.Chp09_E_TalkToMerchants = Chp09_E_TalkToMerchants;
+})(Spiegel_VN || (Spiegel_VN = {}));
+var Spiegel_VN;
+(function (Spiegel_VN) {
+    async function Chp09_E_TalkToVillagers() { }
+    Spiegel_VN.Chp09_E_TalkToVillagers = Chp09_E_TalkToVillagers;
+})(Spiegel_VN || (Spiegel_VN = {}));
+var Spiegel_VN;
+(function (Spiegel_VN) {
+    async function Chp09_CS_ArrivalLake() { }
+    Spiegel_VN.Chp09_CS_ArrivalLake = Chp09_CS_ArrivalLake;
+})(Spiegel_VN || (Spiegel_VN = {}));
+var Spiegel_VN;
+(function (Spiegel_VN) {
+    async function Chp10_01_BuildARaft() { }
+    Spiegel_VN.Chp10_01_BuildARaft = Chp10_01_BuildARaft;
+})(Spiegel_VN || (Spiegel_VN = {}));
+var Spiegel_VN;
+(function (Spiegel_VN) {
+    async function Chp10_02_CrossLake() { }
+    Spiegel_VN.Chp10_02_CrossLake = Chp10_02_CrossLake;
+})(Spiegel_VN || (Spiegel_VN = {}));
+var Spiegel_VN;
+(function (Spiegel_VN) {
+    async function Chp10_031_SingToBirds() { }
+    Spiegel_VN.Chp10_031_SingToBirds = Chp10_031_SingToBirds;
+})(Spiegel_VN || (Spiegel_VN = {}));
+var Spiegel_VN;
+(function (Spiegel_VN) {
+    async function Chp10_032_UseMirror() { }
+    Spiegel_VN.Chp10_032_UseMirror = Chp10_032_UseMirror;
+})(Spiegel_VN || (Spiegel_VN = {}));
+var Spiegel_VN;
+(function (Spiegel_VN) {
+    async function Chp10_03_AttackBirds() { }
+    Spiegel_VN.Chp10_03_AttackBirds = Chp10_03_AttackBirds;
+})(Spiegel_VN || (Spiegel_VN = {}));
+var Spiegel_VN;
+(function (Spiegel_VN) {
+    async function Chp10_041_FriendlyBirds() { }
+    Spiegel_VN.Chp10_041_FriendlyBirds = Chp10_041_FriendlyBirds;
+})(Spiegel_VN || (Spiegel_VN = {}));
+var Spiegel_VN;
+(function (Spiegel_VN) {
+    async function Chp10_042_BirdsDisappear() { }
+    Spiegel_VN.Chp10_042_BirdsDisappear = Chp10_042_BirdsDisappear;
+})(Spiegel_VN || (Spiegel_VN = {}));
+var Spiegel_VN;
+(function (Spiegel_VN) {
+    async function Chp10_E_CityLightsWhary() { }
+    Spiegel_VN.Chp10_E_CityLightsWhary = Chp10_E_CityLightsWhary;
+})(Spiegel_VN || (Spiegel_VN = {}));
+var Spiegel_VN;
+(function (Spiegel_VN) {
+    async function Chp10_E_DiscoverLake() { }
+    Spiegel_VN.Chp10_E_DiscoverLake = Chp10_E_DiscoverLake;
+})(Spiegel_VN || (Spiegel_VN = {}));
+var Spiegel_VN;
+(function (Spiegel_VN) {
+    async function Chp10_E_DiscoverLakewater() { }
+    Spiegel_VN.Chp10_E_DiscoverLakewater = Chp10_E_DiscoverLakewater;
+})(Spiegel_VN || (Spiegel_VN = {}));
+var Spiegel_VN;
+(function (Spiegel_VN) {
+    async function Chp10_CS_ArrivalOtherSide() { }
+    Spiegel_VN.Chp10_CS_ArrivalOtherSide = Chp10_CS_ArrivalOtherSide;
+})(Spiegel_VN || (Spiegel_VN = {}));
+var Spiegel_VN;
+(function (Spiegel_VN) {
+    async function Chp11_01_SearchHidingPlace() { }
+    Spiegel_VN.Chp11_01_SearchHidingPlace = Chp11_01_SearchHidingPlace;
+})(Spiegel_VN || (Spiegel_VN = {}));
+var Spiegel_VN;
+(function (Spiegel_VN) {
+    async function Chp11_02_FindIron() { }
+    Spiegel_VN.Chp11_02_FindIron = Chp11_02_FindIron;
+})(Spiegel_VN || (Spiegel_VN = {}));
+var Spiegel_VN;
+(function (Spiegel_VN) {
+    async function Chp11_03_WatchFactory() { }
+    Spiegel_VN.Chp11_03_WatchFactory = Chp11_03_WatchFactory;
+})(Spiegel_VN || (Spiegel_VN = {}));
+var Spiegel_VN;
+(function (Spiegel_VN) {
+    async function Chp11_04_TryBreakIn() { }
+    Spiegel_VN.Chp11_04_TryBreakIn = Chp11_04_TryBreakIn;
+})(Spiegel_VN || (Spiegel_VN = {}));
+var Spiegel_VN;
+(function (Spiegel_VN) {
+    async function Chp11_E_DiscoverForest() { }
+    Spiegel_VN.Chp11_E_DiscoverForest = Chp11_E_DiscoverForest;
+})(Spiegel_VN || (Spiegel_VN = {}));
+var Spiegel_VN;
+(function (Spiegel_VN) {
+    async function Chp11_E_DiscoverHuts() { }
+    Spiegel_VN.Chp11_E_DiscoverHuts = Chp11_E_DiscoverHuts;
+})(Spiegel_VN || (Spiegel_VN = {}));
+var Spiegel_VN;
+(function (Spiegel_VN) {
+    async function Chp11_E_DiscoverTower() { }
+    Spiegel_VN.Chp11_E_DiscoverTower = Chp11_E_DiscoverTower;
+})(Spiegel_VN || (Spiegel_VN = {}));
+var Spiegel_VN;
+(function (Spiegel_VN) {
+    async function Chp11_CS_Sleep() { }
+    Spiegel_VN.Chp11_CS_Sleep = Chp11_CS_Sleep;
+})(Spiegel_VN || (Spiegel_VN = {}));
+var Spiegel_VN;
+(function (Spiegel_VN) {
+    async function Chp12_011_SneakIn() { }
+    Spiegel_VN.Chp12_011_SneakIn = Chp12_011_SneakIn;
+})(Spiegel_VN || (Spiegel_VN = {}));
+var Spiegel_VN;
+(function (Spiegel_VN) {
+    async function Chp12_012_SneakAmongSlaves() { }
+    Spiegel_VN.Chp12_012_SneakAmongSlaves = Chp12_012_SneakAmongSlaves;
+})(Spiegel_VN || (Spiegel_VN = {}));
+var Spiegel_VN;
+(function (Spiegel_VN) {
+    async function Chp12_02_TalkToSlaves() { }
+    Spiegel_VN.Chp12_02_TalkToSlaves = Chp12_02_TalkToSlaves;
+})(Spiegel_VN || (Spiegel_VN = {}));
+var Spiegel_VN;
+(function (Spiegel_VN) {
+    async function Chp12_03_SearchForKailani() { }
+    Spiegel_VN.Chp12_03_SearchForKailani = Chp12_03_SearchForKailani;
+})(Spiegel_VN || (Spiegel_VN = {}));
+var Spiegel_VN;
+(function (Spiegel_VN) {
+    async function Chp12_04_ListenToGuards() { }
+    Spiegel_VN.Chp12_04_ListenToGuards = Chp12_04_ListenToGuards;
+})(Spiegel_VN || (Spiegel_VN = {}));
+var Spiegel_VN;
+(function (Spiegel_VN) {
+    async function Chp12_05_BackToHidingPlace() { }
+    Spiegel_VN.Chp12_05_BackToHidingPlace = Chp12_05_BackToHidingPlace;
+})(Spiegel_VN || (Spiegel_VN = {}));
+var Spiegel_VN;
+(function (Spiegel_VN) {
+    async function Chp12_061_BirdsOfferHelp() { }
+    Spiegel_VN.Chp12_061_BirdsOfferHelp = Chp12_061_BirdsOfferHelp;
+})(Spiegel_VN || (Spiegel_VN = {}));
+var Spiegel_VN;
+(function (Spiegel_VN) {
+    async function Chp12_062_MakeAWish() { }
+    Spiegel_VN.Chp12_062_MakeAWish = Chp12_062_MakeAWish;
+})(Spiegel_VN || (Spiegel_VN = {}));
+var Spiegel_VN;
+(function (Spiegel_VN) {
+    async function Chp12_E_DiscoverVillage() { }
+    Spiegel_VN.Chp12_E_DiscoverVillage = Chp12_E_DiscoverVillage;
+})(Spiegel_VN || (Spiegel_VN = {}));
+var Spiegel_VN;
+(function (Spiegel_VN) {
+    async function Chp12_E_Productionsite() { }
+    Spiegel_VN.Chp12_E_Productionsite = Chp12_E_Productionsite;
+})(Spiegel_VN || (Spiegel_VN = {}));
+var Spiegel_VN;
+(function (Spiegel_VN) {
+    async function Chp12_E_DiscoverSlaves() { }
+    Spiegel_VN.Chp12_E_DiscoverSlaves = Chp12_E_DiscoverSlaves;
+})(Spiegel_VN || (Spiegel_VN = {}));
+var Spiegel_VN;
+(function (Spiegel_VN) {
+    async function Chp12_CS_TalkToFlynn() { }
+    Spiegel_VN.Chp12_CS_TalkToFlynn = Chp12_CS_TalkToFlynn;
+})(Spiegel_VN || (Spiegel_VN = {}));
+var Spiegel_VN;
+(function (Spiegel_VN) {
+    async function Chp13_01_EntryVillage() { }
+    Spiegel_VN.Chp13_01_EntryVillage = Chp13_01_EntryVillage;
+})(Spiegel_VN || (Spiegel_VN = {}));
+var Spiegel_VN;
+(function (Spiegel_VN) {
+    async function Chp13_02_GoToTower() { }
+    Spiegel_VN.Chp13_02_GoToTower = Chp13_02_GoToTower;
+})(Spiegel_VN || (Spiegel_VN = {}));
+var Spiegel_VN;
+(function (Spiegel_VN) {
+    async function Chp13_03_EntryTower() { }
+    Spiegel_VN.Chp13_03_EntryTower = Chp13_03_EntryTower;
+})(Spiegel_VN || (Spiegel_VN = {}));
+var Spiegel_VN;
+(function (Spiegel_VN) {
+    async function Chp13_04_SneakPastDemon() { }
+    Spiegel_VN.Chp13_04_SneakPastDemon = Chp13_04_SneakPastDemon;
+})(Spiegel_VN || (Spiegel_VN = {}));
+var Spiegel_VN;
+(function (Spiegel_VN) {
+    async function Chp13_E_DiscoverFamilyPortrait() { }
+    Spiegel_VN.Chp13_E_DiscoverFamilyPortrait = Chp13_E_DiscoverFamilyPortrait;
+})(Spiegel_VN || (Spiegel_VN = {}));
+var Spiegel_VN;
+(function (Spiegel_VN) {
+    async function Chp13_E_DiscoverLockedDoor() { }
+    Spiegel_VN.Chp13_E_DiscoverLockedDoor = Chp13_E_DiscoverLockedDoor;
+})(Spiegel_VN || (Spiegel_VN = {}));
+var Spiegel_VN;
+(function (Spiegel_VN) {
+    async function Chp13_E_DiscoverSneakAround() { }
+    Spiegel_VN.Chp13_E_DiscoverSneakAround = Chp13_E_DiscoverSneakAround;
+})(Spiegel_VN || (Spiegel_VN = {}));
+var Spiegel_VN;
+(function (Spiegel_VN) {
+    async function Chp13_E_DiscoverTowerWindow() { }
+    Spiegel_VN.Chp13_E_DiscoverTowerWindow = Chp13_E_DiscoverTowerWindow;
+})(Spiegel_VN || (Spiegel_VN = {}));
+var Spiegel_VN;
+(function (Spiegel_VN) {
+    async function Chp13_E_DiscoverWatchGuard() { }
+    Spiegel_VN.Chp13_E_DiscoverWatchGuard = Chp13_E_DiscoverWatchGuard;
+})(Spiegel_VN || (Spiegel_VN = {}));
+var Spiegel_VN;
+(function (Spiegel_VN) {
+    async function Chp13_CS_EntryMirrorRoom() { }
+    Spiegel_VN.Chp13_CS_EntryMirrorRoom = Chp13_CS_EntryMirrorRoom;
+})(Spiegel_VN || (Spiegel_VN = {}));
+var Spiegel_VN;
+(function (Spiegel_VN) {
+    async function Chp141_01_DestroyMirror() { }
+    Spiegel_VN.Chp141_01_DestroyMirror = Chp141_01_DestroyMirror;
+})(Spiegel_VN || (Spiegel_VN = {}));
+var Spiegel_VN;
+(function (Spiegel_VN) {
+    async function Chp141_02_DemonDies() { }
+    Spiegel_VN.Chp141_02_DemonDies = Chp141_02_DemonDies;
+})(Spiegel_VN || (Spiegel_VN = {}));
+var Spiegel_VN;
+(function (Spiegel_VN) {
+    async function Chp14_CS_BalconyTower() { }
+    Spiegel_VN.Chp14_CS_BalconyTower = Chp14_CS_BalconyTower;
+})(Spiegel_VN || (Spiegel_VN = {}));
+var Spiegel_VN;
+(function (Spiegel_VN) {
+    async function Chp142_01_RealizationMirror() { }
+    Spiegel_VN.Chp142_01_RealizationMirror = Chp142_01_RealizationMirror;
+})(Spiegel_VN || (Spiegel_VN = {}));
+var Spiegel_VN;
+(function (Spiegel_VN) {
+    async function Chp142_02_CaughtByDemon() { }
+    Spiegel_VN.Chp142_02_CaughtByDemon = Chp142_02_CaughtByDemon;
+})(Spiegel_VN || (Spiegel_VN = {}));
+var Spiegel_VN;
+(function (Spiegel_VN) {
+    async function Chp142_03_TransformationSlaves() { }
+    Spiegel_VN.Chp142_03_TransformationSlaves = Chp142_03_TransformationSlaves;
+})(Spiegel_VN || (Spiegel_VN = {}));
+var Spiegel_VN;
+(function (Spiegel_VN) {
+    async function Chp142_End_EmptyScene() { }
+    Spiegel_VN.Chp142_End_EmptyScene = Chp142_End_EmptyScene;
+})(Spiegel_VN || (Spiegel_VN = {}));
+var Spiegel_VN;
+(function (Spiegel_VN) {
+    async function Chp15_01_ReunionKailani() { }
+    Spiegel_VN.Chp15_01_ReunionKailani = Chp15_01_ReunionKailani;
+})(Spiegel_VN || (Spiegel_VN = {}));
+var Spiegel_VN;
+(function (Spiegel_VN) {
+    async function Chp15_E_DiscoverDemonRoom() { }
+    Spiegel_VN.Chp15_E_DiscoverDemonRoom = Chp15_E_DiscoverDemonRoom;
+})(Spiegel_VN || (Spiegel_VN = {}));
+var Spiegel_VN;
+(function (Spiegel_VN) {
+    async function Chp15_E_DiscoverMirrorRoom() { }
+    Spiegel_VN.Chp15_E_DiscoverMirrorRoom = Chp15_E_DiscoverMirrorRoom;
+})(Spiegel_VN || (Spiegel_VN = {}));
+var Spiegel_VN;
+(function (Spiegel_VN) {
+    async function Chp15_E_TalkToFreedVillagers() { }
+    Spiegel_VN.Chp15_E_TalkToFreedVillagers = Chp15_E_TalkToFreedVillagers;
+})(Spiegel_VN || (Spiegel_VN = {}));
+var Spiegel_VN;
+(function (Spiegel_VN) {
+    async function Chp15_CS_GoToLake() { }
+    Spiegel_VN.Chp15_CS_GoToLake = Chp15_CS_GoToLake;
+})(Spiegel_VN || (Spiegel_VN = {}));
+var Spiegel_VN;
+(function (Spiegel_VN) {
+    async function Chp16_01_ConfrontationFlynn() { }
+    Spiegel_VN.Chp16_01_ConfrontationFlynn = Chp16_01_ConfrontationFlynn;
+})(Spiegel_VN || (Spiegel_VN = {}));
+var Spiegel_VN;
+(function (Spiegel_VN) {
+    async function Chp16_021_GoHomeAlone() { }
+    Spiegel_VN.Chp16_021_GoHomeAlone = Chp16_021_GoHomeAlone;
+})(Spiegel_VN || (Spiegel_VN = {}));
+var Spiegel_VN;
+(function (Spiegel_VN) {
+    async function Chp16_022_GoHomeWithFlynn() { }
+    Spiegel_VN.Chp16_022_GoHomeWithFlynn = Chp16_022_GoHomeWithFlynn;
+})(Spiegel_VN || (Spiegel_VN = {}));
+var Spiegel_VN;
+(function (Spiegel_VN) {
+    async function Chp16_02_MakeAWish() { }
+    Spiegel_VN.Chp16_02_MakeAWish = Chp16_02_MakeAWish;
+})(Spiegel_VN || (Spiegel_VN = {}));
+var Spiegel_VN;
+(function (Spiegel_VN) {
+    async function Chp16_CS_ReunionFamily() { }
+    Spiegel_VN.Chp16_CS_ReunionFamily = Chp16_CS_ReunionFamily;
+})(Spiegel_VN || (Spiegel_VN = {}));
+var Spiegel_VN;
+(function (Spiegel_VN) {
+    async function Chp16_End_EmptyScene() { }
+    Spiegel_VN.Chp16_End_EmptyScene = Chp16_End_EmptyScene;
 })(Spiegel_VN || (Spiegel_VN = {}));
 var Spiegel_VN;
 (function (Spiegel_VN) {
@@ -1275,5 +3004,144 @@ var Spiegel_VN;
         }
     }
     Spiegel_VN.Auswahlmöglichkeiten = Auswahlmöglichkeiten;
+})(Spiegel_VN || (Spiegel_VN = {}));
+var Spiegel_VN;
+(function (Spiegel_VN) {
+    async function HowToMakeChoices() {
+        console.log("Let's make some choices!");
+        //   let text = {
+        //     Narrator: {
+        //       T0000: "",
+        //       T0001: "",
+        //       T0002: ""
+        //     },
+        //     Aisaka: {
+        //       T0000: "Heute wird sich alles um Auswahlmöglichkeiten drehen.",
+        //       T0001: "Schön, dass du dabei warst!"
+        //     }
+        //   };
+        //   // ƒS.Sound.fade(sound.nightclub, 1, 2, true);
+        //   ƒS.Speech.hide();
+        //   await ƒS.Location.show(locations.nightpark);
+        //   await ƒS.update(transitions.puzzle.duration, transitions.puzzle.alpha, transitions.puzzle.edge);
+        //   await ƒS.Character.show(characters.aisaka, characters.aisaka.pose.happy, ƒS.positions.bottomcenter);
+        //   await ƒS.Character.show(characters.aisaka, characters.aisaka.pose.happy, ƒS.positionPercent(70, 100));
+        //   // ƒS.Character.hide(characters.aisaka);
+        //   // ƒS.Character.hideAll();
+        //   await ƒS.Speech.tell(characters.aisaka, text.Aisaka.T0000);
+        //   ƒS.Speech.clear();
+        //   ƒS.Speech.hide();
+        //   await ƒS.update(3);
+        //   let firstDialogueElementAnswers = {
+        //     iSayOk: "Okay.",
+        //     iSayYes: "Ja.",
+        //     iSayNo: "Nein."
+        //   };
+        //   let firstDialogueElement = await ƒS.Menu.getInput(firstDialogueElementAnswers, "choicesCSSclass");
+        //   switch (firstDialogueElement) {
+        //     case firstDialogueElementAnswers.iSayOk:
+        //       // continue path here
+        //       await ƒS.Speech.tell(characters.aisaka, "Hi");
+        //       ƒS.Speech.clear();
+        //       break;
+        //     case firstDialogueElementAnswers.iSayYes:
+        //       // continue path here
+        //       await ƒS.Character.show(characters.aisaka, characters.aisaka.pose.happy, ƒS.positions.bottomcenter);
+        //       ƒS.Character.hide(characters.aisaka);
+        //       break;
+        //     case firstDialogueElementAnswers.iSayNo:
+        //       // continue path here
+        //       await ƒS.Speech.tell(characters.aisaka, "Hi");
+        //       ƒS.Speech.clear();
+        //       break;
+        //   }
+        //   // You can continue your story right after the choice definitions
+        //   await ƒS.Speech.tell(characters.aisaka, text.Aisaka.T0001);
+    }
+    Spiegel_VN.HowToMakeChoices = HowToMakeChoices;
+})(Spiegel_VN || (Spiegel_VN = {}));
+var Spiegel_VN;
+(function (Spiegel_VN) {
+    async function ScnTestzene01() {
+        await Spiegel_VN.ƒS.Location.show(Spiegel_VN.locations.Chp01_01_IntroMarketplace);
+        await Spiegel_VN.ƒS.update();
+        // ƒS.Inventory.add(inventory.apple);
+        // await ƒS.Inventory.open;
+        //hier wird eine asynch funktion exportiert, wie heißt die funktion? in diesem fall name funktion = name von szene
+        console.log(Spiegel_VN.characters.maincharacter.name); // console = konsole, log = befehl, der sagt, was ausgegeben wird (was in der klammer). was ausgegeben werden soll: heir wird ausgegeben, was ich rein schreibe, zum debuggen udn verstehen, was mein programm tut, wie ein wegweiser. Am ende der Sache kann ich den Namen der jeweiligen Szene eingeben, is nur für mich & für Prof
+        await Spiegel_VN.ƒS.Speech.tell("Bab", "Hallo, ich bin Bab."); //fs = ich greife auf die library zu, was jmdn anders schon für die library programmiert hat.
+        await Spiegel_VN.ƒS.Speech.tell("Xenoi", "Hallo, ich bin Xeni.");
+        await Spiegel_VN.ƒS.Speech.tell(Spiegel_VN.characters.maincharacter.name, "Hallo, ich bin Dein Name.");
+        let firstDialogueElementAnswers = {
+            iSayOk: "Okay.",
+            iSayYes: "Ja.",
+            iSayNo: "Nein.",
+        };
+        let firstDialogueElement = await Spiegel_VN.ƒS.Menu.getInput(firstDialogueElementAnswers, "choicesCSSclass");
+        switch (firstDialogueElement) {
+            case firstDialogueElementAnswers.iSayOk:
+                // continue path here
+                await Spiegel_VN.ƒS.Speech.tell(Spiegel_VN.characters.Mama, "Hi");
+                Spiegel_VN.ƒS.Speech.clear();
+                break;
+            case firstDialogueElementAnswers.iSayYes:
+                // continue path here
+                await Spiegel_VN.ƒS.Speech.tell(Spiegel_VN.characters.Mama, "HiToYes");
+                Spiegel_VN.ƒS.Speech.clear();
+                // await ƒS.Character.show(characters.Mama, characters.aisaka.pose.happy, ƒS.positions.bottomcenter);
+                // ƒS.Character.hide(characters.Mama);
+                break;
+            case firstDialogueElementAnswers.iSayNo:
+                // continue path here
+                await Spiegel_VN.ƒS.Speech.tell(Spiegel_VN.characters.Mama, "Hi");
+                Spiegel_VN.ƒS.Speech.clear();
+                break;
+        }
+        return Spiegel_VN.ScnTestzene02();
+    }
+    Spiegel_VN.ScnTestzene01 = ScnTestzene01;
+})(Spiegel_VN || (Spiegel_VN = {}));
+var Spiegel_VN;
+(function (Spiegel_VN) {
+    async function ScnTestzene02() {
+        console.log("Status: ", Spiegel_VN.scoreMutti.introduced);
+        //hier wird eine asynch funktion exportiert, wie heißt die funktion? in diesem fall name funktion = name von szene
+        console.log("Punktestand Mutti: ", Spiegel_VN.scoreMutti.punkte); // console = konsole, log = befehl, der sagt, was ausgegeben wird (was in der klammer). was ausgegeben werden soll: heir wird ausgegeben, was ich rein schreibe, zum debuggen udn verstehen, was mein programm tut, wie ein wegweiser
+        await Spiegel_VN.ƒS.Speech.tell("Bab", "Neue szene bklqsjhdui."); //fs = ich greife auf die library zu, was jmdn anders (jirka) schon für die library programmiert hat.
+        if (Spiegel_VN.scoreMutti.introduced == true) {
+            // mit == fragen wir, ob etwas true ist. = heißt, wir weisen einen Wert etw zu.
+            await Spiegel_VN.ƒS.Speech.tell(Spiegel_VN.characters.Mutti.name, "Mich kennt ihr ja schon.");
+            Spiegel_VN.scoreMutti.punkte = Spiegel_VN.scoreMutti.punkte + 1;
+        }
+        if (Spiegel_VN.scoreMutti.introduced == false) {
+            await Spiegel_VN.ƒS.Speech.tell(Spiegel_VN.characters.Mutti.name, "Hallo, ich bin Elena.");
+            Spiegel_VN.scoreMutti.introduced = true;
+        }
+        if (Spiegel_VN.scoreMutti.punkte >= 6) {
+            await Spiegel_VN.ƒS.Speech.tell(Spiegel_VN.characters.Mutti.name, "Möchtest du etwas tee?");
+            let decisionButtons01 = {
+                // !hier! wird decisionsbuttons01 definiert, wegen let // decisionsbuttons ist ein Objekt
+                decisionYes: "Yes",
+                decisionNo: "No",
+            };
+            let decision = await Spiegel_VN.ƒS.Menu.getInput(decisionButtons01, "decisionButtons" // hier umbennen und mit css bearbeiten
+            );
+            switch (decision //switch case = besseres if. statt ich 32809x if schreib, fragt switch: was is das ding? dieser input = yes or no. switch kann alles abfragen. muss schauen, was wann nützlich ist
+            ) {
+                case decisionButtons01.decisionYes:
+                    await Spiegel_VN.ƒS.Speech.tell(Spiegel_VN.characters.Mutti.name, "Hier bitte, eine schöne Tasse Tee. Frisch gekocht.");
+                    break;
+                case decisionButtons01.decisionNo:
+                    await Spiegel_VN.ƒS.Speech.tell(Spiegel_VN.characters.Mutti.name, "Nein? Dann hattest du wohl schon Tee. Freut mich zu hören! Viel spaß bei denen Freunden.");
+                    return Spiegel_VN.ScnTestzene01();
+                    break;
+                default:
+                    await Spiegel_VN.ƒS.Speech.tell(Spiegel_VN.characters.Mutti.name, "Default wird verwendet, wenn keiner der Fälle im Switch case zutrifft..");
+                    break;
+            }
+        }
+        return ScnTestzene02();
+    }
+    Spiegel_VN.ScnTestzene02 = ScnTestzene02;
 })(Spiegel_VN || (Spiegel_VN = {}));
 //# sourceMappingURL=Template.js.map

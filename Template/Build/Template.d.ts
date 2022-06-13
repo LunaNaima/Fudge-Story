@@ -1,7 +1,4 @@
 declare namespace Spiegel_VN {
-    function HowToMakeChoices(): ƒS.SceneReturn;
-}
-declare namespace Spiegel_VN {
     export import ƒ = FudgeCore;
     export import ƒS = FudgeStory;
     let dataForSave: {
@@ -23,6 +20,18 @@ declare namespace Spiegel_VN {
         pickedChp02_TestWithKailani: boolean;
         pickedChp02_PickHerbsGarden: boolean;
         pickedChp02_FightNeighbor: boolean;
+        pickedChp03_Dressmaker: boolean;
+        pickedChp03_FirewoodKailani: boolean;
+        pickedChp03_WaterwellKailani: boolean;
+        pickedChp04TalkToFamily: boolean;
+        pickedChp04TalkToElena: boolean;
+        pickedChp04ResearchLibrary: boolean;
+        pickedChp05GoToClearing: boolean;
+        pickedChp05GiveBirdsFood: boolean;
+        pickedChp05SingToBirds: boolean;
+        pickedChp07TravelToWhary: boolean;
+        pickedChp07DiscoverBees: boolean;
+        pickedChp07DiscoverFlowers: boolean;
     };
     let inventory: {
         apple: {
@@ -213,12 +222,6 @@ declare namespace Spiegel_VN {
     };
 }
 declare namespace Spiegel_VN {
-    function ScnTestzene01(): ƒS.SceneReturn;
-}
-declare namespace Spiegel_VN {
-    function ScnTestzene02(): ƒS.SceneReturn;
-}
-declare namespace Spiegel_VN {
     function Chp00_00_NameEntry(): ƒS.SceneReturn;
 }
 declare namespace Spiegel_VN {
@@ -255,7 +258,7 @@ declare namespace Spiegel_VN {
     function Chp02_022_TestWithKailani(): ƒS.SceneReturn;
 }
 declare namespace Spiegel_VN {
-    function Chp02_E_DiscoverGarden(): ƒS.SceneReturn;
+    function Chp02_03_PickHerbs(): ƒS.SceneReturn;
 }
 declare namespace Spiegel_VN {
     function Chp02_03_FightNeighbor(): ƒS.SceneReturn;
@@ -297,8 +300,323 @@ declare namespace Spiegel_VN {
     function Chp03_CS_TurmoilMarketplace(): ƒS.SceneReturn;
 }
 declare namespace Spiegel_VN {
+    function Chp04_01_TalkWithFamily(): ƒS.SceneReturn;
+}
+declare namespace Spiegel_VN {
+    function Chp04_02_TalkWithElena(): ƒS.SceneReturn;
+}
+declare namespace Spiegel_VN {
+    function Chp04_03_ResearchLibrary(): ƒS.SceneReturn;
+}
+declare namespace Spiegel_VN {
+    function Chp04_E_ExamineMirror(): ƒS.SceneReturn;
+}
+declare namespace Spiegel_VN {
+    function Chp04_E_SearchGarden(): ƒS.SceneReturn;
+}
+declare namespace Spiegel_VN {
+    function Chp04_E_SearchGroundFloor(): ƒS.SceneReturn;
+}
+declare namespace Spiegel_VN {
+    function Chp04_CS_EntryForest(): ƒS.SceneReturn;
+}
+declare namespace Spiegel_VN {
+    function Chp05_01_Clearing(): ƒS.SceneReturn;
+}
+declare namespace Spiegel_VN {
+    function Chp05_02_SingToBirds(): ƒS.SceneReturn;
+}
+declare namespace Spiegel_VN {
+    function Chp05_03_FeedBirds(): ƒS.SceneReturn;
+}
+declare namespace Spiegel_VN {
+    function Chp05_E_DiscoverOak(): ƒS.SceneReturn;
+}
+declare namespace Spiegel_VN {
+    function Chp05_E_DiscoverRiver(): ƒS.SceneReturn;
+}
+declare namespace Spiegel_VN {
+    function Chp05_CS_GoHome(): ƒS.SceneReturn;
+}
+declare namespace Spiegel_VN {
+    function Chp06_02_ReceiveItemMama(): ƒS.SceneReturn;
+}
+declare namespace Spiegel_VN {
+    function Chp06_03_DepartureRiver(): ƒS.SceneReturn;
+}
+declare namespace Spiegel_VN {
+    function Chp06_CS_ArrivalMeadow(): ƒS.SceneReturn;
+}
+declare namespace Spiegel_VN {
+    function Chp07_02_TravelToWhary(): ƒS.SceneReturn;
+}
+declare namespace Spiegel_VN {
+    function Chp07_E_DiscoverBees(): ƒS.SceneReturn;
+}
+declare namespace Spiegel_VN {
+    function Chp07_E_DiscoverFlowers(): ƒS.SceneReturn;
+}
+declare namespace Spiegel_VN {
+    function Chp07_CS_LineAtGates(): ƒS.SceneReturn;
+}
+declare namespace Spiegel_VN {
+    function Chp08_01_MeetFlynnAtGates(): ƒS.SceneReturn;
+}
+declare namespace Spiegel_VN {
+    function Chp08_02_MeetFlynnInAlley(): ƒS.SceneReturn;
+}
+declare namespace Spiegel_VN {
+    function Chp08_03_EnterCity(): ƒS.SceneReturn;
+}
+declare namespace Spiegel_VN {
+    function Chp08_0411_NiceStayFlynn(): ƒS.SceneReturn;
+}
+declare namespace Spiegel_VN {
+    function Chp08_041_ChooseNiceStay(): ƒS.SceneReturn;
+}
+declare namespace Spiegel_VN {
+    function Chp08_0421_UglyStayFlynn(): ƒS.SceneReturn;
+}
+declare namespace Spiegel_VN {
+    function Chp08_042_ChooseUglyStay(): ƒS.SceneReturn;
+}
+declare namespace Spiegel_VN {
+    function Chp08_04_ChooseStay(): ƒS.SceneReturn;
+}
+declare namespace Spiegel_VN {
+    function Chp08_E_DiscoverHay(): ƒS.SceneReturn;
+}
+declare namespace Spiegel_VN {
+    function Chp08_E_DiscoverVillagers(): ƒS.SceneReturn;
+}
+declare namespace Spiegel_VN {
+    function Chp08_E_DiscoverWindows(): ƒS.SceneReturn;
+}
+declare namespace Spiegel_VN {
+    function Chp08_CS_TalkToFlynn(): ƒS.SceneReturn;
+}
+declare namespace Spiegel_VN {
+    function Chp08_CS_Sleep(): ƒS.SceneReturn;
+}
+declare namespace Spiegel_VN {
+    function Chp09_011_TalkToBeggar(): ƒS.SceneReturn;
+}
+declare namespace Spiegel_VN {
+    function Chp09_012_MakeAWish(): ƒS.SceneReturn;
+}
+declare namespace Spiegel_VN {
+    function Chp09_01_ResearchMarketplace(): ƒS.SceneReturn;
+}
+declare namespace Spiegel_VN {
+    function Chp09_02_TalkToInnkeeper(): ƒS.SceneReturn;
+}
+declare namespace Spiegel_VN {
+    function Chp09_03_TalkToCook(): ƒS.SceneReturn;
+}
+declare namespace Spiegel_VN {
+    function Chp09_04_TalkToStablehand(): ƒS.SceneReturn;
+}
+declare namespace Spiegel_VN {
+    function Chp09_E_ListenToVillagers(): ƒS.SceneReturn;
+}
+declare namespace Spiegel_VN {
+    function Chp09_E_TalkToMerchants(): ƒS.SceneReturn;
+}
+declare namespace Spiegel_VN {
+    function Chp09_E_TalkToVillagers(): ƒS.SceneReturn;
+}
+declare namespace Spiegel_VN {
+    function Chp09_CS_ArrivalLake(): ƒS.SceneReturn;
+}
+declare namespace Spiegel_VN {
+    function Chp10_01_BuildARaft(): ƒS.SceneReturn;
+}
+declare namespace Spiegel_VN {
+    function Chp10_02_CrossLake(): ƒS.SceneReturn;
+}
+declare namespace Spiegel_VN {
+    function Chp10_031_SingToBirds(): ƒS.SceneReturn;
+}
+declare namespace Spiegel_VN {
+    function Chp10_032_UseMirror(): ƒS.SceneReturn;
+}
+declare namespace Spiegel_VN {
+    function Chp10_03_AttackBirds(): ƒS.SceneReturn;
+}
+declare namespace Spiegel_VN {
+    function Chp10_041_FriendlyBirds(): ƒS.SceneReturn;
+}
+declare namespace Spiegel_VN {
+    function Chp10_042_BirdsDisappear(): ƒS.SceneReturn;
+}
+declare namespace Spiegel_VN {
+    function Chp10_E_CityLightsWhary(): ƒS.SceneReturn;
+}
+declare namespace Spiegel_VN {
+    function Chp10_E_DiscoverLake(): ƒS.SceneReturn;
+}
+declare namespace Spiegel_VN {
+    function Chp10_E_DiscoverLakewater(): ƒS.SceneReturn;
+}
+declare namespace Spiegel_VN {
+    function Chp10_CS_ArrivalOtherSide(): ƒS.SceneReturn;
+}
+declare namespace Spiegel_VN {
+    function Chp11_01_SearchHidingPlace(): ƒS.SceneReturn;
+}
+declare namespace Spiegel_VN {
+    function Chp11_02_FindIron(): ƒS.SceneReturn;
+}
+declare namespace Spiegel_VN {
+    function Chp11_03_WatchFactory(): ƒS.SceneReturn;
+}
+declare namespace Spiegel_VN {
+    function Chp11_04_TryBreakIn(): ƒS.SceneReturn;
+}
+declare namespace Spiegel_VN {
+    function Chp11_E_DiscoverForest(): ƒS.SceneReturn;
+}
+declare namespace Spiegel_VN {
+    function Chp11_E_DiscoverHuts(): ƒS.SceneReturn;
+}
+declare namespace Spiegel_VN {
+    function Chp11_E_DiscoverTower(): ƒS.SceneReturn;
+}
+declare namespace Spiegel_VN {
+    function Chp11_CS_Sleep(): ƒS.SceneReturn;
+}
+declare namespace Spiegel_VN {
+    function Chp12_011_SneakIn(): ƒS.SceneReturn;
+}
+declare namespace Spiegel_VN {
+    function Chp12_012_SneakAmongSlaves(): ƒS.SceneReturn;
+}
+declare namespace Spiegel_VN {
+    function Chp12_02_TalkToSlaves(): ƒS.SceneReturn;
+}
+declare namespace Spiegel_VN {
+    function Chp12_03_SearchForKailani(): ƒS.SceneReturn;
+}
+declare namespace Spiegel_VN {
+    function Chp12_04_ListenToGuards(): ƒS.SceneReturn;
+}
+declare namespace Spiegel_VN {
+    function Chp12_05_BackToHidingPlace(): ƒS.SceneReturn;
+}
+declare namespace Spiegel_VN {
+    function Chp12_061_BirdsOfferHelp(): ƒS.SceneReturn;
+}
+declare namespace Spiegel_VN {
+    function Chp12_062_MakeAWish(): ƒS.SceneReturn;
+}
+declare namespace Spiegel_VN {
+    function Chp12_E_DiscoverVillage(): ƒS.SceneReturn;
+}
+declare namespace Spiegel_VN {
+    function Chp12_E_Productionsite(): ƒS.SceneReturn;
+}
+declare namespace Spiegel_VN {
+    function Chp12_E_DiscoverSlaves(): ƒS.SceneReturn;
+}
+declare namespace Spiegel_VN {
+    function Chp12_CS_TalkToFlynn(): ƒS.SceneReturn;
+}
+declare namespace Spiegel_VN {
+    function Chp13_01_EntryVillage(): ƒS.SceneReturn;
+}
+declare namespace Spiegel_VN {
+    function Chp13_02_GoToTower(): ƒS.SceneReturn;
+}
+declare namespace Spiegel_VN {
+    function Chp13_03_EntryTower(): ƒS.SceneReturn;
+}
+declare namespace Spiegel_VN {
+    function Chp13_04_SneakPastDemon(): ƒS.SceneReturn;
+}
+declare namespace Spiegel_VN {
+    function Chp13_E_DiscoverFamilyPortrait(): ƒS.SceneReturn;
+}
+declare namespace Spiegel_VN {
+    function Chp13_E_DiscoverLockedDoor(): ƒS.SceneReturn;
+}
+declare namespace Spiegel_VN {
+    function Chp13_E_DiscoverSneakAround(): ƒS.SceneReturn;
+}
+declare namespace Spiegel_VN {
+    function Chp13_E_DiscoverTowerWindow(): ƒS.SceneReturn;
+}
+declare namespace Spiegel_VN {
+    function Chp13_E_DiscoverWatchGuard(): ƒS.SceneReturn;
+}
+declare namespace Spiegel_VN {
+    function Chp13_CS_EntryMirrorRoom(): ƒS.SceneReturn;
+}
+declare namespace Spiegel_VN {
+    function Chp141_01_DestroyMirror(): ƒS.SceneReturn;
+}
+declare namespace Spiegel_VN {
+    function Chp141_02_DemonDies(): ƒS.SceneReturn;
+}
+declare namespace Spiegel_VN {
+    function Chp14_CS_BalconyTower(): ƒS.SceneReturn;
+}
+declare namespace Spiegel_VN {
+    function Chp142_01_RealizationMirror(): ƒS.SceneReturn;
+}
+declare namespace Spiegel_VN {
+    function Chp142_02_CaughtByDemon(): ƒS.SceneReturn;
+}
+declare namespace Spiegel_VN {
+    function Chp142_03_TransformationSlaves(): ƒS.SceneReturn;
+}
+declare namespace Spiegel_VN {
+    function Chp142_End_EmptyScene(): ƒS.SceneReturn;
+}
+declare namespace Spiegel_VN {
+    function Chp15_01_ReunionKailani(): ƒS.SceneReturn;
+}
+declare namespace Spiegel_VN {
+    function Chp15_E_DiscoverDemonRoom(): ƒS.SceneReturn;
+}
+declare namespace Spiegel_VN {
+    function Chp15_E_DiscoverMirrorRoom(): ƒS.SceneReturn;
+}
+declare namespace Spiegel_VN {
+    function Chp15_E_TalkToFreedVillagers(): ƒS.SceneReturn;
+}
+declare namespace Spiegel_VN {
+    function Chp15_CS_GoToLake(): ƒS.SceneReturn;
+}
+declare namespace Spiegel_VN {
+    function Chp16_01_ConfrontationFlynn(): ƒS.SceneReturn;
+}
+declare namespace Spiegel_VN {
+    function Chp16_021_GoHomeAlone(): ƒS.SceneReturn;
+}
+declare namespace Spiegel_VN {
+    function Chp16_022_GoHomeWithFlynn(): ƒS.SceneReturn;
+}
+declare namespace Spiegel_VN {
+    function Chp16_02_MakeAWish(): ƒS.SceneReturn;
+}
+declare namespace Spiegel_VN {
+    function Chp16_CS_ReunionFamily(): ƒS.SceneReturn;
+}
+declare namespace Spiegel_VN {
+    function Chp16_End_EmptyScene(): ƒS.SceneReturn;
+}
+declare namespace Spiegel_VN {
     function Chp09_01_BuildARaft(): ƒS.SceneReturn;
 }
 declare namespace Spiegel_VN {
     function Auswahlmöglichkeiten(): ƒS.SceneReturn;
+}
+declare namespace Spiegel_VN {
+    function HowToMakeChoices(): ƒS.SceneReturn;
+}
+declare namespace Spiegel_VN {
+    function ScnTestzene01(): ƒS.SceneReturn;
+}
+declare namespace Spiegel_VN {
+    function ScnTestzene02(): ƒS.SceneReturn;
 }

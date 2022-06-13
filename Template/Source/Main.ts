@@ -52,18 +52,18 @@ namespace Spiegel_VN {
     pickedRightChoice: false,
 
     // *** DELETE OPTION AFTER PICKED ***
-    // *** Chapter 01 - Flower Merchant ***
 
+    // *** Chapter 01 - Flower Merchant ***
     pickediAskAboutTrip: false,
     pickediAskAboutDecorations: false,
 
-    // *** PICKED ALL SCENES CHAPTER 01 ***
+    // *** CHAPTER 01: PICKED ALL SCENES ***
     pickedChp01_E_FlowerMerchantScene: false, // FRAGE: wie einrichten, dass wenn alle mandatory scenes absolviert werden aber keine expore scenes, eine
     pickedChp01_E_LeatherMerchantScene: false,
     pickedChp01_ConvoMother: false,
     pickedChp01_MirrorMerchant: false,
 
-    // // *** PICKED ALL SCENES CHAPTER 02 ***
+    // *** CHAPTER 02: PICKED ALL SCENES ***
     pickedChp02_DinnerScene: false,
     pickedChp02_TestWithElena: false,
     pickedChp02_TestWithKailani: false,
@@ -72,12 +72,27 @@ namespace Spiegel_VN {
     // // pickedChp02_E_DiscoverBedroom: false,
     // // pickedChp02_E_DiscoverKitchen: false,
 
-    // // *** PICKED ALL SCENES CHAPTER 3 ***
-    // pickedChp03_Dressmaker: false,
-    // pickedChp03_FirewoodKailani: false,
-    // pickedChp03_WaterwellKailani: false,
-    // // pickedChp03_E_DiscoverDonkey: false,
+    // // *** CHAPTER 03: PICKED ALL SCENES ***
+    pickedChp03_Dressmaker: false,
+    pickedChp03_FirewoodKailani: false,
+    pickedChp03_WaterwellKailani: false,
+
+    // CHAPTER 04: PICKED ALL SCENES
+    pickedChp04TalkToFamily: false,
+    pickedChp04TalkToElena: false,
+    pickedChp04ResearchLibrary: false,
+
+    // CHAPTER 05: PICKED ALL SCENES
+    pickedChp05GoToClearing: false,
+    pickedChp05GiveBirdsFood: false,
+    pickedChp05SingToBirds: false,
+
+    // CHAPTER 07: PICKED ALL SCENES
+    pickedChp07TravelToWhary: false,
+    pickedChp07DiscoverBees: false,
+    pickedChp07DiscoverFlowers: false,
   };
+
 
   export let inventory = {
     apple: {
@@ -255,8 +270,8 @@ namespace Spiegel_VN {
         name: "E_Bedroom",
       },
       {
-        id: "02_E Discover Garden",
-        scene: Chp02_E_DiscoverGarden,
+        id: "02_03 Pick Herbs",
+        scene: Chp02_03_PickHerbs,
         name: "E_Garden",
       },
       {
@@ -318,7 +333,7 @@ namespace Spiegel_VN {
         name: "Talk with family",
       },
       {
-        id: "04_02 Talk with family",
+        id: "04_02 Talk with Elena",
         scene: Chp04_02_TalkWithElena,
         name: "Talk with Elena",
       },
@@ -373,13 +388,9 @@ namespace Spiegel_VN {
       },
 
       // *** CHAPTER 06: DEPARTURE
+
       {
-        id: "06_01 Departure home",
-        scene: Chp06_01_DepartureHome,
-        name: "Departure home",
-      },
-      {
-        id: "06_02 Recieve item",
+        id: "06_02 Recieve iron",
         scene: Chp06_02_ReceiveItemMama,
         name: "Recieve item from Mama",
       },
@@ -397,8 +408,8 @@ namespace Spiegel_VN {
       // *** CHAPTER 07: ARRIVAL MIRRORWORLD
 
       {
-        id: "07_01 Departure to Whary",
-        scene: Chp07_02_DepartureWhary,
+        id: "07_01 Travel to to Whary",
+        scene: Chp07_02_TravelToWhary,
         name: "Departure city",
       },
       {

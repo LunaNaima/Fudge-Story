@@ -44,7 +44,7 @@ namespace Spiegel_VN {
         // dataForSave.score.scoreEmpathyPoints += 10;
         // console.log(dataForSave.score.scoreEmpathyPoints);
         ƒS.Speech.clear();
-        return Chp01_01_IntroMarketplace();
+        return Chp01_E_LeatherMerchant();
         break;
 
       case LeatherMerchantDialogueElementAnswers.iSayAskAboutDecorations:
@@ -58,7 +58,7 @@ namespace Spiegel_VN {
         ƒS.Speech.clear();
         // await ƒS.Character.show(characters.Mama, characters.aisaka.pose.happy, ƒS.positions.bottomcenter);
         // ƒS.Character.hide(characters.Mama);
-        return Chp01_01_IntroMarketplace();
+        return Chp01_E_LeatherMerchant();
         break;
 
       case LeatherMerchantDialogueElementAnswers.iSayLeave:

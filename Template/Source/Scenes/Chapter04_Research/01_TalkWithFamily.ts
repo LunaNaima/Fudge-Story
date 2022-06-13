@@ -1,3 +1,10 @@
 namespace Spiegel_VN {
-  export async function Chp04_01_TalkWithFamily(): ƒS.SceneReturn {}
+  export async function Chp04_01_TalkWithFamily(): ƒS.SceneReturn {
+    dataForSave.pickedChp04TalkToFamily = true;
+    await ƒS.Speech.tell(
+      "Ich",
+      "Wir reden und reden und reden ... Kailani ist trotzdem einfach weg!"
+    );
+    return "03_CS Kailani is missing";
+  }
 }
