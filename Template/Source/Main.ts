@@ -51,19 +51,26 @@ namespace Spiegel_VN {
     // *** RIGHT OPTION PICKED ***
     pickedRightChoice: false,
 
-    // *** DELETE OPTION AFTER PICKED ***
+    // *** IMPORTANT CHOICES ***
+    pickedChp08TrustFlynn: false,
 
-    // *** Chapter 01 - Flower Merchant ***
+    // *** DELETE OPTION AFTER PICKED ***
+    pickedChoice: false,
+    // pickediSayBlue: false,
+    // pickediSayGreen: false,
+    // pickediSayEyes: false,
+
+    // Chapter 01 - Flower Merchant ***
     pickediAskAboutTrip: false,
     pickediAskAboutDecorations: false,
 
-    // *** CHAPTER 01: PICKED ALL SCENES ***
+    // CHAPTER 01: PICKED ALL SCENES
     pickedChp01_E_FlowerMerchantScene: false, // FRAGE: wie einrichten, dass wenn alle mandatory scenes absolviert werden aber keine expore scenes, eine
     pickedChp01_E_LeatherMerchantScene: false,
     pickedChp01_ConvoMother: false,
     pickedChp01_MirrorMerchant: false,
 
-    // *** CHAPTER 02: PICKED ALL SCENES ***
+    //  CHAPTER 02: PICKED ALL SCENES
     pickedChp02_DinnerScene: false,
     pickedChp02_TestWithElena: false,
     pickedChp02_TestWithKailani: false,
@@ -72,7 +79,7 @@ namespace Spiegel_VN {
     // // pickedChp02_E_DiscoverBedroom: false,
     // // pickedChp02_E_DiscoverKitchen: false,
 
-    // // *** CHAPTER 03: PICKED ALL SCENES ***
+    //  CHAPTER 03: PICKED ALL SCENES
     pickedChp03_Dressmaker: false,
     pickedChp03_FirewoodKailani: false,
     pickedChp03_WaterwellKailani: false,
@@ -91,8 +98,27 @@ namespace Spiegel_VN {
     pickedChp07TravelToWhary: false,
     pickedChp07DiscoverBees: false,
     pickedChp07DiscoverFlowers: false,
-  };
 
+    // CHAPTER 8: PICKED ALL SCENES
+    pickedChp08CatchFlynnAtGates: false,
+    pickedChp08EnterCity: false,
+    pickedChp08CatchFlynnInAlley: false,
+    pickedChp08ChooseStay: false,
+    pickedChp08GoWithFlynn: false,
+    pickedChp08GoWithoutFlynn: false,
+    pickedChp08ChooseContinueSearch: false,
+
+    // CHAPTER 9: PICKED ALL SCENES
+    pickedChp09ResearchMarketplace: false,
+    pickedChp09TalkToInnkeeper: false,
+    pickedChp09TalkToCook: false,
+    pickedChp09TalkToStablehand: false,
+    pickedChp09DiscoverListenToVillagers: false,
+    pickedChp09DiscoverMerchants: false,
+    pickedChp09DiscoverSpeakToVillagers: false,
+    pickedChp09SpeakToBeggar: false,
+    pickedChp09MakeAWish: false,
+  };
 
   export let inventory = {
     apple: {
@@ -195,302 +221,303 @@ namespace Spiegel_VN {
 
     let scenes: ƒS.Scenes = [
       // { scene: ScnTestzene01, name: "Testszene 01" }, // scene: hier muss name von funktion rein! Name ist was anderes, kann spaces enthalten wegen string
-      // { scene: Auswahlmöglichkeiten, name: "Testszene 1" },
+      // { id: "Auswahlmöglichkeiten", scene: Auswahlmöglichkeiten, name: "Testszene 1" },
 
       // *** INTRO ***
       { id: "00 Name Entry", scene: Chp00_00_NameEntry, name: "NameEntry" },
 
-      // ***CHAPTER 01 ***
-      {
-        id: "01_00 IntroNarration",
-        scene: Chp01_00_IntroNarration,
-        name: "Intro Narration",
-      },
-      {
-        id: "01_01 Intro Marketplace",
-        scene: Chp01_01_IntroMarketplace,
-        name: "Intro marketplace",
-      }, // next ist optional, hier kann ich festlegen, welche szene als nächstes abgespielt wird
-      {
-        id: "01_E_FlowerMerchant",
-        scene: Chp01_E_FlowerMerchant,
-        name: "E_FlowerMerchant",
-      },
-      {
-        id: "01_E_LeatherMerchant",
-        scene: Chp01_E_LeatherMerchant,
-        name: "E_LeatherMerchant",
-      },
-      {
-        id: "01_02 Conversation Mama",
-        scene: Chp01_02_ConvoMother,
-        name: "ConvoMother",
-      },
-      {
-        id: "01_03 MirrorMerchant",
-        scene: Chp01_03_IntroMirror,
-        name: "IntroMirror",
-      },
-      // *** CUTSCENES CHP01***
-      {
-        id: "01_CS PerchaseMirror",
-        scene: Chp01_CS_PerchaseMirror,
-        name: "CS: PerchaseMirror",
-      },
-      {
-        id: "01_CS Arrival Home",
-        scene: Chp01_CS_ArrivalHome,
-        name: "CS: ArrivalHome",
-      },
+      // // ***CHAPTER 01 ***
+      // {
+      //   id: "01_00 IntroNarration",
+      //   scene: Chp01_00_IntroNarration,
+      //   name: "Intro Narration",
+      // },
+      // {
+      //   id: "01_01 Intro Marketplace",
+      //   scene: Chp01_01_IntroMarketplace,
+      //   name: "Intro marketplace",
+      // }, // next ist optional, hier kann ich festlegen, welche szene als nächstes abgespielt wird
+      // {
+      //   id: "01_E_FlowerMerchant",
+      //   scene: Chp01_E_FlowerMerchant,
+      //   name: "E_FlowerMerchant",
+      // },
+      // {
+      //   id: "01_E_LeatherMerchant",
+      //   scene: Chp01_E_LeatherMerchant,
+      //   name: "E_LeatherMerchant",
+      // },
+      // {
+      //   id: "01_02 Conversation Mama",
+      //   scene: Chp01_02_ConvoMother,
+      //   name: "ConvoMother",
+      //   next: "01_01 Intro Marketplace",
+      // },
+      // {
+      //   id: "01_03 MirrorMerchant",
+      //   scene: Chp01_03_IntroMirror,
+      //   name: "IntroMirror",
+      // },
+      // // *** CUTSCENES CHP01***
+      // {
+      //   id: "01_CS PerchaseMirror",
+      //   scene: Chp01_CS_PerchaseMirror,
+      //   name: "CS: PerchaseMirror",
+      // },
+      // {
+      //   id: "01_CS Arrival Home",
+      //   scene: Chp01_CS_ArrivalHome,
+      //   name: "CS: ArrivalHome",
+      // },
 
-      // ***CHAPTER 02: FAMILY HOME ***
-      {
-        id: "02_01 Dinner at home",
-        scene: Chp02_01_Dinner,
-        name: "Dinner",
-      },
-      {
-        id: "02_021 Test with Elena",
-        scene: Chp02_021_TestWithElena,
-        name: "Test with Elena",
-      },
-      {
-        id: "02_022 Test with Kailani",
-        scene: Chp02_022_TestWithKailani,
-        name: "Test with Kailani",
-      },
-      {
-        id: "02_03 Fight with neighbor",
-        scene: Chp02_03_FightNeighbor,
-        name: "FightNeighbor",
-      },
-      {
-        id: "02_E Discover bedroom",
-        scene: Chp02_E_DiscoverBedroom,
-        name: "E_Bedroom",
-      },
-      {
-        id: "02_03 Pick Herbs",
-        scene: Chp02_03_PickHerbs,
-        name: "E_Garden",
-      },
-      {
-        id: "02_E Discover Kitchen",
-        scene: Chp02_E_DiscoverKitchen,
-        name: "E_Kitchen",
-      },
-      // CUTSCENES ***
-      { id: "02_CS Sleep", scene: Chp02_CS_Sleep, name: "CS: Sleep" },
-      { id: "02_CS New day", scene: Chp02_CS_NewDay, name: "CS: New Day" },
+      // // ***CHAPTER 02: FAMILY HOME ***
+      // {
+      //   id: "02_01 Dinner at home",
+      //   scene: Chp02_01_Dinner,
+      //   name: "Dinner",
+      // },
+      // {
+      //   id: "02_021 Test with Elena",
+      //   scene: Chp02_021_TestWithElena,
+      //   name: "Test with Elena",
+      // },
+      // {
+      //   id: "02_022 Test with Kailani",
+      //   scene: Chp02_022_TestWithKailani,
+      //   name: "Test with Kailani",
+      // },
+      // {
+      //   id: "02_03 Fight with neighbor",
+      //   scene: Chp02_03_FightNeighbor,
+      //   name: "FightNeighbor",
+      // },
+      // {
+      //   id: "02_E Discover bedroom",
+      //   scene: Chp02_E_DiscoverBedroom,
+      //   name: "E_Bedroom",
+      // },
+      // {
+      //   id: "02_03 Pick Herbs",
+      //   scene: Chp02_03_PickHerbs,
+      //   name: "E_Garden",
+      // },
+      // {
+      //   id: "02_E Discover Kitchen",
+      //   scene: Chp02_E_DiscoverKitchen,
+      //   name: "E_Kitchen",
+      // },
+      // // CUTSCENES ***
+      // { id: "02_CS Sleep", scene: Chp02_CS_Sleep, name: "CS: Sleep" },
+      // { id: "02_CS New day", scene: Chp02_CS_NewDay, name: "CS: New Day" },
 
-      // *** CHAPTER 03: VILLAGE ***
-      {
-        id: "03_01 Dressmaker",
-        scene: Chp03_01_Dressmaker,
-        name: "Dressmaker",
-      },
-      {
-        id: "03_E Discover donkey",
-        scene: Chp03_E_DiscoverDonkey,
-        name: "E_Donkey",
-      },
-      {
-        id: "03_E Discover Forest",
-        scene: Chp03_E_DiscoverForest,
-        name: "E_Forest",
-      },
-      {
-        id: "03_E Discover Library",
-        scene: Chp03_E_DiscoverLibrary,
-        name: "E_Library",
-      },
-      {
-        id: "03_021 Firewood with Kailani",
-        scene: Chp03_021_FirewoodKailani,
-        name: "Firewood Kailani",
-      },
-      {
-        id: "03_022 Waterwell with Kailani",
-        scene: Chp03_022_WaterWellKailani,
-        name: "Waterwell Kailani",
-      },
-      // *** CUTSCENES ***
-      {
-        id: "03_CS Turmoil marketplace",
-        scene: Chp03_CS_TurmoilMarketplace,
-        name: "CS: TurmoilMarketplace",
-      },
-      {
-        id: "03_CS Kailani is missing",
-        scene: Chp03_CS_KailaniMissing,
-        name: "CS: Kailani is missing",
-      },
+      // // *** CHAPTER 03: VILLAGE ***
+      // {
+      //   id: "03_01 Dressmaker",
+      //   scene: Chp03_01_Dressmaker,
+      //   name: "Dressmaker",
+      // },
+      // {
+      //   id: "03_E Discover donkey",
+      //   scene: Chp03_E_DiscoverDonkey,
+      //   name: "E_Donkey",
+      // },
+      // {
+      //   id: "03_E Discover Forest",
+      //   scene: Chp03_E_DiscoverForest,
+      //   name: "E_Forest",
+      // },
+      // {
+      //   id: "03_E Discover Library",
+      //   scene: Chp03_E_DiscoverLibrary,
+      //   name: "E_Library",
+      // },
+      // {
+      //   id: "03_021 Firewood with Kailani",
+      //   scene: Chp03_021_FirewoodKailani,
+      //   name: "Firewood Kailani",
+      // },
+      // {
+      //   id: "03_022 Waterwell with Kailani",
+      //   scene: Chp03_022_WaterWellKailani,
+      //   name: "Waterwell Kailani",
+      // },
+      // // *** CUTSCENES ***
+      // {
+      //   id: "03_CS Turmoil marketplace",
+      //   scene: Chp03_CS_TurmoilMarketplace,
+      //   name: "CS: TurmoilMarketplace",
+      // },
+      // {
+      //   id: "03_CS Kailani is missing",
+      //   scene: Chp03_CS_KailaniMissing,
+      //   name: "CS: Kailani is missing",
+      // },
 
-      // *** CHAPTER 04 RESEARCH ***
-      {
-        id: "04_01 Talk with family",
-        scene: Chp04_01_TalkWithFamily,
-        name: "Talk with family",
-      },
-      {
-        id: "04_02 Talk with Elena",
-        scene: Chp04_02_TalkWithElena,
-        name: "Talk with Elena",
-      },
-      {
-        id: "04_03 Research library",
-        scene: Chp04_03_ResearchLibrary,
-        name: "Research library",
-      },
-      {
-        id: "04_E_Examine mirror",
-        scene: Chp04_E_ExamineMirror,
-        name: "Examine Mirror",
-      },
-      {
-        id: "04_E Search garden",
-        scene: Chp04_E_SearchGarden,
-        name: "Search garden",
-      },
-      {
-        id: "04_E Search ground floor",
-        scene: Chp04_E_SearchGroundFloor,
-        name: "Search ground floor",
-      },
-      {
-        id: "04_CS Entry forest",
-        scene: Chp04_CS_EntryForest,
-        name: "Entry forest",
-      },
+      // // *** CHAPTER 04 RESEARCH ***
+      // {
+      //   id: "04_01 Talk with family",
+      //   scene: Chp04_01_TalkWithFamily,
+      //   name: "Talk with family",
+      // },
+      // {
+      //   id: "04_02 Talk with Elena",
+      //   scene: Chp04_02_TalkWithElena,
+      //   name: "Talk with Elena",
+      // },
+      // {
+      //   id: "04_03 Research library",
+      //   scene: Chp04_03_ResearchLibrary,
+      //   name: "Research library",
+      // },
+      // {
+      //   id: "04_E_Examine mirror",
+      //   scene: Chp04_E_ExamineMirror,
+      //   name: "Examine Mirror",
+      // },
+      // {
+      //   id: "04_E Search garden",
+      //   scene: Chp04_E_SearchGarden,
+      //   name: "Search garden",
+      // },
+      // {
+      //   id: "04_E Search ground floor",
+      //   scene: Chp04_E_SearchGroundFloor,
+      //   name: "Search ground floor",
+      // },
+      // {
+      //   id: "04_CS Entry forest",
+      //   scene: Chp04_CS_EntryForest,
+      //   name: "Entry forest",
+      // },
 
-      // *** CHAPTER 05: FOREST
-      { id: "05_01 Clearing", scene: Chp05_01_Clearing, name: "Clearing" },
-      {
-        id: "05_02 Sing to birds",
-        scene: Chp05_02_SingToBirds,
-        name: "Sing to birds",
-      },
-      { id: "05_03 Feed birds", scene: Chp05_03_FeedBirds, name: "Feed birds" },
-      {
-        id: "05_E Discover oak",
-        scene: Chp05_E_DiscoverOak,
-        name: "Discover oak",
-      },
-      {
-        id: "05_E Discover river",
-        scene: Chp05_E_DiscoverRiver,
-        name: "Discover river",
-      },
-      {
-        id: "05_CS Go home",
-        scene: Chp05_CS_GoHome,
-        name: "Go home",
-      },
+      // // *** CHAPTER 05: FOREST
+      // { id: "05_01 Clearing", scene: Chp05_01_Clearing, name: "Clearing" },
+      // {
+      //   id: "05_02 Sing to birds",
+      //   scene: Chp05_02_SingToBirds,
+      //   name: "Sing to birds",
+      // },
+      // { id: "05_03 Feed birds", scene: Chp05_03_FeedBirds, name: "Feed birds" },
+      // {
+      //   id: "05_E Discover oak",
+      //   scene: Chp05_E_DiscoverOak,
+      //   name: "Discover oak",
+      // },
+      // {
+      //   id: "05_E Discover river",
+      //   scene: Chp05_E_DiscoverRiver,
+      //   name: "Discover river",
+      // },
+      // {
+      //   id: "05_CS Go home",
+      //   scene: Chp05_CS_GoHome,
+      //   name: "Go home",
+      // },
 
-      // *** CHAPTER 06: DEPARTURE
+      // // *** CHAPTER 06: DEPARTURE
 
-      {
-        id: "06_02 Recieve iron",
-        scene: Chp06_02_ReceiveItemMama,
-        name: "Recieve item from Mama",
-      },
-      {
-        id: "06_03 Departure",
-        scene: Chp06_03_DepartureRiver,
-        name: "Departure",
-      },
-      {
-        id: "06_CS Arrival Meadow",
-        scene: Chp06_CS_ArrivalMeadow,
-        name: "Arrival meadow",
-      },
+      // {
+      //   id: "06_02 Recieve iron",
+      //   scene: Chp06_02_ReceiveItemMama,
+      //   name: "Recieve item from Mama",
+      // },
+      // {
+      //   id: "06_03 Departure",
+      //   scene: Chp06_03_DepartureRiver,
+      //   name: "Departure",
+      // },
+      // {
+      //   id: "06_CS Arrival Meadow",
+      //   scene: Chp06_CS_ArrivalMeadow,
+      //   name: "Arrival meadow",
+      // },
 
-      // *** CHAPTER 07: ARRIVAL MIRRORWORLD
+      // // *** CHAPTER 07: ARRIVAL MIRRORWORLD
 
-      {
-        id: "07_01 Travel to to Whary",
-        scene: Chp07_02_TravelToWhary,
-        name: "Departure city",
-      },
-      {
-        id: "07_E Discover flowers",
-        scene: Chp07_E_DiscoverFlowers,
-        name: "Discover flowers",
-      },
-      {
-        id: "07_E Discover bees",
-        scene: Chp07_E_DiscoverBees,
-        name: "Discover bees",
-      },
-      {
-        id: "07_CS Line at gates",
-        scene: Chp07_CS_LineAtGates,
-        name: "Line at the gates",
-      },
+      // {
+      //   id: "07_01 Travel to to Whary",
+      //   scene: Chp07_02_TravelToWhary,
+      //   name: "Departure city",
+      // },
+      // {
+      //   id: "07_E Discover flowers",
+      //   scene: Chp07_E_DiscoverFlowers,
+      //   name: "Discover flowers",
+      // },
+      // {
+      //   id: "07_E Discover bees",
+      //   scene: Chp07_E_DiscoverBees,
+      //   name: "Discover bees",
+      // },
+      // {
+      //   id: "07_CS Line at gates",
+      //   scene: Chp07_CS_LineAtGates,
+      //   name: "Line at the gates",
+      // },
 
-      // *** CHAPTER 08: In Whary ***
+      // // *** CHAPTER 08: In Whary ***
+      // {
+      //   id: "08_01 Meet Flynn gates",
+      //   scene: Chp08_01_MeetFlynnAtGates,
+      //   name: "Meet Flynn at the gates",
+      // },
+      // {
+      //   id: "08_02 Meet Flynn in alley",
+      //   scene: Chp08_02_MeetFlynnInAlley,
+      //   name: "Meet Flynn in alley",
+      // },
+      // {
+      //   id: "08_03 Enter City",
+      //   scene: Chp08_03_EnterCity,
+      //   name: "Enter city",
+      // },
+      // {
+      //   id: "08_04 Choose stay",
+      //   scene: Chp08_04_ChooseStay,
+      //   name: "Choose stay",
+      // },
+      // {
+      //   id: "08_041 Choose nice stay",
+      //   scene: Chp08_041_ChooseNiceStay,
+      //   name: "Choose nice stay",
+      // },
+      // {
+      //   id: "08_042 Choose ugly stay",
+      //   scene: Chp08_042_ChooseUglyStay,
+      //   name: "Choose ugly stay",
+      // },
+      // {
+      //   id: "08_0411 Nice stay with Flynn",
+      //   scene: Chp08_0411_NiceStayFlynn,
+      //   name: "Nice stay with Flynn",
+      // },
+      // {
+      //   id: "08_0421 Ugly stay with Flynn",
+      //   scene: Chp08_0421_UglyStayFlynn,
+      //   name: "Ugly stay with Flynn",
+      // },
+      // {
+      //   id: "08_E Discover Hay",
+      //   scene: Chp08_E_DiscoverHay,
+      //   name: "Discover hay",
+      // },
+      // {
+      //   id: "08_E Discover Villagers",
+      //   scene: Chp08_E_DiscoverVillagers,
+      //   name: "Discover villagers",
+      // },
+      // {
+      //   id: "08_E Discover windows",
+      //   scene: Chp08_E_DiscoverWindows,
+      //   name: "Discover windows",
+      // },
+      // {
+      //   id: "08_CS Talk To Flynn",
+      //   scene: Chp08_CS_TalkToFlynn,
+      //   name: "Talk to Flynn",
+      // },
       {
-        id: "08_01 Meet Flynn gates",
-        scene: Chp08_01_MeetFlynnAtGates,
-        name: "Meet Flynn at the gates",
-      },
-      {
-        id: "08_02 Meet Flynn in alley",
-        scene: Chp08_02_MeetFlynnInAlley,
-        name: "Meet Flynn in alley",
-      },
-      {
-        id: "08_03 Enter City",
-        scene: Chp08_03_EnterCity,
-        name: "Enter city",
-      },
-      {
-        id: "08_04 Choose stay",
-        scene: Chp08_04_ChooseStay,
-        name: "Choose stay",
-      },
-      {
-        id: "08_041 Choose nice stay",
-        scene: Chp08_041_ChooseNiceStay,
-        name: "Choose nice stay",
-      },
-      {
-        id: "08_042 Choose ugly stay",
-        scene: Chp08_042_ChooseUglyStay,
-        name: "Choose ugly stay",
-      },
-      {
-        id: "08_0411 Nice stay with Flynn",
-        scene: Chp08_0411_NiceStayFlynn,
-        name: "Nice stay with Flynn",
-      },
-      {
-        id: "08_0421 Ugly stay with Flynn",
-        scene: Chp08_0421_UglyStayFlynn,
-        name: "Ugly stay with Flynn",
-      },
-      {
-        id: "08_E Discover Hay",
-        scene: Chp08_E_DiscoverHay,
-        name: "Discover hay",
-      },
-      {
-        id: "08_E Discover Villagers",
-        scene: Chp08_E_DiscoverVillagers,
-        name: "Discover villagers",
-      },
-      {
-        id: "08_E Discover windows",
-        scene: Chp08_E_DiscoverWindows,
-        name: "Discover windows",
-      },
-      {
-        id: "08_CS TalkToFlynn",
-        scene: Chp08_CS_TalkToFlynn,
-        name: "Talk to Flynn",
-      },
-      {
-        id: "08_CS Sleep",
+        id: "08_CS Sleep & new day",
         scene: Chp08_CS_Sleep,
         name: "Go to sleep",
       },
@@ -502,10 +529,15 @@ namespace Spiegel_VN {
         name: "Research Marketplace",
       },
       {
-        id: "09_011 Talk to Beggar",
-        scene: Chp09_011_TalkToBeggar,
-        name: "Talk to Beggar",
+        id: "09_011 Beggar",
+        scene: Chp09_011_Beggar,
+        name: "Beggar scene",
       },
+      // {
+      //   id: "09_011 Speak to Beggar",
+      //   scene: Chp09_011_Beggar,
+      //   name: "Speak to Beggar",
+      // },
       {
         id: "09_012 Make a wish",
         scene: Chp09_012_MakeAWish,
@@ -548,38 +580,43 @@ namespace Spiegel_VN {
       },
       // *** CHAPTER 10: CROSSING LAKE ***
       {
-        id: "10_01 Build a raft",
-        scene: Chp10_01_BuildARaft,
+        id: "10_01 How to cross",
+        scene: Chp10_01_HowToCross,
+        name: "How to cross",
+      },
+      {
+        id: "10_02 Build a raft",
+        scene: Chp10_02_BuildARaft,
         name: "Build a raft",
       },
       {
-        id: "10_02 Cross lake",
-        scene: Chp10_02_CrossLake,
+        id: "10_03 Cross lake",
+        scene: Chp10_03_CrossLake,
         name: "Crossing the lake",
       },
       {
-        id: "10_03 Attack birds",
-        scene: Chp10_03_AttackBirds,
+        id: "10_04 Attack birds",
+        scene: Chp10_04_AttackBirds,
         name: "Attack from birds",
       },
       {
-        id: "10_031 Sing to birds",
-        scene: Chp10_031_SingToBirds,
+        id: "10_041 Sing to birds",
+        scene: Chp10_041_SingToBirds,
         name: "Sing to birds",
       },
       {
-        id: "10_032 UseMirror",
-        scene: Chp10_032_UseMirror,
+        id: "10_042 UseMirror",
+        scene: Chp10_042_UseMirror,
         name: "Use the mirror",
       },
       {
-        id: "10_041 Birds become friendly",
-        scene: Chp10_041_FriendlyBirds,
+        id: "10_051 Birds become friendly",
+        scene: Chp10_051_FriendlyBirds,
         name: "Birds become friendly",
       },
       {
-        id: "10_042 Birds disappear",
-        scene: Chp10_042_BirdsDisappear,
+        id: "10_052 Birds disappear",
+        scene: Chp10_052_BirdsDisappear,
         name: "Birds disappear",
       },
       {

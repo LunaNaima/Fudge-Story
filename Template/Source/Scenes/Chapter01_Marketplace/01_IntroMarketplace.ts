@@ -30,10 +30,7 @@ namespace Spiegel_VN {
 
     // ***BEGINN SZENE***
 
-    let randomTextChp01yMarketplace = ƒ.Random.default.getRangeFloored(
-      1,
-      5
-    ); //gerundet
+    let randomTextChp01yMarketplace = ƒ.Random.default.getRangeFloored(1, 5); //gerundet
     switch (randomTextChp01yMarketplace) {
       case 1:
         await ƒS.Speech.tell(
@@ -121,66 +118,84 @@ namespace Spiegel_VN {
       // return Chp01_CS_ArrivalHome();
     }
 
-    let Chp01SceneElement = await ƒS.Menu.getInput(
-      Chp01PickSceneElementAnswers,
-      "choicesCSSclass"
-    );
+    let pickediSayTalkToMama: boolean;
+    let pickediSayTalkToMirrorMerchant: boolean;
 
-    // *** RESPONSES ***
-    switch (Chp01SceneElement) {
-      case Chp01PickSceneElementAnswers.iSayTalkToMama:
-        // continue path here
-        await ƒS.Speech.tell(
-          characters.Mama,
-          "Choice TalkToMama + Empathypoints 10."
-        );
-        dataForSave.score.scoreEmpathyPoints += 10;
-        console.log(dataForSave.score.scoreEmpathyPoints);
-        ƒS.Speech.clear();
-        return Chp01_02_ConvoMother(); // hier lieber: return "Chp ..."; if clause: ich nehm versch keys und sage: if dataforsave.pciekd = alle true, dann in der if clause return. if (dataforsave.pickedChoice, pickedotherchoice, usw. = true), dann gehts weiter
-        break;
+    do {
+      if (pickediSayTalkToMama) {
+        delete Chp01PickSceneElementAnswers.iSayTalkToMama;
+      } else if (pickediSayTalkToMirrorMerchant) {
+        delete Chp01PickSceneElementAnswers.iSayTalkToMirrorMerchant;
+      }
 
-      case Chp01PickSceneElementAnswers.iSayTalkToMirrorMerchant:
-        // continue path here
-        // if (dataForSave.score.scoreCouragePoints === 50)
-        // wie mindestens 50?
-        await ƒS.Speech.tell(characters.Mama, "Choice Talk to Mirrormerchant");
-        ƒS.Speech.clear();
-        // await ƒS.Character.show(characters.Mama, characters.aisaka.pose.happy, ƒS.positions.bottomcenter);
-        // ƒS.Character.hide(characters.Mama);
-        return Chp01_03_IntroMirror();
-        break;
+      let Chp01SceneElement = await ƒS.Menu.getInput(
+        Chp01PickSceneElementAnswers,
+        "choicesCSSclass"
+      );
 
-      case Chp01PickSceneElementAnswers.iSayExploreFlowerMerchant:
-        // continue path here
-        await ƒS.Speech.tell(
-          characters.Mama,
-          "Choice (Explore) Talk to flower merchant."
-        );
-        ƒS.Speech.clear();
-        return Chp01_E_FlowerMerchant();
-        break;
+      // *** RESPONSES ***
+      switch (Chp01SceneElement) {
+        case Chp01PickSceneElementAnswers.iSayTalkToMama:
+          // continue path here
+          pickediSayTalkToMama = true;
+          dataForSave.pickedChoice = true;
+          await ƒS.Speech.tell(
+            characters.Mama,
+            "Choice TalkToMama + Empathypoints 10."
+          );
+          dataForSave.score.scoreEmpathyPoints += 10;
+          console.log(dataForSave.score.scoreEmpathyPoints);
+          ƒS.Speech.clear();
+          return Chp01_02_ConvoMother(); // hier lieber: return "Chp ..."; if clause: ich nehm versch keys und sage: if dataforsave.pciekd = alle true, dann in der if clause return. if (dataforsave.pickedChoice, pickedotherchoice, usw. = true), dann gehts weiter
+          break;
 
-      case Chp01PickSceneElementAnswers.iSayExploreLeatherMerchant:
-        // continue path here
-        await ƒS.Speech.tell(
-          characters.Mama,
-          "Choice (Explore) Talk to leather merchant."
-        );
-        ƒS.Speech.clear();
-        return Chp01_E_LeatherMerchant();
-        break;
+        case Chp01PickSceneElementAnswers.iSayTalkToMirrorMerchant:
+          // continue path here
+          // if (dataForSave.score.scoreCouragePoints === 50)
+          // wie mindestens 50?
+          pickediSayTalkToMirrorMerchant = true;
+          dataForSave.pickedChoice = true;
+          await ƒS.Speech.tell(
+            characters.Mama,
+            "Choice Talk to Mirrormerchant"
+          );
+          ƒS.Speech.clear();
+          // await ƒS.Character.show(characters.Mama, characters.aisaka.pose.happy, ƒS.positions.bottomcenter);
+          // ƒS.Character.hide(characters.Mama);
+          return Chp01_03_IntroMirror();
+          break;
 
-      case Chp01PickSceneElementAnswers.iSayContinue:
-        // continue path here
-        await ƒS.Speech.tell(
-          characters.Mama,
-          "Choice (Explore) Talk to mirror merchant."
-        );
-        ƒS.Speech.clear();
-        return Chp01_CS_PerchaseMirror();
-        break;
-    }
+        case Chp01PickSceneElementAnswers.iSayExploreFlowerMerchant:
+          // continue path here
+          await ƒS.Speech.tell(
+            characters.Mama,
+            "Choice (Explore) Talk to flower merchant."
+          );
+          ƒS.Speech.clear();
+          return Chp01_E_FlowerMerchant();
+          break;
+
+        case Chp01PickSceneElementAnswers.iSayExploreLeatherMerchant:
+          // continue path here
+          await ƒS.Speech.tell(
+            characters.Mama,
+            "Choice (Explore) Talk to leather merchant."
+          );
+          ƒS.Speech.clear();
+          return Chp01_E_LeatherMerchant();
+          break;
+
+        case Chp01PickSceneElementAnswers.iSayContinue:
+          // continue path here
+          await ƒS.Speech.tell(
+            characters.Mama,
+            "Choice (Explore) Talk to mirror merchant."
+          );
+          ƒS.Speech.clear();
+          return Chp01_CS_PerchaseMirror();
+          break;
+      }
+    } while (dataForSave.pickedChoice);
 
     return Chp01_02_ConvoMother();
   }

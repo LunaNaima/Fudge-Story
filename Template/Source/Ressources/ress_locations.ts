@@ -17,7 +17,7 @@ namespace Spiegel_VN {
     },
     Chp02_01_Dinner: {
       name: "Dinnertable",
-      background: "./Assets/Backgrounds/Chapter02/Dinner/DiningTable.jpg",
+      background: "./Assets/Backgrounds/Chapter02/Dinner/DiningTable.jpeg",
     },
 
     black: {

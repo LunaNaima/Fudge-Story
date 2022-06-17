@@ -4,7 +4,7 @@ namespace Spiegel_VN {
     await ƒS.Speech.tell("Luna", "Test Choices");
     // ---
 
-    let score = 13;
+    // let score = 13;
 
     let TestDialogueAnswers = {
       iSayGreen: "Green.",
@@ -12,30 +12,53 @@ namespace Spiegel_VN {
       iSayEyes: "I luv eyez",
     };
 
-    if (score <= 10) {
-      //   delete TestDialogueAnswers.iSayBlue;
-      delete TestDialogueAnswers.iSayEyes;
-    }
+    // if (score <= 10) {
+    //   //   delete TestDialogueAnswers.iSayBlue;
+    //   delete TestDialogueAnswers.iSayEyes;
+    // }
 
-    let TestDialogue = await ƒS.Menu.getInput(
-      TestDialogueAnswers,
-      "choicesCSSclass"
-    );
+    let pickediSayBlue: boolean;
+    let pickediSayGreen: boolean;
+    let pickediSayEyes: boolean;
 
-    switch (TestDialogue) {
-      case TestDialogueAnswers.iSayBlue:
-        // continue path here
-        await ƒS.Speech.tell("Hannahh", "I love blue yay");
-        break;
+    do {
+      if (pickediSayBlue) {
+        delete TestDialogueAnswers.iSayBlue;
+      } else if (pickediSayGreen) {
+        delete TestDialogueAnswers.iSayGreen;
+      } else if (pickediSayEyes) {
+        delete TestDialogueAnswers.iSayEyes;
+      }
 
-      case TestDialogueAnswers.iSayGreen:
-        // continue path here
-        await ƒS.Speech.tell("Luna", "I love green yay");
-        break;
+      let TestDialogue = await ƒS.Menu.getInput(
+        TestDialogueAnswers,
+        "choicesCSSclass"
+      );
 
-      case TestDialogueAnswers.iSayEyes:
-        await ƒS.Speech.tell("Hanahhh", "YOUR COLOR EYEZ ARE MY FAVORITE");
-        break;
-    }
+      switch (TestDialogue) {
+        case TestDialogueAnswers.iSayBlue:
+          // continue path here
+          pickediSayBlue = true;
+          dataForSave.pickedChoice = true;
+          await ƒS.Speech.tell("Hannahh", "I love blue yay");
+          // return "Auswahlmöglichkeiten";
+          break;
+
+        case TestDialogueAnswers.iSayGreen:
+          // continue path here
+          pickediSayGreen = true;
+          dataForSave.pickedChoice = true;
+          await ƒS.Speech.tell("Luna", "I love green yay");
+          // return "Auswahlmöglichkeiten";
+          break;
+
+        case TestDialogueAnswers.iSayEyes:
+          pickediSayEyes = true;
+          dataForSave.pickedChoice = true;
+          await ƒS.Speech.tell("Hanahhh", "YOUR COLOR EYEZ ARE MY FAVORITE");
+          // return "Auswahlmöglichkeiten";
+          break;
+      }
+    } while (dataForSave.pickedChoice);
   }
 }
