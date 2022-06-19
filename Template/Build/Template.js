@@ -45,7 +45,10 @@ var Spiegel_VN;
         // *** RIGHT OPTION PICKED ***
         pickedRightChoice: false,
         // *** IMPORTANT CHOICES ***
+        pickedChp06RecieveIron: false,
         pickedChp08TrustFlynn: false,
+        pickedChp10SingToBirds: false,
+        pickedChp11Iron: false,
         // *** DELETE OPTION AFTER PICKED ***
         pickedChoice: false,
         // pickediSayBlue: false,
@@ -101,6 +104,11 @@ var Spiegel_VN;
         pickedChp09DiscoverSpeakToVillagers: false,
         pickedChp09SpeakToBeggar: false,
         pickedChp09MakeAWish: false,
+        // CHAPTER 10: ON THE RAFT
+        pickedChoiceChp10ExploreAfraid: false,
+        pickedChoiceChp10ExploreAttention: false,
+        pickedChoiceChp10ExploreSick: false,
+        pickedChoiceChp10ExploreAll: false,
     };
     Spiegel_VN.inventory = {
         apple: {
@@ -545,8 +553,8 @@ var Spiegel_VN;
                 name: "How to cross",
             },
             {
-                id: "10_02 Build a raft",
-                scene: Spiegel_VN.Chp10_02_BuildARaft,
+                id: "10_02 On the raft",
+                scene: Spiegel_VN.Chp10_02_OnTheRaft,
                 name: "Build a raft",
             },
             {
@@ -565,7 +573,7 @@ var Spiegel_VN;
                 name: "Sing to birds",
             },
             {
-                id: "10_042 UseMirror",
+                id: "10_042 Use Mirror",
                 scene: Spiegel_VN.Chp10_042_UseMirror,
                 name: "Use the mirror",
             },
@@ -652,33 +660,38 @@ var Spiegel_VN;
                 name: "Sneak-in amongst slaves",
             },
             {
-                id: "12_02 Talk to slaves",
-                scene: Spiegel_VN.Chp12_02_TalkToSlaves,
+                id: "12_02 Enter factory",
+                scene: Spiegel_VN.Chp12_02_EnterFactory,
+                name: "Enter factory",
+            },
+            {
+                id: "12_031 Talk to slaves",
+                scene: Spiegel_VN.Chp12_031_TalkToSlaves,
                 name: "Talk to slaves",
             },
             {
-                id: "12_03 Search for Kailani",
-                scene: Spiegel_VN.Chp12_03_SearchForKailani,
+                id: "12_032 Search for Kailani",
+                scene: Spiegel_VN.Chp12_032_SearchForKailani,
                 name: "Search for Kailani",
             },
             {
-                id: "12_04 Listen to guards",
-                scene: Spiegel_VN.Chp12_04_ListenToGuards,
+                id: "12_033 Listen to guards",
+                scene: Spiegel_VN.Chp12_033_ListenToGuards,
                 name: "Listen to guards",
             },
             {
-                id: "12_05 Back to hiding place",
-                scene: Spiegel_VN.Chp12_05_BackToHidingPlace,
+                id: "12_04 Back to hiding place",
+                scene: Spiegel_VN.Chp12_04_BackToHidingPlace,
                 name: "Back to hiding place",
             },
             {
-                id: "12_061 Birds offer help",
-                scene: Spiegel_VN.Chp12_061_BirdsOfferHelp,
+                id: "12_051 Birds offer help",
+                scene: Spiegel_VN.Chp12_051_BirdsOfferHelp,
                 name: "Birds offer help",
             },
             {
-                id: "12_062 Make a wish",
-                scene: Spiegel_VN.Chp12_062_MakeAWish,
+                id: "12_052 Make a wish",
+                scene: Spiegel_VN.Chp12_052_MakeAWish,
                 name: "Make a wish",
             },
             {
@@ -692,11 +705,6 @@ var Spiegel_VN;
                 name: "Production site",
             },
             {
-                id: "12_E Discover slaves",
-                scene: Spiegel_VN.Chp12_E_DiscoverSlaves,
-                name: "Discover slaves",
-            },
-            {
                 id: "12_CS Talk to Flynn",
                 scene: Spiegel_VN.Chp12_CS_TalkToFlynn,
                 name: "Talk to Flynn",
@@ -708,8 +716,8 @@ var Spiegel_VN;
                 name: "Entry village",
             },
             {
-                id: "13_02 Go to tower",
-                scene: Spiegel_VN.Chp13_02_GoToTower,
+                id: "13_02 Get into tower",
+                scene: Spiegel_VN.Chp13_02_GetIntoTower,
                 name: "Go to tower",
             },
             {
@@ -743,7 +751,7 @@ var Spiegel_VN;
                 name: "Discover tower window",
             },
             {
-                id: "13_E Discover Watch guard",
+                id: "13_E Discover watch guard",
                 scene: Spiegel_VN.Chp13_E_DiscoverWatchGuard,
                 name: "Discover watch guard",
             },
@@ -2388,7 +2396,25 @@ var Spiegel_VN;
 (function (Spiegel_VN) {
     async function Chp06_02_ReceiveItemMama() {
         await Spiegel_VN.ƒS.Speech.tell("Ich", "Hier bekomme ich was von Mama");
-        return "06_03 Departure";
+        let Chp06RecieveIronElementAnswers = {
+            iSayYes: "Ja",
+            iSayNo: "Nein",
+        };
+        let Chp06RecieveIronElement = await Spiegel_VN.ƒS.Menu.getInput(Chp06RecieveIronElementAnswers, "choicesCSSclass");
+        // *** RESPONSES ***
+        switch (Chp06RecieveIronElement) {
+            case Chp06RecieveIronElementAnswers.iSayYes:
+                Spiegel_VN.dataForSave.pickedChp06RecieveIron = true;
+                await Spiegel_VN.ƒS.Speech.tell("Ich", "Ich nehme den Talisman an");
+                Spiegel_VN.ƒS.Speech.clear();
+                return "06_03 Departure"; // hier lieber: return "Chp ..."; if clause: ich nehm versch keys und sage: if dataforsave.pciekd = alle true, dann in der if clause return. if (dataforsave.pickedChoice, pickedotherchoice, usw. = true), dann gehts weiter
+                break;
+            case Chp06RecieveIronElementAnswers.iSayNo:
+                await Spiegel_VN.ƒS.Speech.tell("Ich", "Ich nehme den Talisman nicht an");
+                Spiegel_VN.ƒS.Speech.clear();
+                return "06_03 Departure"; // hier lieber: return "Chp ..."; if clause: ich nehm versch keys und sage: if dataforsave.pciekd = alle true, dann in der if clause return. if (dataforsave.pickedChoice, pickedotherchoice, usw. = true), dann gehts weiter
+                break;
+        }
     }
     Spiegel_VN.Chp06_02_ReceiveItemMama = Chp06_02_ReceiveItemMama;
 })(Spiegel_VN || (Spiegel_VN = {}));
@@ -3119,7 +3145,7 @@ var Spiegel_VN;
 })(Spiegel_VN || (Spiegel_VN = {}));
 var Spiegel_VN;
 (function (Spiegel_VN) {
-    async function Chp10_02_BuildARaft() {
+    async function Chp10_02_OnTheRaft() {
         await Spiegel_VN.ƒS.Speech.tell("Ich", "Juchu Floß bauen. Flynn, was denkst du denn, warum die Leute hier so auf ihr Äußeres fixiert sind?");
         let randomTextChp10BuildARaft = Spiegel_VN.ƒ.Random.default.getRangeFloored(1, 5); //gerundet
         switch (randomTextChp10BuildARaft) {
@@ -3147,170 +3173,484 @@ var Spiegel_VN;
             iSayExploreAttention: "(Erkunden) Sie brauchen die Aufmerksamkeit",
             iSayExploreSick: "(Erkunden) Die Leute sind einfach krank",
             iSayExploreAll: "(Erkunden) Wenn alle so sind ...",
+            iSayContinue: "Weiter",
         };
-        do {
-            let Chp10BuildARaftElement = await Spiegel_VN.ƒS.Menu.getInput(Chp10BuildARaftElementAnswers, "choicesCSSclass");
-            switch (Chp10BuildARaftElement) {
-                case Chp10BuildARaftElementAnswers.iSayStealABoat:
-                    // continue path here
-                    await Spiegel_VN.ƒS.Speech.tell("Ich", "Boot klauen? Eher nicht");
-                    Spiegel_VN.ƒS.Speech.clear();
-                    return "10_01 Build a raft"; // hier lieber: return "Chp ..."; if clause: ich nehm versch keys und sage: if dataforsave.pciekd = alle true, dann in der if clause return. if (dataforsave.pickedChoice, pickedotherchoice, usw. = true), dann gehts weiter
-                    break;
-                case Chp10BuildARaftElementAnswers.iSayBuildARaft:
-                    await Spiegel_VN.ƒS.Speech.tell("Ich", "Ein Floß bauen klingt doch gut!");
-                    Spiegel_VN.dataForSave.pickedRightChoice = true;
-                    Spiegel_VN.ƒS.Speech.clear();
-                    return "";
-                    break;
-                case Chp10BuildARaftElementAnswers.iSaySwim:
-                    // continue path here
-                    await Spiegel_VN.ƒS.Speech.tell("Ich", "Schwimmen ist glaub bisschen viel");
-                    Spiegel_VN.ƒS.Speech.clear();
-                    return "10_01 Build a raft";
-                    break;
-                case Chp10BuildARaftElementAnswers.iSayTurnAround:
-                    await Spiegel_VN.ƒS.Speech.tell("Ich", "Umdrehen ist eigentlich keine Option ... Was ist mit Kailani?");
-                    Spiegel_VN.ƒS.Speech.clear();
-                    return "10_01 Build a raft";
-                    break;
-            }
-        } while (!Spiegel_VN.dataForSave.pickedRightChoice);
-        if (Spiegel_VN.dataForSave.pickedRightChoice) {
-            return "01_01 Intro Marketplace";
+        if (!Spiegel_VN.dataForSave.pickedChoiceChp10ExploreAfraid || // Hier vielleicht counter einbauen? wenn 2 optionen geklickt wurden, erscheint weiter-button
+            !Spiegel_VN.dataForSave.pickedChoiceChp10ExploreAttention ||
+            !Spiegel_VN.dataForSave.pickedChoiceChp10ExploreAll) {
+            delete Chp10BuildARaftElementAnswers.iSayContinue;
+            // return Chp01_CS_ArrivalHome();
+        }
+        let Chp10BuildARaftElement = await Spiegel_VN.ƒS.Menu.getInput(Chp10BuildARaftElementAnswers, "choicesCSSclass");
+        switch (Chp10BuildARaftElement) {
+            case Chp10BuildARaftElementAnswers.iSayExploreTheyAreAfraid:
+                Spiegel_VN.dataForSave.pickedChoiceChp10ExploreAfraid = true;
+                await Spiegel_VN.ƒS.Speech.tell("Ich", "Angst vor Verurteilung");
+                Spiegel_VN.ƒS.Speech.clear();
+                return "10_01 Build a raft"; // hier lieber: return "Chp ..."; if clause: ich nehm versch keys und sage: if dataforsave.pciekd = alle true, dann in der if clause return. if (dataforsave.pickedChoice, pickedotherchoice, usw. = true), dann gehts weiter
+                break;
+            case Chp10BuildARaftElementAnswers.iSayExploreAttention:
+                Spiegel_VN.dataForSave.pickedChoiceChp10ExploreAttention = true;
+                await Spiegel_VN.ƒS.Speech.tell("Ich", "Mit der Aufmerksamkeit fühlen sie sich vielleicht besser");
+                Spiegel_VN.ƒS.Speech.clear();
+                return "10_01 Build a raft";
+                break;
+            case Chp10BuildARaftElementAnswers.iSayExploreSick:
+                Spiegel_VN.dataForSave.pickedChoiceChp10ExploreSick = true;
+                await Spiegel_VN.ƒS.Speech.tell("Ich", "Sie sind einfach verrückt! Was soll diese Oberflächlichkeit");
+                Spiegel_VN.ƒS.Speech.clear();
+                return "10_01 Build a raft";
+                break;
+            case Chp10BuildARaftElementAnswers.iSayExploreAll:
+                Spiegel_VN.dataForSave.pickedChoiceChp10ExploreAll = true;
+                await Spiegel_VN.ƒS.Speech.tell("Ich", "Na gut, wenn es alle machen?");
+                Spiegel_VN.ƒS.Speech.clear();
+                return "10_01 Build a raft";
+                break;
+            case Chp10BuildARaftElementAnswers.iSayContinue:
+                await Spiegel_VN.ƒS.Speech.tell("Ich", "Es geht weiter");
+                Spiegel_VN.ƒS.Speech.clear();
+                return "10_03 Cross lake";
+                break;
         }
     }
-    Spiegel_VN.Chp10_02_BuildARaft = Chp10_02_BuildARaft;
+    Spiegel_VN.Chp10_02_OnTheRaft = Chp10_02_OnTheRaft;
 })(Spiegel_VN || (Spiegel_VN = {}));
 var Spiegel_VN;
 (function (Spiegel_VN) {
-    async function Chp10_03_CrossLake() { }
+    async function Chp10_03_CrossLake() {
+        await Spiegel_VN.ƒS.Speech.tell("Ich", "Wir überqueren den See");
+        let Chp10CrossingLakeElementAnswers = {
+            iSayDiscoverCitylights: "Die Stadtlichter ...",
+            iSayDiscoverLakewater: "Wasser anschauen",
+            iSayLookAhead: "Nach vorne schauen",
+        };
+        let Chp10CrossingLakeElement = await Spiegel_VN.ƒS.Menu.getInput(Chp10CrossingLakeElementAnswers, "choicesCSSclass");
+        switch (Chp10CrossingLakeElement) {
+            case Chp10CrossingLakeElementAnswers.iSayDiscoverCitylights:
+                // continue path here
+                await Spiegel_VN.ƒS.Speech.tell("Ich", "Von hier sieht es gar nicht so schlimm aus");
+                Spiegel_VN.ƒS.Speech.clear();
+                return "10_03 Cross lake"; // hier lieber: return "Chp ..."; if clause: ich nehm versch keys und sage: if dataforsave.pciekd = alle true, dann in der if clause return. if (dataforsave.pickedChoice, pickedotherchoice, usw. = true), dann gehts weiter
+                break;
+            case Chp10CrossingLakeElementAnswers.iSayDiscoverLakewater:
+                // continue path here
+                await Spiegel_VN.ƒS.Speech.tell("Ich", "Lass mal das Wasser anschauen");
+                Spiegel_VN.ƒS.Speech.clear();
+                return "10_03 Cross lake"; // hier lieber: return "Chp ..."; if clause: ich nehm versch keys und sage: if dataforsave.pciekd = alle true, dann in der if clause return. if (dataforsave.pickedChoice, pickedotherchoice, usw. = true), dann gehts weiter
+                break;
+            case Chp10CrossingLakeElementAnswers.iSayLookAhead:
+                // continue path here
+                await Spiegel_VN.ƒS.Speech.tell("Ich", "Du wendest den Kopf nach vorne und schaust in die Dunkelheit");
+                Spiegel_VN.ƒS.Speech.clear();
+                return "10_04 Attack birds"; // hier lieber: return "Chp ..."; if clause: ich nehm versch keys und sage: if dataforsave.pciekd = alle true, dann in der if clause return. if (dataforsave.pickedChoice, pickedotherchoice, usw. = true), dann gehts weiter
+                break;
+        }
+    }
     Spiegel_VN.Chp10_03_CrossLake = Chp10_03_CrossLake;
 })(Spiegel_VN || (Spiegel_VN = {}));
 var Spiegel_VN;
 (function (Spiegel_VN) {
-    async function Chp10_041_SingToBirds() { }
+    async function Chp10_041_SingToBirds() {
+        Spiegel_VN.dataForSave.pickedChp10SingToBirds = true;
+        await Spiegel_VN.ƒS.Speech.tell("Ich", "La la la... ich singe zu den Vögeln");
+        return "10_051 Birds become friendly";
+    }
     Spiegel_VN.Chp10_041_SingToBirds = Chp10_041_SingToBirds;
 })(Spiegel_VN || (Spiegel_VN = {}));
 var Spiegel_VN;
 (function (Spiegel_VN) {
-    async function Chp10_042_UseMirror() { }
+    async function Chp10_042_UseMirror() {
+        await Spiegel_VN.ƒS.Speech.tell("Ich", "Ich benutze den Spiegel als Schutzschild");
+        return "10_052 Birds disappear";
+    }
     Spiegel_VN.Chp10_042_UseMirror = Chp10_042_UseMirror;
 })(Spiegel_VN || (Spiegel_VN = {}));
 var Spiegel_VN;
 (function (Spiegel_VN) {
-    async function Chp10_04_AttackBirds() { }
+    async function Chp10_04_AttackBirds() {
+        await Spiegel_VN.ƒS.Speech.tell("Ich", "Hilfe Vögel attackieren uns!");
+        let Chp10AttackBirdsElementAnswers = {
+            iSaySingToBirds: "Zu Vögeln singen",
+            iSayHitWithOar: "(Erkunden) Wegschlagen",
+            iSayUseMirror: "Spiegel als Schutzschild benutzen",
+        };
+        let Chp10AttackBirdsElement = await Spiegel_VN.ƒS.Menu.getInput(Chp10AttackBirdsElementAnswers, "choicesCSSclass");
+        switch (Chp10AttackBirdsElement) {
+            case Chp10AttackBirdsElementAnswers.iSaySingToBirds:
+                // continue path here
+                await Spiegel_VN.ƒS.Speech.tell("Ich", "Ich versuchs mal mit singen");
+                Spiegel_VN.ƒS.Speech.clear();
+                return "10_041 Sing to birds"; // hier lieber: return "Chp ..."; if clause: ich nehm versch keys und sage: if dataforsave.pciekd = alle true, dann in der if clause return. if (dataforsave.pickedChoice, pickedotherchoice, usw. = true), dann gehts weiter
+                break;
+            case Chp10AttackBirdsElementAnswers.iSayHitWithOar:
+                // continue path here
+                await Spiegel_VN.ƒS.Speech.tell("Ich", "Kann ich sie wegschlagen?");
+                Spiegel_VN.ƒS.Speech.clear();
+                return "10_04 Attack birds"; // hier lieber: return "Chp ..."; if clause: ich nehm versch keys und sage: if dataforsave.pciekd = alle true, dann in der if clause return. if (dataforsave.pickedChoice, pickedotherchoice, usw. = true), dann gehts weiter
+                break;
+            case Chp10AttackBirdsElementAnswers.iSayUseMirror:
+                // continue path here
+                await Spiegel_VN.ƒS.Speech.tell("Ich", "Kann ich den Spiegel benutzen?");
+                Spiegel_VN.ƒS.Speech.clear();
+                return "10_042 Use Mirror"; // hier lieber: return "Chp ..."; if clause: ich nehm versch keys und sage: if dataforsave.pciekd = alle true, dann in der if clause return. if (dataforsave.pickedChoice, pickedotherchoice, usw. = true), dann gehts weiter
+                break;
+        }
+    }
     Spiegel_VN.Chp10_04_AttackBirds = Chp10_04_AttackBirds;
 })(Spiegel_VN || (Spiegel_VN = {}));
 var Spiegel_VN;
 (function (Spiegel_VN) {
-    async function Chp10_051_FriendlyBirds() { }
+    async function Chp10_051_FriendlyBirds() {
+        await Spiegel_VN.ƒS.Speech.tell("Ich", "Die Vögel werden freundlich");
+        return "10_CS Arrival other side";
+    }
     Spiegel_VN.Chp10_051_FriendlyBirds = Chp10_051_FriendlyBirds;
 })(Spiegel_VN || (Spiegel_VN = {}));
 var Spiegel_VN;
 (function (Spiegel_VN) {
-    async function Chp10_052_BirdsDisappear() { }
+    async function Chp10_052_BirdsDisappear() {
+        await Spiegel_VN.ƒS.Speech.tell("Ich", "Die Vögel verschwinden");
+        return "10_CS Arrival other side";
+    }
     Spiegel_VN.Chp10_052_BirdsDisappear = Chp10_052_BirdsDisappear;
 })(Spiegel_VN || (Spiegel_VN = {}));
 var Spiegel_VN;
 (function (Spiegel_VN) {
-    async function Chp10_E_CityLightsWhary() { }
+    async function Chp10_E_CityLightsWhary() {
+        await Spiegel_VN.ƒS.Speech.tell("Ich", "Die Stadtlichter sehen schön aus");
+        return "10_03 Cross lake";
+    }
     Spiegel_VN.Chp10_E_CityLightsWhary = Chp10_E_CityLightsWhary;
 })(Spiegel_VN || (Spiegel_VN = {}));
 var Spiegel_VN;
 (function (Spiegel_VN) {
-    async function Chp10_E_DiscoverLake() { }
+    async function Chp10_E_DiscoverLake() {
+        await Spiegel_VN.ƒS.Speech.tell("Ich", "Der See ist echt gruselig");
+        return "09_CS Arrival lake";
+    }
     Spiegel_VN.Chp10_E_DiscoverLake = Chp10_E_DiscoverLake;
 })(Spiegel_VN || (Spiegel_VN = {}));
 var Spiegel_VN;
 (function (Spiegel_VN) {
-    async function Chp10_E_DiscoverLakewater() { }
+    async function Chp10_E_DiscoverLakewater() {
+        await Spiegel_VN.ƒS.Speech.tell("Ich", "Das Wasser ist echt dunkel und gruselig");
+        return "10_03 Cross lake";
+    }
     Spiegel_VN.Chp10_E_DiscoverLakewater = Chp10_E_DiscoverLakewater;
 })(Spiegel_VN || (Spiegel_VN = {}));
 var Spiegel_VN;
 (function (Spiegel_VN) {
-    async function Chp10_CS_ArrivalOtherSide() { }
+    async function Chp10_CS_ArrivalOtherSide() {
+        await Spiegel_VN.ƒS.Speech.tell("Ich", "Cut scene: wir sind auf der anderen Seite des Sees angekommen");
+        // ** RANDOM TEXT ***
+        let randomTextChp11ArrivalOtherSide = Spiegel_VN.ƒ.Random.default.getRangeFloored(1, 5); //gerundet
+        switch (randomTextChp11ArrivalOtherSide) {
+            case 1:
+                await Spiegel_VN.ƒS.Speech.tell("Ich", "Random dialogue 1 -----------");
+                break;
+            case 2:
+                await Spiegel_VN.ƒS.Speech.tell("Ich", "Random dialogue 2 -----------");
+                break;
+            case 3:
+                await Spiegel_VN.ƒS.Speech.tell("Ich", "Random dialogue 3 -----------");
+                break;
+            case 4:
+                await Spiegel_VN.ƒS.Speech.tell("Ich", "Random dialogue 4 -----------");
+                break;
+            case 5:
+                await Spiegel_VN.ƒS.Speech.tell("Ich", "Random dialogue 5 -----------");
+                break;
+            default:
+                await Spiegel_VN.ƒS.Speech.tell("Ich", "Default--------------------");
+                break;
+        }
+        let Chp11ArrivalOtherSideElementAnswers = {
+            iSayDiscoverTower: "(Erkunden) Turm anschauen",
+            iSayDiscoverHuts: "(Erkunden) Hütten anschauen",
+            iSayDiscoverForest: "(Erkunden) Wald anschauen",
+            iSaySearchForHidingPlace: "Nach Versteck suchen",
+        };
+        let Chp11ArrivalOtherSideElement = await Spiegel_VN.ƒS.Menu.getInput(Chp11ArrivalOtherSideElementAnswers, "choicesCSSclass");
+        // *** RESPONSES ***
+        switch (Chp11ArrivalOtherSideElement) {
+            case Chp11ArrivalOtherSideElementAnswers.iSayDiscoverForest:
+                await Spiegel_VN.ƒS.Speech.tell("Ich", "Okay lass den Wald genauer anschauen");
+                Spiegel_VN.ƒS.Speech.clear();
+                return "11_E Discover forest"; // hier lieber: return "Chp ..."; if clause: ich nehm versch keys und sage: if dataforsave.pciekd = alle true, dann in der if clause return. if (dataforsave.pickedChoice, pickedotherchoice, usw. = true), dann gehts weiter
+                break;
+            case Chp11ArrivalOtherSideElementAnswers.iSayDiscoverHuts:
+                await Spiegel_VN.ƒS.Speech.tell("Ich", "Hütten anschauen");
+                Spiegel_VN.ƒS.Speech.clear();
+                return "11_E Discover huts"; // hier lieber: return "Chp ..."; if clause: ich nehm versch keys und sage: if dataforsave.pciekd = alle true, dann in der if clause return. if (dataforsave.pickedChoice, pickedotherchoice, usw. = true), dann gehts weiter
+                break;
+            case Chp11ArrivalOtherSideElementAnswers.iSayDiscoverTower:
+                await Spiegel_VN.ƒS.Speech.tell("Ich", "Turm anschauen");
+                Spiegel_VN.ƒS.Speech.clear();
+                return "11_E Discover tower"; // hier lieber: return "Chp ..."; if clause: ich nehm versch keys und sage: if dataforsave.pciekd = alle true, dann in der if clause return. if (dataforsave.pickedChoice, pickedotherchoice, usw. = true), dann gehts weiter
+                break;
+            case Chp11ArrivalOtherSideElementAnswers.iSaySearchForHidingPlace:
+                await Spiegel_VN.ƒS.Speech.tell("Ich", "Erstmal nach einem Schlafplatz suchen");
+                Spiegel_VN.ƒS.Speech.clear();
+                return "11_01 Search for hiding place"; // hier lieber: return "Chp ..."; if clause: ich nehm versch keys und sage: if dataforsave.pciekd = alle true, dann in der if clause return. if (dataforsave.pickedChoice, pickedotherchoice, usw. = true), dann gehts weiter
+                break;
+        }
+    }
     Spiegel_VN.Chp10_CS_ArrivalOtherSide = Chp10_CS_ArrivalOtherSide;
 })(Spiegel_VN || (Spiegel_VN = {}));
 var Spiegel_VN;
 (function (Spiegel_VN) {
-    async function Chp11_01_SearchHidingPlace() { }
+    async function Chp11_01_SearchHidingPlace() {
+        await Spiegel_VN.ƒS.Speech.tell("Ich", "Suchen wir mal nach einem Versteck");
+        let Chp11HidingPlacePickSceneElementAnswers = {
+            iSayDiscoverIron: "Wald erkunden",
+            iSaySearchSleepingPlace: "Nach Schlafplatz suchen",
+        };
+        if (!Spiegel_VN.dataForSave.pickedChp06RecieveIron // ! heißt not: es wird nach entgegengesetztem Zustand gefragt // || = oder; && = und
+        ) {
+            delete Chp11HidingPlacePickSceneElementAnswers.iSayDiscoverIron;
+            // return Chp01_CS_ArrivalHome();
+        }
+        let Chp11HidingPlacePickSceneElement = await Spiegel_VN.ƒS.Menu.getInput(Chp11HidingPlacePickSceneElementAnswers, "choicesCSSclass");
+        // *** RESPONSES ***
+        switch (Chp11HidingPlacePickSceneElement) {
+            case Chp11HidingPlacePickSceneElementAnswers.iSayDiscoverIron:
+                await Spiegel_VN.ƒS.Speech.tell("Ich", "Da hinten glitzert was im Wald ...");
+                Spiegel_VN.ƒS.Speech.clear();
+                return "11_02 Find iron"; // hier lieber: return "Chp ..."; if clause: ich nehm versch keys und sage: if dataforsave.pciekd = alle true, dann in der if clause return. if (dataforsave.pickedChoice, pickedotherchoice, usw. = true), dann gehts weiter
+                break;
+            case Chp11HidingPlacePickSceneElementAnswers.iSaySearchSleepingPlace:
+                await Spiegel_VN.ƒS.Speech.tell("Ich", "Wo können wir uns niederlassen?");
+                Spiegel_VN.ƒS.Speech.clear();
+                return "11_03 Watch factory"; // hier lieber: return "Chp ..."; if clause: ich nehm versch keys und sage: if dataforsave.pciekd = alle true, dann in der if clause return. if (dataforsave.pickedChoice, pickedotherchoice, usw. = true), dann gehts weiter
+                break;
+        }
+    }
     Spiegel_VN.Chp11_01_SearchHidingPlace = Chp11_01_SearchHidingPlace;
 })(Spiegel_VN || (Spiegel_VN = {}));
 var Spiegel_VN;
 (function (Spiegel_VN) {
-    async function Chp11_02_FindIron() { }
+    async function Chp11_02_FindIron() {
+        Spiegel_VN.dataForSave.pickedChp11Iron = true;
+        await Spiegel_VN.ƒS.Speech.tell("Ich", "Hier finde ich ein Stück Eisen");
+        return "11_01 Search for hiding place";
+    }
     Spiegel_VN.Chp11_02_FindIron = Chp11_02_FindIron;
 })(Spiegel_VN || (Spiegel_VN = {}));
 var Spiegel_VN;
 (function (Spiegel_VN) {
-    async function Chp11_03_WatchFactory() { }
+    async function Chp11_03_WatchFactory() {
+        await Spiegel_VN.ƒS.Speech.tell("Ich", "Von hier aus kann man die Fabrik gut beobachten");
+        let Chp11WatchFactoryPickSceneElementAnswers = {
+            iSayTryBreakIn: "Gleich einbrechen",
+            iSaySleep: "Zuerst schlafen gehen",
+        };
+        let Chp11WatchFactoryPickSceneElement = await Spiegel_VN.ƒS.Menu.getInput(Chp11WatchFactoryPickSceneElementAnswers, "choicesCSSclass");
+        // *** RESPONSES ***
+        switch (Chp11WatchFactoryPickSceneElement) {
+            case Chp11WatchFactoryPickSceneElementAnswers.iSayTryBreakIn:
+                await Spiegel_VN.ƒS.Speech.tell("Ich", "Lass gleich versuchen, einzubrechen!");
+                Spiegel_VN.ƒS.Speech.clear();
+                return "11_04 Try break-in"; // hier lieber: return "Chp ..."; if clause: ich nehm versch keys und sage: if dataforsave.pciekd = alle true, dann in der if clause return. if (dataforsave.pickedChoice, pickedotherchoice, usw. = true), dann gehts weiter
+                break;
+            case Chp11WatchFactoryPickSceneElementAnswers.iSaySleep:
+                await Spiegel_VN.ƒS.Speech.tell("Ich", "Ich will zuerst schlafen");
+                Spiegel_VN.ƒS.Speech.clear();
+                return "11_CS Sleep"; // hier lieber: return "Chp ..."; if clause: ich nehm versch keys und sage: if dataforsave.pciekd = alle true, dann in der if clause return. if (dataforsave.pickedChoice, pickedotherchoice, usw. = true), dann gehts weiter
+                break;
+        }
+    }
     Spiegel_VN.Chp11_03_WatchFactory = Chp11_03_WatchFactory;
 })(Spiegel_VN || (Spiegel_VN = {}));
 var Spiegel_VN;
 (function (Spiegel_VN) {
-    async function Chp11_04_TryBreakIn() { }
+    async function Chp11_04_TryBreakIn() {
+        await Spiegel_VN.ƒS.Speech.tell("Ich", "Wir versuchen einzubrechen, aber es klappt nicht, zu viele Wachen!");
+        return "11_03 Watch factory";
+    }
     Spiegel_VN.Chp11_04_TryBreakIn = Chp11_04_TryBreakIn;
 })(Spiegel_VN || (Spiegel_VN = {}));
 var Spiegel_VN;
 (function (Spiegel_VN) {
-    async function Chp11_E_DiscoverForest() { }
+    async function Chp11_E_DiscoverForest() {
+        await Spiegel_VN.ƒS.Speech.tell("Ich", "Den Wald erkunden");
+        return "10_CS Arrival other side";
+    }
     Spiegel_VN.Chp11_E_DiscoverForest = Chp11_E_DiscoverForest;
 })(Spiegel_VN || (Spiegel_VN = {}));
 var Spiegel_VN;
 (function (Spiegel_VN) {
-    async function Chp11_E_DiscoverHuts() { }
+    async function Chp11_E_DiscoverHuts() {
+        await Spiegel_VN.ƒS.Speech.tell("Ich", "Hier erkundige ich die Hütten");
+        return "10_CS Arrival other side";
+    }
     Spiegel_VN.Chp11_E_DiscoverHuts = Chp11_E_DiscoverHuts;
 })(Spiegel_VN || (Spiegel_VN = {}));
 var Spiegel_VN;
 (function (Spiegel_VN) {
-    async function Chp11_E_DiscoverTower() { }
+    async function Chp11_E_DiscoverTower() {
+        await Spiegel_VN.ƒS.Speech.tell("Ich", "Ich will mir den Turm genauer anschauen");
+        return "10_CS Arrival other side";
+    }
     Spiegel_VN.Chp11_E_DiscoverTower = Chp11_E_DiscoverTower;
 })(Spiegel_VN || (Spiegel_VN = {}));
 var Spiegel_VN;
 (function (Spiegel_VN) {
-    async function Chp11_CS_Sleep() { }
+    async function Chp11_CS_Sleep() {
+        await Spiegel_VN.ƒS.Speech.tell("Ich", "Wieder schlafen yay");
+        let Chp11HowSneakInElementAnswers = {
+            iSaySneakInBack: "Hinten rein schleichen",
+            iSaySneakAmongSlaves: "Vorne mit Sklaven reinschleichen",
+        };
+        let Chp11HowSneakInElement = await Spiegel_VN.ƒS.Menu.getInput(Chp11HowSneakInElementAnswers, "choicesCSSclass");
+        // *** RESPONSES ***
+        switch (Chp11HowSneakInElement) {
+            case Chp11HowSneakInElementAnswers.iSaySneakInBack:
+                await Spiegel_VN.ƒS.Speech.tell("Ich", "Lass hinten rein");
+                Spiegel_VN.ƒS.Speech.clear();
+                return "12_011 Sneak-in"; // hier lieber: return "Chp ..."; if clause: ich nehm versch keys und sage: if dataforsave.pciekd = alle true, dann in der if clause return. if (dataforsave.pickedChoice, pickedotherchoice, usw. = true), dann gehts weiter
+                break;
+            case Chp11HowSneakInElementAnswers.iSaySneakAmongSlaves:
+                await Spiegel_VN.ƒS.Speech.tell("Ich", "Wir mischen uns unter die Sklaven");
+                Spiegel_VN.ƒS.Speech.clear();
+                return "12_012 Sneak-in amongst slaves"; // hier lieber: return "Chp ..."; if clause: ich nehm versch keys und sage: if dataforsave.pciekd = alle true, dann in der if clause return. if (dataforsave.pickedChoice, pickedotherchoice, usw. = true), dann gehts weiter
+                break;
+        }
+    }
     Spiegel_VN.Chp11_CS_Sleep = Chp11_CS_Sleep;
 })(Spiegel_VN || (Spiegel_VN = {}));
 var Spiegel_VN;
 (function (Spiegel_VN) {
-    async function Chp12_011_SneakIn() { }
+    async function Chp12_011_SneakIn() {
+        await Spiegel_VN.ƒS.Speech.tell("Ich", "Wir versuchen jetzt von hinten einzubrechen");
+        return "12_02 Enter factory";
+    }
     Spiegel_VN.Chp12_011_SneakIn = Chp12_011_SneakIn;
 })(Spiegel_VN || (Spiegel_VN = {}));
 var Spiegel_VN;
 (function (Spiegel_VN) {
-    async function Chp12_012_SneakAmongSlaves() { }
+    async function Chp12_012_SneakAmongSlaves() {
+        await Spiegel_VN.ƒS.Speech.tell("Ich", "Wir versuchen uns zwischen den Sklaven einzuschleichen");
+        return "12_02 Enter factory";
+    }
     Spiegel_VN.Chp12_012_SneakAmongSlaves = Chp12_012_SneakAmongSlaves;
 })(Spiegel_VN || (Spiegel_VN = {}));
 var Spiegel_VN;
 (function (Spiegel_VN) {
-    async function Chp12_02_TalkToSlaves() { }
-    Spiegel_VN.Chp12_02_TalkToSlaves = Chp12_02_TalkToSlaves;
+    async function Chp12_02_EnterFactory() {
+        // ** RANDOM TEXT ***
+        let randomTextChp12EnterFactory = Spiegel_VN.ƒ.Random.default.getRangeFloored(1, 5); //gerundet
+        switch (randomTextChp12EnterFactory) {
+            case 1:
+                await Spiegel_VN.ƒS.Speech.tell("Ich", "Random dialogue 1 -----------");
+                break;
+            case 2:
+                await Spiegel_VN.ƒS.Speech.tell("Ich", "Random dialogue 2 -----------");
+                break;
+            case 3:
+                await Spiegel_VN.ƒS.Speech.tell("Ich", "Random dialogue 3 -----------");
+                break;
+            case 4:
+                await Spiegel_VN.ƒS.Speech.tell("Ich", "Random dialogue 4 -----------");
+                break;
+            case 5:
+                await Spiegel_VN.ƒS.Speech.tell("Ich", "Random dialogue 5 -----------");
+                break;
+            default:
+                await Spiegel_VN.ƒS.Speech.tell("Ich", "Default--------------------");
+                break;
+        }
+        let Chp12FactoryPickSceneElementAnswers = {
+            iSayDiscoverTalkToSlaves: "(Erkunden) Mit Sklaven reden",
+            iSayDiscoverSearchKailani: "(Erkunden) Kailani suchen",
+            iSayDiscoverListenToGuards: "(Erkunden) Wachen überhören",
+            iSayDiscoverProductionSite: "Spiegelräume anschauen",
+            iSayBack: "Zurück zum Versteck",
+        };
+        let Chp12FactoryPickSceneElement = await Spiegel_VN.ƒS.Menu.getInput(Chp12FactoryPickSceneElementAnswers, "choicesCSSclass");
+        // *** RESPONSES ***
+        switch (Chp12FactoryPickSceneElement) {
+            case Chp12FactoryPickSceneElementAnswers.iSayDiscoverTalkToSlaves:
+                await Spiegel_VN.ƒS.Speech.tell("Ich", "Ich rede mal mit den Leuten hier");
+                Spiegel_VN.ƒS.Speech.clear();
+                return "12_031 Talk to slaves"; // hier lieber: return "Chp ..."; if clause: ich nehm versch keys und sage: if dataforsave.pciekd = alle true, dann in der if clause return. if (dataforsave.pickedChoice, pickedotherchoice, usw. = true), dann gehts weiter
+                break;
+            case Chp12FactoryPickSceneElementAnswers.iSayDiscoverSearchKailani:
+                await Spiegel_VN.ƒS.Speech.tell("Ich", "Kailani suchen!");
+                Spiegel_VN.ƒS.Speech.clear();
+                return "12_032 Search for Kailani"; // hier lieber: return "Chp ..."; if clause: ich nehm versch keys und sage: if dataforsave.pciekd = alle true, dann in der if clause return. if (dataforsave.pickedChoice, pickedotherchoice, usw. = true), dann gehts weiter
+                break;
+            case Chp12FactoryPickSceneElementAnswers.iSayDiscoverListenToGuards:
+                await Spiegel_VN.ƒS.Speech.tell("Ich", "Ich will die Wachen überhören");
+                Spiegel_VN.ƒS.Speech.clear();
+                return "12_033 Listen to guards"; // hier lieber: return "Chp ..."; if clause: ich nehm versch keys und sage: if dataforsave.pciekd = alle true, dann in der if clause return. if (dataforsave.pickedChoice, pickedotherchoice, usw. = true), dann gehts weiter
+                break;
+            case Chp12FactoryPickSceneElementAnswers.iSayDiscoverProductionSite:
+                await Spiegel_VN.ƒS.Speech.tell("Ich", "Die Spiegelräume genauer anschauen");
+                Spiegel_VN.ƒS.Speech.clear();
+                return "12_E Discover production site"; // hier lieber: return "Chp ..."; if clause: ich nehm versch keys und sage: if dataforsave.pciekd = alle true, dann in der if clause return. if (dataforsave.pickedChoice, pickedotherchoice, usw. = true), dann gehts weiter
+                break;
+            case Chp12FactoryPickSceneElementAnswers.iSayBack:
+                await Spiegel_VN.ƒS.Speech.tell("Ich", "Zurück zum Versteck");
+                Spiegel_VN.ƒS.Speech.clear();
+                return "12_04 Back to hiding place"; // hier lieber: return "Chp ..."; if clause: ich nehm versch keys und sage: if dataforsave.pciekd = alle true, dann in der if clause return. if (dataforsave.pickedChoice, pickedotherchoice, usw. = true), dann gehts weiter
+                break;
+        }
+    }
+    Spiegel_VN.Chp12_02_EnterFactory = Chp12_02_EnterFactory;
 })(Spiegel_VN || (Spiegel_VN = {}));
 var Spiegel_VN;
 (function (Spiegel_VN) {
-    async function Chp12_03_SearchForKailani() { }
-    Spiegel_VN.Chp12_03_SearchForKailani = Chp12_03_SearchForKailani;
+    async function Chp12_031_TalkToSlaves() {
+        await Spiegel_VN.ƒS.Speech.tell("Ich", "Was ist denn mit diesen Leuten?");
+        return "12_02 Enter factory";
+    }
+    Spiegel_VN.Chp12_031_TalkToSlaves = Chp12_031_TalkToSlaves;
 })(Spiegel_VN || (Spiegel_VN = {}));
 var Spiegel_VN;
 (function (Spiegel_VN) {
-    async function Chp12_04_ListenToGuards() { }
-    Spiegel_VN.Chp12_04_ListenToGuards = Chp12_04_ListenToGuards;
+    async function Chp12_032_SearchForKailani() {
+        await Spiegel_VN.ƒS.Speech.tell("Ich", "Kailani muss doch irgendwo sein!");
+        return "12_02 Enter factory";
+    }
+    Spiegel_VN.Chp12_032_SearchForKailani = Chp12_032_SearchForKailani;
 })(Spiegel_VN || (Spiegel_VN = {}));
 var Spiegel_VN;
 (function (Spiegel_VN) {
-    async function Chp12_05_BackToHidingPlace() { }
-    Spiegel_VN.Chp12_05_BackToHidingPlace = Chp12_05_BackToHidingPlace;
+    async function Chp12_033_ListenToGuards() {
+        await Spiegel_VN.ƒS.Speech.tell("Ich", "Die Wachen schwätzen doch bestimmt viel");
+        return "12_02 Enter factory";
+    }
+    Spiegel_VN.Chp12_033_ListenToGuards = Chp12_033_ListenToGuards;
 })(Spiegel_VN || (Spiegel_VN = {}));
 var Spiegel_VN;
 (function (Spiegel_VN) {
-    async function Chp12_061_BirdsOfferHelp() { }
-    Spiegel_VN.Chp12_061_BirdsOfferHelp = Chp12_061_BirdsOfferHelp;
+    async function Chp12_051_BirdsOfferHelp() {
+        await Spiegel_VN.ƒS.Speech.tell("Ich", "Hier bieten mir die Vögel ihre Hilfe an, weil ich vorher zu ihnen gesungen habe");
+        return "12_CS Talk to Flynn";
+    }
+    Spiegel_VN.Chp12_051_BirdsOfferHelp = Chp12_051_BirdsOfferHelp;
 })(Spiegel_VN || (Spiegel_VN = {}));
 var Spiegel_VN;
 (function (Spiegel_VN) {
-    async function Chp12_062_MakeAWish() { }
-    Spiegel_VN.Chp12_062_MakeAWish = Chp12_062_MakeAWish;
+    async function Chp12_052_MakeAWish() {
+        await Spiegel_VN.ƒS.Speech.tell("Ich", "Ich muss einen meiner drei Wünsche verwenden, wo ist der Kobold?");
+        return "12_CS Talk to Flynn";
+    }
+    Spiegel_VN.Chp12_052_MakeAWish = Chp12_052_MakeAWish;
+})(Spiegel_VN || (Spiegel_VN = {}));
+var Spiegel_VN;
+(function (Spiegel_VN) {
+    async function Chp12_04_BackToHidingPlace() {
+        await Spiegel_VN.ƒS.Speech.tell("Ich", "Gehen wir zurück zum Versteck");
+        if (Spiegel_VN.dataForSave.pickedChp10SingToBirds) {
+            return "12_051 Birds offer help";
+        }
+        else {
+            return "12_052 Make a wish";
+        }
+    }
+    Spiegel_VN.Chp12_04_BackToHidingPlace = Chp12_04_BackToHidingPlace;
 })(Spiegel_VN || (Spiegel_VN = {}));
 var Spiegel_VN;
 (function (Spiegel_VN) {
@@ -3324,23 +3664,111 @@ var Spiegel_VN;
 })(Spiegel_VN || (Spiegel_VN = {}));
 var Spiegel_VN;
 (function (Spiegel_VN) {
-    async function Chp12_E_DiscoverSlaves() { }
-    Spiegel_VN.Chp12_E_DiscoverSlaves = Chp12_E_DiscoverSlaves;
-})(Spiegel_VN || (Spiegel_VN = {}));
-var Spiegel_VN;
-(function (Spiegel_VN) {
-    async function Chp12_CS_TalkToFlynn() { }
+    async function Chp12_CS_TalkToFlynn() {
+        await Spiegel_VN.ƒS.Speech.tell("Ich", "Hier bespreche ich mit Flynn alles, was passiert ist und wie wir vorgehen");
+        return "13_01 Entry village";
+    }
     Spiegel_VN.Chp12_CS_TalkToFlynn = Chp12_CS_TalkToFlynn;
 })(Spiegel_VN || (Spiegel_VN = {}));
 var Spiegel_VN;
 (function (Spiegel_VN) {
-    async function Chp13_01_EntryVillage() { }
+    async function Chp13_01_EntryVillage() {
+        let randomTextChp13VillageFactory = Spiegel_VN.ƒ.Random.default.getRangeFloored(1, 5); //gerundet
+        switch (randomTextChp13VillageFactory) {
+            case 1:
+                await Spiegel_VN.ƒS.Speech.tell("Ich", "Random dialogue 1 -----------");
+                break;
+            case 2:
+                await Spiegel_VN.ƒS.Speech.tell("Ich", "Random dialogue 2 -----------");
+                break;
+            case 3:
+                await Spiegel_VN.ƒS.Speech.tell("Ich", "Random dialogue 3 -----------");
+                break;
+            case 4:
+                await Spiegel_VN.ƒS.Speech.tell("Ich", "Random dialogue 4 -----------");
+                break;
+            case 5:
+                await Spiegel_VN.ƒS.Speech.tell("Ich", "Random dialogue 5 -----------");
+                break;
+            default:
+                await Spiegel_VN.ƒS.Speech.tell("Ich", "Default--------------------");
+                break;
+        }
+        let Chp13VillagePickSceneElementAnswers = {
+            iSayDiscoverWatchGuard: "(Erkunden) Wachen beobachten",
+            iSayDiscoverSneakAround: "(Erkunden) Herumschleichen",
+            iSayGoToTower: "Auf zum Turm",
+        };
+        let Chp13VillagePickSceneElement = await Spiegel_VN.ƒS.Menu.getInput(Chp13VillagePickSceneElementAnswers, "choicesCSSclass");
+        // *** RESPONSES ***
+        switch (Chp13VillagePickSceneElement) {
+            case Chp13VillagePickSceneElementAnswers.iSayDiscoverWatchGuard:
+                await Spiegel_VN.ƒS.Speech.tell("Ich", "Ich will die Wachen beobachten");
+                Spiegel_VN.ƒS.Speech.clear();
+                return "13_E Discover watch guard"; // hier lieber: return "Chp ..."; if clause: ich nehm versch keys und sage: if dataforsave.pciekd = alle true, dann in der if clause return. if (dataforsave.pickedChoice, pickedotherchoice, usw. = true), dann gehts weiter
+                break;
+            case Chp13VillagePickSceneElementAnswers.iSayDiscoverSneakAround:
+                await Spiegel_VN.ƒS.Speech.tell("Ich", "Lass bisschen rumschleichen");
+                Spiegel_VN.ƒS.Speech.clear();
+                return "13_E Sneak around tower"; // hier lieber: return "Chp ..."; if clause: ich nehm versch keys und sage: if dataforsave.pciekd = alle true, dann in der if clause return. if (dataforsave.pickedChoice, pickedotherchoice, usw. = true), dann gehts weiter
+                break;
+            case Chp13VillagePickSceneElementAnswers.iSayGoToTower:
+                await Spiegel_VN.ƒS.Speech.tell("Ich", "Wir müssen zum Turm!");
+                Spiegel_VN.ƒS.Speech.clear();
+                return "13_02 Get into tower"; // hier lieber: return "Chp ..."; if clause: ich nehm versch keys und sage: if dataforsave.pciekd = alle true, dann in der if clause return. if (dataforsave.pickedChoice, pickedotherchoice, usw. = true), dann gehts weiter
+                break;
+        }
+    }
     Spiegel_VN.Chp13_01_EntryVillage = Chp13_01_EntryVillage;
 })(Spiegel_VN || (Spiegel_VN = {}));
 var Spiegel_VN;
 (function (Spiegel_VN) {
-    async function Chp13_02_GoToTower() { }
-    Spiegel_VN.Chp13_02_GoToTower = Chp13_02_GoToTower;
+    async function Chp13_02_GetIntoTower() {
+        // ***BEGINN SZENE***
+        let randomTextChp13GetIntoTower = Spiegel_VN.ƒ.Random.default.getRangeFloored(1, 5); //gerundet
+        switch (randomTextChp13GetIntoTower) {
+            case 1:
+                await Spiegel_VN.ƒS.Speech.tell(Spiegel_VN.characters.Mama.name, "Random dialogue 1 -----------");
+                break;
+            case 2:
+                await Spiegel_VN.ƒS.Speech.tell(Spiegel_VN.characters.Mama.name, "Random dialogue 2 -----------");
+                break;
+            case 3:
+                await Spiegel_VN.ƒS.Speech.tell(Spiegel_VN.characters.Mama.name, "Random dialogue 3 -----------");
+                break;
+            case 4:
+                await Spiegel_VN.ƒS.Speech.tell(Spiegel_VN.characters.Mama.name, "Random dialogue 4 -----------");
+                break;
+            case 5:
+                await Spiegel_VN.ƒS.Speech.tell(Spiegel_VN.characters.Mama.name, "Random dialogue 5 -----------");
+                break;
+            default:
+                await Spiegel_VN.ƒS.Speech.tell(Spiegel_VN.characters.Mama.name, "Default--------------------");
+                break;
+        }
+        // *** SCENE OPTIONS ***
+        let Chp13GetIntoTowerElementAnswers = {
+            iSayTalkToMama: "Rede mit Mama.",
+            iSayTalkToMirrorMerchant: "Mit Spiegelhändler unterhalten.",
+            iSayExploreFlowerMerchant: "(Erkunden) Was gibt es Neues beim Blumenhändler?",
+            iSayExploreLeatherMerchant: "(Erkunden) Was gibt es Neues beim Lederhändler?",
+            iSayContinue: "Weiter",
+        };
+        let Chp13GetIntoTowerElement = await Spiegel_VN.ƒS.Menu.getInput(Chp13GetIntoTowerElementAnswers, "choicesCSSclass");
+        switch (Chp13GetIntoTowerElement) {
+            case Chp13GetIntoTowerElementAnswers.iSayTalkToMama: // hier Punktezahl nicht vergessen!
+                // continue path here
+                pickediSayTalkToMama = true;
+                Spiegel_VN.dataForSave.pickedChoice = true;
+                await Spiegel_VN.ƒS.Speech.tell(Spiegel_VN.characters.Mama, "Choice TalkToMama + Empathypoints 10.");
+                Spiegel_VN.dataForSave.score.scoreEmpathyPoints += 10;
+                console.log(Spiegel_VN.dataForSave.score.scoreEmpathyPoints);
+                Spiegel_VN.ƒS.Speech.clear();
+                return Spiegel_VN.Chp01_02_ConvoMother(); // hier lieber: return "Chp ..."; if clause: ich nehm versch keys und sage: if dataforsave.pciekd = alle true, dann in der if clause return. if (dataforsave.pickedChoice, pickedotherchoice, usw. = true), dann gehts weiter
+                break;
+        }
+    }
+    Spiegel_VN.Chp13_02_GetIntoTower = Chp13_02_GetIntoTower;
 })(Spiegel_VN || (Spiegel_VN = {}));
 var Spiegel_VN;
 (function (Spiegel_VN) {

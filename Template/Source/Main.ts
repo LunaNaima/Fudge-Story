@@ -52,7 +52,10 @@ namespace Spiegel_VN {
     pickedRightChoice: false,
 
     // *** IMPORTANT CHOICES ***
+    pickedChp06RecieveIron: false,
     pickedChp08TrustFlynn: false,
+    pickedChp10SingToBirds: false,
+    pickedChp11Iron: false,
 
     // *** DELETE OPTION AFTER PICKED ***
     pickedChoice: false,
@@ -118,6 +121,12 @@ namespace Spiegel_VN {
     pickedChp09DiscoverSpeakToVillagers: false,
     pickedChp09SpeakToBeggar: false,
     pickedChp09MakeAWish: false,
+
+    // CHAPTER 10: ON THE RAFT
+    pickedChoiceChp10ExploreAfraid: false,
+    pickedChoiceChp10ExploreAttention: false,
+    pickedChoiceChp10ExploreSick: false,
+    pickedChoiceChp10ExploreAll: false,
   };
 
   export let inventory = {
@@ -585,8 +594,8 @@ namespace Spiegel_VN {
         name: "How to cross",
       },
       {
-        id: "10_02 Build a raft",
-        scene: Chp10_02_BuildARaft,
+        id: "10_02 On the raft",
+        scene: Chp10_02_OnTheRaft,
         name: "Build a raft",
       },
       {
@@ -605,7 +614,7 @@ namespace Spiegel_VN {
         name: "Sing to birds",
       },
       {
-        id: "10_042 UseMirror",
+        id: "10_042 Use Mirror",
         scene: Chp10_042_UseMirror,
         name: "Use the mirror",
       },
@@ -694,33 +703,38 @@ namespace Spiegel_VN {
         name: "Sneak-in amongst slaves",
       },
       {
-        id: "12_02 Talk to slaves",
-        scene: Chp12_02_TalkToSlaves,
+        id: "12_02 Enter factory",
+        scene: Chp12_02_EnterFactory,
+        name: "Enter factory",
+      },
+      {
+        id: "12_031 Talk to slaves",
+        scene: Chp12_031_TalkToSlaves,
         name: "Talk to slaves",
       },
       {
-        id: "12_03 Search for Kailani",
-        scene: Chp12_03_SearchForKailani,
+        id: "12_032 Search for Kailani",
+        scene: Chp12_032_SearchForKailani,
         name: "Search for Kailani",
       },
       {
-        id: "12_04 Listen to guards",
-        scene: Chp12_04_ListenToGuards,
+        id: "12_033 Listen to guards",
+        scene: Chp12_033_ListenToGuards,
         name: "Listen to guards",
       },
       {
-        id: "12_05 Back to hiding place",
-        scene: Chp12_05_BackToHidingPlace,
+        id: "12_04 Back to hiding place",
+        scene: Chp12_04_BackToHidingPlace,
         name: "Back to hiding place",
       },
       {
-        id: "12_061 Birds offer help",
-        scene: Chp12_061_BirdsOfferHelp,
+        id: "12_051 Birds offer help",
+        scene: Chp12_051_BirdsOfferHelp,
         name: "Birds offer help",
       },
       {
-        id: "12_062 Make a wish",
-        scene: Chp12_062_MakeAWish,
+        id: "12_052 Make a wish",
+        scene: Chp12_052_MakeAWish,
         name: "Make a wish",
       },
       {
@@ -732,11 +746,6 @@ namespace Spiegel_VN {
         id: "12_E Discover production site",
         scene: Chp12_E_Productionsite,
         name: "Production site",
-      },
-      {
-        id: "12_E Discover slaves",
-        scene: Chp12_E_DiscoverSlaves,
-        name: "Discover slaves",
       },
       {
         id: "12_CS Talk to Flynn",
@@ -751,8 +760,8 @@ namespace Spiegel_VN {
         name: "Entry village",
       },
       {
-        id: "13_02 Go to tower",
-        scene: Chp13_02_GoToTower,
+        id: "13_02 Get into tower",
+        scene: Chp13_02_GetIntoTower,
         name: "Go to tower",
       },
       {
@@ -786,7 +795,7 @@ namespace Spiegel_VN {
         name: "Discover tower window",
       },
       {
-        id: "13_E Discover Watch guard",
+        id: "13_E Discover watch guard",
         scene: Chp13_E_DiscoverWatchGuard,
         name: "Discover watch guard",
       },
