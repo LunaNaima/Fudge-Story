@@ -44,21 +44,22 @@ namespace Spiegel_VN {
           // continue path here
           await ƒS.Speech.tell("Ich", "Boot klauen? Eher nicht");
           ƒS.Speech.clear();
-          return "10_01 Build a raft"; // hier lieber: return "Chp ..."; if clause: ich nehm versch keys und sage: if dataforsave.pciekd = alle true, dann in der if clause return. if (dataforsave.pickedChoice, pickedotherchoice, usw. = true), dann gehts weiter
+          return "10_01 How to cross"; // hier lieber: return "Chp ..."; if clause: ich nehm versch keys und sage: if dataforsave.pciekd = alle true, dann in der if clause return. if (dataforsave.pickedChoice, pickedotherchoice, usw. = true), dann gehts weiter
           break;
 
         case Chp10HowToCrossElementAnswers.iSayBuildARaft:
+          dataForSave.pickedRightChoice = true;
           await ƒS.Speech.tell("Ich", "Ein Floß bauen klingt doch gut!");
           dataForSave.pickedRightChoice = true;
           ƒS.Speech.clear();
-          return "";
+          return "10_02 On the raft";
           break;
 
         case Chp10HowToCrossElementAnswers.iSaySwim:
           // continue path here
           await ƒS.Speech.tell("Ich", "Schwimmen ist glaub bisschen viel");
           ƒS.Speech.clear();
-          return "10_01 Build a raft";
+          return "10_01 How to cross";
           break;
 
         case Chp10HowToCrossElementAnswers.iSayTurnAround:
@@ -67,13 +68,13 @@ namespace Spiegel_VN {
             "Umdrehen ist eigentlich keine Option ... Was ist mit Kailani?"
           );
           ƒS.Speech.clear();
-          return "10_01 Build a raft";
+          return "10_01 How to cross";
           break;
       }
     } while (!dataForSave.pickedRightChoice);
 
     if (dataForSave.pickedRightChoice) {
-      return "01_01 Intro Marketplace";
+      return "10_02 On the raft";
     }
   }
 }

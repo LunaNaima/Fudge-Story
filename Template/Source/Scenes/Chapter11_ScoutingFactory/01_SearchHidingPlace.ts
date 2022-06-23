@@ -8,7 +8,7 @@ namespace Spiegel_VN {
     };
 
     if (
-      !dataForSave.pickedChp06RecieveIron // ! heißt not: es wird nach entgegengesetztem Zustand gefragt // || = oder; && = und
+      !dataForSave.pickedIron // ! heißt not: es wird nach entgegengesetztem Zustand gefragt // || = oder; && = und
     ) {
       delete Chp11HidingPlacePickSceneElementAnswers.iSayDiscoverIron;
       // return Chp01_CS_ArrivalHome();

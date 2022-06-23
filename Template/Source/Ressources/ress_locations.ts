@@ -4,7 +4,9 @@ namespace Spiegel_VN {
     Chp01_01_IntroMarketplace: {
       name: "Intro_Marktplatz",
       background:
-        "./Assets/Backgrounds/Chapter01/Kap01_01_Intro_Marktplatz.png",
+        // "./Assets/Backgrounds/Chapter01/Kap01_01_Intro_Marktplatz.png", //1280x853 (passt)
+      // "./Assets/Backgrounds/Chapter01/Chp01_Marketplace.png", //1920x1080 (passt nicht)
+      "./Assets/Backgrounds/Chapter01/Chp01_Marketplace1.png", 
     },
     Chp01_02_ConvoMother: {
       name: "Convo_Mother",

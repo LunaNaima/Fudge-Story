@@ -15,7 +15,7 @@ namespace Spiegel_VN {
     // *** RESPONSES ***
     switch (Chp06RecieveIronElement) {
       case Chp06RecieveIronElementAnswers.iSayYes:
-        dataForSave.pickedChp06RecieveIron = true;
+        dataForSave.pickedIron = true;
         await ƒS.Speech.tell("Ich", "Ich nehme den Talisman an");
         ƒS.Speech.clear();
         return "06_03 Departure"; // hier lieber: return "Chp ..."; if clause: ich nehm versch keys und sage: if dataforsave.pciekd = alle true, dann in der if clause return. if (dataforsave.pickedChoice, pickedotherchoice, usw. = true), dann gehts weiter

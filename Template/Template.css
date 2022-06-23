@@ -3,18 +3,20 @@ html, body {
   height: 100vh;
   margin: 0px;
   padding: 0px;
-  background-color: rgb(167, 4, 4);
+  background-color: rgb(0, 0, 0);
   overflow: hidden;
   font-family: Arial, Helvetica, sans-serif;
   font-weight: normal;
   font-size: 2.3vmin;
-  color: rgb(240, 18, 103);
+  color: rgb(225, 240, 18);
   user-select: none;
 }
 
 scene {
-  width: 1280px;
-  height: 720px;
+  /* width: 1280px;
+  height: 720px; */
+  width: 1920px;
+  height: 1080px;
   display: inline-block;
   position: absolute;
 }
@@ -41,14 +43,16 @@ speech {
   bottom: 0px;
   left: 0px;
   color: beige;
-  background-color: rgba(181, 112, 126, 1);
+  background-color: rgb(210, 196, 178, 0.8);
   width: 100%;
   height: 13%;
 }
 
-speech content {
-  color: rgb(255, 255, 255);
-  font-size: 1.7vmin;
+speech content { /* text */
+  color: rgb(112, 96, 74);
+  font-size: 2.5vmin;
+  margin-left: 5%;
+  margin-top: 10%;
 }
 
 name {
@@ -56,6 +60,9 @@ name {
   display: block;
   color: rgb(255, 255, 255);
   margin-bottom: 10px;
+  margin-top: 1%;
+  margin-left: 5%;
+
 }
 
 .decisionButtons {

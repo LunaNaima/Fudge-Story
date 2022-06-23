@@ -9,10 +9,9 @@ declare namespace Spiegel_VN {
             scoreCouragePoints: number;
         };
         pickedRightChoice: boolean;
-        pickedChp06RecieveIron: boolean;
+        pickedIron: boolean;
         pickedChp08TrustFlynn: boolean;
         pickedChp10SingToBirds: boolean;
-        pickedChp11Iron: boolean;
         pickedChoice: boolean;
         pickediAskAboutTrip: boolean;
         pickediAskAboutDecorations: boolean;
