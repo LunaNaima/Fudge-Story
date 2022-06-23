@@ -30,7 +30,6 @@ namespace Spiegel_VN {
         // continue path here
         await ƒS.Speech.tell("Ich", "Ich singe mal zu den Vögeln");
         // dataForSave.score.scoreEmpathyPoints += 10;
-        console.log(dataForSave.score.scoreEmpathyPoints);
         ƒS.Speech.clear();
         return "05_02 Sing to birds"; // hier lieber: return "Chp ..."; if clause: ich nehm versch keys und sage: if dataforsave.pciekd = alle true, dann in der if clause return. if (dataforsave.pickedChoice, pickedotherchoice, usw. = true), dann gehts weiter
         break;
@@ -39,7 +38,6 @@ namespace Spiegel_VN {
         // continue path here
         await ƒS.Speech.tell("Ich", "Ich gebe den Vögeln mal zu fressen");
         // dataForSave.score.scoreEmpathyPoints += 10;
-        console.log(dataForSave.score.scoreEmpathyPoints);
         ƒS.Speech.clear();
         return "05_03 Feed birds"; // hier lieber: return "Chp ..."; if clause: ich nehm versch keys und sage: if dataforsave.pciekd = alle true, dann in der if clause return. if (dataforsave.pickedChoice, pickedotherchoice, usw. = true), dann gehts weiter
         break;

@@ -42,12 +42,13 @@ namespace Spiegel_VN {
   export let dataForSave = {
     // hier kommt alles rein, was gespeichert werden soll. Der Spielstand wird von Beginn der jeweiligen Szene gespeichert.
     nameProtagonist: "",
-    score: {
-      // so geht nicht! muss die einzeln aufschreiben und nicht als Objekt scoreEmpathyPoints: 20 usw. und dann wo ichs aufruf ändern (ohne score)
-      scoreEmpathyPoints: 20,
-      scoreKnowledgePoints: 0,
-      scoreCouragePoints: 0,
-    },
+    // *** SCORE ***
+    scoreEmpathyPoints: 0,
+    EmpathyPointsSkala: "",
+    scoreCouragePoints: 0,
+    scoreKnowledgePoints: 0,
+    // so geht nicht! muss die einzeln aufschreiben und nicht als Objekt scoreEmpathyPoints: 20 usw. und dann wo ichs aufruf ändern (ohne score)
+
     // *** RIGHT OPTION PICKED ***
     pickedRightChoice: false,
 

@@ -1,14 +1,11 @@
 namespace Spiegel_VN {
   export async function Chp01_02_ConvoMother(): ƒS.SceneReturn {
-    console.log(dlg_scn_02);
-
-    // VAR
     dataForSave.pickedChp01_ConvoMother = true;
-    await ƒS.Location.show(locations.black);
-    await ƒS.update(2);
+    // await ƒS.Location.show(locations.black);
+    // await ƒS.update(2);
     await ƒS.Location.show(locations.Chp01_02_ConvoMother);
 
-    await ƒS.update(2, transitions.fade.alpha, transitions.fade.edge);
+    // await ƒS.update(2, transitions.fade.alpha, transitions.fade.edge);
 
     // *** BEGIN DIALOGUE ***
     await ƒS.Speech.tell(
@@ -18,35 +15,35 @@ namespace Spiegel_VN {
     await ƒS.Speech.tell(characters.Mama.name, dlg_scn_02.Mama.T0000);
 
     //*** OPTIONS *//
-    let secondDialogueElementAnswers = {
+    let Chp01ConvoMotherElementAnswers = {
       iSayOk: "Okay.",
       iSayYes: "Ja.",
+      iSayEmpathyPoints: "10",
     };
-    await ƒS.Speech.tell("Hannahhhh", "Choices sind set");
 
-    if (dataForSave.score.scoreEmpathyPoints === 10) {
-      //   let secondDialogueElementAnswers = {
-      //     iSayOk: "Freigeschaltete Option 10 EmpathyPoints.",
+    if (dataForSave.scoreEmpathyPoints < 20) {
+      delete Chp01ConvoMotherElementAnswers.iSayEmpathyPoints;
     }
+    console.log(dataForSave.scoreEmpathyPoints);
 
     //*** CSS-CLASS */
-    let secondDialogueElement = await ƒS.Menu.getInput(
-      secondDialogueElementAnswers,
+    let Chp01ConvoMotherElement = await ƒS.Menu.getInput(
+      Chp01ConvoMotherElementAnswers,
       "choicesCSSclass"
     );
 
     //*** RESPONSES */
-    switch (secondDialogueElement) {
-      case secondDialogueElementAnswers.iSayOk:
+    switch (Chp01ConvoMotherElement) {
+      case Chp01ConvoMotherElementAnswers.iSayOk:
+        console.log(dataForSave.scoreEmpathyPoints);
+        // pickedChp01ConvoMotherOk = true;
         // continue path here
         await ƒS.Speech.tell(characters.Mama, "Choice Okay.");
-        dataForSave.score.scoreEmpathyPoints += 10;
-        console.log(dataForSave.score.scoreEmpathyPoints);
         ƒS.Speech.clear();
 
         return Chp01_01_IntroMarketplace();
         break;
-      case secondDialogueElementAnswers.iSayYes:
+      case Chp01ConvoMotherElementAnswers.iSayYes:
         //   // continue path here
         //   if (dataForSave.score.scoreCouragePoints === 50)
         //     // wie mindestens 50?
@@ -56,12 +53,13 @@ namespace Spiegel_VN {
         //   // ƒS.Character.hide(characters.Mama);
         return Chp01_01_IntroMarketplace();
         break;
-      // case secondDialogueElementAnswers.iSayNo:
-      //   // continue path here
-      //   await ƒS.Speech.tell(characters.Mama, "Choice No");
-      //   ƒS.Speech.clear();
-      //   return Chp01_02_ConvoMother();
-      //   break;
+      case Chp01ConvoMotherElementAnswers.iSayEmpathyPoints:
+        dataForSave.scoreEmpathyPoints += 10;
+        console.log(dataForSave.scoreEmpathyPoints);
+        await ƒS.Speech.tell(characters.Mama, "Hier kriegen wir 10 Empathiepunkte");
+        ƒS.Speech.clear();
+        return Chp01_02_ConvoMother();
+        break;
     }
 
     return Chp01_01_IntroMarketplace();

@@ -97,7 +97,7 @@ namespace Spiegel_VN {
     // *** SCENE OPTIONS ***
     let Chp01PickSceneElementAnswers = {
       iSayTalkToMama: "Rede mit Mama.",
-      iSayTalkToMirrorMerchant: "Mit Spiegelhändler unterhalten.",
+      iSayTalkToMirrorMerchant: "Was glitzert so da hinten?",
       iSayExploreFlowerMerchant:
         "(Erkunden) Was gibt es Neues beim Blumenhändler?",
       iSayExploreLeatherMerchant:
@@ -118,13 +118,14 @@ namespace Spiegel_VN {
       // return Chp01_CS_ArrivalHome();
     }
 
-    let pickediSayTalkToMama: boolean;
-    let pickediSayTalkToMirrorMerchant: boolean;
+    // let pickediSayTalkToMama: boolean;
+    // let pickediSayTalkToMirrorMerchant: boolean;
 
     do {
-      if (pickediSayTalkToMama) {
+      if (dataForSave.pickedChp01_ConvoMother) {
         delete Chp01PickSceneElementAnswers.iSayTalkToMama;
-      } else if (pickediSayTalkToMirrorMerchant) {
+      }
+      if (dataForSave.pickedChp01_MirrorMerchant) {
         delete Chp01PickSceneElementAnswers.iSayTalkToMirrorMerchant;
       }
 
@@ -137,14 +138,14 @@ namespace Spiegel_VN {
       switch (Chp01SceneElement) {
         case Chp01PickSceneElementAnswers.iSayTalkToMama:
           // continue path here
-          pickediSayTalkToMama = true;
-          dataForSave.pickedChoice = true;
+          // pickediSayTalkToMama = true;
+          // dataForSave.pickedChoice = true;
           await ƒS.Speech.tell(
             characters.Mama,
             "Choice TalkToMama + Empathypoints 10."
           );
-          dataForSave.score.scoreEmpathyPoints += 10;
-          console.log(dataForSave.score.scoreEmpathyPoints);
+          dataForSave.scoreEmpathyPoints += 10;
+          console.log(dataForSave.scoreEmpathyPoints);
           ƒS.Speech.clear();
           return Chp01_02_ConvoMother(); // hier lieber: return "Chp ..."; if clause: ich nehm versch keys und sage: if dataforsave.pciekd = alle true, dann in der if clause return. if (dataforsave.pickedChoice, pickedotherchoice, usw. = true), dann gehts weiter
           break;
@@ -153,8 +154,8 @@ namespace Spiegel_VN {
           // continue path here
           // if (dataForSave.score.scoreCouragePoints === 50)
           // wie mindestens 50?
-          pickediSayTalkToMirrorMerchant = true;
-          dataForSave.pickedChoice = true;
+          // pickediSayTalkToMirrorMerchant = true;
+          // dataForSave.pickedChoice = true;
           await ƒS.Speech.tell(
             characters.Mama,
             "Choice Talk to Mirrormerchant"

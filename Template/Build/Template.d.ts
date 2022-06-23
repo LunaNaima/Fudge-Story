@@ -3,11 +3,10 @@ declare namespace Spiegel_VN {
     export import ƒS = FudgeStory;
     let dataForSave: {
         nameProtagonist: string;
-        score: {
-            scoreEmpathyPoints: number;
-            scoreKnowledgePoints: number;
-            scoreCouragePoints: number;
-        };
+        scoreEmpathyPoints: number;
+        EmpathyPointsSkala: string;
+        scoreCouragePoints: number;
+        scoreKnowledgePoints: number;
         pickedRightChoice: boolean;
         pickedIron: boolean;
         pickedChp08TrustFlynn: boolean;
@@ -135,6 +134,14 @@ declare namespace Spiegel_VN {
             name: string;
             background: string;
         };
+        Chp01_E_FlowerMerchant: {
+            name: string;
+            background: string;
+        };
+        Chp01_E_LeatherMerchant: {
+            name: string;
+            background: string;
+        };
         Chp02_E_DiscoverBedroom: {
             name: string;
             background: string;
@@ -198,6 +205,18 @@ declare namespace Spiegel_VN {
 declare namespace Spiegel_VN {
     let dlg_scn_01: {
         maincharacter: {
+            T0000: string;
+            T0001: string;
+        };
+    };
+}
+declare namespace Spiegel_VN {
+    let dlg_scn_02: {
+        maincharacter: {
+            T0000: string;
+            T0001: string;
+        };
+        Mama: {
             T0000: string;
             T0001: string;
         };

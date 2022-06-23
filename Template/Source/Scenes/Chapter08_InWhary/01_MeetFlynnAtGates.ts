@@ -32,7 +32,6 @@ namespace Spiegel_VN {
           "Super, suchen wir uns zusammen eine Bleibe"
         );
         // dataForSave.score.scoreEmpathyPoints += 10;
-        console.log(dataForSave.score.scoreEmpathyPoints);
         ƒS.Speech.clear();
         return "08_01 Meet Flynn gates"; // hier lieber: return "Chp ..."; if clause: ich nehm versch keys und sage: if dataforsave.pciekd = alle true, dann in der if clause return. if (dataforsave.pickedChoice, pickedotherchoice, usw. = true), dann gehts weiter
         break;
@@ -44,7 +43,6 @@ namespace Spiegel_VN {
           "Nee, ich möchte lieber alleine bleiben"
         );
         // dataForSave.score.scoreEmpathyPoints += 10;
-        console.log(dataForSave.score.scoreEmpathyPoints);
         ƒS.Speech.clear();
         return "08_04 Choose stay"; // hier lieber: return "Chp ..."; if clause: ich nehm versch keys und sage: if dataforsave.pciekd = alle true, dann in der if clause return. if (dataforsave.pickedChoice, pickedotherchoice, usw. = true), dann gehts weiter
         break;

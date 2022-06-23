@@ -123,7 +123,7 @@ meter[id="EmpathyPointsSkala"]::-webkit-meter-optimum-value {
 }
 
 input[name="scoreEmpathyPoints"] {
-  background-color:rgb(155, 42, 95);
+  background-color:rgb(111, 76, 10);
   color: rgb(255, 248, 253);
   position: absolute;
   left: 0.75%;

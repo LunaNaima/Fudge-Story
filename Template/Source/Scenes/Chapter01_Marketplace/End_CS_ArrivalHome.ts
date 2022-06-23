@@ -75,8 +75,8 @@ namespace Spiegel_VN {
       case Chp02PickSceneElementAnswers.iSayHaveDinner:
         // continue path here
         await ƒS.Speech.tell("Ich", "Abendessen hm geil.");
-        dataForSave.score.scoreEmpathyPoints += 10;
-        console.log(dataForSave.score.scoreEmpathyPoints);
+        dataForSave.scoreEmpathyPoints += 10;
+        console.log(dataForSave.scoreEmpathyPoints);
         ƒS.Speech.clear();
         return "02_01 Dinner at home"; // hier lieber: return "Chp ..."; if clause: ich nehm versch keys und sage: if dataforsave.pciekd = alle true, dann in der if clause return. if (dataforsave.pickedChoice, pickedotherchoice, usw. = true), dann gehts weiter
         break;

@@ -60,7 +60,6 @@ namespace Spiegel_VN {
         // continue path here
         await ƒS.Speech.tell("Ich", "Okay, wir sprechen Flynn in der Gasse an");
         // dataForSave.score.scoreEmpathyPoints += 10;
-        console.log(dataForSave.score.scoreEmpathyPoints);
         ƒS.Speech.clear();
         return "08_02 Meet Flynn in alley"; // hier lieber: return "Chp ..."; if clause: ich nehm versch keys und sage: if dataforsave.pciekd = alle true, dann in der if clause return. if (dataforsave.pickedChoice, pickedotherchoice, usw. = true), dann gehts weiter
         break;

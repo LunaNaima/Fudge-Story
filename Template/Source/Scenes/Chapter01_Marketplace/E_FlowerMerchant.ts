@@ -1,10 +1,13 @@
 namespace Spiegel_VN {
   export async function Chp01_E_FlowerMerchant(): ƒS.SceneReturn {
     (dataForSave.pickedChp01_E_FlowerMerchantScene = true),
-      await ƒS.Location.show(locations.Chp01_01_IntroMarketplace); //unsere locations, die szenen. nach dem Punkt sind die Methoden! also tell und show ist eine Methode. Die klammer dahinter ist eine Methodenaufruf, also eine Variable. Der Hingergrund sollte da angezeigt werden
+      // await ƒS.Location.show(locations.Chp01_E_FlowerMerchant); //unsere locations, die szenen. nach dem Punkt sind die Methoden! also tell und show ist eine Methode. Die klammer dahinter ist eine Methodenaufruf, also eine Variable. Der Hingergrund sollte da angezeigt werden
 
-    // await ƒS.Location.show(location.Chp01_01_IntroMarketplace);
-    // await ƒS.update(2, "./Assets/Transitions/Black.png", 1);
+      //   await ƒS.Location.show(locations.black);
+      // await ƒS.update(2);
+      await ƒS.Location.show(locations.Chp01_E_FlowerMerchant);
+
+    // await ƒS.update(2, transitions.fade.alpha, transitions.fade.edge);
 
     await ƒS.update(
       transitions.fade.duration,

@@ -36,12 +36,12 @@ var Spiegel_VN;
     Spiegel_VN.dataForSave = {
         // hier kommt alles rein, was gespeichert werden soll. Der Spielstand wird von Beginn der jeweiligen Szene gespeichert.
         nameProtagonist: "",
-        score: {
-            // so geht nicht! muss die einzeln aufschreiben und nicht als Objekt scoreEmpathyPoints: 20 usw. und dann wo ichs aufruf ändern (ohne score)
-            scoreEmpathyPoints: 20,
-            scoreKnowledgePoints: 0,
-            scoreCouragePoints: 0,
-        },
+        // *** SCORE ***
+        scoreEmpathyPoints: 0,
+        EmpathyPointsSkala: "",
+        scoreCouragePoints: 0,
+        scoreKnowledgePoints: 0,
+        // so geht nicht! muss die einzeln aufschreiben und nicht als Objekt scoreEmpathyPoints: 20 usw. und dann wo ichs aufruf ändern (ohne score)
         // *** RIGHT OPTION PICKED ***
         pickedRightChoice: false,
         // *** IMPORTANT CHOICES ***
@@ -1062,6 +1062,7 @@ var Spiegel_VN;
 (function (Spiegel_VN) {
     // *** BACKGROUNDS ***
     Spiegel_VN.locations = {
+        // *** CHAPTER 01 ***
         Chp01_01_IntroMarketplace: {
             name: "Intro_Marktplatz",
             background: 
@@ -1073,6 +1074,15 @@ var Spiegel_VN;
             name: "Convo_Mother",
             background: "./Assets/Backgrounds/BG_Wald_Test1.png",
         },
+        Chp01_E_FlowerMerchant: {
+            name: "E_FlowerMerchant",
+            background: "./Assets/Backgrounds/Chapter01/Flowermerchant.png",
+        },
+        Chp01_E_LeatherMerchant: {
+            name: "E_LeatherMerchant",
+            background: "./Assets/Backgrounds/Chapter01/Leathermerchant.png",
+        },
+        // *** CHAPTER 2 ***
         Chp02_E_DiscoverBedroom: {
             name: "My Bedroom",
             background: "./Assets/Backgrounds/Chapter02/E_DiscoverBedroom/MyBedroom.jpg",
@@ -1156,6 +1166,19 @@ var Spiegel_VN;
         //   T0000: "Hallo mein Kind.",
         //   T0001: "Test Mama dlg t0001.",
         // },
+    };
+})(Spiegel_VN || (Spiegel_VN = {}));
+var Spiegel_VN;
+(function (Spiegel_VN) {
+    Spiegel_VN.dlg_scn_02 = {
+        maincharacter: {
+            T0000: "Jetzt rede ich mit Mama.",
+            T0001: "Zweite Szene T0001.",
+        },
+        Mama: {
+            T0000: "Ich rede mit meinem Kind.",
+            T0001: "In der zweiten Szene.",
+        },
     };
 })(Spiegel_VN || (Spiegel_VN = {}));
 var Spiegel_VN;
@@ -1292,7 +1315,7 @@ var Spiegel_VN;
         // *** SCENE OPTIONS ***
         let Chp01PickSceneElementAnswers = {
             iSayTalkToMama: "Rede mit Mama.",
-            iSayTalkToMirrorMerchant: "Mit Spiegelhändler unterhalten.",
+            iSayTalkToMirrorMerchant: "Was glitzert so da hinten?",
             iSayExploreFlowerMerchant: "(Erkunden) Was gibt es Neues beim Blumenhändler?",
             iSayExploreLeatherMerchant: "(Erkunden) Was gibt es Neues beim Lederhändler?",
             iSayContinue: "Weiter",
@@ -1306,13 +1329,13 @@ var Spiegel_VN;
             delete Chp01PickSceneElementAnswers.iSayContinue;
             // return Chp01_CS_ArrivalHome();
         }
-        let pickediSayTalkToMama;
-        let pickediSayTalkToMirrorMerchant;
+        // let pickediSayTalkToMama: boolean;
+        // let pickediSayTalkToMirrorMerchant: boolean;
         do {
-            if (pickediSayTalkToMama) {
+            if (Spiegel_VN.dataForSave.pickedChp01_ConvoMother) {
                 delete Chp01PickSceneElementAnswers.iSayTalkToMama;
             }
-            else if (pickediSayTalkToMirrorMerchant) {
+            if (Spiegel_VN.dataForSave.pickedChp01_MirrorMerchant) {
                 delete Chp01PickSceneElementAnswers.iSayTalkToMirrorMerchant;
             }
             let Chp01SceneElement = await Spiegel_VN.ƒS.Menu.getInput(Chp01PickSceneElementAnswers, "choicesCSSclass");
@@ -1320,11 +1343,11 @@ var Spiegel_VN;
             switch (Chp01SceneElement) {
                 case Chp01PickSceneElementAnswers.iSayTalkToMama:
                     // continue path here
-                    pickediSayTalkToMama = true;
-                    Spiegel_VN.dataForSave.pickedChoice = true;
+                    // pickediSayTalkToMama = true;
+                    // dataForSave.pickedChoice = true;
                     await Spiegel_VN.ƒS.Speech.tell(Spiegel_VN.characters.Mama, "Choice TalkToMama + Empathypoints 10.");
-                    Spiegel_VN.dataForSave.score.scoreEmpathyPoints += 10;
-                    console.log(Spiegel_VN.dataForSave.score.scoreEmpathyPoints);
+                    Spiegel_VN.dataForSave.scoreEmpathyPoints += 10;
+                    console.log(Spiegel_VN.dataForSave.scoreEmpathyPoints);
                     Spiegel_VN.ƒS.Speech.clear();
                     return Spiegel_VN.Chp01_02_ConvoMother(); // hier lieber: return "Chp ..."; if clause: ich nehm versch keys und sage: if dataforsave.pciekd = alle true, dann in der if clause return. if (dataforsave.pickedChoice, pickedotherchoice, usw. = true), dann gehts weiter
                     break;
@@ -1332,8 +1355,8 @@ var Spiegel_VN;
                     // continue path here
                     // if (dataForSave.score.scoreCouragePoints === 50)
                     // wie mindestens 50?
-                    pickediSayTalkToMirrorMerchant = true;
-                    Spiegel_VN.dataForSave.pickedChoice = true;
+                    // pickediSayTalkToMirrorMerchant = true;
+                    // dataForSave.pickedChoice = true;
                     await Spiegel_VN.ƒS.Speech.tell(Spiegel_VN.characters.Mama, "Choice Talk to Mirrormerchant");
                     Spiegel_VN.ƒS.Speech.clear();
                     // await ƒS.Character.show(characters.Mama, characters.aisaka.pose.happy, ƒS.positions.bottomcenter);
@@ -1367,39 +1390,37 @@ var Spiegel_VN;
 var Spiegel_VN;
 (function (Spiegel_VN) {
     async function Chp01_02_ConvoMother() {
-        console.log(Spiegel_VN.dlg_scn_02);
-        // VAR
         Spiegel_VN.dataForSave.pickedChp01_ConvoMother = true;
-        await Spiegel_VN.ƒS.Location.show(Spiegel_VN.locations.black);
-        await Spiegel_VN.ƒS.update(2);
+        // await ƒS.Location.show(locations.black);
+        // await ƒS.update(2);
         await Spiegel_VN.ƒS.Location.show(Spiegel_VN.locations.Chp01_02_ConvoMother);
-        await Spiegel_VN.ƒS.update(2, Spiegel_VN.transitions.fade.alpha, Spiegel_VN.transitions.fade.edge);
+        // await ƒS.update(2, transitions.fade.alpha, transitions.fade.edge);
         // *** BEGIN DIALOGUE ***
         await Spiegel_VN.ƒS.Speech.tell(Spiegel_VN.characters.maincharacter.name, Spiegel_VN.dlg_scn_02.maincharacter.T0000);
         await Spiegel_VN.ƒS.Speech.tell(Spiegel_VN.characters.Mama.name, Spiegel_VN.dlg_scn_02.Mama.T0000);
         //*** OPTIONS *//
-        let secondDialogueElementAnswers = {
+        let Chp01ConvoMotherElementAnswers = {
             iSayOk: "Okay.",
             iSayYes: "Ja.",
+            iSayEmpathyPoints: "10",
         };
-        await Spiegel_VN.ƒS.Speech.tell("Hannahhhh", "Choices sind set");
-        if (Spiegel_VN.dataForSave.score.scoreEmpathyPoints === 10) {
-            //   let secondDialogueElementAnswers = {
-            //     iSayOk: "Freigeschaltete Option 10 EmpathyPoints.",
+        if (Spiegel_VN.dataForSave.scoreEmpathyPoints < 20) {
+            delete Chp01ConvoMotherElementAnswers.iSayEmpathyPoints;
         }
+        console.log(Spiegel_VN.dataForSave.scoreEmpathyPoints);
         //*** CSS-CLASS */
-        let secondDialogueElement = await Spiegel_VN.ƒS.Menu.getInput(secondDialogueElementAnswers, "choicesCSSclass");
+        let Chp01ConvoMotherElement = await Spiegel_VN.ƒS.Menu.getInput(Chp01ConvoMotherElementAnswers, "choicesCSSclass");
         //*** RESPONSES */
-        switch (secondDialogueElement) {
-            case secondDialogueElementAnswers.iSayOk:
+        switch (Chp01ConvoMotherElement) {
+            case Chp01ConvoMotherElementAnswers.iSayOk:
+                console.log(Spiegel_VN.dataForSave.scoreEmpathyPoints);
+                // pickedChp01ConvoMotherOk = true;
                 // continue path here
                 await Spiegel_VN.ƒS.Speech.tell(Spiegel_VN.characters.Mama, "Choice Okay.");
-                Spiegel_VN.dataForSave.score.scoreEmpathyPoints += 10;
-                console.log(Spiegel_VN.dataForSave.score.scoreEmpathyPoints);
                 Spiegel_VN.ƒS.Speech.clear();
                 return Spiegel_VN.Chp01_01_IntroMarketplace();
                 break;
-            case secondDialogueElementAnswers.iSayYes:
+            case Chp01ConvoMotherElementAnswers.iSayYes:
                 //   // continue path here
                 //   if (dataForSave.score.scoreCouragePoints === 50)
                 //     // wie mindestens 50?
@@ -1409,12 +1430,13 @@ var Spiegel_VN;
                 //   // ƒS.Character.hide(characters.Mama);
                 return Spiegel_VN.Chp01_01_IntroMarketplace();
                 break;
-            // case secondDialogueElementAnswers.iSayNo:
-            //   // continue path here
-            //   await ƒS.Speech.tell(characters.Mama, "Choice No");
-            //   ƒS.Speech.clear();
-            //   return Chp01_02_ConvoMother();
-            //   break;
+            case Chp01ConvoMotherElementAnswers.iSayEmpathyPoints:
+                Spiegel_VN.dataForSave.scoreEmpathyPoints += 10;
+                console.log(Spiegel_VN.dataForSave.scoreEmpathyPoints);
+                await Spiegel_VN.ƒS.Speech.tell(Spiegel_VN.characters.Mama, "Hier kriegen wir 10 Empathiepunkte");
+                Spiegel_VN.ƒS.Speech.clear();
+                return Chp01_02_ConvoMother();
+                break;
         }
         return Spiegel_VN.Chp01_01_IntroMarketplace();
     }
@@ -1425,6 +1447,14 @@ var Spiegel_VN;
     async function Chp01_03_IntroMirror() {
         Spiegel_VN.dataForSave.pickedChp01_MirrorMerchant = true;
         await Spiegel_VN.ƒS.Speech.tell("Spiegelhändler", "Hallo ich bin der Spiegelhändler");
+        await Spiegel_VN.ƒS.Speech.tell(Spiegel_VN.characters.maincharacter.name, Spiegel_VN.dlg_scn_02.maincharacter.T0000);
+        await Spiegel_VN.ƒS.Speech.tell(Spiegel_VN.characters.Mama.name, Spiegel_VN.dlg_scn_02.Mama.T0000);
+        //*** OPTIONS *//
+        let Chp01ConvoMotherElementAnswers = {
+            iSayOk: "Okay.",
+            iSayYes: "Ja.",
+            iSayEmpathyPoints: "10",
+        };
         return Spiegel_VN.Chp01_01_IntroMarketplace();
     }
     Spiegel_VN.Chp01_03_IntroMirror = Chp01_03_IntroMirror;
@@ -1433,9 +1463,11 @@ var Spiegel_VN;
 (function (Spiegel_VN) {
     async function Chp01_E_FlowerMerchant() {
         (Spiegel_VN.dataForSave.pickedChp01_E_FlowerMerchantScene = true),
-            await Spiegel_VN.ƒS.Location.show(Spiegel_VN.locations.Chp01_01_IntroMarketplace); //unsere locations, die szenen. nach dem Punkt sind die Methoden! also tell und show ist eine Methode. Die klammer dahinter ist eine Methodenaufruf, also eine Variable. Der Hingergrund sollte da angezeigt werden
-        // await ƒS.Location.show(location.Chp01_01_IntroMarketplace);
-        // await ƒS.update(2, "./Assets/Transitions/Black.png", 1);
+            // await ƒS.Location.show(locations.Chp01_E_FlowerMerchant); //unsere locations, die szenen. nach dem Punkt sind die Methoden! also tell und show ist eine Methode. Die klammer dahinter ist eine Methodenaufruf, also eine Variable. Der Hingergrund sollte da angezeigt werden
+            //   await ƒS.Location.show(locations.black);
+            // await ƒS.update(2);
+            await Spiegel_VN.ƒS.Location.show(Spiegel_VN.locations.Chp01_E_FlowerMerchant);
+        // await ƒS.update(2, transitions.fade.alpha, transitions.fade.edge);
         await Spiegel_VN.ƒS.update(Spiegel_VN.transitions.fade.duration, Spiegel_VN.transitions.fade.alpha, Spiegel_VN.transitions.fade.edge //edge ist der Härtegrad
         );
         // ***BEGINN DIALOG ***
@@ -1658,8 +1690,8 @@ var Spiegel_VN;
             case Chp02PickSceneElementAnswers.iSayHaveDinner:
                 // continue path here
                 await Spiegel_VN.ƒS.Speech.tell("Ich", "Abendessen hm geil.");
-                Spiegel_VN.dataForSave.score.scoreEmpathyPoints += 10;
-                console.log(Spiegel_VN.dataForSave.score.scoreEmpathyPoints);
+                Spiegel_VN.dataForSave.scoreEmpathyPoints += 10;
+                console.log(Spiegel_VN.dataForSave.scoreEmpathyPoints);
                 Spiegel_VN.ƒS.Speech.clear();
                 return "02_01 Dinner at home"; // hier lieber: return "Chp ..."; if clause: ich nehm versch keys und sage: if dataforsave.pciekd = alle true, dann in der if clause return. if (dataforsave.pickedChoice, pickedotherchoice, usw. = true), dann gehts weiter
                 break;
@@ -1907,7 +1939,7 @@ var Spiegel_VN;
                 // continue path here
                 await Spiegel_VN.ƒS.Speech.tell("Ich", "Auf zur Schneiderin!");
                 // dataForSave.score.scoreEmpathyPoints += 10;
-                console.log(Spiegel_VN.dataForSave.score.scoreEmpathyPoints);
+                console.log(Spiegel_VN.dataForSave.scoreEmpathyPoints);
                 Spiegel_VN.ƒS.Speech.clear();
                 return "03_01 Dressmaker"; // hier lieber: return "Chp ..."; if clause: ich nehm versch keys und sage: if dataforsave.pciekd = alle true, dann in der if clause return. if (dataforsave.pickedChoice, pickedotherchoice, usw. = true), dann gehts weiter
                 break;
@@ -2062,7 +2094,6 @@ var Spiegel_VN;
                 // continue path here
                 await Spiegel_VN.ƒS.Speech.tell("Ich", "Wir treffen uns im Esszimmer zum reden");
                 // dataForSave.score.scoreEmpathyPoints += 10;
-                console.log(Spiegel_VN.dataForSave.score.scoreEmpathyPoints);
                 Spiegel_VN.ƒS.Speech.clear();
                 return "04_01 Talk with family"; // hier lieber: return "Chp ..."; if clause: ich nehm versch keys und sage: if dataforsave.pciekd = alle true, dann in der if clause return. if (dataforsave.pickedChoice, pickedotherchoice, usw. = true), dann gehts weiter
                 break;
@@ -2214,7 +2245,6 @@ var Spiegel_VN;
                 // continue path here
                 await Spiegel_VN.ƒS.Speech.tell("Ich", "Zur Lichtung gehen");
                 // dataForSave.score.scoreEmpathyPoints += 10;
-                console.log(Spiegel_VN.dataForSave.score.scoreEmpathyPoints);
                 Spiegel_VN.ƒS.Speech.clear();
                 return "05_01 Clearing"; // hier lieber: return "Chp ..."; if clause: ich nehm versch keys und sage: if dataforsave.pciekd = alle true, dann in der if clause return. if (dataforsave.pickedChoice, pickedotherchoice, usw. = true), dann gehts weiter
                 break;
@@ -2269,7 +2299,6 @@ var Spiegel_VN;
                 // continue path here
                 await Spiegel_VN.ƒS.Speech.tell("Ich", "Ich singe mal zu den Vögeln");
                 // dataForSave.score.scoreEmpathyPoints += 10;
-                console.log(Spiegel_VN.dataForSave.score.scoreEmpathyPoints);
                 Spiegel_VN.ƒS.Speech.clear();
                 return "05_02 Sing to birds"; // hier lieber: return "Chp ..."; if clause: ich nehm versch keys und sage: if dataforsave.pciekd = alle true, dann in der if clause return. if (dataforsave.pickedChoice, pickedotherchoice, usw. = true), dann gehts weiter
                 break;
@@ -2277,7 +2306,6 @@ var Spiegel_VN;
                 // continue path here
                 await Spiegel_VN.ƒS.Speech.tell("Ich", "Ich gebe den Vögeln mal zu fressen");
                 // dataForSave.score.scoreEmpathyPoints += 10;
-                console.log(Spiegel_VN.dataForSave.score.scoreEmpathyPoints);
                 Spiegel_VN.ƒS.Speech.clear();
                 return "05_03 Feed birds"; // hier lieber: return "Chp ..."; if clause: ich nehm versch keys und sage: if dataforsave.pciekd = alle true, dann in der if clause return. if (dataforsave.pickedChoice, pickedotherchoice, usw. = true), dann gehts weiter
                 break;
@@ -2378,7 +2406,6 @@ var Spiegel_VN;
                 // continue path here
                 await Spiegel_VN.ƒS.Speech.tell("Ich", "Hast du etwas für mich?");
                 // dataForSave.score.scoreEmpathyPoints += 10;
-                console.log(Spiegel_VN.dataForSave.score.scoreEmpathyPoints);
                 Spiegel_VN.ƒS.Speech.clear();
                 return "06_02 Recieve iron"; // hier lieber: return "Chp ..."; if clause: ich nehm versch keys und sage: if dataforsave.pciekd = alle true, dann in der if clause return. if (dataforsave.pickedChoice, pickedotherchoice, usw. = true), dann gehts weiter
                 break;
@@ -2474,7 +2501,6 @@ var Spiegel_VN;
                 // continue path here
                 await Spiegel_VN.ƒS.Speech.tell("Ich", "Lez go to da citayyy");
                 // dataForSave.score.scoreEmpathyPoints += 10;
-                console.log(Spiegel_VN.dataForSave.score.scoreEmpathyPoints);
                 Spiegel_VN.ƒS.Speech.clear();
                 return "07_01 Travel to to Whary"; // hier lieber: return "Chp ..."; if clause: ich nehm versch keys und sage: if dataforsave.pciekd = alle true, dann in der if clause return. if (dataforsave.pickedChoice, pickedotherchoice, usw. = true), dann gehts weiter
                 break;
@@ -2572,7 +2598,6 @@ var Spiegel_VN;
                 // continue path here
                 await Spiegel_VN.ƒS.Speech.tell("Ich", "Okay, wir sprechen Flynn gleich an");
                 // dataForSave.score.scoreEmpathyPoints += 10;
-                console.log(Spiegel_VN.dataForSave.score.scoreEmpathyPoints);
                 Spiegel_VN.ƒS.Speech.clear();
                 return "08_01 Meet Flynn gates"; // hier lieber: return "Chp ..."; if clause: ich nehm versch keys und sage: if dataforsave.pciekd = alle true, dann in der if clause return. if (dataforsave.pickedChoice, pickedotherchoice, usw. = true), dann gehts weiter
                 break;
@@ -2612,7 +2637,6 @@ var Spiegel_VN;
                 // continue path here
                 await Spiegel_VN.ƒS.Speech.tell("Ich", "Super, suchen wir uns zusammen eine Bleibe");
                 // dataForSave.score.scoreEmpathyPoints += 10;
-                console.log(Spiegel_VN.dataForSave.score.scoreEmpathyPoints);
                 Spiegel_VN.ƒS.Speech.clear();
                 return "08_01 Meet Flynn gates"; // hier lieber: return "Chp ..."; if clause: ich nehm versch keys und sage: if dataforsave.pciekd = alle true, dann in der if clause return. if (dataforsave.pickedChoice, pickedotherchoice, usw. = true), dann gehts weiter
                 break;
@@ -2620,7 +2644,6 @@ var Spiegel_VN;
                 // continue path here
                 await Spiegel_VN.ƒS.Speech.tell("Ich", "Nee, ich möchte lieber alleine bleiben");
                 // dataForSave.score.scoreEmpathyPoints += 10;
-                console.log(Spiegel_VN.dataForSave.score.scoreEmpathyPoints);
                 Spiegel_VN.ƒS.Speech.clear();
                 return "08_04 Choose stay"; // hier lieber: return "Chp ..."; if clause: ich nehm versch keys und sage: if dataforsave.pciekd = alle true, dann in der if clause return. if (dataforsave.pickedChoice, pickedotherchoice, usw. = true), dann gehts weiter
                 break;
@@ -2683,7 +2706,6 @@ var Spiegel_VN;
                 // continue path here
                 await Spiegel_VN.ƒS.Speech.tell("Ich", "Okay, wir sprechen Flynn in der Gasse an");
                 // dataForSave.score.scoreEmpathyPoints += 10;
-                console.log(Spiegel_VN.dataForSave.score.scoreEmpathyPoints);
                 Spiegel_VN.ƒS.Speech.clear();
                 return "08_02 Meet Flynn in alley"; // hier lieber: return "Chp ..."; if clause: ich nehm versch keys und sage: if dataforsave.pciekd = alle true, dann in der if clause return. if (dataforsave.pickedChoice, pickedotherchoice, usw. = true), dann gehts weiter
                 break;
