@@ -13,5 +13,35 @@ namespace Spiegel_VN {
       "Ich",
       "My eigenes Reich. Wenigstens hier habe ich ein bisschen Privatsphäre..."
     );
+
+    let Chp02DiscoverBedroomElementAnswers = {
+      iSayDiscoverDesk: "(Erkunden) Was liegt da auf dem Tisch?",
+      iSayDiscoverBooks: "(Erkunden) Bücher anschauen",
+      iSayLeave: "Zurück",
+    };
+
+    let Chp02DiscoverBedroomElementElement = await ƒS.Menu.getInput(
+      Chp02DiscoverBedroomElementAnswers,
+      "choicesCSSclass"
+    );
+
+    // *** RESPONSES ***
+    switch (Chp02DiscoverBedroomElementElement) {
+      case Chp02DiscoverBedroomElementAnswers.iSayDiscoverDesk:
+        // pickediSayAskAboutTrip = true;
+        // dataForSave.pickedChoice = true;
+        await ƒS.Speech.tell(
+          "Ich",
+          "Yay schauen wir uns den Tisch an, was gibts hier so."
+        );
+        ƒS.Speech.clear();
+        // return "01_E_FlowerMerchant";
+        break;
+
+      case Chp02DiscoverBedroomElementAnswers.iSayDiscoverBooks:
+        await ƒS.Speech.tell("Ich", "Bücher anschauen juchu");
+        ƒS.Speech.clear();
+        break;
+    }
   }
 }

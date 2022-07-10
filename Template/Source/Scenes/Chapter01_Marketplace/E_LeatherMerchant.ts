@@ -1,12 +1,8 @@
 namespace Spiegel_VN {
   export async function Chp01_E_LeatherMerchant(): ƒS.SceneReturn {
-    (dataForSave.pickedChp01_E_LeatherMerchantScene = true),
-      await ƒS.Location.show(locations.Chp01_01_IntroMarketplace); //unsere locations, die szenen. nach dem Punkt sind die Methoden! also tell und show ist eine Methode. Die klammer dahinter ist eine Methodenaufruf, also eine Variable. Der Hingergrund sollte da angezeigt werden
+    await ƒS.Location.show(locations.Chp01_E_LeatherMerchant);
 
-    // await ƒS.Location.show(location.Chp01_01_IntroMarketplace);
-    // await ƒS.update(2, "./Assets/Transitions/Black.png", 1);
-
-    // if (dataForSave.pickedThisScene = true)
+    // await ƒS.update(2, transitions.fade.alpha, transitions.fade.edge);
 
     await ƒS.update(
       transitions.fade.duration,
@@ -17,7 +13,7 @@ namespace Spiegel_VN {
     // ***BEGIN DIALOGUE ***
     await ƒS.Speech.tell(
       characters.maincharacter.name,
-      dlg_scn_E_Leathermerchant.leatherMerchant.T0000
+      dlg_scn_E_Leathermerchant.maincharacter.T0000
     );
     await ƒS.Speech.tell(
       characters.leatherMerchant.name,
@@ -25,20 +21,25 @@ namespace Spiegel_VN {
     );
 
     // *** DIALOGUE OPTIONS ***
-    let LeatherMerchantDialogueElementAnswers = {
-      iSayAskAboutTrip: "(Erkunden) Wie war denn die Reise ins Dorf?",
-      iSayAskAboutDecorations: "(Erkunden) Warum habt ihr so wenige Blumen da?",
-      iSayLeave: "Auf Wiedersehen!",
+    let Chp01LeatherMerchantDialogueElementAnswers = {
+      iSayAskAboutTrip: "'(Erkunden) Wie war denn die Reise ins Dorf?'",
+      iSayAskAboutClothes: "'(Erkunden) Eure Ware sieht so anders aus...'",
+      iSayBuyShoeCream: "Schuhcreme kaufen",
+      iSayLeave: "'Auf Wiedersehen!'",
     };
 
-    let LeatherMerchantDialogueElement = await ƒS.Menu.getInput(
-      LeatherMerchantDialogueElementAnswers,
+    if (!dataForSave.pickedChp01_ConvoMother) {
+      delete Chp01LeatherMerchantDialogueElementAnswers.iSayBuyShoeCream;
+    }
+
+    let Chp01LeatherMerchantDialogueElement = await ƒS.Menu.getInput(
+      Chp01LeatherMerchantDialogueElementAnswers,
       "choicesCSSclass"
     );
 
     // *** SWITCHCASE DIALOGUE OPTIONS ***
-    switch (LeatherMerchantDialogueElement) {
-      case LeatherMerchantDialogueElementAnswers.iSayAskAboutTrip:
+    switch (Chp01LeatherMerchantDialogueElement) {
+      case Chp01LeatherMerchantDialogueElementAnswers.iSayAskAboutTrip:
         // continue path here
         await ƒS.Speech.tell(characters.leatherMerchant, "Antwort Reise.");
         // dataForSave.score.scoreEmpathyPoints += 10;
@@ -47,10 +48,7 @@ namespace Spiegel_VN {
         return Chp01_E_LeatherMerchant();
         break;
 
-      case LeatherMerchantDialogueElementAnswers.iSayAskAboutDecorations:
-        // continue path here
-        // if (dataForSave.score.scoreCouragePoints === 50)
-        // wie mindestens 50?
+      case Chp01LeatherMerchantDialogueElementAnswers.iSayAskAboutClothes:
         await ƒS.Speech.tell(
           characters.leatherMerchant,
           "Answer ask about decorations"
@@ -58,14 +56,22 @@ namespace Spiegel_VN {
         ƒS.Speech.clear();
         // await ƒS.Character.show(characters.Mama, characters.aisaka.pose.happy, ƒS.positions.bottomcenter);
         // ƒS.Character.hide(characters.Mama);
-        return Chp01_E_LeatherMerchant();
+        return "01_E_LeatherMerchant";
         break;
 
-      case LeatherMerchantDialogueElementAnswers.iSayLeave:
-        // continue path here
+      case Chp01LeatherMerchantDialogueElementAnswers.iSayBuyShoeCream:
+        await ƒS.Speech.tell(
+          characters.maincharacter,
+          "Kann ich etwas Schuhcreme haben?"
+        );
+        ƒS.Speech.clear();
+        return "01_E_LeatherMerchant";
+        break;
+
+      case Chp01LeatherMerchantDialogueElementAnswers.iSayLeave:
         await ƒS.Speech.tell(characters.maincharacter, "Machen Sies gut.");
         ƒS.Speech.clear();
-        return Chp01_01_IntroMarketplace();
+        return "01_01 Intro Marketplace";
         break;
 
       // case firstDialogueElementAnswers.iSayExploreLeatherMerchant:

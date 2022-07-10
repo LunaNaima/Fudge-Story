@@ -4,11 +4,11 @@ namespace Spiegel_VN {
     await ƒS.Speech.tell("Ich", "Diese Lichtung ist irgendwie magisch");
 
     let Chp05ClearingPickSceneElementAnswers = {
-      iSaySingToBirds: "Zu Vögeln singen",
-      iSayGiveBirdsFood: "Zu fressen geben",
+      PickSceneSingToBirds: "Zu Vögeln singen",
+      PickSceneGiveBirdsFood: "Zu fressen geben",
       // iSayDiscoverOak: "(Erkunden) Eiche anschauen",
       // iSayDiscoverRiver: "(Erkunden) Bächlein anschauen",
-      iSayContinue: "Weiter",
+      PickSceneContinue: "Weiter",
     };
 
     if (
@@ -16,7 +16,7 @@ namespace Spiegel_VN {
       !dataForSave.pickedChp05GiveBirdsFood ||
       !dataForSave.pickedChp05SingToBirds
     ) {
-      delete Chp05ClearingPickSceneElementAnswers.iSayContinue;
+      delete Chp05ClearingPickSceneElementAnswers.PickSceneContinue;
       // return Chp01_CS_ArrivalHome();
     }
     let Chp05ClearingPickSceneElement = await ƒS.Menu.getInput(
@@ -26,7 +26,7 @@ namespace Spiegel_VN {
 
     // *** RESPONSES ***
     switch (Chp05ClearingPickSceneElement) {
-      case Chp05ClearingPickSceneElementAnswers.iSaySingToBirds:
+      case Chp05ClearingPickSceneElementAnswers.PickSceneSingToBirds:
         // continue path here
         await ƒS.Speech.tell("Ich", "Ich singe mal zu den Vögeln");
         // dataForSave.score.scoreEmpathyPoints += 10;
@@ -34,7 +34,7 @@ namespace Spiegel_VN {
         return "05_02 Sing to birds"; // hier lieber: return "Chp ..."; if clause: ich nehm versch keys und sage: if dataforsave.pciekd = alle true, dann in der if clause return. if (dataforsave.pickedChoice, pickedotherchoice, usw. = true), dann gehts weiter
         break;
 
-      case Chp05ClearingPickSceneElementAnswers.iSayGiveBirdsFood:
+      case Chp05ClearingPickSceneElementAnswers.PickSceneGiveBirdsFood:
         // continue path here
         await ƒS.Speech.tell("Ich", "Ich gebe den Vögeln mal zu fressen");
         // dataForSave.score.scoreEmpathyPoints += 10;
@@ -60,7 +60,7 @@ namespace Spiegel_VN {
       //   return "05_E Discover river";
       //   break;
 
-      case Chp05ClearingPickSceneElementAnswers.iSayContinue:
+      case Chp05ClearingPickSceneElementAnswers.PickSceneContinue:
         // continue path here
         await ƒS.Speech.tell(
           "Ich",

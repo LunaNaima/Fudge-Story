@@ -36,10 +36,10 @@ namespace Spiegel_VN {
     }
 
     let Chp11ArrivalOtherSideElementAnswers = {
-      iSayDiscoverTower: "(Erkunden) Turm anschauen",
-      iSayDiscoverHuts: "(Erkunden) Hütten anschauen",
-      iSayDiscoverForest: "(Erkunden) Wald anschauen",
-      iSaySearchForHidingPlace: "Nach Versteck suchen",
+      PickSceneDiscoverTower: "(Erkunden) Turm anschauen",
+      PickSceneDiscoverHuts: "(Erkunden) Hütten anschauen",
+      PickSceneDiscoverForest: "(Erkunden) Wald anschauen",
+      PickSceneSearchForHidingPlace: "Nach Versteck suchen",
     };
 
     let Chp11ArrivalOtherSideElement = await ƒS.Menu.getInput(
@@ -49,25 +49,25 @@ namespace Spiegel_VN {
 
     // *** RESPONSES ***
     switch (Chp11ArrivalOtherSideElement) {
-      case Chp11ArrivalOtherSideElementAnswers.iSayDiscoverForest:
+      case Chp11ArrivalOtherSideElementAnswers.PickSceneDiscoverForest:
         await ƒS.Speech.tell("Ich", "Okay lass den Wald genauer anschauen");
         ƒS.Speech.clear();
         return "11_E Discover forest"; // hier lieber: return "Chp ..."; if clause: ich nehm versch keys und sage: if dataforsave.pciekd = alle true, dann in der if clause return. if (dataforsave.pickedChoice, pickedotherchoice, usw. = true), dann gehts weiter
         break;
 
-      case Chp11ArrivalOtherSideElementAnswers.iSayDiscoverHuts:
+      case Chp11ArrivalOtherSideElementAnswers.PickSceneDiscoverHuts:
         await ƒS.Speech.tell("Ich", "Hütten anschauen");
         ƒS.Speech.clear();
         return "11_E Discover huts"; // hier lieber: return "Chp ..."; if clause: ich nehm versch keys und sage: if dataforsave.pciekd = alle true, dann in der if clause return. if (dataforsave.pickedChoice, pickedotherchoice, usw. = true), dann gehts weiter
         break;
 
-      case Chp11ArrivalOtherSideElementAnswers.iSayDiscoverTower:
+      case Chp11ArrivalOtherSideElementAnswers.PickSceneDiscoverTower:
         await ƒS.Speech.tell("Ich", "Turm anschauen");
         ƒS.Speech.clear();
         return "11_E Discover tower"; // hier lieber: return "Chp ..."; if clause: ich nehm versch keys und sage: if dataforsave.pciekd = alle true, dann in der if clause return. if (dataforsave.pickedChoice, pickedotherchoice, usw. = true), dann gehts weiter
         break;
 
-      case Chp11ArrivalOtherSideElementAnswers.iSaySearchForHidingPlace:
+      case Chp11ArrivalOtherSideElementAnswers.PickSceneSearchForHidingPlace:
         await ƒS.Speech.tell("Ich", "Erstmal nach einem Schlafplatz suchen");
         ƒS.Speech.clear();
         return "11_01 Search for hiding place"; // hier lieber: return "Chp ..."; if clause: ich nehm versch keys und sage: if dataforsave.pciekd = alle true, dann in der if clause return. if (dataforsave.pickedChoice, pickedotherchoice, usw. = true), dann gehts weiter

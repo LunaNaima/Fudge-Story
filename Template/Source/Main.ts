@@ -77,8 +77,10 @@ namespace Spiegel_VN {
 
     //  CHAPTER 02: PICKED ALL SCENES
     pickedChp02_DinnerScene: false,
+    pickedChp02_TestMirror: false,
     pickedChp02_TestWithElena: false,
     pickedChp02_TestWithKailani: false,
+    pickedChp02_TestWithEvarius: false,
     pickedChp02_PickHerbsGarden: false,
     pickedChp02_FightNeighbor: false,
     // // pickedChp02_E_DiscoverBedroom: false,
@@ -86,8 +88,9 @@ namespace Spiegel_VN {
 
     //  CHAPTER 03: PICKED ALL SCENES
     pickedChp03_Dressmaker: false,
-    pickedChp03_FirewoodKailani: false,
+    pickedChp03_ChoresWithKailani: false,
     pickedChp03_WaterwellKailani: false,
+    pickedChp03_WoodChoppingKailani: false,
 
     // CHAPTER 04: PICKED ALL SCENES
     pickedChp04TalkToFamily: false,
@@ -232,17 +235,25 @@ namespace Spiegel_VN {
 
     let scenes: ƒS.Scenes = [
       // { scene: ScnTestzene01, name: "Testszene 01" }, // scene: hier muss name von funktion rein! Name ist was anderes, kann spaces enthalten wegen string
-      // { id: "Auswahlmöglichkeiten", scene: Auswahlmöglichkeiten, name: "Testszene 1" },
+      // {
+      //   id: "Auswahlmöglichkeiten",
+      //   scene: Auswahlmöglichkeiten,
+      //   name: "Testszene 1",
+      // },
+      // {
+      //   scene: MinigameDemon,
+      //   name: "Scene Minigame",
+      // },
 
       // *** INTRO ***
-      { id: "00 Name Entry", scene: Chp00_00_NameEntry, name: "NameEntry" },
+      // { id: "00 Name Entry", scene: Chp00_00_NameEntry, name: "NameEntry" },
 
       // ***CHAPTER 01 ***
-      {
-        id: "01_00 IntroNarration",
-        scene: Chp01_00_IntroNarration,
-        name: "Intro Narration",
-      },
+      // {
+      //   id: "01_00 IntroNarration",
+      //   scene: Chp01_00_IntroNarration,
+      //   name: "Intro Narration",
+      // },
       {
         id: "01_01 Intro Marketplace",
         scene: Chp01_01_IntroMarketplace,
@@ -288,15 +299,15 @@ namespace Spiegel_VN {
         name: "Dinner",
       },
       {
-        id: "02_021 Test with Elena",
-        scene: Chp02_021_TestWithElena,
-        name: "Test with Elena",
+        id: "02_021 Test Mirror",
+        scene: Chp02_021_TestMirror,
+        name: "Test mirror",
       },
-      {
-        id: "02_022 Test with Kailani",
-        scene: Chp02_022_TestWithKailani,
-        name: "Test with Kailani",
-      },
+      // { brauch ich  nicht mehr
+      //   id: "02_022 Test with Kailani",
+      //   scene: Chp02_022_TestWithKailani,
+      //   name: "Test with Kailani",
+      // },
       {
         id: "02_03 Fight with neighbor",
         scene: Chp02_03_FightNeighbor,
@@ -343,15 +354,15 @@ namespace Spiegel_VN {
         name: "E_Library",
       },
       {
-        id: "03_021 Firewood with Kailani",
-        scene: Chp03_021_FirewoodKailani,
-        name: "Firewood Kailani",
+        id: "03_021 Chores with Kailani",
+        scene: Chp03_021_ChoresWithKailani,
+        name: "Chores Kailani",
       },
-      {
-        id: "03_022 Waterwell with Kailani",
-        scene: Chp03_022_WaterWellKailani,
-        name: "Waterwell Kailani",
-      },
+      // {
+      //   id: "03_022 Waterwell with Kailani",
+      //   scene: Chp03_022_WaterWellKailani,
+      //   name: "Waterwell Kailani",
+      // },
       // *** CUTSCENES ***
       {
         id: "03_CS Turmoil marketplace",
@@ -575,14 +586,14 @@ namespace Spiegel_VN {
         name: "Listen to villagers",
       },
       {
-        id: "09_E Talk to merchants",
+        id: "09_13 Talk to merchants",
         scene: Chp09_E_TalkToMerchants,
         name: "Talk to merchants",
       },
       {
-        id: "09_E Talk to villagers",
-        scene: Chp09_E_TalkToVillagers,
-        name: "Talk to villagers",
+        id: "09_14 Speak to villagers",
+        scene: Chp09_E_SpeakToVillagers,
+        name: "Speak to villagers",
       },
       {
         id: "09_CS Arrival lake",

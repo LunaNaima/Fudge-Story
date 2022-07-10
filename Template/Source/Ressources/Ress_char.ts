@@ -2,7 +2,7 @@ namespace Spiegel_VN {
   export let characters = {
     // hier sollten alle char rein // char in richtiger größe!
     maincharacter: {
-      name: "Player",
+      name: "",
     },
 
     narrator: {
@@ -59,6 +59,22 @@ namespace Spiegel_VN {
     leatherMerchant: {
       name: "Lederhändler",
       origin: ƒS.ORIGIN.BOTTOMRIGHT,
+    },
+
+    mirrorMerchant: {
+      name: "Spiegelhändler",
+      origin: ƒS.ORIGIN.BOTTOMRIGHT,
+    },
+
+    Demon: {
+      name: "Dämon",
+      origin: ƒS.ORIGIN.BOTTOMRIGHT,
+      pose: {
+        angry: "",
+        neutralAngry: "",
+        furious: "",
+        distracted: "",
+      },
     },
   };
 }

@@ -34,13 +34,12 @@ namespace Spiegel_VN {
     }
 
     let Chp02PickSceneElementAnswers = {
-      iSayHaveDinner: "Abendessen mit Familie.",
-      iSayTryMirrorElena: "Spiegel mit Mutti ausprobieren.",
-      iSayTryMirrorKailani: "Spiegel mit Kailani ausprobieren",
-      iSayPickHerbs: "Kräuter pflücken",
-      iSayDiscoverBedroom: "(Erkunden) Mein Schlafzimmer anschauen",
-      iSayDiscoverKitchen: "(Erkunden) Ab in die Küche",
-      iSayContinue: "Weiter",
+      PickSceneDinner: "Abendessen mit Familie.",
+      PickSceneTryMirror: "Spiegel ausprobieren.",
+      PickScenePickHerbs: "Kräuter pflücken",
+      PickSceneDiscoverBedroom: "(Erkunden) Mein Schlafzimmer anschauen",
+      PickSceneDiscoverKitchen: "(Erkunden) Ab in die Küche",
+      PickSceneContinue: "Weiter",
     };
     console.log("boolean Abendessen: ");
     console.log(dataForSave.pickedChp02_DinnerScene);
@@ -48,8 +47,6 @@ namespace Spiegel_VN {
     console.log("boolean Kräuter gepflückt: ");
     console.log(dataForSave.pickedChp02_PickHerbsGarden);
 
-    console.log("boolean Spiegel Elena ausprobiert: ");
-    console.log(dataForSave.pickedChp02_TestWithElena);
 
     console.log("boolean Nachbar Streit: ");
     console.log(dataForSave.pickedChp02_FightNeighbor);
@@ -57,11 +54,10 @@ namespace Spiegel_VN {
     if (
       !dataForSave.pickedChp02_DinnerScene || // ! heißt not: es wird nach entgegengesetztem Zustand gefragt // || = oder; && = und
       !dataForSave.pickedChp02_PickHerbsGarden ||
-      (!dataForSave.pickedChp02_TestWithElena &&
-        !dataForSave.pickedChp02_TestWithKailani) || // wie mach ich hier: entweder, oder?
+      !dataForSave.pickedChp03_ChoresWithKailani ||
       !dataForSave.pickedChp02_FightNeighbor
     ) {
-      delete Chp02PickSceneElementAnswers.iSayContinue;
+      delete Chp02PickSceneElementAnswers.PickSceneContinue;
       // return Chp01_CS_ArrivalHome();
     }
 
@@ -72,16 +68,14 @@ namespace Spiegel_VN {
 
     // *** RESPONSES ***
     switch (Chp01PickSceneElement) {
-      case Chp02PickSceneElementAnswers.iSayHaveDinner:
+      case Chp02PickSceneElementAnswers.PickSceneDinner:
         // continue path here
         await ƒS.Speech.tell("Ich", "Abendessen hm geil.");
-        dataForSave.scoreEmpathyPoints += 10;
-        console.log(dataForSave.scoreEmpathyPoints);
         ƒS.Speech.clear();
         return "02_01 Dinner at home"; // hier lieber: return "Chp ..."; if clause: ich nehm versch keys und sage: if dataforsave.pciekd = alle true, dann in der if clause return. if (dataforsave.pickedChoice, pickedotherchoice, usw. = true), dann gehts weiter
         break;
 
-      case Chp02PickSceneElementAnswers.iSayPickHerbs:
+      case Chp02PickSceneElementAnswers.PickScenePickHerbs:
         // continue path here
         // if (dataForSave.score.scoreCouragePoints === 50)
         // wie mindestens 50?
@@ -92,35 +86,28 @@ namespace Spiegel_VN {
         return "02_03 Pick Herbs";
         break;
 
-      case Chp02PickSceneElementAnswers.iSayTryMirrorElena:
+      case Chp02PickSceneElementAnswers.PickSceneTryMirror:
         // continue path here
-        await ƒS.Speech.tell("Ich", "Mit Mutti Spiegel ausprobieren.");
+        await ƒS.Speech.tell("Ich", "Spiegel ausprobieren.");
         ƒS.Speech.clear();
-        return "02_021 Test with Elena";
+        return "02_021 Test Mirror";
         break;
 
-      case Chp02PickSceneElementAnswers.iSayTryMirrorKailani:
-        // continue path here
-        await ƒS.Speech.tell("Ich", "Spiegel mit Kailani ausprobieren.");
-        ƒS.Speech.clear();
-        return "02_022 Test with Kailani";
-        break;
-
-      case Chp02PickSceneElementAnswers.iSayDiscoverBedroom:
+      case Chp02PickSceneElementAnswers.PickSceneDiscoverBedroom:
         // continue path here
         await ƒS.Speech.tell("Ich", "Schlafzimmer anschauen yay sleep.");
         ƒS.Speech.clear();
         return "02_E Discover bedroom";
         break;
 
-      case Chp02PickSceneElementAnswers.iSayDiscoverKitchen:
+      case Chp02PickSceneElementAnswers.PickSceneDiscoverKitchen:
         // continue path here
         await ƒS.Speech.tell("Ich", "Ich hab' Hunger auf geht's.");
         ƒS.Speech.clear();
         return "02_E Discover Kitchen";
         break;
 
-      case Chp02PickSceneElementAnswers.iSayContinue:
+      case Chp02PickSceneElementAnswers.PickSceneContinue:
         // continue path here
         await ƒS.Speech.tell("Ich", "Weiter zur cut scene.");
         ƒS.Speech.clear();

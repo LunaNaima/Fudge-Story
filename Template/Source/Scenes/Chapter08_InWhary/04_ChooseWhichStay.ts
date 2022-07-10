@@ -3,15 +3,15 @@ namespace Spiegel_VN {
     await ƒS.Speech.tell("Ich", "Auf gehts zur Suche nach der Bleibe");
 
     let Chp08ChooseWhichStayElementAnswers = {
-      iSayChooseUglyStay: "Mit Flynn Bleibe suchen",
-      iSayContinueSearch: "Ohne Flynn was suchen",
-      iSayChooseNiceStay: "Hübsche Bleibe auswählen",
+      PickSceneChooseUglyStay: "Mit Flynn Bleibe suchen",
+      PickSceneContinueSearch: "Ohne Flynn was suchen",
+      PickSceneChooseNiceStay: "Hübsche Bleibe auswählen",
     };
 
     if (
       !dataForSave.pickedChp08ChooseContinueSearch // ! heißt not: es wird nach entgegengesetztem Zustand gefragt // || = oder; && = und
     ) {
-      delete Chp08ChooseWhichStayElementAnswers.iSayChooseNiceStay;
+      delete Chp08ChooseWhichStayElementAnswers.PickSceneChooseNiceStay;
       // return Chp01_CS_ArrivalHome();
     }
 
@@ -22,7 +22,7 @@ namespace Spiegel_VN {
 
     // *** RESPONSES ***
     switch (Chp08ChooseWhichStayElement) {
-      case Chp08ChooseWhichStayElementAnswers.iSayChooseUglyStay:
+      case Chp08ChooseWhichStayElementAnswers.PickSceneChooseUglyStay:
         // continue path here
         await ƒS.Speech.tell(
           "Ich",
@@ -37,7 +37,7 @@ namespace Spiegel_VN {
         // hier lieber: return "Chp ..."; if clause: ich nehm versch keys und sage: if dataforsave.pciekd = alle true, dann in der if clause return. if (dataforsave.pickedChoice, pickedotherchoice, usw. = true), dann gehts weiter
         break;
 
-      case Chp08ChooseWhichStayElementAnswers.iSayContinueSearch:
+      case Chp08ChooseWhichStayElementAnswers.PickSceneContinueSearch:
         dataForSave.pickedChp08ChooseContinueSearch = true;
         // continue path here
         await ƒS.Speech.tell("Ich", "Ich möchte noch weitersuchen");
@@ -46,7 +46,7 @@ namespace Spiegel_VN {
         return "08_04 Choose stay";
         break;
 
-      case Chp08ChooseWhichStayElementAnswers.iSayChooseNiceStay:
+      case Chp08ChooseWhichStayElementAnswers.PickSceneChooseNiceStay:
         // continue path here
         await ƒS.Speech.tell("Ich", "Nehmen wir das hässliche Gasthaus");
         // dataForSave.score.scoreEmpathyPoints += 10;

@@ -34,18 +34,18 @@ namespace Spiegel_VN {
     }
 
     let Chp08_1PickSceneElementAnswers = {
-      iSayCatchFlynnInAlley: "Flynn in Gasse ansprechen",
-      iSayDiscoverHay: "(Erkunden) Heuballen anschauen)",
-      iSayDiscoverWindow: "(Erkunden) Schaufenster anschauen)",
-      iSayDiscoverSpeakToVillagers: "(Erkunden) Passanten ansprechen",
-      iSayChooseStay: "Bleibe suchen",
+      PickSceneCatchFlynnInAlley: "Flynn in Gasse ansprechen",
+      PickSceneDiscoverHay: "(Erkunden) Heuballen anschauen)",
+      PickSceneDiscoverWindow: "(Erkunden) Schaufenster anschauen)",
+      PickSceneDiscoverSpeakToVillagers: "(Erkunden) Passanten ansprechen",
+      PickSceneChooseStay: "Bleibe suchen",
     };
 
     if (
       !dataForSave.pickedChp08CatchFlynnInAlley
       // !dataForSave.// ! heißt not: es wird nach entgegengesetztem Zustand gefragt // || = oder; && = und
     ) {
-      delete Chp08_1PickSceneElementAnswers.iSayChooseStay;
+      delete Chp08_1PickSceneElementAnswers.PickSceneChooseStay;
       // return Chp01_CS_ArrivalHome();
     }
 
@@ -56,7 +56,7 @@ namespace Spiegel_VN {
 
     // *** RESPONSES ***
     switch (Chp08_1PickSceneElement) {
-      case Chp08_1PickSceneElementAnswers.iSayCatchFlynnInAlley:
+      case Chp08_1PickSceneElementAnswers.PickSceneCatchFlynnInAlley:
         // continue path here
         await ƒS.Speech.tell("Ich", "Okay, wir sprechen Flynn in der Gasse an");
         // dataForSave.score.scoreEmpathyPoints += 10;
@@ -64,7 +64,7 @@ namespace Spiegel_VN {
         return "08_02 Meet Flynn in alley"; // hier lieber: return "Chp ..."; if clause: ich nehm versch keys und sage: if dataforsave.pciekd = alle true, dann in der if clause return. if (dataforsave.pickedChoice, pickedotherchoice, usw. = true), dann gehts weiter
         break;
 
-      case Chp08_1PickSceneElementAnswers.iSayDiscoverHay:
+      case Chp08_1PickSceneElementAnswers.PickSceneDiscoverHay:
         // continue path here
         // if (dataForSave.score.scoreCouragePoints === 50)
         // wie mindestens 50?
@@ -75,7 +75,7 @@ namespace Spiegel_VN {
         return "08_E Discover Hay";
         break;
 
-        case Chp08_1PickSceneElementAnswers.iSayDiscoverWindow:
+        case Chp08_1PickSceneElementAnswers.PickSceneDiscoverWindow:
         // continue path here
         // if (dataForSave.score.scoreCouragePoints === 50)
         // wie mindestens 50?
@@ -86,7 +86,7 @@ namespace Spiegel_VN {
         return "08_E Discover windows";
         break;
 
-        case Chp08_1PickSceneElementAnswers.iSayDiscoverSpeakToVillagers:
+        case Chp08_1PickSceneElementAnswers.PickSceneDiscoverSpeakToVillagers:
         // continue path here
         // if (dataForSave.score.scoreCouragePoints === 50)
         // wie mindestens 50?
@@ -97,7 +97,7 @@ namespace Spiegel_VN {
         return "08_E Discover Villagers";
         break;
 
-        case Chp08_1PickSceneElementAnswers.iSayChooseStay:
+        case Chp08_1PickSceneElementAnswers.PickSceneChooseStay:
           // continue path here
           // if (dataForSave.score.scoreCouragePoints === 50)
           // wie mindestens 50?

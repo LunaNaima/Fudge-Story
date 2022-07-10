@@ -28,9 +28,9 @@ namespace Spiegel_VN {
     }
 
     let Chp13VillagePickSceneElementAnswers = {
-      iSayDiscoverWatchGuard: "(Erkunden) Wachen beobachten",
-      iSayDiscoverSneakAround: "(Erkunden) Herumschleichen",
-      iSayGoToTower: "Auf zum Turm",
+      PickSceneDiscoverWatchGuard: "(Erkunden) Wachen beobachten",
+      PickSceneDiscoverSneakAround: "(Erkunden) Herumschleichen",
+      PickSceneGoToTower: "Auf zum Turm",
     };
 
     let Chp13VillagePickSceneElement = await ƒS.Menu.getInput(
@@ -40,19 +40,19 @@ namespace Spiegel_VN {
 
     // *** RESPONSES ***
     switch (Chp13VillagePickSceneElement) {
-      case Chp13VillagePickSceneElementAnswers.iSayDiscoverWatchGuard:
+      case Chp13VillagePickSceneElementAnswers.PickSceneDiscoverWatchGuard:
         await ƒS.Speech.tell("Ich", "Ich will die Wachen beobachten");
         ƒS.Speech.clear();
         return "13_E Discover watch guard"; // hier lieber: return "Chp ..."; if clause: ich nehm versch keys und sage: if dataforsave.pciekd = alle true, dann in der if clause return. if (dataforsave.pickedChoice, pickedotherchoice, usw. = true), dann gehts weiter
         break;
 
-      case Chp13VillagePickSceneElementAnswers.iSayDiscoverSneakAround:
+      case Chp13VillagePickSceneElementAnswers.PickSceneDiscoverSneakAround:
         await ƒS.Speech.tell("Ich", "Lass bisschen rumschleichen");
         ƒS.Speech.clear();
         return "13_E Sneak around tower"; // hier lieber: return "Chp ..."; if clause: ich nehm versch keys und sage: if dataforsave.pciekd = alle true, dann in der if clause return. if (dataforsave.pickedChoice, pickedotherchoice, usw. = true), dann gehts weiter
         break;
 
-      case Chp13VillagePickSceneElementAnswers.iSayGoToTower:
+      case Chp13VillagePickSceneElementAnswers.PickSceneGoToTower:
         await ƒS.Speech.tell("Ich", "Wir müssen zum Turm!");
         ƒS.Speech.clear();
         return "13_02 Get into tower"; // hier lieber: return "Chp ..."; if clause: ich nehm versch keys und sage: if dataforsave.pciekd = alle true, dann in der if clause return. if (dataforsave.pickedChoice, pickedotherchoice, usw. = true), dann gehts weiter

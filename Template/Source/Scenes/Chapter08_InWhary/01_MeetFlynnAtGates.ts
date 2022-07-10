@@ -7,8 +7,8 @@ namespace Spiegel_VN {
     );
 
     let Chp08ChooseStayElementAnswers = {
-      iSayGoWithFlynn: "Mit Flynn Bleibe suchen",
-      iSayGoWithoutFlynn: "Ohne Flynn was suchen",
+      PickSceneGoWithFlynn: "Mit Flynn Bleibe suchen",
+      PickSceneGoWithoutFlynn: "Ohne Flynn was suchen",
     };
 
     //  if (
@@ -25,7 +25,7 @@ namespace Spiegel_VN {
 
     // *** RESPONSES ***
     switch (Chp08ChooseStayElement) {
-      case Chp08ChooseStayElementAnswers.iSayGoWithFlynn:
+      case Chp08ChooseStayElementAnswers.PickSceneGoWithFlynn:
         // continue path here
         await ƒS.Speech.tell(
           "Ich",
@@ -36,7 +36,7 @@ namespace Spiegel_VN {
         return "08_01 Meet Flynn gates"; // hier lieber: return "Chp ..."; if clause: ich nehm versch keys und sage: if dataforsave.pciekd = alle true, dann in der if clause return. if (dataforsave.pickedChoice, pickedotherchoice, usw. = true), dann gehts weiter
         break;
 
-        case Chp08ChooseStayElementAnswers.iSayGoWithoutFlynn:
+        case Chp08ChooseStayElementAnswers.PickSceneGoWithoutFlynn:
         // continue path here
         await ƒS.Speech.tell(
           "Ich",

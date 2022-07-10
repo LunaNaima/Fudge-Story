@@ -6,8 +6,8 @@ namespace Spiegel_VN {
     );
 
     let Chp11WatchFactoryPickSceneElementAnswers = {
-      iSayTryBreakIn: "Gleich einbrechen",
-      iSaySleep: "Zuerst schlafen gehen",
+      PickSceneTryBreakIn: "Gleich einbrechen",
+      PickSceneSleep: "Zuerst schlafen gehen",
     };
 
     let Chp11WatchFactoryPickSceneElement = await ƒS.Menu.getInput(
@@ -17,13 +17,13 @@ namespace Spiegel_VN {
 
     // *** RESPONSES ***
     switch (Chp11WatchFactoryPickSceneElement) {
-      case Chp11WatchFactoryPickSceneElementAnswers.iSayTryBreakIn:
+      case Chp11WatchFactoryPickSceneElementAnswers.PickSceneTryBreakIn:
         await ƒS.Speech.tell("Ich", "Lass gleich versuchen, einzubrechen!");
         ƒS.Speech.clear();
         return "11_04 Try break-in"; // hier lieber: return "Chp ..."; if clause: ich nehm versch keys und sage: if dataforsave.pciekd = alle true, dann in der if clause return. if (dataforsave.pickedChoice, pickedotherchoice, usw. = true), dann gehts weiter
         break;
 
-      case Chp11WatchFactoryPickSceneElementAnswers.iSaySleep:
+      case Chp11WatchFactoryPickSceneElementAnswers.PickSceneSleep:
         await ƒS.Speech.tell("Ich", "Ich will zuerst schlafen");
         ƒS.Speech.clear();
         return "11_CS Sleep"; // hier lieber: return "Chp ..."; if clause: ich nehm versch keys und sage: if dataforsave.pciekd = alle true, dann in der if clause return. if (dataforsave.pickedChoice, pickedotherchoice, usw. = true), dann gehts weiter

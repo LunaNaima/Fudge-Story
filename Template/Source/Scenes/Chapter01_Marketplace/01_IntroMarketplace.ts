@@ -30,8 +30,8 @@ namespace Spiegel_VN {
 
     // ***BEGINN SZENE***
 
-    let randomTextChp01yMarketplace = ƒ.Random.default.getRangeFloored(1, 5); //gerundet
-    switch (randomTextChp01yMarketplace) {
+    let randomTextChp01Marketplace = ƒ.Random.default.getRangeFloored(1, 5); //gerundet
+    switch (randomTextChp01Marketplace) {
       case 1:
         await ƒS.Speech.tell(
           characters.Mama.name,
@@ -96,13 +96,13 @@ namespace Spiegel_VN {
 
     // *** SCENE OPTIONS ***
     let Chp01PickSceneElementAnswers = {
-      iSayTalkToMama: "Rede mit Mama.",
-      iSayTalkToMirrorMerchant: "Was glitzert so da hinten?",
-      iSayExploreFlowerMerchant:
+      PickSceneConvoMother: "Rede mit Mama.",
+      PickSceneMirrorMerchant: "Was glitzert so da hinten?",
+      PickSceneExploreFlowerMerchant:
         "(Erkunden) Was gibt es Neues beim Blumenhändler?",
-      iSayExploreLeatherMerchant:
+      PickSceneExploreLeatherMerchant:
         "(Erkunden) Was gibt es Neues beim Lederhändler?",
-      iSayContinue: "Weiter",
+      PickSceneContinue: "Weiter",
     };
     console.log("boolean Mama gesprochen: ");
     console.log(dataForSave.pickedChp01_ConvoMother);
@@ -114,90 +114,81 @@ namespace Spiegel_VN {
       !dataForSave.pickedChp01_ConvoMother || // ! heißt not: es wird nach entgegengesetztem Zustand gefragt // || = oder; && = und
       !dataForSave.pickedChp01_MirrorMerchant
     ) {
-      delete Chp01PickSceneElementAnswers.iSayContinue;
+      delete Chp01PickSceneElementAnswers.PickSceneContinue;
       // return Chp01_CS_ArrivalHome();
     }
 
     // let pickediSayTalkToMama: boolean;
     // let pickediSayTalkToMirrorMerchant: boolean;
 
-    do {
-      if (dataForSave.pickedChp01_ConvoMother) {
-        delete Chp01PickSceneElementAnswers.iSayTalkToMama;
-      }
-      if (dataForSave.pickedChp01_MirrorMerchant) {
-        delete Chp01PickSceneElementAnswers.iSayTalkToMirrorMerchant;
-      }
+    // do {
+    if (dataForSave.pickedChp01_ConvoMother) {
+      delete Chp01PickSceneElementAnswers.PickSceneConvoMother;
+    }
+    if (dataForSave.pickedChp01_MirrorMerchant) {
+      delete Chp01PickSceneElementAnswers.PickSceneMirrorMerchant;
+    }
 
-      let Chp01SceneElement = await ƒS.Menu.getInput(
-        Chp01PickSceneElementAnswers,
-        "choicesCSSclass"
-      );
+    let Chp01SceneElement = await ƒS.Menu.getInput(
+      Chp01PickSceneElementAnswers,
+      "choicesCSSclass"
+    );
 
-      // *** RESPONSES ***
-      switch (Chp01SceneElement) {
-        case Chp01PickSceneElementAnswers.iSayTalkToMama:
-          // continue path here
-          // pickediSayTalkToMama = true;
-          // dataForSave.pickedChoice = true;
-          await ƒS.Speech.tell(
-            characters.Mama,
-            "Choice TalkToMama + Empathypoints 10."
-          );
-          dataForSave.scoreEmpathyPoints += 10;
-          console.log(dataForSave.scoreEmpathyPoints);
-          ƒS.Speech.clear();
-          return Chp01_02_ConvoMother(); // hier lieber: return "Chp ..."; if clause: ich nehm versch keys und sage: if dataforsave.pciekd = alle true, dann in der if clause return. if (dataforsave.pickedChoice, pickedotherchoice, usw. = true), dann gehts weiter
-          break;
+    // *** RESPONSES ***
+    switch (Chp01SceneElement) {
+      case Chp01PickSceneElementAnswers.PickSceneConvoMother:
+        await ƒS.Speech.tell(
+          characters.maincharacter.name,
+          '"Warte kurz, Mama!"'
+        );
+        dataForSave.scoreEmpathyPoints += 10;
+        console.log(dataForSave.scoreEmpathyPoints);
+        ƒS.Speech.clear();
+        return "01_02 Conversation Mama"; // hier lieber: return "Chp ..."; if clause: ich nehm versch keys und sage: if dataforsave.pciekd = alle true, dann in der if clause return. if (dataforsave.pickedChoice, pickedotherchoice, usw. = true), dann gehts weiter
+        break;
 
-        case Chp01PickSceneElementAnswers.iSayTalkToMirrorMerchant:
-          // continue path here
-          // if (dataForSave.score.scoreCouragePoints === 50)
-          // wie mindestens 50?
-          // pickediSayTalkToMirrorMerchant = true;
-          // dataForSave.pickedChoice = true;
-          await ƒS.Speech.tell(
-            characters.Mama,
-            "Choice Talk to Mirrormerchant"
-          );
-          ƒS.Speech.clear();
-          // await ƒS.Character.show(characters.Mama, characters.aisaka.pose.happy, ƒS.positions.bottomcenter);
-          // ƒS.Character.hide(characters.Mama);
-          return Chp01_03_IntroMirror();
-          break;
+      case Chp01PickSceneElementAnswers.PickSceneMirrorMerchant:
+        await ƒS.Speech.tell(
+          characters.maincharacter.name,
+          "Choice Talk to Mirrormerchant"
+        );
+        ƒS.Speech.clear();
+        // await ƒS.Character.show(characters.Mama, characters.aisaka.pose.happy, ƒS.positions.bottomcenter);
+        // ƒS.Character.hide(characters.Mama);
+        return "01_03 MirrorMerchant";
+        break;
 
-        case Chp01PickSceneElementAnswers.iSayExploreFlowerMerchant:
-          // continue path here
-          await ƒS.Speech.tell(
-            characters.Mama,
-            "Choice (Explore) Talk to flower merchant."
-          );
-          ƒS.Speech.clear();
-          return Chp01_E_FlowerMerchant();
-          break;
+      case Chp01PickSceneElementAnswers.PickSceneExploreFlowerMerchant:
+        // continue path here
+        await ƒS.Speech.tell(
+          characters.Mama,
+          "Choice (Explore) Talk to flower merchant."
+        );
+        ƒS.Speech.clear();
+        return "01_E_FlowerMerchant";
+        break;
 
-        case Chp01PickSceneElementAnswers.iSayExploreLeatherMerchant:
-          // continue path here
-          await ƒS.Speech.tell(
-            characters.Mama,
-            "Choice (Explore) Talk to leather merchant."
-          );
-          ƒS.Speech.clear();
-          return Chp01_E_LeatherMerchant();
-          break;
+      case Chp01PickSceneElementAnswers.PickSceneExploreLeatherMerchant:
+        // continue path here
+        await ƒS.Speech.tell(
+          characters.Mama,
+          "Choice (Explore) Talk to leather merchant."
+        );
+        ƒS.Speech.clear();
+        return "01_E_LeatherMerchant";
+        break;
 
-        case Chp01PickSceneElementAnswers.iSayContinue:
-          // continue path here
-          await ƒS.Speech.tell(
-            characters.Mama,
-            "Choice (Explore) Talk to mirror merchant."
-          );
-          ƒS.Speech.clear();
-          return Chp01_CS_PerchaseMirror();
-          break;
-      }
-    } while (dataForSave.pickedChoice);
+      case Chp01PickSceneElementAnswers.PickSceneContinue:
+        // continue path here
+        await ƒS.Speech.tell(
+          characters.Mama,
+          "Choice (Explore) Talk to mirror merchant."
+        );
+        ƒS.Speech.clear();
+        return "01_CS PerchaseMirror";
+        break;
+    }
+    // } while (dataForSave.pickedChoice);
 
-    return Chp01_02_ConvoMother();
   }
 }

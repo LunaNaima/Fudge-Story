@@ -29,11 +29,11 @@ namespace Spiegel_VN {
     }
 
     let Chp12FactoryPickSceneElementAnswers = {
-      iSayDiscoverTalkToSlaves: "(Erkunden) Mit Sklaven reden",
-      iSayDiscoverSearchKailani: "(Erkunden) Kailani suchen",
-      iSayDiscoverListenToGuards: "(Erkunden) Wachen überhören",
-      iSayDiscoverProductionSite: "Spiegelräume anschauen",
-      iSayBack: "Zurück zum Versteck",
+      PickSceneDiscoverTalkToSlaves: "(Erkunden) Mit Sklaven reden",
+      PickSceneDiscoverSearchKailani: "(Erkunden) Kailani suchen",
+      PickSceneDiscoverListenToGuards: "(Erkunden) Wachen überhören",
+      PickSceneDiscoverProductionSite: "Spiegelräume anschauen",
+      PickSceneBack: "Zurück zum Versteck",
     };
 
     let Chp12FactoryPickSceneElement = await ƒS.Menu.getInput(
@@ -43,31 +43,31 @@ namespace Spiegel_VN {
 
     // *** RESPONSES ***
     switch (Chp12FactoryPickSceneElement) {
-      case Chp12FactoryPickSceneElementAnswers.iSayDiscoverTalkToSlaves:
+      case Chp12FactoryPickSceneElementAnswers.PickSceneDiscoverTalkToSlaves:
         await ƒS.Speech.tell("Ich", "Ich rede mal mit den Leuten hier");
         ƒS.Speech.clear();
         return "12_031 Talk to slaves"; // hier lieber: return "Chp ..."; if clause: ich nehm versch keys und sage: if dataforsave.pciekd = alle true, dann in der if clause return. if (dataforsave.pickedChoice, pickedotherchoice, usw. = true), dann gehts weiter
         break;
 
-      case Chp12FactoryPickSceneElementAnswers.iSayDiscoverSearchKailani:
+      case Chp12FactoryPickSceneElementAnswers.PickSceneDiscoverSearchKailani:
         await ƒS.Speech.tell("Ich", "Kailani suchen!");
         ƒS.Speech.clear();
         return "12_032 Search for Kailani"; // hier lieber: return "Chp ..."; if clause: ich nehm versch keys und sage: if dataforsave.pciekd = alle true, dann in der if clause return. if (dataforsave.pickedChoice, pickedotherchoice, usw. = true), dann gehts weiter
         break;
 
-      case Chp12FactoryPickSceneElementAnswers.iSayDiscoverListenToGuards:
+      case Chp12FactoryPickSceneElementAnswers.PickSceneDiscoverListenToGuards:
         await ƒS.Speech.tell("Ich", "Ich will die Wachen überhören");
         ƒS.Speech.clear();
         return "12_033 Listen to guards"; // hier lieber: return "Chp ..."; if clause: ich nehm versch keys und sage: if dataforsave.pciekd = alle true, dann in der if clause return. if (dataforsave.pickedChoice, pickedotherchoice, usw. = true), dann gehts weiter
         break;
 
-      case Chp12FactoryPickSceneElementAnswers.iSayDiscoverProductionSite:
+      case Chp12FactoryPickSceneElementAnswers.PickSceneDiscoverProductionSite:
         await ƒS.Speech.tell("Ich", "Die Spiegelräume genauer anschauen");
         ƒS.Speech.clear();
         return "12_E Discover production site"; // hier lieber: return "Chp ..."; if clause: ich nehm versch keys und sage: if dataforsave.pciekd = alle true, dann in der if clause return. if (dataforsave.pickedChoice, pickedotherchoice, usw. = true), dann gehts weiter
         break;
 
-      case Chp12FactoryPickSceneElementAnswers.iSayBack:
+      case Chp12FactoryPickSceneElementAnswers.PickSceneBack:
         await ƒS.Speech.tell("Ich", "Zurück zum Versteck");
         ƒS.Speech.clear();
         return "12_04 Back to hiding place"; // hier lieber: return "Chp ..."; if clause: ich nehm versch keys und sage: if dataforsave.pciekd = alle true, dann in der if clause return. if (dataforsave.pickedChoice, pickedotherchoice, usw. = true), dann gehts weiter

@@ -3,14 +3,14 @@ namespace Spiegel_VN {
     await ƒS.Speech.tell("Ich", "Suchen wir mal nach einem Versteck");
 
     let Chp11HidingPlacePickSceneElementAnswers = {
-      iSayDiscoverIron: "Wald erkunden",
-      iSaySearchSleepingPlace: "Nach Schlafplatz suchen",
+      PickSceneDiscoverIron: "Wald erkunden",
+      PickSceneSearchSleepingPlace: "Nach Schlafplatz suchen",
     };
 
     if (
       !dataForSave.pickedIron // ! heißt not: es wird nach entgegengesetztem Zustand gefragt // || = oder; && = und
     ) {
-      delete Chp11HidingPlacePickSceneElementAnswers.iSayDiscoverIron;
+      delete Chp11HidingPlacePickSceneElementAnswers.PickSceneDiscoverIron;
       // return Chp01_CS_ArrivalHome();
     }
 
@@ -21,13 +21,13 @@ namespace Spiegel_VN {
 
     // *** RESPONSES ***
     switch (Chp11HidingPlacePickSceneElement) {
-      case Chp11HidingPlacePickSceneElementAnswers.iSayDiscoverIron:
+      case Chp11HidingPlacePickSceneElementAnswers.PickSceneDiscoverIron:
         await ƒS.Speech.tell("Ich", "Da hinten glitzert was im Wald ...");
         ƒS.Speech.clear();
         return "11_02 Find iron"; // hier lieber: return "Chp ..."; if clause: ich nehm versch keys und sage: if dataforsave.pciekd = alle true, dann in der if clause return. if (dataforsave.pickedChoice, pickedotherchoice, usw. = true), dann gehts weiter
         break;
 
-      case Chp11HidingPlacePickSceneElementAnswers.iSaySearchSleepingPlace:
+      case Chp11HidingPlacePickSceneElementAnswers.PickSceneSearchSleepingPlace:
         await ƒS.Speech.tell("Ich", "Wo können wir uns niederlassen?");
         ƒS.Speech.clear();
         return "11_03 Watch factory"; // hier lieber: return "Chp ..."; if clause: ich nehm versch keys und sage: if dataforsave.pciekd = alle true, dann in der if clause return. if (dataforsave.pickedChoice, pickedotherchoice, usw. = true), dann gehts weiter

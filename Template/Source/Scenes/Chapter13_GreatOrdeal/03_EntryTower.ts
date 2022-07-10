@@ -46,10 +46,10 @@ namespace Spiegel_VN {
     }
 
     let Chp13EntryTowerElementAnswers = {
-      iSayDiscoverLockedDoor: "(Erkunden) Geschlossene Tür.",
-      iSayDiscoverFamilyPortrait: "(Erkunden) Portrait anschauen.",
-      iSayDiscoverTowerWindow: "(Erkunden) Aus Turmfenster schauen",
-      iSaySneakPastDemon: "An Dämon vorbeischleichen",
+      PickSceneDiscoverLockedDoor: "(Erkunden) Geschlossene Tür.",
+      PickSceneDiscoverFamilyPortrait: "(Erkunden) Portrait anschauen.",
+      PickSceneDiscoverTowerWindow: "(Erkunden) Aus Turmfenster schauen",
+      PickSceneSneakPastDemon: "An Dämon vorbeischleichen",
     };
 
     let Chp13EntryTowerTowerElement = await ƒS.Menu.getInput(
@@ -58,26 +58,26 @@ namespace Spiegel_VN {
     );
 
     switch (Chp13EntryTowerTowerElement) {
-      case Chp13EntryTowerElementAnswers.iSayDiscoverLockedDoor: // hier Punktezahl nicht vergessen!
+      case Chp13EntryTowerElementAnswers.PickSceneDiscoverLockedDoor: // hier Punktezahl nicht vergessen!
         await ƒS.Speech.tell("Ich", "Was ist das für eine Tür?");
         ƒS.Speech.clear();
         return "13_E Discover locked door"; // hier lieber: return "Chp ..."; if clause: ich nehm versch keys und sage: if dataforsave.pciekd = alle true, dann in der if clause return. if (dataforsave.pickedChoice, pickedotherchoice, usw. = true), dann gehts weiter
         break;
 
-      case Chp13EntryTowerElementAnswers.iSayDiscoverFamilyPortrait:
+      case Chp13EntryTowerElementAnswers.PickSceneDiscoverFamilyPortrait:
         dataForSave.pickedRightChoice = true;
         await ƒS.Speech.tell("Ich", "Das sieht ja gruselig aus ...");
         ƒS.Speech.clear();
         return "13_E Discover family portrait"; // hier lieber: return "Chp ..."; if clause: ich nehm versch keys und sage: if dataforsave.pciekd = alle true, dann in der if clause return. if (dataforsave.pickedChoice, pickedotherchoice, usw. = true), dann gehts weiter
         break;
 
-      case Chp13EntryTowerElementAnswers.iSayDiscoverTowerWindow: // hier Punktezahl nicht vergessen!
+      case Chp13EntryTowerElementAnswers.PickSceneDiscoverTowerWindow: // hier Punktezahl nicht vergessen!
         await ƒS.Speech.tell("Ich", "Hier kann ich aus dem Fenster schauen");
         ƒS.Speech.clear();
         return "13_E Discover tower window"; // hier lieber: return "Chp ..."; if clause: ich nehm versch keys und sage: if dataforsave.pciekd = alle true, dann in der if clause return. if (dataforsave.pickedChoice, pickedotherchoice, usw. = true), dann gehts weiter
         break;
 
-      case Chp13EntryTowerElementAnswers.iSaySneakPastDemon: // hier Punktezahl nicht vergessen!
+      case Chp13EntryTowerElementAnswers.PickSceneSneakPastDemon: // hier Punktezahl nicht vergessen!
         await ƒS.Speech.tell(
           "Ich",
           "Jetzt müssen wir uns am Dämon vorbeischleichen"

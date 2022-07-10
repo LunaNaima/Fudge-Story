@@ -58,6 +58,8 @@ namespace Spiegel_VN {
           await ƒS.Speech.tell("Hanahhh", "YOUR COLOR EYEZ ARE MY FAVORITE");
           // return "Auswahlmöglichkeiten";
           break;
+
+          await ƒS.Speech.tell("", "");
       }
     } while (dataForSave.pickedChoice);
   }

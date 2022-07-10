@@ -9,13 +9,12 @@ namespace Spiegel_VN {
     );
 
     let Chp09DiscoverMarketplaceElementAnswers = {
-      iSayDiscoverListenToVillagers: "(Erkunden) Mit Bewohner sprechen",
-      iSayDiscoverMerchants: "(Erkunden) Mit den Händlern sprechen",
-      iSayDiscoverSpeakToVillagers: "(Erkunden) Mit Koch sprechen",
+      PickSceneDiscoverListenToVillagers: "(Erkunden) Bewohnern zuhören",
+      PickSceneMerchants: "Mit den Händlern sprechen",
+      PickSceneSpeakToVillagers: "Mit Bewohnern sprechen",
     };
 
     if (
-      dataForSave.pickedChp09DiscoverListenToVillagers && // ! heißt not: es wird nach entgegengesetztem Zustand gefragt // || = oder; && = und
       dataForSave.pickedChp09DiscoverMerchants &&
       dataForSave.pickedChp09DiscoverSpeakToVillagers
     ) {
@@ -29,26 +28,26 @@ namespace Spiegel_VN {
 
     // *** RESPONSES ***
     switch (Chp09DiscoverMarketplaceElement) {
-      case Chp09DiscoverMarketplaceElementAnswers.iSayDiscoverListenToVillagers:
+      case Chp09DiscoverMarketplaceElementAnswers.PickSceneDiscoverListenToVillagers:
         dataForSave.pickedChp09DiscoverListenToVillagers = true;
         await ƒS.Speech.tell("Ich", "Ich mische mich unter die Leute");
         // dataForSave.score.scoreEmpathyPoints += 10;
         ƒS.Speech.clear();
-        return "09_01 Research Marketplace"; // hier lieber: return "Chp ..."; if clause: ich nehm versch keys und sage: if dataforsave.pciekd = alle true, dann in der if clause return. if (dataforsave.pickedChoice, pickedotherchoice, usw. = true), dann gehts weiter
+        return "09_E Listen to villagers"; // hier lieber: return "Chp ..."; if clause: ich nehm versch keys und sage: if dataforsave.pciekd = alle true, dann in der if clause return. if (dataforsave.pickedChoice, pickedotherchoice, usw. = true), dann gehts weiter
         break;
 
-      case Chp09DiscoverMarketplaceElementAnswers.iSayDiscoverMerchants:
+      case Chp09DiscoverMarketplaceElementAnswers.PickSceneMerchants:
         dataForSave.pickedChp09DiscoverMerchants = true;
         await ƒS.Speech.tell("Ich", "Ich spreche mit den Händlern");
         ƒS.Speech.clear();
-        return "09_01 Research Marketplace"; // hier lieber: return "Chp ..."; if clause: ich nehm versch keys und sage: if dataforsave.pciekd = alle true, dann in der if clause return. if (dataforsave.pickedChoice, pickedotherchoice, usw. = true), dann gehts weiter
+        return "09_13 Talk to merchants"; // hier lieber: return "Chp ..."; if clause: ich nehm versch keys und sage: if dataforsave.pciekd = alle true, dann in der if clause return. if (dataforsave.pickedChoice, pickedotherchoice, usw. = true), dann gehts weiter
         break;
 
-      case Chp09DiscoverMarketplaceElementAnswers.iSayDiscoverSpeakToVillagers:
+      case Chp09DiscoverMarketplaceElementAnswers.PickSceneSpeakToVillagers:
         dataForSave.pickedChp09DiscoverSpeakToVillagers = true;
         await ƒS.Speech.tell("Ich", "Ich spreche mit den Leuten");
         ƒS.Speech.clear();
-        return "09_01 Research Marketplace"; // hier lieber: return "Chp ..."; if clause: ich nehm versch keys und sage: if dataforsave.pciekd = alle true, dann in der if clause return. if (dataforsave.pickedChoice, pickedotherchoice, usw. = true), dann gehts weiter
+        return "09_14 Speak to villagers"; // hier lieber: return "Chp ..."; if clause: ich nehm versch keys und sage: if dataforsave.pciekd = alle true, dann in der if clause return. if (dataforsave.pickedChoice, pickedotherchoice, usw. = true), dann gehts weiter
         break;
     }
   }

@@ -31,11 +31,11 @@ namespace Spiegel_VN {
     }
 
     let Chp09PickSceneElementAnswers = {
-      iSayResearchMarketplace: "Auf Marktplatz informieren",
-      iSaySpeakToInnkeeper: "Mit der Inhaberin sprechen",
-      iSaySpeakToCook: "Mit Koch sprechen",
-      iSaySpeakToStablehand: "Mit Stallmädchen sprechen",
-      iSayContinue: "Weiter",
+      PickSceneResearchMarketplace: "Auf Marktplatz informieren",
+      PickSceneSpeakToInnkeeper: "Mit der Inhaberin sprechen",
+      PickSceneSpeakToCook: "Mit Koch sprechen",
+      PickSceneSpeakToStablehand: "Mit Stallmädchen sprechen",
+      PickSceneContinue: "Weiter",
     };
 
     if (
@@ -44,7 +44,7 @@ namespace Spiegel_VN {
       !dataForSave.pickedChp09TalkToInnkeeper ||
       !dataForSave.pickedChp09TalkToStablehand
     ) {
-      delete Chp09PickSceneElementAnswers.iSayContinue;
+      delete Chp09PickSceneElementAnswers.PickSceneContinue;
       // return Chp01_CS_ArrivalHome();
     }
 
@@ -55,7 +55,7 @@ namespace Spiegel_VN {
 
     // *** RESPONSES ***
     switch (Chp09PickSceneElement) {
-      case Chp09PickSceneElementAnswers.iSayResearchMarketplace:
+      case Chp09PickSceneElementAnswers.PickSceneResearchMarketplace:
         // continue path here
         await ƒS.Speech.tell("Ich", "Zum Markplatz dann");
         // dataForSave.score.scoreEmpathyPoints += 10;
@@ -63,7 +63,7 @@ namespace Spiegel_VN {
         return "09_01 Research Marketplace"; // hier lieber: return "Chp ..."; if clause: ich nehm versch keys und sage: if dataforsave.pciekd = alle true, dann in der if clause return. if (dataforsave.pickedChoice, pickedotherchoice, usw. = true), dann gehts weiter
         break;
 
-      case Chp09PickSceneElementAnswers.iSaySpeakToCook:
+      case Chp09PickSceneElementAnswers.PickSceneSpeakToCook:
         await ƒS.Speech.tell("Ich", "Ab in die Küche");
         ƒS.Speech.clear();
         // await ƒS.Character.show(characters.Mama, characters.aisaka.pose.happy, ƒS.positions.bottomcenter);
@@ -71,7 +71,7 @@ namespace Spiegel_VN {
         return "09_03 TalkToCook";
         break;
 
-      case Chp09PickSceneElementAnswers.iSaySpeakToInnkeeper:
+      case Chp09PickSceneElementAnswers.PickSceneSpeakToInnkeeper:
         await ƒS.Speech.tell("Ich", "Wo ist die Inhaberin?");
         ƒS.Speech.clear();
         // await ƒS.Character.show(characters.Mama, characters.aisaka.pose.happy, ƒS.positions.bottomcenter);
@@ -79,7 +79,7 @@ namespace Spiegel_VN {
         return "09_02 TalkToInnkeeper";
         break;
 
-      case Chp09PickSceneElementAnswers.iSaySpeakToStablehand:
+      case Chp09PickSceneElementAnswers.PickSceneSpeakToStablehand:
         await ƒS.Speech.tell("Ich", "Ich will zu den Pferden");
         ƒS.Speech.clear();
         // await ƒS.Character.show(characters.Mama, characters.aisaka.pose.happy, ƒS.positions.bottomcenter);

@@ -3,9 +3,9 @@ namespace Spiegel_VN {
     await ƒS.Speech.tell("Ich", "Wir überqueren den See");
 
     let Chp10CrossingLakeElementAnswers = {
-      iSayDiscoverCitylights: "Die Stadtlichter ...",
-      iSayDiscoverLakewater: "Wasser anschauen",
-      iSayLookAhead: "Nach vorne schauen",
+      PickSceneDiscoverCitylights: "Die Stadtlichter ...",
+      PickSceneDiscoverLakewater: "Wasser anschauen",
+      PickSceneLookAhead: "Nach vorne schauen",
     };
 
     let Chp10CrossingLakeElement = await ƒS.Menu.getInput(
@@ -13,7 +13,7 @@ namespace Spiegel_VN {
       "choicesCSSclass"
     );
     switch (Chp10CrossingLakeElement) {
-      case Chp10CrossingLakeElementAnswers.iSayDiscoverCitylights:
+      case Chp10CrossingLakeElementAnswers.PickSceneDiscoverCitylights:
         // continue path here
         await ƒS.Speech.tell(
           "Ich",
@@ -23,14 +23,14 @@ namespace Spiegel_VN {
         return "10_03 Cross lake"; // hier lieber: return "Chp ..."; if clause: ich nehm versch keys und sage: if dataforsave.pciekd = alle true, dann in der if clause return. if (dataforsave.pickedChoice, pickedotherchoice, usw. = true), dann gehts weiter
         break;
 
-      case Chp10CrossingLakeElementAnswers.iSayDiscoverLakewater:
+      case Chp10CrossingLakeElementAnswers.PickSceneDiscoverLakewater:
         // continue path here
         await ƒS.Speech.tell("Ich", "Lass mal das Wasser anschauen");
         ƒS.Speech.clear();
         return "10_03 Cross lake"; // hier lieber: return "Chp ..."; if clause: ich nehm versch keys und sage: if dataforsave.pciekd = alle true, dann in der if clause return. if (dataforsave.pickedChoice, pickedotherchoice, usw. = true), dann gehts weiter
         break;
 
-      case Chp10CrossingLakeElementAnswers.iSayLookAhead:
+      case Chp10CrossingLakeElementAnswers.PickSceneLookAhead:
         // continue path here
         await ƒS.Speech.tell(
           "Ich",

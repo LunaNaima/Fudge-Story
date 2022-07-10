@@ -31,8 +31,8 @@ namespace Spiegel_VN {
     }
 
     let Chp06PickSceneElementAnswers = {
-      iSayTalkToMama: "Mama, was gibt's denn?",
-      iSayDepartureRiver: "Ich muss los ...",
+      PickSceneTalkToMama: "Mama, was gibt's denn?",
+      PickSceneDepartureRiver: "Ich muss los ...",
     };
 
     let Chp06PickSceneElement = await ƒS.Menu.getInput(
@@ -42,7 +42,7 @@ namespace Spiegel_VN {
 
     // *** RESPONSES ***
     switch (Chp06PickSceneElement) {
-      case Chp06PickSceneElementAnswers.iSayTalkToMama:
+      case Chp06PickSceneElementAnswers.PickSceneTalkToMama:
         // continue path here
         await ƒS.Speech.tell("Ich", "Hast du etwas für mich?");
         // dataForSave.score.scoreEmpathyPoints += 10;
@@ -50,7 +50,7 @@ namespace Spiegel_VN {
         return "06_02 Recieve iron"; // hier lieber: return "Chp ..."; if clause: ich nehm versch keys und sage: if dataforsave.pciekd = alle true, dann in der if clause return. if (dataforsave.pickedChoice, pickedotherchoice, usw. = true), dann gehts weiter
         break;
 
-      case Chp06PickSceneElementAnswers.iSayDepartureRiver:
+      case Chp06PickSceneElementAnswers.PickSceneDepartureRiver:
         // continue path here
         // if (dataForSave.score.scoreCouragePoints === 50)
         // wie mindestens 50?

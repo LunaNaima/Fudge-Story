@@ -19,13 +19,16 @@ declare namespace Spiegel_VN {
         pickedChp01_ConvoMother: boolean;
         pickedChp01_MirrorMerchant: boolean;
         pickedChp02_DinnerScene: boolean;
+        pickedChp02_TestMirror: boolean;
         pickedChp02_TestWithElena: boolean;
         pickedChp02_TestWithKailani: boolean;
+        pickedChp02_TestWithEvarius: boolean;
         pickedChp02_PickHerbsGarden: boolean;
         pickedChp02_FightNeighbor: boolean;
         pickedChp03_Dressmaker: boolean;
-        pickedChp03_FirewoodKailani: boolean;
+        pickedChp03_ChoresWithKailani: boolean;
         pickedChp03_WaterwellKailani: boolean;
+        pickedChp03_WoodChoppingKailani: boolean;
         pickedChp04TalkToFamily: boolean;
         pickedChp04TalkToElena: boolean;
         pickedChp04ResearchLibrary: boolean;
@@ -118,6 +121,20 @@ declare namespace Spiegel_VN {
             name: string;
             origin: ƒ.ORIGIN2D;
         };
+        mirrorMerchant: {
+            name: string;
+            origin: ƒ.ORIGIN2D;
+        };
+        Demon: {
+            name: string;
+            origin: ƒ.ORIGIN2D;
+            pose: {
+                angry: string;
+                neutralAngry: string;
+                furious: string;
+                distracted: string;
+            };
+        };
     };
 }
 declare namespace Spiegel_VN {
@@ -193,12 +210,14 @@ declare namespace Spiegel_VN {
             T0000: string;
             T0001: string;
             T0002: string;
-        };
-        maincharacter: {
-            T0000: string;
-            T0001: string;
-            T0002: string;
             T0003: string;
+            T0004: string;
+            T0005: string;
+            T0006: string;
+            T0007: string;
+            T0008: string;
+            T0009: string;
+            T0010: string;
         };
     };
 }
@@ -223,12 +242,17 @@ declare namespace Spiegel_VN {
     };
 }
 declare namespace Spiegel_VN {
-    let dlg_scn_02: {
-        maincharacter: {
+    let dlg_Chp01EntryMirrorMerchant: {
+        mirrorMerchant: {
             T0000: string;
             T0001: string;
         };
-        Mama: {
+        maincharacter: {
+            T0000: string;
+        };
+    };
+    let dlg_Chp01MirrorMerchantiSayUnsure: {
+        maincharacter: {
             T0000: string;
             T0001: string;
         };
@@ -295,10 +319,7 @@ declare namespace Spiegel_VN {
     function Chp02_01_Dinner(): ƒS.SceneReturn;
 }
 declare namespace Spiegel_VN {
-    function Chp02_021_TestWithElena(): ƒS.SceneReturn;
-}
-declare namespace Spiegel_VN {
-    function Chp02_022_TestWithKailani(): ƒS.SceneReturn;
+    function Chp02_021_TestMirror(): ƒS.SceneReturn;
 }
 declare namespace Spiegel_VN {
     function Chp02_03_PickHerbs(): ƒS.SceneReturn;
@@ -322,10 +343,7 @@ declare namespace Spiegel_VN {
     function Chp03_01_Dressmaker(): ƒS.SceneReturn;
 }
 declare namespace Spiegel_VN {
-    function Chp03_021_FirewoodKailani(): ƒS.SceneReturn;
-}
-declare namespace Spiegel_VN {
-    function Chp03_022_WaterWellKailani(): ƒS.SceneReturn;
+    function Chp03_021_ChoresWithKailani(): ƒS.SceneReturn;
 }
 declare namespace Spiegel_VN {
     function Chp03_E_DiscoverDonkey(): ƒS.SceneReturn;
@@ -466,7 +484,7 @@ declare namespace Spiegel_VN {
     function Chp09_E_TalkToMerchants(): ƒS.SceneReturn;
 }
 declare namespace Spiegel_VN {
-    function Chp09_E_TalkToVillagers(): ƒS.SceneReturn;
+    function Chp09_E_SpeakToVillagers(): ƒS.SceneReturn;
 }
 declare namespace Spiegel_VN {
     function Chp09_CS_ArrivalLake(): ƒS.SceneReturn;
@@ -657,7 +675,16 @@ declare namespace Spiegel_VN {
     function Auswahlmöglichkeiten(): ƒS.SceneReturn;
 }
 declare namespace Spiegel_VN {
+    function Diary(): ƒS.SceneReturn;
+}
+declare namespace Spiegel_VN {
     function HowToMakeChoices(): ƒS.SceneReturn;
+}
+declare namespace Spiegel_VN {
+    function MinigameDemon(): ƒS.SceneReturn;
+}
+declare namespace Spiegel_VN {
+    function RandomIntervall(): ƒS.SceneReturn;
 }
 declare namespace Spiegel_VN {
     function ScnTestzene01(): ƒS.SceneReturn;

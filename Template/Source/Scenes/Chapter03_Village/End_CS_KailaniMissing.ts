@@ -31,13 +31,13 @@ namespace Spiegel_VN {
     }
 
     let Chp04PickSceneElementAnswers = {
-      iSayTalkToFamily: "Zuerst muss ich mit meiner Familie reden",
-      iSayTalkToElena: "Vielleicht sollte ich Mutti fragen ...",
-      iSayResearchLibrary: "Zur Bücherei",
-      iSayDiscoverGarden: "(Erkunden) Im Garten nach Kailani suchen",
-      iSayDiscoverMirror: "(Erkunden) Den Spiegel genauer anschauen",
-      iSayDiscoverGroundFloor: "(Erkunden) Das Erdgeschoss absuchen",
-      iSayContinue: "Weiter",
+      PickSceneTalkToFamily: "Zuerst muss ich mit meiner Familie reden",
+      PickSceneTalkToElena: "Vielleicht sollte ich Mutti fragen ...",
+      PickSceneResearchLibrary: "Zur Bücherei",
+      PickSceneDiscoverGarden: "(Erkunden) Im Garten nach Kailani suchen",
+      PickSceneDiscoverMirror: "(Erkunden) Den Spiegel genauer anschauen",
+      PickSceneDiscoverGroundFloor: "(Erkunden) Das Erdgeschoss absuchen",
+      PickSceneContinue: "Weiter",
     };
 
     if (
@@ -45,7 +45,7 @@ namespace Spiegel_VN {
       !dataForSave.pickedChp04TalkToElena ||
       !dataForSave.pickedChp04ResearchLibrary
     ) {
-      delete Chp04PickSceneElementAnswers.iSayContinue;
+      delete Chp04PickSceneElementAnswers.PickSceneContinue;
       // return Chp01_CS_ArrivalHome();
     }
 
@@ -56,7 +56,7 @@ namespace Spiegel_VN {
 
     // *** RESPONSES ***
     switch (Chp04PickSceneElement) {
-      case Chp04PickSceneElementAnswers.iSayTalkToFamily:
+      case Chp04PickSceneElementAnswers.PickSceneTalkToFamily:
         // continue path here
         await ƒS.Speech.tell("Ich", "Wir treffen uns im Esszimmer zum reden");
         // dataForSave.score.scoreEmpathyPoints += 10;
@@ -64,7 +64,7 @@ namespace Spiegel_VN {
         return "04_01 Talk with family"; // hier lieber: return "Chp ..."; if clause: ich nehm versch keys und sage: if dataforsave.pciekd = alle true, dann in der if clause return. if (dataforsave.pickedChoice, pickedotherchoice, usw. = true), dann gehts weiter
         break;
 
-      case Chp04PickSceneElementAnswers.iSayTalkToElena:
+      case Chp04PickSceneElementAnswers.PickSceneTalkToElena:
         // continue path here
         // if (dataForSave.score.scoreCouragePoints === 50)
         // wie mindestens 50?
@@ -75,7 +75,7 @@ namespace Spiegel_VN {
         return "04_02 Talk with Elena";
         break;
 
-      case Chp04PickSceneElementAnswers.iSayResearchLibrary:
+      case Chp04PickSceneElementAnswers.PickSceneResearchLibrary:
         // continue path here
         await ƒS.Speech.tell(
           "Ich",
@@ -85,7 +85,7 @@ namespace Spiegel_VN {
         return "04_03 Research library";
         break;
 
-      case Chp04PickSceneElementAnswers.iSayDiscoverMirror:
+      case Chp04PickSceneElementAnswers.PickSceneDiscoverMirror:
         // continue path here
         await ƒS.Speech.tell(
           "Ich",
@@ -95,21 +95,21 @@ namespace Spiegel_VN {
         return "04_E_Examine mirror";
         break;
 
-      case Chp04PickSceneElementAnswers.iSayDiscoverGroundFloor:
+      case Chp04PickSceneElementAnswers.PickSceneDiscoverGroundFloor:
         // continue path here
         await ƒS.Speech.tell("Ich", "Ich suche erstmal das Erdgeschoss ab.");
         ƒS.Speech.clear();
         return "04_E Search ground floor";
         break;
 
-      case Chp04PickSceneElementAnswers.iSayDiscoverGarden:
+      case Chp04PickSceneElementAnswers.PickSceneDiscoverGarden:
         // continue path here
         await ƒS.Speech.tell("Ich", "Ich suche mal den Garten ab.");
         ƒS.Speech.clear();
         return "04_E Search garden";
         break;
 
-      case Chp04PickSceneElementAnswers.iSayContinue:
+      case Chp04PickSceneElementAnswers.PickSceneContinue:
         // continue path here
         await ƒS.Speech.tell("Ich", "Ich gehe jetzt in den Wald cut scene.");
         ƒS.Speech.clear();

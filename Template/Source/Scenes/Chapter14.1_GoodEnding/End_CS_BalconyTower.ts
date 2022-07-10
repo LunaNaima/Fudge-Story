@@ -31,9 +31,9 @@ namespace Spiegel_VN {
     }
 
     let Chp14_1PickSceneElementAnswers = {
-      iSayDiscoverDemonRoom: "(Erkunden) Dämonzimmer anschauen",
-      iSayDiscoverMirrorRoom: "(Erkunden) Spiegelzimmer anschauen",
-      iSayFindKailani: "Raus und Kailani finden",
+      PickSceneDiscoverDemonRoom: "(Erkunden) Dämonzimmer anschauen",
+      PickSceneDiscoverMirrorRoom: "(Erkunden) Spiegelzimmer anschauen",
+      PickSceneFindKailani: "Raus und Kailani finden",
     };
 
     let Chp14_1PickSceneElement = await ƒS.Menu.getInput(
@@ -43,14 +43,14 @@ namespace Spiegel_VN {
 
     // *** RESPONSES ***
     switch (Chp14_1PickSceneElement) {
-      case Chp14_1PickSceneElementAnswers.iSayDiscoverDemonRoom:
+      case Chp14_1PickSceneElementAnswers.PickSceneDiscoverDemonRoom:
         // continue path here
         await ƒS.Speech.tell("Ich", "Wie siehts hier im Dämonzimmer so aus?");
         ƒS.Speech.clear();
         return "15_E Discover demon room"; // hier lieber: return "Chp ..."; if clause: ich nehm versch keys und sage: if dataforsave.pciekd = alle true, dann in der if clause return. if (dataforsave.pickedChoice, pickedotherchoice, usw. = true), dann gehts weiter
         break;
 
-      case Chp14_1PickSceneElementAnswers.iSayDiscoverMirrorRoom:
+      case Chp14_1PickSceneElementAnswers.PickSceneDiscoverMirrorRoom:
         await ƒS.Speech.tell("Ich", "Spiegelzimmer anschauen wowww");
         ƒS.Speech.clear();
         // await ƒS.Character.show(characters.Mama, characters.aisaka.pose.happy, ƒS.positions.bottomcenter);
@@ -58,7 +58,7 @@ namespace Spiegel_VN {
         return "15_E Discover mirror room";
         break;
 
-      case Chp14_1PickSceneElementAnswers.iSayFindKailani:
+      case Chp14_1PickSceneElementAnswers.PickSceneFindKailani:
         // continue path here
         await ƒS.Speech.tell("Ich", "Komm wir suchen Kailani!!");
         ƒS.Speech.clear();
