@@ -112,15 +112,15 @@ var Spiegel_VN;
         pickedChoiceChp10ExploreAfraid: false,
         pickedChoiceChp10ExploreAttention: false,
         pickedChoiceChp10ExploreSick: false,
-        pickedChoiceChp10ExploreAll: false,
+        pickedChoiceChp10ExploreAll: false
     };
     Spiegel_VN.inventory = {
         apple: {
             name: "Apfel",
             description: "fruit",
             image: "./Assets/Items/apple.png",
-            static: true, // so wird es nicht konsumiert. wenn ich static ausklammere, kann ich drauf klicken und es ist weg
-        },
+            static: true // so wird es nicht konsumiert. wenn ich static ausklammere, kann ich drauf klicken und es ist weg
+        }
     };
     // dataForSave.score;
     // dataForSave.nameProtagonist = await ƒS.Speech.getInput();
@@ -136,11 +136,11 @@ var Spiegel_VN;
         save: "Save",
         load: "Load",
         close: "Close",
-        credits: "Credits",
+        credits: "Credits"
     }; // volume noch dazu
     let gameMenu; // später, wenn wir das menu erstellen, heißt das hier: wir erstellen es mit den und den buttons
     let menuIsOpen = true; // abfragen, ob menu offen (true) oder geschlossen (false) ist
-    let InventoryIsOpen = false;
+    let inventoryIsOpen = false;
     // asynchrone Funktionen, 1x für button, 1x für eventlistener (für shortcuts)
     async function buttonFunctionalities(_option) {
         console.log(_option); // sicherheitshalber anzeigen lassen, damit man weiß, was passiert
@@ -162,12 +162,17 @@ var Spiegel_VN;
     document.addEventListener("keydown", hndKeyPress); // weil: es gibt versch arten von events, die wir für jeweiligen listener verwenden können. bei window gibts andere zur verfügung als bei doc
     // unterschied keypress & keydown: down = gedrückt halten, press = drücke und loslassen
     async function hndKeyPress(_event) {
+        let ctrlPressed = Spiegel_VN.ƒ.Keyboard.isPressedOne([Spiegel_VN.ƒ.KEYBOARD_CODE.CTRL_LEFT, Spiegel_VN.ƒ.KEYBOARD_CODE.CTRL_RIGHT]);
         switch (_event.code) {
-            case Spiegel_VN.ƒ.KEYBOARD_CODE.ARROW_DOWN: // hier kann man taste auswählen, achtung: amerikanisches keyboard hier!
+            case Spiegel_VN.ƒ.KEYBOARD_CODE.S: // hier kann man taste auswählen, achtung: amerikanisches keyboard hier!
+                if (!ctrlPressed)
+                    break;
                 console.log("Save");
                 await Spiegel_VN.ƒS.Progress.save();
                 break;
-            case Spiegel_VN.ƒ.KEYBOARD_CODE.ARROW_LEFT:
+            case Spiegel_VN.ƒ.KEYBOARD_CODE.L:
+                if (!ctrlPressed)
+                    break;
                 console.log("Load");
                 await Spiegel_VN.ƒS.Progress.load();
                 break;
@@ -186,15 +191,15 @@ var Spiegel_VN;
             // INVENTORY MENU
             case Spiegel_VN.ƒ.KEYBOARD_CODE.I:
                 console.log("Inventory");
-                if (InventoryIsOpen) {
+                if (inventoryIsOpen) {
                     console.log("Inventory Close");
                     Spiegel_VN.ƒS.Inventory.close();
-                    InventoryIsOpen = false; // wenn ich m drücke, und das menu geöffnet is, schließe das menu. wenn es offen ist:
+                    inventoryIsOpen = false; // wenn ich m drücke, und das menu geöffnet is, schließe das menu. wenn es offen ist:
                 }
                 else {
                     console.log("Inventory Open");
                     Spiegel_VN.ƒS.Inventory.open();
-                    InventoryIsOpen = true;
+                    inventoryIsOpen = true;
                 }
                 break;
         }
@@ -206,10 +211,14 @@ var Spiegel_VN;
         let scenes = [
             // { scene: ScnTestzene01, name: "Testszene 01" }, // scene: hier muss name von funktion rein! Name ist was anderes, kann spaces enthalten wegen string
             {
-                id: "Auswahlmöglichkeiten",
-                scene: Spiegel_VN.Auswahlmöglichkeiten,
-                name: "Testszene 1",
+                id: "TestTunnel",
+                scene: Spiegel_VN.testTunnel,
+                name: "TestTunnel"
             },
+            //   id: "Auswahlmöglichkeiten",
+            //   scene: Auswahlmöglichkeiten,
+            //   name: "Testszene 1",
+            // },
             // {
             //   scene: MinigameDemon,
             //   name: "Scene Minigame",
@@ -220,55 +229,55 @@ var Spiegel_VN;
             {
                 id: "01_00 IntroNarration",
                 scene: Spiegel_VN.Chp01_00_IntroNarration,
-                name: "Intro Narration",
+                name: "Intro Narration"
             },
             {
                 id: "01_01 Intro Marketplace",
                 scene: Spiegel_VN.Chp01_01_IntroMarketplace,
-                name: "Intro marketplace",
+                name: "Intro marketplace"
             },
             {
                 id: "01_E_FlowerMerchant",
                 scene: Spiegel_VN.Chp01_E_FlowerMerchant,
-                name: "E_FlowerMerchant",
+                name: "E_FlowerMerchant"
             },
             {
                 id: "01_E_LeatherMerchant",
                 scene: Spiegel_VN.Chp01_E_LeatherMerchant,
-                name: "E_LeatherMerchant",
+                name: "E_LeatherMerchant"
             },
             {
                 id: "01_02 Conversation Mama",
                 scene: Spiegel_VN.Chp01_02_ConvoMother,
                 name: "ConvoMother",
-                next: "01_01 Intro Marketplace",
+                next: "01_01 Intro Marketplace"
             },
             {
                 id: "01_03 MirrorMerchant",
                 scene: Spiegel_VN.Chp01_03_IntroMirror,
-                name: "IntroMirror",
+                name: "IntroMirror"
             },
             // *** CUTSCENES CHP01***
             {
                 id: "01_CS PerchaseMirror",
                 scene: Spiegel_VN.Chp01_CS_PerchaseMirror,
-                name: "CS: PerchaseMirror",
+                name: "CS: PerchaseMirror"
             },
             {
                 id: "01_CS Arrival Home",
                 scene: Spiegel_VN.Chp01_CS_ArrivalHome,
-                name: "CS: ArrivalHome",
+                name: "CS: ArrivalHome"
             },
             // ***CHAPTER 02: FAMILY HOME ***
             {
                 id: "02_01 Dinner at home",
                 scene: Spiegel_VN.Chp02_01_Dinner,
-                name: "Dinner",
+                name: "Dinner"
             },
             {
                 id: "02_021 Test Mirror",
                 scene: Spiegel_VN.Chp02_021_TestMirror,
-                name: "Test mirror",
+                name: "Test mirror"
             },
             // { brauch ich  nicht mehr
             //   id: "02_022 Test with Kailani",
@@ -278,22 +287,22 @@ var Spiegel_VN;
             {
                 id: "02_03 Fight with neighbor",
                 scene: Spiegel_VN.Chp02_03_FightNeighbor,
-                name: "FightNeighbor",
+                name: "FightNeighbor"
             },
             {
                 id: "02_E Discover bedroom",
                 scene: Spiegel_VN.Chp02_E_DiscoverBedroom,
-                name: "E_Bedroom",
+                name: "E_Bedroom"
             },
             {
                 id: "02_03 Pick Herbs",
                 scene: Spiegel_VN.Chp02_03_PickHerbs,
-                name: "E_Garden",
+                name: "E_Garden"
             },
             {
                 id: "02_E Discover Kitchen",
                 scene: Spiegel_VN.Chp02_E_DiscoverKitchen,
-                name: "E_Kitchen",
+                name: "E_Kitchen"
             },
             // CUTSCENES ***
             { id: "02_CS Sleep", scene: Spiegel_VN.Chp02_CS_Sleep, name: "CS: Sleep" },
@@ -302,27 +311,27 @@ var Spiegel_VN;
             {
                 id: "03_01 Dressmaker",
                 scene: Spiegel_VN.Chp03_01_Dressmaker,
-                name: "Dressmaker",
+                name: "Dressmaker"
             },
             {
                 id: "03_E Discover donkey",
                 scene: Spiegel_VN.Chp03_E_DiscoverDonkey,
-                name: "E_Donkey",
+                name: "E_Donkey"
             },
             {
                 id: "03_E Discover Forest",
                 scene: Spiegel_VN.Chp03_E_DiscoverForest,
-                name: "E_Forest",
+                name: "E_Forest"
             },
             {
                 id: "03_E Discover Library",
                 scene: Spiegel_VN.Chp03_E_DiscoverLibrary,
-                name: "E_Library",
+                name: "E_Library"
             },
             {
                 id: "03_021 Chores with Kailani",
                 scene: Spiegel_VN.Chp03_021_ChoresWithKailani,
-                name: "Chores Kailani",
+                name: "Chores Kailani"
             },
             // {
             //   id: "03_022 Waterwell with Kailani",
@@ -333,185 +342,185 @@ var Spiegel_VN;
             {
                 id: "03_CS Turmoil marketplace",
                 scene: Spiegel_VN.Chp03_CS_TurmoilMarketplace,
-                name: "CS: TurmoilMarketplace",
+                name: "CS: TurmoilMarketplace"
             },
             {
                 id: "03_CS Kailani is missing",
                 scene: Spiegel_VN.Chp03_CS_KailaniMissing,
-                name: "CS: Kailani is missing",
+                name: "CS: Kailani is missing"
             },
             // *** CHAPTER 04 RESEARCH ***
             {
                 id: "04_01 Talk with family",
                 scene: Spiegel_VN.Chp04_01_TalkWithFamily,
-                name: "Talk with family",
+                name: "Talk with family"
             },
             {
                 id: "04_02 Talk with Elena",
                 scene: Spiegel_VN.Chp04_02_TalkWithElena,
-                name: "Talk with Elena",
+                name: "Talk with Elena"
             },
             {
                 id: "04_03 Research library",
                 scene: Spiegel_VN.Chp04_03_ResearchLibrary,
-                name: "Research library",
+                name: "Research library"
             },
             {
                 id: "04_E_Examine mirror",
                 scene: Spiegel_VN.Chp04_E_ExamineMirror,
-                name: "Examine Mirror",
+                name: "Examine Mirror"
             },
             {
                 id: "04_E Search garden",
                 scene: Spiegel_VN.Chp04_E_SearchGarden,
-                name: "Search garden",
+                name: "Search garden"
             },
             {
                 id: "04_E Search ground floor",
                 scene: Spiegel_VN.Chp04_E_SearchGroundFloor,
-                name: "Search ground floor",
+                name: "Search ground floor"
             },
             {
                 id: "04_CS Entry forest",
                 scene: Spiegel_VN.Chp04_CS_EntryForest,
-                name: "Entry forest",
+                name: "Entry forest"
             },
             // *** CHAPTER 05: FOREST
             { id: "05_01 Clearing", scene: Spiegel_VN.Chp05_01_Clearing, name: "Clearing" },
             {
                 id: "05_02 Sing to birds",
                 scene: Spiegel_VN.Chp05_02_SingToBirds,
-                name: "Sing to birds",
+                name: "Sing to birds"
             },
             { id: "05_03 Feed birds", scene: Spiegel_VN.Chp05_03_FeedBirds, name: "Feed birds" },
             {
                 id: "05_E Discover oak",
                 scene: Spiegel_VN.Chp05_E_DiscoverOak,
-                name: "Discover oak",
+                name: "Discover oak"
             },
             {
                 id: "05_E Discover river",
                 scene: Spiegel_VN.Chp05_E_DiscoverRiver,
-                name: "Discover river",
+                name: "Discover river"
             },
             {
                 id: "05_CS Go home",
                 scene: Spiegel_VN.Chp05_CS_GoHome,
-                name: "Go home",
+                name: "Go home"
             },
             // *** CHAPTER 06: DEPARTURE
             {
                 id: "06_02 Recieve iron",
                 scene: Spiegel_VN.Chp06_02_ReceiveItemMama,
-                name: "Recieve item from Mama",
+                name: "Recieve item from Mama"
             },
             {
                 id: "06_03 Departure",
                 scene: Spiegel_VN.Chp06_03_DepartureRiver,
-                name: "Departure",
+                name: "Departure"
             },
             {
                 id: "06_CS Arrival Meadow",
                 scene: Spiegel_VN.Chp06_CS_ArrivalMeadow,
-                name: "Arrival meadow",
+                name: "Arrival meadow"
             },
             // *** CHAPTER 07: ARRIVAL MIRRORWORLD
             {
                 id: "07_01 Travel to to Whary",
                 scene: Spiegel_VN.Chp07_02_TravelToWhary,
-                name: "Departure city",
+                name: "Departure city"
             },
             {
                 id: "07_E Discover flowers",
                 scene: Spiegel_VN.Chp07_E_DiscoverFlowers,
-                name: "Discover flowers",
+                name: "Discover flowers"
             },
             {
                 id: "07_E Discover bees",
                 scene: Spiegel_VN.Chp07_E_DiscoverBees,
-                name: "Discover bees",
+                name: "Discover bees"
             },
             {
                 id: "07_CS Line at gates",
                 scene: Spiegel_VN.Chp07_CS_LineAtGates,
-                name: "Line at the gates",
+                name: "Line at the gates"
             },
             // *** CHAPTER 08: In Whary ***
             {
                 id: "08_01 Meet Flynn gates",
                 scene: Spiegel_VN.Chp08_01_MeetFlynnAtGates,
-                name: "Meet Flynn at the gates",
+                name: "Meet Flynn at the gates"
             },
             {
                 id: "08_02 Meet Flynn in alley",
                 scene: Spiegel_VN.Chp08_02_MeetFlynnInAlley,
-                name: "Meet Flynn in alley",
+                name: "Meet Flynn in alley"
             },
             {
                 id: "08_03 Enter City",
                 scene: Spiegel_VN.Chp08_03_EnterCity,
-                name: "Enter city",
+                name: "Enter city"
             },
             {
                 id: "08_04 Choose stay",
                 scene: Spiegel_VN.Chp08_04_ChooseStay,
-                name: "Choose stay",
+                name: "Choose stay"
             },
             {
                 id: "08_041 Choose nice stay",
                 scene: Spiegel_VN.Chp08_041_ChooseNiceStay,
-                name: "Choose nice stay",
+                name: "Choose nice stay"
             },
             {
                 id: "08_042 Choose ugly stay",
                 scene: Spiegel_VN.Chp08_042_ChooseUglyStay,
-                name: "Choose ugly stay",
+                name: "Choose ugly stay"
             },
             {
                 id: "08_0411 Nice stay with Flynn",
                 scene: Spiegel_VN.Chp08_0411_NiceStayFlynn,
-                name: "Nice stay with Flynn",
+                name: "Nice stay with Flynn"
             },
             {
                 id: "08_0421 Ugly stay with Flynn",
                 scene: Spiegel_VN.Chp08_0421_UglyStayFlynn,
-                name: "Ugly stay with Flynn",
+                name: "Ugly stay with Flynn"
             },
             {
                 id: "08_E Discover Hay",
                 scene: Spiegel_VN.Chp08_E_DiscoverHay,
-                name: "Discover hay",
+                name: "Discover hay"
             },
             {
                 id: "08_E Discover Villagers",
                 scene: Spiegel_VN.Chp08_E_DiscoverVillagers,
-                name: "Discover villagers",
+                name: "Discover villagers"
             },
             {
                 id: "08_E Discover windows",
                 scene: Spiegel_VN.Chp08_E_DiscoverWindows,
-                name: "Discover windows",
+                name: "Discover windows"
             },
             {
                 id: "08_CS Talk To Flynn",
                 scene: Spiegel_VN.Chp08_CS_TalkToFlynn,
-                name: "Talk to Flynn",
+                name: "Talk to Flynn"
             },
             {
                 id: "08_CS Sleep & new day",
                 scene: Spiegel_VN.Chp08_CS_Sleep,
-                name: "Go to sleep",
+                name: "Go to sleep"
             },
             // *** CHAPTER 09:
             {
                 id: "09_01 Research Marketplace",
                 scene: Spiegel_VN.Chp09_01_ResearchMarketplace,
-                name: "Research Marketplace",
+                name: "Research Marketplace"
             },
             {
                 id: "09_011 Beggar",
                 scene: Spiegel_VN.Chp09_011_Beggar,
-                name: "Beggar scene",
+                name: "Beggar scene"
             },
             // {
             //   id: "09_011 Speak to Beggar",
@@ -521,351 +530,351 @@ var Spiegel_VN;
             {
                 id: "09_012 Make a wish",
                 scene: Spiegel_VN.Chp09_012_MakeAWish,
-                name: "Make a wish",
+                name: "Make a wish"
             },
             {
                 id: "09_02 TalkToInnkeeper",
                 scene: Spiegel_VN.Chp09_02_TalkToInnkeeper,
-                name: "Talk to innkeeper",
+                name: "Talk to innkeeper"
             },
             {
                 id: "09_03 TalkToCook",
                 scene: Spiegel_VN.Chp09_03_TalkToCook,
-                name: "Talk to cook",
+                name: "Talk to cook"
             },
             {
                 id: "09_04 Talk to stablehand",
                 scene: Spiegel_VN.Chp09_04_TalkToStablehand,
-                name: "Talk to stablehand",
+                name: "Talk to stablehand"
             },
             {
                 id: "09_E Listen to villagers",
                 scene: Spiegel_VN.Chp09_E_ListenToVillagers,
-                name: "Listen to villagers",
+                name: "Listen to villagers"
             },
             {
                 id: "09_13 Talk to merchants",
                 scene: Spiegel_VN.Chp09_E_TalkToMerchants,
-                name: "Talk to merchants",
+                name: "Talk to merchants"
             },
             {
                 id: "09_14 Speak to villagers",
                 scene: Spiegel_VN.Chp09_E_SpeakToVillagers,
-                name: "Speak to villagers",
+                name: "Speak to villagers"
             },
             {
                 id: "09_CS Arrival lake",
                 scene: Spiegel_VN.Chp09_CS_ArrivalLake,
-                name: "Arrival at lake",
+                name: "Arrival at lake"
             },
             // *** CHAPTER 10: CROSSING LAKE ***
             {
                 id: "10_01 How to cross",
                 scene: Spiegel_VN.Chp10_01_HowToCross,
-                name: "How to cross",
+                name: "How to cross"
             },
             {
                 id: "10_02 On the raft",
                 scene: Spiegel_VN.Chp10_02_OnTheRaft,
-                name: "Build a raft",
+                name: "Build a raft"
             },
             {
                 id: "10_03 Cross lake",
                 scene: Spiegel_VN.Chp10_03_CrossLake,
-                name: "Crossing the lake",
+                name: "Crossing the lake"
             },
             {
                 id: "10_04 Attack birds",
                 scene: Spiegel_VN.Chp10_04_AttackBirds,
-                name: "Attack from birds",
+                name: "Attack from birds"
             },
             {
                 id: "10_041 Sing to birds",
                 scene: Spiegel_VN.Chp10_041_SingToBirds,
-                name: "Sing to birds",
+                name: "Sing to birds"
             },
             {
                 id: "10_042 Use Mirror",
                 scene: Spiegel_VN.Chp10_042_UseMirror,
-                name: "Use the mirror",
+                name: "Use the mirror"
             },
             {
                 id: "10_051 Birds become friendly",
                 scene: Spiegel_VN.Chp10_051_FriendlyBirds,
-                name: "Birds become friendly",
+                name: "Birds become friendly"
             },
             {
                 id: "10_052 Birds disappear",
                 scene: Spiegel_VN.Chp10_052_BirdsDisappear,
-                name: "Birds disappear",
+                name: "Birds disappear"
             },
             {
                 id: "10_E Discover City lights Whary",
                 scene: Spiegel_VN.Chp10_E_CityLightsWhary,
-                name: "Discover city lights",
+                name: "Discover city lights"
             },
             {
                 id: "10_E Discover lake",
                 scene: Spiegel_VN.Chp10_E_DiscoverLake,
-                name: "Discover lake",
+                name: "Discover lake"
             },
             {
                 id: "10_E Discover lakewater",
                 scene: Spiegel_VN.Chp10_E_DiscoverLakewater,
-                name: "Discover lakewater",
+                name: "Discover lakewater"
             },
             {
                 id: "10_CS Arrival other side",
                 scene: Spiegel_VN.Chp10_CS_ArrivalOtherSide,
-                name: "Arrival other side",
+                name: "Arrival other side"
             },
             // *** CHAPTER 11: SCOUTING FACTORY ***
             {
                 id: "11_01 Search for hiding place",
                 scene: Spiegel_VN.Chp11_01_SearchHidingPlace,
-                name: "Search for hiding place",
+                name: "Search for hiding place"
             },
             {
                 id: "11_02 Find iron",
                 scene: Spiegel_VN.Chp11_02_FindIron,
-                name: "Find iron",
+                name: "Find iron"
             },
             {
                 id: "11_03 Watch factory",
                 scene: Spiegel_VN.Chp11_03_WatchFactory,
-                name: "WatchFactory",
+                name: "WatchFactory"
             },
             {
                 id: "11_04 Try break-in",
                 scene: Spiegel_VN.Chp11_04_TryBreakIn,
-                name: "Try to break-in",
+                name: "Try to break-in"
             },
             {
                 id: "11_E Discover forest",
                 scene: Spiegel_VN.Chp11_E_DiscoverForest,
-                name: "Discover forest",
+                name: "Discover forest"
             },
             {
                 id: "11_E Discover huts",
                 scene: Spiegel_VN.Chp11_E_DiscoverHuts,
-                name: "Discover huts",
+                name: "Discover huts"
             },
             {
                 id: "11_E Discover tower",
                 scene: Spiegel_VN.Chp11_E_DiscoverTower,
-                name: "Discover tower",
+                name: "Discover tower"
             },
             {
                 id: "11_CS Sleep",
                 scene: Spiegel_VN.Chp11_CS_Sleep,
-                name: "Sleep",
+                name: "Sleep"
             },
             // *** CHAPTER 12: ENTRY FACTORY
             {
                 id: "12_011 Sneak-in",
                 scene: Spiegel_VN.Chp12_011_SneakIn,
-                name: "Sneak-in",
+                name: "Sneak-in"
             },
             {
                 id: "12_012 Sneak-in amongst slaves",
                 scene: Spiegel_VN.Chp12_012_SneakAmongSlaves,
-                name: "Sneak-in amongst slaves",
+                name: "Sneak-in amongst slaves"
             },
             {
                 id: "12_02 Enter factory",
                 scene: Spiegel_VN.Chp12_02_EnterFactory,
-                name: "Enter factory",
+                name: "Enter factory"
             },
             {
                 id: "12_031 Talk to slaves",
                 scene: Spiegel_VN.Chp12_031_TalkToSlaves,
-                name: "Talk to slaves",
+                name: "Talk to slaves"
             },
             {
                 id: "12_032 Search for Kailani",
                 scene: Spiegel_VN.Chp12_032_SearchForKailani,
-                name: "Search for Kailani",
+                name: "Search for Kailani"
             },
             {
                 id: "12_033 Listen to guards",
                 scene: Spiegel_VN.Chp12_033_ListenToGuards,
-                name: "Listen to guards",
+                name: "Listen to guards"
             },
             {
                 id: "12_04 Back to hiding place",
                 scene: Spiegel_VN.Chp12_04_BackToHidingPlace,
-                name: "Back to hiding place",
+                name: "Back to hiding place"
             },
             {
                 id: "12_051 Birds offer help",
                 scene: Spiegel_VN.Chp12_051_BirdsOfferHelp,
-                name: "Birds offer help",
+                name: "Birds offer help"
             },
             {
                 id: "12_052 Make a wish",
                 scene: Spiegel_VN.Chp12_052_MakeAWish,
-                name: "Make a wish",
+                name: "Make a wish"
             },
             {
                 id: "12_E Discover village",
                 scene: Spiegel_VN.Chp12_E_DiscoverVillage,
-                name: "Discover village",
+                name: "Discover village"
             },
             {
                 id: "12_E Discover production site",
                 scene: Spiegel_VN.Chp12_E_Productionsite,
-                name: "Production site",
+                name: "Production site"
             },
             {
                 id: "12_CS Talk to Flynn",
                 scene: Spiegel_VN.Chp12_CS_TalkToFlynn,
-                name: "Talk to Flynn",
+                name: "Talk to Flynn"
             },
             // *** CHAPTER 13: THE GREAT ORDEAL ***
             {
                 id: "13_01 Entry village",
                 scene: Spiegel_VN.Chp13_01_EntryVillage,
-                name: "Entry village",
+                name: "Entry village"
             },
             {
                 id: "13_02 Get into tower",
                 scene: Spiegel_VN.Chp13_02_GetIntoTower,
-                name: "Go to tower",
+                name: "Go to tower"
             },
             {
                 id: "13_03 Entry tower",
                 scene: Spiegel_VN.Chp13_03_EntryTower,
-                name: "Entry tower",
+                name: "Entry tower"
             },
             {
                 id: "10_04 Sneak past demon",
                 scene: Spiegel_VN.Chp13_04_SneakPastDemon,
-                name: "Sneak past demon",
+                name: "Sneak past demon"
             },
             {
                 id: "13_E Discover family portrait",
                 scene: Spiegel_VN.Chp13_E_DiscoverFamilyPortrait,
-                name: "Discover family portrait",
+                name: "Discover family portrait"
             },
             {
                 id: "13_E Discover locked door",
                 scene: Spiegel_VN.Chp13_E_DiscoverLockedDoor,
-                name: "Discover locked door",
+                name: "Discover locked door"
             },
             {
                 id: "13_E Sneak around tower",
                 scene: Spiegel_VN.Chp13_E_DiscoverSneakAround,
-                name: "Discover sneak around tower",
+                name: "Discover sneak around tower"
             },
             {
                 id: "13_E Discover tower window",
                 scene: Spiegel_VN.Chp13_E_DiscoverTowerWindow,
-                name: "Discover tower window",
+                name: "Discover tower window"
             },
             {
                 id: "13_E Discover watch guard",
                 scene: Spiegel_VN.Chp13_E_DiscoverWatchGuard,
-                name: "Discover watch guard",
+                name: "Discover watch guard"
             },
             {
                 id: "13_CS Entry mirror room",
                 scene: Spiegel_VN.Chp13_CS_EntryMirrorRoom,
-                name: "Entry mirror room",
+                name: "Entry mirror room"
             },
             // *** CHAPTER 14.1: GOOD ENDING
             {
                 id: "14.1_01 Destroy mirror",
                 scene: Spiegel_VN.Chp141_01_DestroyMirror,
-                name: "Destroy mirror",
+                name: "Destroy mirror"
             },
             {
                 id: "14.1_02 Demon dies",
                 scene: Spiegel_VN.Chp141_02_DemonDies,
-                name: "Demon dies",
+                name: "Demon dies"
             },
             {
                 id: "14.1_CS Balcony tower",
                 scene: Spiegel_VN.Chp14_CS_BalconyTower,
-                name: "Balcony tower",
+                name: "Balcony tower"
             },
             // CHAPTER 14.2: BAD ENDING
             {
                 id: "14.2_01 Realization mirror",
                 scene: Spiegel_VN.Chp142_01_RealizationMirror,
-                name: "Realization mirror",
+                name: "Realization mirror"
             },
             {
                 id: "14.2_02 Caught by demon",
                 scene: Spiegel_VN.Chp142_02_CaughtByDemon,
-                name: "Caught by demon",
+                name: "Caught by demon"
             },
             {
                 id: "14.2_03 Transformation into slaves",
                 scene: Spiegel_VN.Chp142_03_TransformationSlaves,
-                name: "Transformation into slaves",
+                name: "Transformation into slaves"
             },
             {
                 id: "14.2_End Empty Scene",
                 scene: Spiegel_VN.Chp142_End_EmptyScene,
-                name: "End empty scene",
+                name: "End empty scene"
             },
             // *** CHAPTER 15: THE PRIZE
             {
                 id: "15_01 Reunion Kailani",
                 scene: Spiegel_VN.Chp15_01_ReunionKailani,
-                name: "Reunion Kailani",
+                name: "Reunion Kailani"
             },
             {
                 id: "15_E Discover demon room",
                 scene: Spiegel_VN.Chp15_E_DiscoverDemonRoom,
-                name: "Discover demon room",
+                name: "Discover demon room"
             },
             {
                 id: "15_E Discover mirror room",
                 scene: Spiegel_VN.Chp15_E_DiscoverMirrorRoom,
-                name: "Discover mirror room",
+                name: "Discover mirror room"
             },
             {
                 id: "15_E Talk to freed villagers",
                 scene: Spiegel_VN.Chp15_E_TalkToFreedVillagers,
-                name: "Talk to freed villagers",
+                name: "Talk to freed villagers"
             },
             {
                 id: "15_CS Go to lake",
                 scene: Spiegel_VN.Chp15_CS_GoToLake,
-                name: "Go to lake",
+                name: "Go to lake"
             },
             // *** CHAPTER 16: ROAD HOME
             {
                 id: "16_01 Confrontation Flynn",
                 scene: Spiegel_VN.Chp16_01_ConfrontationFlynn,
-                name: "Confrontation Flynn",
+                name: "Confrontation Flynn"
             },
             {
                 id: "16_02 Make a wish",
                 scene: Spiegel_VN.Chp16_02_MakeAWish,
-                name: "Make a wish",
+                name: "Make a wish"
             },
             {
                 id: "16_021 Go home alone",
                 scene: Spiegel_VN.Chp16_021_GoHomeAlone,
-                name: "Go home alone",
+                name: "Go home alone"
             },
             {
                 id: "16_022 Go home with Flynn",
                 scene: Spiegel_VN.Chp16_022_GoHomeWithFlynn,
-                name: "Go home with Flynn",
+                name: "Go home with Flynn"
             },
             {
                 id: "16_CS Reunion family",
                 scene: Spiegel_VN.Chp16_CS_ReunionFamily,
-                name: "Reunion family",
+                name: "Reunion family"
             },
             {
                 id: "16_End Empty Scene",
                 scene: Spiegel_VN.Chp16_End_EmptyScene,
-                name: "End Empty Scene",
-            },
+                name: "End Empty Scene"
+            }
         ];
         let uiElement = document.querySelector("[type=interface]");
         Spiegel_VN.dataForSave = Spiegel_VN.ƒS.Progress.setData(Spiegel_VN.dataForSave, uiElement);
@@ -1096,122 +1105,122 @@ var Spiegel_VN;
             background: 
             // "./Assets/Backgrounds/Chapter01/Kap01_01_Intro_Marktplatz.png", //1280x853 (passt)
             // "./Assets/Backgrounds/Chapter01/Chp01_Marketplace.png", //1920x1080 (passt nicht)
-            "./Assets/Backgrounds/Chapter01/Chp01_Marketplace1.png",
+            "./Assets/Backgrounds/Chapter01/Chp01_Marketplace1.png"
         },
         Chp01_02_ConvoMother: {
             name: "Convo_Mother",
-            background: "./Assets/Backgrounds/BG_Wald_Test1.png",
+            background: "./Assets/Backgrounds/BG_Wald_Test1.png"
         },
         Chp01_E_FlowerMerchant: {
             name: "E_FlowerMerchant",
-            background: "./Assets/Backgrounds/Chapter01/Flowermerchant.png",
+            background: "./Assets/Backgrounds/Chapter01/Flowermerchant.png"
         },
         Chp01_E_LeatherMerchant: {
             name: "E_LeatherMerchant",
-            background: "./Assets/Backgrounds/Chapter01/Leathermerchant.png",
+            background: "./Assets/Backgrounds/Chapter01/Leathermerchant.png"
         },
         Chp01_03_IntroMirror: {
             name: "Mirror merchant",
-            background: "./Assets/Backgrounds/Chapter02/Dinner/DiningTable.jpeg",
+            background: "./Assets/Backgrounds/Chapter02/Dinner/DiningTable.jpeg"
         },
         Chp01_CS_ArrivalHome: {
             name: "House from outside",
-            background: "./Assets/Backgrounds/Chapter02/Dinner/DiningTable.jpeg",
+            background: "./Assets/Backgrounds/Chapter02/Dinner/DiningTable.jpeg"
         },
         // *** CHAPTER 02 ***
         Chp02_01_Dinner: {
             name: "Dinnertable",
-            background: "./Assets/Backgrounds/Chapter02/Dinner/DiningTable.jpeg",
+            background: "./Assets/Backgrounds/Chapter02/Dinner/DiningTable.jpeg"
         },
         Chp02_02_LivingRoom: {
             name: "Living room",
-            background: "./Assets/Backgrounds/Chapter02/Dinner/DiningTable.jpeg",
+            background: "./Assets/Backgrounds/Chapter02/Dinner/DiningTable.jpeg"
         },
         Chp02_03_PickHerbs: {
             name: "Garden",
-            background: "./Assets/Backgrounds/Chapter02/Dinner/DiningTable.jpeg",
+            background: "./Assets/Backgrounds/Chapter02/Dinner/DiningTable.jpeg"
         },
         Chp02_04_FightNeighbor: {
             name: "Neighbors house",
-            background: "./Assets/Backgrounds/Chapter02/Dinner/DiningTable.jpeg",
+            background: "./Assets/Backgrounds/Chapter02/Dinner/DiningTable.jpeg"
         },
         Chp02_E_DiscoverBedroom: {
             name: "My Bedroom",
-            background: "./Assets/Backgrounds/Chapter02/E_DiscoverBedroom/MyBedroom.jpg",
+            background: "./Assets/Backgrounds/Chapter02/E_DiscoverBedroom/MyBedroom.jpg"
         },
         Chp02_E_DiscoverBedroomDiary: {
             name: "Bedroom diary",
-            background: "./Assets/Backgrounds/Chapter02/E_DiscoverBedroom/MyBedroom.jpg",
+            background: "./Assets/Backgrounds/Chapter02/E_DiscoverBedroom/MyBedroom.jpg"
         },
         Chp02_E_DiscoverBedroomBooks: {
             name: "Bedroom books",
-            background: "./Assets/Backgrounds/Chapter02/E_DiscoverBedroom/MyBedroom.jpg",
+            background: "./Assets/Backgrounds/Chapter02/E_DiscoverBedroom/MyBedroom.jpg"
         },
         Chp02_E_DiscoverKitchen: {
             name: "Kitchen",
-            background: "./Assets/Backgrounds/Chapter02/E_DiscoverBedroom/MyBedroom.jpg",
+            background: "./Assets/Backgrounds/Chapter02/E_DiscoverBedroom/MyBedroom.jpg"
         },
         Chp02_E_DiscoverKitchenOven: {
             name: "Kitchen oven",
-            background: "./Assets/Backgrounds/Chapter02/E_DiscoverBedroom/MyBedroom.jpg",
+            background: "./Assets/Backgrounds/Chapter02/E_DiscoverBedroom/MyBedroom.jpg"
         },
         Chp02_E_DiscoverKitchenPantry: {
             name: "Kitchen pantry",
-            background: "./Assets/Backgrounds/Chapter02/E_DiscoverBedroom/MyBedroom.jpg",
+            background: "./Assets/Backgrounds/Chapter02/E_DiscoverBedroom/MyBedroom.jpg"
         },
         Chp02_CS_Sleep: {
             // night filter
             name: "Bedroom sleep",
-            background: "./Assets/Backgrounds/Chapter02/E_DiscoverBedroom/MyBedroom.jpg",
+            background: "./Assets/Backgrounds/Chapter02/E_DiscoverBedroom/MyBedroom.jpg"
         },
         // *** CHAPTER 03 ***
         Chp03_01_Dressmaker: {
             name: "Dressmaker",
-            background: "./Assets/Backgrounds/Chapter02/E_DiscoverBedroom/MyBedroom.jpg",
+            background: "./Assets/Backgrounds/Chapter02/E_DiscoverBedroom/MyBedroom.jpg"
         },
         Chp03_021_FirewoodKailani: {
             name: "Firewood chopping Kailani",
-            background: "./Assets/Backgrounds/Chapter02/E_DiscoverBedroom/MyBedroom.jpg",
+            background: "./Assets/Backgrounds/Chapter02/E_DiscoverBedroom/MyBedroom.jpg"
         },
         Chp03_022_WaterwellKailani: {
             // empty marketplace
             name: "Well empty marketplace",
-            background: "./Assets/Backgrounds/Chapter02/E_DiscoverBedroom/MyBedroom.jpg",
+            background: "./Assets/Backgrounds/Chapter02/E_DiscoverBedroom/MyBedroom.jpg"
         },
         Chp03_E_DiscoverDonkey: {
             name: "Discover donkey",
-            background: "./Assets/Backgrounds/Chapter02/E_DiscoverBedroom/MyBedroom.jpg",
+            background: "./Assets/Backgrounds/Chapter02/E_DiscoverBedroom/MyBedroom.jpg"
         },
         Chp03_E_DiscoverDonkeyCloseup: {
             name: "Discover donkey closeup",
-            background: "./Assets/Backgrounds/Chapter02/E_DiscoverBedroom/MyBedroom.jpg",
+            background: "./Assets/Backgrounds/Chapter02/E_DiscoverBedroom/MyBedroom.jpg"
         },
         Chp03_E_DiscoverForest: {
             name: "Discover forest",
-            background: "./Assets/Backgrounds/Chapter02/E_DiscoverBedroom/MyBedroom.jpg",
+            background: "./Assets/Backgrounds/Chapter02/E_DiscoverBedroom/MyBedroom.jpg"
         },
         Chp03_E_DiscoverLibraryOutside: {
             name: "Discover library",
-            background: "./Assets/Backgrounds/Chapter02/E_DiscoverBedroom/MyBedroom.jpg",
+            background: "./Assets/Backgrounds/Chapter02/E_DiscoverBedroom/MyBedroom.jpg"
         },
         Chp03_E_DiscoverLibraryInside: {
             name: "Discover library",
-            background: "./Assets/Backgrounds/Chapter02/E_DiscoverBedroom/MyBedroom.jpg",
+            background: "./Assets/Backgrounds/Chapter02/E_DiscoverBedroom/MyBedroom.jpg"
         },
         Chp03_E_DiscoverLibraryCloseup: {
             name: "Discover library closeup books",
-            background: "./Assets/Backgrounds/Chapter02/E_DiscoverBedroom/MyBedroom.jpg",
+            background: "./Assets/Backgrounds/Chapter02/E_DiscoverBedroom/MyBedroom.jpg"
         },
         Chp03_CS_KailaniMissing: {
             name: "Kailanis bedroom",
-            background: "./Assets/Backgrounds/Chapter02/E_DiscoverBedroom/MyBedroom.jpg",
+            background: "./Assets/Backgrounds/Chapter02/E_DiscoverBedroom/MyBedroom.jpg"
         },
         // *** CHAPTER 04 ***
         // *** TRANSITION BETWEEN CHAPTERS ***
         black: {
             name: "Black_BG",
-            background: "./Assets/Transitions/Black.png",
-        },
+            background: "./Assets/Transitions/Black.png"
+        }
     };
 })(Spiegel_VN || (Spiegel_VN = {}));
 var Spiegel_VN;
@@ -1260,8 +1269,8 @@ var Spiegel_VN;
 (function (Spiegel_VN) {
     Spiegel_VN.dlg_scn_00_IntroNarrator = {
         narratorEntry: {
-            T0000: '"Willkommen! Trete nur näher, sonst hörst du mich gar nicht."',
-            T0001: '"Ja, so is es schon besser. Du bist ja schließlich hergekommen, um meiner Geschichte zu lauschen, nicht wahr?"',
+            T0000: '"Willkommen! Tritt nur näher, sonst hörst du mich gar nicht."',
+            T0001: '"Ja, so ist es schon besser. Du bist ja schließlich hergekommen, um meiner Geschichte zu lauschen, nicht wahr?"',
             T0002: '"Wie heißt du denn?"',
             T0003: '"Schau, dass du es dir gemütlich machst. Das Märchen, das ich dir heute Abend erzähle, dauert etwas länger."',
             T0004: '"Bevor es aber losgeht, musst du mir eine wichtige Frage beantworten: Welche Eigenschaft ist dir am wichtigsten? Wähle mit Bedacht aus, denn deine Antwort kann auf den Verlauf der Geschichte Einfluss nehmen …"',
@@ -1542,33 +1551,33 @@ var Spiegel_VN;
         await Spiegel_VN.ƒS.Speech.tell(Spiegel_VN.characters.maincharacter.name, Spiegel_VN.dlg_scn_02.maincharacter.T0000);
         await Spiegel_VN.ƒS.Speech.tell(Spiegel_VN.characters.Mama.name, Spiegel_VN.dlg_scn_02.Mama.T0000);
         //*** OPTIONS *//
-        let Chp01ConvoMotherElementAnswers = {
+        let chp01ConvoMotherElementAnswers = {
             iSayOk: "Okay.",
             iSayYes: "Ja.",
-            iSayEmpathyPoints: "10",
+            iSayEmpathyPoints: "10"
         };
         if (Spiegel_VN.dataForSave.scoreEmpathyPoints < 20) {
-            delete Chp01ConvoMotherElementAnswers.iSayEmpathyPoints;
+            delete chp01ConvoMotherElementAnswers.iSayEmpathyPoints;
         }
         console.log(Spiegel_VN.dataForSave.scoreEmpathyPoints);
         //*** CSS-CLASS */
-        let Chp01ConvoMotherElement = await Spiegel_VN.ƒS.Menu.getInput(Chp01ConvoMotherElementAnswers, "choicesCSSclass");
+        let chp01ConvoMotherElement = await Spiegel_VN.ƒS.Menu.getInput(chp01ConvoMotherElementAnswers, "choicesCSSclass");
         //*** RESPONSES */
-        switch (Chp01ConvoMotherElement) {
-            case Chp01ConvoMotherElementAnswers.iSayOk:
+        switch (chp01ConvoMotherElement) {
+            case chp01ConvoMotherElementAnswers.iSayOk:
                 console.log(Spiegel_VN.dataForSave.scoreEmpathyPoints);
                 await Spiegel_VN.ƒS.Speech.tell(Spiegel_VN.characters.maincharacter.name, "Choice Okay.");
                 Spiegel_VN.ƒS.Speech.clear();
                 return "01_01 Intro Marketplace";
                 break;
-            case Chp01ConvoMotherElementAnswers.iSayYes:
+            case chp01ConvoMotherElementAnswers.iSayYes:
                 await Spiegel_VN.ƒS.Speech.tell(Spiegel_VN.characters.Mama, "Choice Yes");
                 Spiegel_VN.ƒS.Speech.clear();
                 //   // await ƒS.Character.show(characters.Mama, characters.aisaka.pose.happy, ƒS.positions.bottomcenter);
                 //   // ƒS.Character.hide(characters.Mama);
                 return "01_01 Intro Marketplace";
                 break;
-            case Chp01ConvoMotherElementAnswers.iSayEmpathyPoints:
+            case chp01ConvoMotherElementAnswers.iSayEmpathyPoints:
                 Spiegel_VN.dataForSave.scoreEmpathyPoints += 10;
                 console.log(Spiegel_VN.dataForSave.scoreEmpathyPoints);
                 await Spiegel_VN.ƒS.Speech.tell(Spiegel_VN.characters.Mama, "Hier kriegen wir 10 Empathiepunkte");
@@ -1636,33 +1645,33 @@ var Spiegel_VN;
         await Spiegel_VN.ƒS.Speech.tell(Spiegel_VN.characters.maincharacter.name, Spiegel_VN.dlg_scn_E_Flowermerchant.maincharacter.T0000);
         await Spiegel_VN.ƒS.Speech.tell(Spiegel_VN.characters.flowerMerchant.name, Spiegel_VN.dlg_scn_E_Flowermerchant.flowerMerchant.T0000);
         // *** DIALOGUE OPTIONS ***
-        let Chp01FlowerMerchantDialogueElementAnswers = {
+        let chp01FlowerMerchantDialogueElementAnswers = {
             iSayAskAboutTrip: "(Erkunden) Wie war denn die Reise ins Dorf?",
             iSayAskAboutFlowers: "(Erkunden) Warum habt ihr so wenige Blumen da?",
             iSayBuyFlowers: "(Erkunden) Blumen kaufen",
-            iSayLeave: "Auf Wiedersehen!",
+            iSayLeave: "Auf Wiedersehen!"
         };
         if (!Spiegel_VN.dataForSave.pickedChp01_ConvoMother) {
-            delete Chp01FlowerMerchantDialogueElementAnswers.iSayBuyFlowers;
+            delete chp01FlowerMerchantDialogueElementAnswers.iSayBuyFlowers;
         }
         let pickediSayAskAboutTrip;
         let pickediSayAskAboutFlowers;
         let pickediSayBuyFlowers;
-        let pickediSayLeave;
+        // let pickediSayLeave: boolean;
         do {
             if (pickediSayAskAboutTrip) {
-                delete Chp01FlowerMerchantDialogueElementAnswers.iSayAskAboutTrip;
+                delete chp01FlowerMerchantDialogueElementAnswers.iSayAskAboutTrip;
             }
             else if (pickediSayAskAboutFlowers) {
-                delete Chp01FlowerMerchantDialogueElementAnswers.iSayAskAboutFlowers;
+                delete chp01FlowerMerchantDialogueElementAnswers.iSayAskAboutFlowers;
             }
             else if (pickediSayBuyFlowers) {
-                delete Chp01FlowerMerchantDialogueElementAnswers.iSayBuyFlowers;
+                delete chp01FlowerMerchantDialogueElementAnswers.iSayBuyFlowers;
             }
-            let Chp01FlowerMerchantDialogueElement = await Spiegel_VN.ƒS.Menu.getInput(Chp01FlowerMerchantDialogueElementAnswers, "choicesCSSclass");
+            let chp01FlowerMerchantDialogueElement = await Spiegel_VN.ƒS.Menu.getInput(chp01FlowerMerchantDialogueElementAnswers, "choicesCSSclass");
             // *** RESPONSES ***
-            switch (Chp01FlowerMerchantDialogueElement) {
-                case Chp01FlowerMerchantDialogueElementAnswers.iSayAskAboutTrip:
+            switch (chp01FlowerMerchantDialogueElement) {
+                case chp01FlowerMerchantDialogueElementAnswers.iSayAskAboutTrip:
                     pickediSayAskAboutTrip = true;
                     Spiegel_VN.dataForSave.pickedChoice = true;
                     await Spiegel_VN.ƒS.Speech.tell(Spiegel_VN.characters.flowerMerchant, "Antwort auf Frage nach Reise.");
@@ -1671,7 +1680,7 @@ var Spiegel_VN;
                     Spiegel_VN.ƒS.Speech.clear();
                     // return "01_E_FlowerMerchant";
                     break;
-                case Chp01FlowerMerchantDialogueElementAnswers.iSayAskAboutFlowers:
+                case chp01FlowerMerchantDialogueElementAnswers.iSayAskAboutFlowers:
                     pickediSayAskAboutFlowers = true;
                     Spiegel_VN.dataForSave.pickedChoice = true;
                     await Spiegel_VN.ƒS.Speech.tell(Spiegel_VN.characters.flowerMerchant, "Answer ask about decorations");
@@ -1680,15 +1689,15 @@ var Spiegel_VN;
                     // ƒS.Character.hide(characters.Mama);
                     // return "01_E_FlowerMerchant";
                     break;
-                case Chp01FlowerMerchantDialogueElementAnswers.iSayBuyFlowers:
+                case chp01FlowerMerchantDialogueElementAnswers.iSayBuyFlowers:
                     pickediSayBuyFlowers = true;
                     Spiegel_VN.dataForSave.pickedChoice = true;
                     await Spiegel_VN.ƒS.Speech.tell(Spiegel_VN.characters.Mama, "Ich will ein paar Blumen für meinen Opi kaufen");
                     Spiegel_VN.ƒS.Speech.clear();
                     // return "01_E_FlowerMerchant";
                     break;
-                case Chp01FlowerMerchantDialogueElementAnswers.iSayLeave:
-                    pickediSayLeave = true;
+                case chp01FlowerMerchantDialogueElementAnswers.iSayLeave:
+                    // pickediSayLeave = true;
                     Spiegel_VN.dataForSave.pickedChoice = true;
                     await Spiegel_VN.ƒS.Speech.tell(Spiegel_VN.characters.maincharacter, "Machen Sies gut.");
                     Spiegel_VN.ƒS.Speech.clear();
@@ -4508,10 +4517,10 @@ var Spiegel_VN;
         await Spiegel_VN.ƒS.Speech.tell("Luna", "Test Choices");
         // ---
         // let score = 13;
-        let TestDialogueAnswers = {
+        let testDialogueAnswers = {
             iSayGreen: "Green.",
             iSayBlue: "Blue",
-            iSayEyes: "I luv eyez",
+            iSayEyes: "I luv eyez"
         };
         // if (score <= 10) {
         //   //   delete TestDialogueAnswers.iSayBlue;
@@ -4522,31 +4531,31 @@ var Spiegel_VN;
         let pickediSayEyes;
         do {
             if (pickediSayBlue) {
-                delete TestDialogueAnswers.iSayBlue;
+                delete testDialogueAnswers.iSayBlue;
             }
             if (pickediSayGreen) {
-                delete TestDialogueAnswers.iSayGreen;
+                delete testDialogueAnswers.iSayGreen;
             }
             if (pickediSayEyes) {
-                delete TestDialogueAnswers.iSayEyes;
+                delete testDialogueAnswers.iSayEyes;
             }
-            let TestDialogue = await Spiegel_VN.ƒS.Menu.getInput(TestDialogueAnswers, "choicesCSSclass");
-            switch (TestDialogue) {
-                case TestDialogueAnswers.iSayBlue:
+            let testDialogue = await Spiegel_VN.ƒS.Menu.getInput(testDialogueAnswers, "choicesCSSclass");
+            switch (testDialogue) {
+                case testDialogueAnswers.iSayBlue:
                     // continue path here
                     pickediSayBlue = true;
                     Spiegel_VN.dataForSave.pickedChoice = true;
                     await Spiegel_VN.ƒS.Speech.tell("Hannahh", "I love blue yay");
                     // return "Auswahlmöglichkeiten";
                     break;
-                case TestDialogueAnswers.iSayGreen:
+                case testDialogueAnswers.iSayGreen:
                     // continue path here
                     pickediSayGreen = true;
                     Spiegel_VN.dataForSave.pickedChoice = true;
                     await Spiegel_VN.ƒS.Speech.tell("Luna", "I love green yay");
                     // return "Auswahlmöglichkeiten";
                     break;
-                case TestDialogueAnswers.iSayEyes:
+                case testDialogueAnswers.iSayEyes:
                     pickediSayEyes = true;
                     Spiegel_VN.dataForSave.pickedChoice = true;
                     await Spiegel_VN.ƒS.Speech.tell("Hanahhh", "YOUR COLOR EYEZ ARE MY FAVORITE");
@@ -4774,5 +4783,36 @@ var Spiegel_VN;
         return ScnTestzene02();
     }
     Spiegel_VN.ScnTestzene02 = ScnTestzene02;
+})(Spiegel_VN || (Spiegel_VN = {}));
+var Spiegel_VN;
+(function (Spiegel_VN) {
+    async function testTunnel() {
+        let locTunnel = {
+            name: "Tunnel",
+            background: "./Assets/Test_Minigame_Demon/Standbild_Test.png"
+        };
+        await Spiegel_VN.ƒS.Location.show(locTunnel);
+        let graph = Spiegel_VN.ƒS.Base.getGraph();
+        console.log(graph);
+        graph.addComponent(new Spiegel_VN.ƒ.ComponentTransform());
+        Spiegel_VN.ƒ.Loop.addEventListener("loopFrame" /* ƒ.EVENT.LOOP_FRAME */, loopFrame);
+        function loopFrame(_event) {
+            if (Spiegel_VN.ƒ.Keyboard.isPressedOne([Spiegel_VN.ƒ.KEYBOARD_CODE.A, Spiegel_VN.ƒ.KEYBOARD_CODE.ARROW_LEFT])) {
+                graph.mtxLocal.translateX(10);
+            }
+            if (Spiegel_VN.ƒ.Keyboard.isPressedOne([Spiegel_VN.ƒ.KEYBOARD_CODE.D, Spiegel_VN.ƒ.KEYBOARD_CODE.ARROW_RIGHT])) {
+                graph.mtxLocal.translateX(-10);
+            }
+            Spiegel_VN.ƒS.update(0);
+        }
+        let escape = {
+            iEscape: "Escape"
+        };
+        await Spiegel_VN.ƒS.Menu.getInput(escape, "choicesCSSclass");
+        graph.cmpTransform.mtxLocal = Spiegel_VN.ƒ.Matrix4x4.IDENTITY();
+        Spiegel_VN.ƒ.Loop.removeEventListener("loopFrame" /* ƒ.EVENT.LOOP_FRAME */, loopFrame);
+        Spiegel_VN.ƒS.update(0);
+    }
+    Spiegel_VN.testTunnel = testTunnel;
 })(Spiegel_VN || (Spiegel_VN = {}));
 //# sourceMappingURL=Template.js.map
