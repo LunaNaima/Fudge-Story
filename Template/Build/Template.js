@@ -205,11 +205,11 @@ var Spiegel_VN;
         buttonFunctionalities("Close");
         let scenes = [
             // { scene: ScnTestzene01, name: "Testszene 01" }, // scene: hier muss name von funktion rein! Name ist was anderes, kann spaces enthalten wegen string
-            // {
-            //   id: "Auswahlmöglichkeiten",
-            //   scene: Auswahlmöglichkeiten,
-            //   name: "Testszene 1",
-            // },
+            {
+                id: "Auswahlmöglichkeiten",
+                scene: Spiegel_VN.Auswahlmöglichkeiten,
+                name: "Testszene 1",
+            },
             // {
             //   scene: MinigameDemon,
             //   name: "Scene Minigame",
@@ -217,11 +217,11 @@ var Spiegel_VN;
             // *** INTRO ***
             // { id: "00 Name Entry", scene: Chp00_00_NameEntry, name: "NameEntry" },
             // ***CHAPTER 01 ***
-            // {
-            //   id: "01_00 IntroNarration",
-            //   scene: Chp01_00_IntroNarration,
-            //   name: "Intro Narration",
-            // },
+            {
+                id: "01_00 IntroNarration",
+                scene: Spiegel_VN.Chp01_00_IntroNarration,
+                name: "Intro Narration",
+            },
             {
                 id: "01_01 Intro Marketplace",
                 scene: Spiegel_VN.Chp01_01_IntroMarketplace,
@@ -1033,8 +1033,10 @@ var Spiegel_VN;
         Kailani: {
             name: "Kailani",
             origin: Spiegel_VN.ƒS.ORIGIN.BOTTOMRIGHT,
-            // pose: {
-            //  }
+            pose: {
+                worried: "./Assets/Characters/Kailani_3_4_worried.png",
+                angry: "./Assets/Characters/Kailani_3_4_worried_v2.png",
+            },
         },
         Evarius: {
             name: "Evarius",
@@ -1045,8 +1047,9 @@ var Spiegel_VN;
         Flynn: {
             name: "Flynn",
             origin: Spiegel_VN.ƒS.ORIGIN.BOTTOMLEFT,
-            // pose: {
-            // }
+            pose: {
+                angry: "./Assets/Characters/Flynn_Whary_angry.png",
+            },
         },
         flowerMerchant: {
             name: "Blumenhändler",
@@ -1107,15 +1110,104 @@ var Spiegel_VN;
             name: "E_LeatherMerchant",
             background: "./Assets/Backgrounds/Chapter01/Leathermerchant.png",
         },
-        // *** CHAPTER 2 ***
-        Chp02_E_DiscoverBedroom: {
-            name: "My Bedroom",
-            background: "./Assets/Backgrounds/Chapter02/E_DiscoverBedroom/MyBedroom.jpg",
+        Chp01_03_IntroMirror: {
+            name: "Mirror merchant",
+            background: "./Assets/Backgrounds/Chapter02/Dinner/DiningTable.jpeg",
         },
+        Chp01_CS_ArrivalHome: {
+            name: "House from outside",
+            background: "./Assets/Backgrounds/Chapter02/Dinner/DiningTable.jpeg",
+        },
+        // *** CHAPTER 02 ***
         Chp02_01_Dinner: {
             name: "Dinnertable",
             background: "./Assets/Backgrounds/Chapter02/Dinner/DiningTable.jpeg",
         },
+        Chp02_02_LivingRoom: {
+            name: "Living room",
+            background: "./Assets/Backgrounds/Chapter02/Dinner/DiningTable.jpeg",
+        },
+        Chp02_03_PickHerbs: {
+            name: "Garden",
+            background: "./Assets/Backgrounds/Chapter02/Dinner/DiningTable.jpeg",
+        },
+        Chp02_04_FightNeighbor: {
+            name: "Neighbors house",
+            background: "./Assets/Backgrounds/Chapter02/Dinner/DiningTable.jpeg",
+        },
+        Chp02_E_DiscoverBedroom: {
+            name: "My Bedroom",
+            background: "./Assets/Backgrounds/Chapter02/E_DiscoverBedroom/MyBedroom.jpg",
+        },
+        Chp02_E_DiscoverBedroomDiary: {
+            name: "Bedroom diary",
+            background: "./Assets/Backgrounds/Chapter02/E_DiscoverBedroom/MyBedroom.jpg",
+        },
+        Chp02_E_DiscoverBedroomBooks: {
+            name: "Bedroom books",
+            background: "./Assets/Backgrounds/Chapter02/E_DiscoverBedroom/MyBedroom.jpg",
+        },
+        Chp02_E_DiscoverKitchen: {
+            name: "Kitchen",
+            background: "./Assets/Backgrounds/Chapter02/E_DiscoverBedroom/MyBedroom.jpg",
+        },
+        Chp02_E_DiscoverKitchenOven: {
+            name: "Kitchen oven",
+            background: "./Assets/Backgrounds/Chapter02/E_DiscoverBedroom/MyBedroom.jpg",
+        },
+        Chp02_E_DiscoverKitchenPantry: {
+            name: "Kitchen pantry",
+            background: "./Assets/Backgrounds/Chapter02/E_DiscoverBedroom/MyBedroom.jpg",
+        },
+        Chp02_CS_Sleep: {
+            // night filter
+            name: "Bedroom sleep",
+            background: "./Assets/Backgrounds/Chapter02/E_DiscoverBedroom/MyBedroom.jpg",
+        },
+        // *** CHAPTER 03 ***
+        Chp03_01_Dressmaker: {
+            name: "Dressmaker",
+            background: "./Assets/Backgrounds/Chapter02/E_DiscoverBedroom/MyBedroom.jpg",
+        },
+        Chp03_021_FirewoodKailani: {
+            name: "Firewood chopping Kailani",
+            background: "./Assets/Backgrounds/Chapter02/E_DiscoverBedroom/MyBedroom.jpg",
+        },
+        Chp03_022_WaterwellKailani: {
+            // empty marketplace
+            name: "Well empty marketplace",
+            background: "./Assets/Backgrounds/Chapter02/E_DiscoverBedroom/MyBedroom.jpg",
+        },
+        Chp03_E_DiscoverDonkey: {
+            name: "Discover donkey",
+            background: "./Assets/Backgrounds/Chapter02/E_DiscoverBedroom/MyBedroom.jpg",
+        },
+        Chp03_E_DiscoverDonkeyCloseup: {
+            name: "Discover donkey closeup",
+            background: "./Assets/Backgrounds/Chapter02/E_DiscoverBedroom/MyBedroom.jpg",
+        },
+        Chp03_E_DiscoverForest: {
+            name: "Discover forest",
+            background: "./Assets/Backgrounds/Chapter02/E_DiscoverBedroom/MyBedroom.jpg",
+        },
+        Chp03_E_DiscoverLibraryOutside: {
+            name: "Discover library",
+            background: "./Assets/Backgrounds/Chapter02/E_DiscoverBedroom/MyBedroom.jpg",
+        },
+        Chp03_E_DiscoverLibraryInside: {
+            name: "Discover library",
+            background: "./Assets/Backgrounds/Chapter02/E_DiscoverBedroom/MyBedroom.jpg",
+        },
+        Chp03_E_DiscoverLibraryCloseup: {
+            name: "Discover library closeup books",
+            background: "./Assets/Backgrounds/Chapter02/E_DiscoverBedroom/MyBedroom.jpg",
+        },
+        Chp03_CS_KailaniMissing: {
+            name: "Kailanis bedroom",
+            background: "./Assets/Backgrounds/Chapter02/E_DiscoverBedroom/MyBedroom.jpg",
+        },
+        // *** CHAPTER 04 ***
+        // *** TRANSITION BETWEEN CHAPTERS ***
         black: {
             name: "Black_BG",
             background: "./Assets/Transitions/Black.png",
@@ -1327,6 +1419,10 @@ var Spiegel_VN;
         //   "Hallo, ich bin Dein Name."
         // );
         // ***BEGINN SZENE***
+        await Spiegel_VN.ƒS.Character.show(Spiegel_VN.characters.Kailani, Spiegel_VN.characters.Kailani.pose.worried, // pose muss in der main sein
+        Spiegel_VN.ƒS.positions.bottomcenter //bei positions: gibts die normalen angaben (topleft ..) bei positionpercentage: gebe ich koordinaten an in pixel 70 in x und 100 in y
+        // ƒS.positionPercent(70,100)
+        );
         let randomTextChp01Marketplace = Spiegel_VN.ƒ.Random.default.getRangeFloored(1, 5); //gerundet
         switch (randomTextChp01Marketplace) {
             case 1:
@@ -1437,6 +1533,10 @@ var Spiegel_VN;
         // await ƒS.Location.show(locations.black);
         // await ƒS.update(2);
         await Spiegel_VN.ƒS.Location.show(Spiegel_VN.locations.Chp01_02_ConvoMother);
+        await Spiegel_VN.ƒS.Character.show(Spiegel_VN.characters.Kailani, Spiegel_VN.characters.Kailani.pose.angry, // pose muss in der main sein
+        Spiegel_VN.ƒS.positions.bottomcenter //bei positions: gibts die normalen angaben (topleft ..) bei positionpercentage: gebe ich koordinaten an in pixel 70 in x und 100 in y
+        // ƒS.positionPercent(70, 100)
+        );
         // await ƒS.update(2, transitions.fade.alpha, transitions.fade.edge);
         // *** BEGIN DIALOGUE ***
         await Spiegel_VN.ƒS.Speech.tell(Spiegel_VN.characters.maincharacter.name, Spiegel_VN.dlg_scn_02.maincharacter.T0000);
@@ -1482,7 +1582,13 @@ var Spiegel_VN;
 var Spiegel_VN;
 (function (Spiegel_VN) {
     async function Chp01_03_IntroMirror() {
+        await Spiegel_VN.ƒS.Location.show(Spiegel_VN.locations.Chp01_03_IntroMirror);
         Spiegel_VN.dataForSave.pickedChp01_MirrorMerchant = true;
+        await Spiegel_VN.ƒS.Character.show(Spiegel_VN.characters.Flynn, Spiegel_VN.characters.Flynn.pose.angry, // pose muss in der main sein
+        Spiegel_VN.ƒS.positions.bottomright //bei positions: gibts die normalen angaben (topleft ..) bei positionpercentage: gebe ich koordinaten an in pixel 70 in x und 100 in y
+        // ƒS.positionPercent(70,100)
+        );
+        // await ƒS.update();
         await Spiegel_VN.ƒS.Speech.tell(Spiegel_VN.characters.mirrorMerchant.name, Spiegel_VN.dlg_Chp01EntryMirrorMerchant.mirrorMerchant.T0000);
         //*** OPTIONS *//
         let Chp01MirrorMerchantElementAnswers = {
@@ -1658,6 +1764,7 @@ var Spiegel_VN;
 var Spiegel_VN;
 (function (Spiegel_VN) {
     async function Chp01_CS_ArrivalHome() {
+        await Spiegel_VN.ƒS.Location.show(Spiegel_VN.locations.Chp01_CS_ArrivalHome);
         await Spiegel_VN.ƒS.Speech.tell("Hannah", "Schleife gelungen bei CS angekommen ------------- AAAAAAAAAAAA. Arrival Home");
         // ** RANDOM TEXT ***
         let randomTextChp02FamilyHome = Spiegel_VN.ƒ.Random.default.getRangeFloored(1, 5); //gerundet
@@ -1753,6 +1860,7 @@ var Spiegel_VN;
 var Spiegel_VN;
 (function (Spiegel_VN) {
     async function Chp01_CS_PerchaseMirror() {
+        await Spiegel_VN.ƒS.Location.show(Spiegel_VN.locations.Chp01_03_IntroMirror);
         await Spiegel_VN.ƒS.Speech.tell("Mirror merchant", "Spiegel ist gekauft");
         return "01_CS Arrival Home";
     }
@@ -1847,6 +1955,7 @@ var Spiegel_VN;
 var Spiegel_VN;
 (function (Spiegel_VN) {
     async function Chp02_021_TestMirror() {
+        await Spiegel_VN.ƒS.Location.show(Spiegel_VN.locations.Chp02_02_LivingRoom);
         await Spiegel_VN.ƒS.Speech.tell("Ich", "Mit wem möchtest du den Spiegel testen?");
         let Chp02TestMirrorElementAnswers = {
             PickSceneTestWithElena: "Mit Mutti testen.",
@@ -1938,6 +2047,7 @@ var Spiegel_VN;
 var Spiegel_VN;
 (function (Spiegel_VN) {
     async function Chp02_03_PickHerbs() {
+        await Spiegel_VN.ƒS.Location.show(Spiegel_VN.locations.Chp02_03_PickHerbs);
         Spiegel_VN.dataForSave.pickedChp02_PickHerbsGarden = true;
         await Spiegel_VN.ƒS.Speech.tell("Ich", "Ich pflücke Kräuter yum yum. Gleich hör ich nen Streit mit den Nachbarn");
         return "02_03 Fight with neighbor";
@@ -1947,6 +2057,7 @@ var Spiegel_VN;
 var Spiegel_VN;
 (function (Spiegel_VN) {
     async function Chp02_03_FightNeighbor() {
+        await Spiegel_VN.ƒS.Location.show(Spiegel_VN.locations.Chp02_04_FightNeighbor);
         Spiegel_VN.dataForSave.pickedChp02_FightNeighbor = true;
         await Spiegel_VN.ƒS.Speech.tell("Ich", "Die Nachbarn streiten und ich hör zu.");
         return "01_CS Arrival Home";
@@ -1958,8 +2069,11 @@ var Spiegel_VN;
     async function Chp02_E_DiscoverBedroom() {
         await Spiegel_VN.ƒS.Location.show(Spiegel_VN.locations.Chp02_E_DiscoverBedroom); //unsere locations, die szenen. nach dem Punkt sind die Methoden! also tell und show ist eine Methode. Die klammer dahinter ist eine Methodenaufruf, also eine Variable. Der Hingergrund sollte da angezeigt werden
         // await ƒS.update(2, "./Assets/Transitions/Black.png", 1);
-        await Spiegel_VN.ƒS.update(Spiegel_VN.transitions.fade.duration, Spiegel_VN.transitions.fade.alpha, Spiegel_VN.transitions.fade.edge //edge ist der Härtegrad
-        );
+        // await ƒS.update(
+        //   transitions.fade.duration,
+        //   transitions.fade.alpha,
+        //   transitions.fade.edge //edge ist der Härtegrad
+        // );
         await Spiegel_VN.ƒS.Speech.tell("Ich", "My eigenes Reich. Wenigstens hier habe ich ein bisschen Privatsphäre...");
         let Chp02DiscoverBedroomElementAnswers = {
             iSayDiscoverDesk: "(Erkunden) Was liegt da auf dem Tisch?",
@@ -1987,6 +2101,7 @@ var Spiegel_VN;
 var Spiegel_VN;
 (function (Spiegel_VN) {
     async function Chp02_E_DiscoverKitchen() {
+        await Spiegel_VN.ƒS.Location.show(Spiegel_VN.locations.Chp02_E_DiscoverKitchen);
         await Spiegel_VN.ƒS.Speech.tell("Ich", "Ich mache mir in der Küche was zu futtern.");
         let Chp02DiscoverKitchenElementAnswers = {
             PickSceneDiscoverOven: "(Erkunden) Ofen anschauen",
@@ -1997,13 +2112,13 @@ var Spiegel_VN;
         // *** RESPONSES ***
         switch (Chp02DiscoverKitchenElement) {
             case Chp02DiscoverKitchenElementAnswers.PickSceneDiscoverOven:
-                // pickediSayAskAboutTrip = true;
-                // dataForSave.pickedChoice = true;
+                await Spiegel_VN.ƒS.Location.show(Spiegel_VN.locations.Chp02_E_DiscoverKitchenOven);
                 await Spiegel_VN.ƒS.Speech.tell("Ich", "Yay schauen wir uns den Ofen an, was gibts hier so.");
                 Spiegel_VN.ƒS.Speech.clear();
                 // return "01_E_FlowerMerchant";
                 break;
             case Chp02DiscoverKitchenElementAnswers.PickSceneDiscoverPantry:
+                await Spiegel_VN.ƒS.Location.show(Spiegel_VN.locations.Chp02_E_DiscoverKitchenPantry);
                 await Spiegel_VN.ƒS.Speech.tell("Ich", "Speisekammer anschauen juchu");
                 Spiegel_VN.ƒS.Speech.clear();
                 break;
@@ -2019,7 +2134,9 @@ var Spiegel_VN;
 var Spiegel_VN;
 (function (Spiegel_VN) {
     async function Chp02_CS_NewDay() {
-        await Spiegel_VN.ƒS.Speech.tell("Ich", "New Day! New possibilities lol.");
+        await Spiegel_VN.ƒS.update(Spiegel_VN.transitions.fade.duration, Spiegel_VN.transitions.fade.alpha, Spiegel_VN.transitions.fade.edge //edge ist der Härtegrad
+        );
+        await Spiegel_VN.ƒS.Speech.tell("Ich", "Guten Morgen!");
         // ** RANDOM TEXT ***
         let randomTextChp03NewDay = Spiegel_VN.ƒ.Random.default.getRangeFloored(1, 5); //gerundet
         switch (randomTextChp03NewDay) {
@@ -2103,6 +2220,7 @@ var Spiegel_VN;
 var Spiegel_VN;
 (function (Spiegel_VN) {
     async function Chp02_CS_Sleep() {
+        await Spiegel_VN.ƒS.Location.show(Spiegel_VN.locations.Chp02_CS_Sleep);
         await Spiegel_VN.ƒS.Speech.tell("Ich", "Muss jetzt schlafen gehen.");
         return "02_CS New day";
     }
@@ -2111,6 +2229,7 @@ var Spiegel_VN;
 var Spiegel_VN;
 (function (Spiegel_VN) {
     async function Chp03_01_Dressmaker() {
+        await Spiegel_VN.ƒS.Location.show(Spiegel_VN.locations.Chp03_01_Dressmaker);
         Spiegel_VN.dataForSave.pickedChp03_Dressmaker = true;
         await Spiegel_VN.ƒS.Speech.tell("Ich", "Kann jetzt meine Jacke von der Schneiderin abholen, cool.");
         return "02_CS New day";
@@ -2130,13 +2249,15 @@ var Spiegel_VN;
         // *** RESPONSES ***
         switch (Chp02ChoresKailaniElement) {
             case Chp02ChoresKailaniElementAnswers.PickSceneWaterwell:
+                await Spiegel_VN.ƒS.Location.show(Spiegel_VN.locations.Chp03_022_WaterwellKailani);
                 Spiegel_VN.dataForSave.pickedChp03_WaterwellKailani = true;
-                await Spiegel_VN.ƒS.Speech.tell("Ich", "Toll ich teste den Spiegel mit Mutti!");
+                await Spiegel_VN.ƒS.Speech.tell("Ich", "Okay wir gehen Wasser holen!");
                 Spiegel_VN.ƒS.Speech.clear();
                 break;
             case Chp02ChoresKailaniElementAnswers.PickSceneWoodChopping:
+                await Spiegel_VN.ƒS.Location.show(Spiegel_VN.locations.Chp03_021_FirewoodKailani);
                 Spiegel_VN.dataForSave.pickedChp03_WoodChoppingKailani = true;
-                await Spiegel_VN.ƒS.Speech.tell("Ich", "Toll ich teste den Spiegel mit Kailani!");
+                await Spiegel_VN.ƒS.Speech.tell("Ich", "Kailani und ich gehen Holz hacken!");
                 Spiegel_VN.ƒS.Speech.clear();
                 break;
             // dataForSave.pickedChp02_TestWithElena = true;
@@ -2147,36 +2268,36 @@ var Spiegel_VN;
         }
         if (Spiegel_VN.dataForSave.pickedChp03_WaterwellKailani) {
             let Chp02ChoresKailaniWaterElementAnswers = {
-                iSayTest1: "Test 1 Elena.",
-                iSayTest2: "Test 2 Elena.",
+                iSayTest1: "Test 1 Wasser holen.",
+                iSayTest2: "Test 2 Wasser holen.",
             };
             let Chp02ChoresKailaniWaterElement = await Spiegel_VN.ƒS.Menu.getInput(Chp02ChoresKailaniWaterElementAnswers, "choicesCSSclass");
             // *** RESPONSES ***
             switch (Chp02ChoresKailaniWaterElement) {
                 case Chp02ChoresKailaniWaterElementAnswers.iSayTest1:
-                    await Spiegel_VN.ƒS.Speech.tell("Ich", "Test 1 mit Elena");
+                    await Spiegel_VN.ƒS.Speech.tell("Ich", "Test 1 Wasser holen");
                     Spiegel_VN.ƒS.Speech.clear();
                     break;
                 case Chp02ChoresKailaniWaterElementAnswers.iSayTest2:
-                    await Spiegel_VN.ƒS.Speech.tell("Ich", "Test 2 mit Elena");
+                    await Spiegel_VN.ƒS.Speech.tell("Ich", "Test 2 Wasser holen");
                     Spiegel_VN.ƒS.Speech.clear();
                     break;
             }
         }
         if (Spiegel_VN.dataForSave.pickedChp03_WoodChoppingKailani) {
             let Chp02TestMirrorKailaniElementAnswers = {
-                iSayTest1: "Test 1 Kailani.",
-                iSayTest2: "Test 2 Kailani.",
+                iSayTest1: "Test 1 Holz hacken.",
+                iSayTest2: "Test 2 Holz hacken.",
             };
             let Chp02TestMirrorKailaniElement = await Spiegel_VN.ƒS.Menu.getInput(Chp02TestMirrorKailaniElementAnswers, "choicesCSSclass");
             // *** RESPONSES ***
             switch (Chp02TestMirrorKailaniElement) {
                 case Chp02TestMirrorKailaniElementAnswers.iSayTest1:
-                    await Spiegel_VN.ƒS.Speech.tell("Ich", "Test 1 mit Kailani");
+                    await Spiegel_VN.ƒS.Speech.tell("Ich", "Test 1 Holz hacken");
                     Spiegel_VN.ƒS.Speech.clear();
                     break;
                 case Chp02TestMirrorKailaniElementAnswers.iSayTest2:
-                    await Spiegel_VN.ƒS.Speech.tell("Ich", "Test 2 mit Kailani");
+                    await Spiegel_VN.ƒS.Speech.tell("Ich", "Test 2 Holz hacken");
                     Spiegel_VN.ƒS.Speech.clear();
                     break;
             }
@@ -2187,8 +2308,35 @@ var Spiegel_VN;
 var Spiegel_VN;
 (function (Spiegel_VN) {
     async function Chp03_E_DiscoverDonkey() {
-        await Spiegel_VN.ƒS.Speech.tell("Ich", "Hier kann ich die Nase vom Esel streicheln.");
-        return "02_CS New day";
+        await Spiegel_VN.ƒS.Location.show(Spiegel_VN.locations.Chp03_E_DiscoverDonkey);
+        await Spiegel_VN.ƒS.Speech.tell("Ich", "Hier steht ein Esel? Warum das");
+        let Chp02DiscoverDonkeyElementAnswers = {
+            PickSceneCloseup: "(Erkunden) Nase streicheln",
+            PickSceneReadInscription: "(Erkunden) Inschrift lesen",
+            PickSceneLeave: "Zurück",
+        };
+        let Chp02DiscoverDonkeyElement = await Spiegel_VN.ƒS.Menu.getInput(Chp02DiscoverDonkeyElementAnswers, "choicesCSSclass");
+        // *** RESPONSES ***
+        switch (Chp02DiscoverDonkeyElement) {
+            case Chp02DiscoverDonkeyElementAnswers.PickSceneCloseup:
+                await Spiegel_VN.ƒS.Location.show(Spiegel_VN.locations.Chp03_E_DiscoverDonkeyCloseup);
+                await Spiegel_VN.ƒS.Speech.tell("Ich", "Nase streicheln vom Esel");
+                Spiegel_VN.ƒS.Speech.clear();
+                // return "01_E_FlowerMerchant";
+                break;
+            case Chp02DiscoverDonkeyElementAnswers.PickSceneReadInscription:
+                await Spiegel_VN.ƒS.Location.show(Spiegel_VN.locations.Chp03_E_DiscoverDonkeyCloseup);
+                await Spiegel_VN.ƒS.Speech.tell("Ich", "Inschrift lesen" // novel page
+                );
+                Spiegel_VN.ƒS.Speech.clear();
+                // return "01_E_FlowerMerchant";
+                break;
+            case Chp02DiscoverDonkeyElementAnswers.PickSceneLeave:
+                await Spiegel_VN.ƒS.Speech.tell("Ich", "Zurück");
+                Spiegel_VN.ƒS.Speech.clear();
+                return "02_CS New day";
+                break;
+        }
     }
     Spiegel_VN.Chp03_E_DiscoverDonkey = Chp03_E_DiscoverDonkey;
 })(Spiegel_VN || (Spiegel_VN = {}));
@@ -2203,14 +2351,35 @@ var Spiegel_VN;
 var Spiegel_VN;
 (function (Spiegel_VN) {
     async function Chp03_E_DiscoverLibrary() {
+        await Spiegel_VN.ƒS.Location.show(Spiegel_VN.locations.Chp03_E_DiscoverLibraryOutside);
         await Spiegel_VN.ƒS.Speech.tell("Ich", "Juchuu Bücher.");
-        return "02_CS New day";
+        await Spiegel_VN.ƒS.Location.show(Spiegel_VN.locations.Chp03_E_DiscoverLibraryInside);
+        await Spiegel_VN.ƒS.Speech.tell("Ich", "Du schnupperst und riechst die alten Bücher.");
+        let Chp02DiscoverLibraryElementAnswers = {
+            PickSceneCloseup: "(Erkunden) Alte Bücher anschauen",
+            PickSceneLeave: "Zurück",
+        };
+        let Chp02DiscoverLibraryElement = await Spiegel_VN.ƒS.Menu.getInput(Chp02DiscoverLibraryElementAnswers, "choicesCSSclass");
+        // *** RESPONSES ***
+        switch (Chp02DiscoverLibraryElement) {
+            case Chp02DiscoverLibraryElementAnswers.PickSceneCloseup:
+                await Spiegel_VN.ƒS.Location.show(Spiegel_VN.locations.Chp03_E_DiscoverLibraryCloseup);
+                await Spiegel_VN.ƒS.Speech.tell("Ich", "Die Bücher sind ja uralt!");
+                Spiegel_VN.ƒS.Speech.clear();
+                break;
+            case Chp02DiscoverLibraryElementAnswers.PickSceneLeave:
+                await Spiegel_VN.ƒS.Speech.tell("Ich", "Zurück ins Haus");
+                Spiegel_VN.ƒS.Speech.clear();
+                return "02_CS New day";
+                break;
+        }
     }
     Spiegel_VN.Chp03_E_DiscoverLibrary = Chp03_E_DiscoverLibrary;
 })(Spiegel_VN || (Spiegel_VN = {}));
 var Spiegel_VN;
 (function (Spiegel_VN) {
     async function Chp03_CS_KailaniMissing() {
+        await Spiegel_VN.ƒS.Location.show(Spiegel_VN.locations.Chp03_CS_KailaniMissing);
         await Spiegel_VN.ƒS.Speech.tell("Ich", "Kailani ist weg!");
         // ** RANDOM TEXT ***
         let randomTextChp04KailaniMissing = Spiegel_VN.ƒ.Random.default.getRangeFloored(1, 5); //gerundet
@@ -2257,12 +2426,9 @@ var Spiegel_VN;
                 await Spiegel_VN.ƒS.Speech.tell("Ich", "Wir treffen uns im Esszimmer zum reden");
                 // dataForSave.score.scoreEmpathyPoints += 10;
                 Spiegel_VN.ƒS.Speech.clear();
-                return "04_01 Talk with family"; // hier lieber: return "Chp ..."; if clause: ich nehm versch keys und sage: if dataforsave.pciekd = alle true, dann in der if clause return. if (dataforsave.pickedChoice, pickedotherchoice, usw. = true), dann gehts weiter
+                return "04_01 Talk with family";
                 break;
             case Chp04PickSceneElementAnswers.PickSceneTalkToElena:
-                // continue path here
-                // if (dataForSave.score.scoreCouragePoints === 50)
-                // wie mindestens 50?
                 await Spiegel_VN.ƒS.Speech.tell("Ich", "Ich muss zuerst mit Mutti reden");
                 Spiegel_VN.ƒS.Speech.clear();
                 // await ƒS.Character.show(characters.Mama, characters.aisaka.pose.happy, ƒS.positions.bottomcenter);
@@ -2306,6 +2472,7 @@ var Spiegel_VN;
 var Spiegel_VN;
 (function (Spiegel_VN) {
     async function Chp03_CS_TurmoilMarketplace() {
+        await Spiegel_VN.ƒS.Location.show(Spiegel_VN.locations.Chp03_022_WaterwellKailani);
         await Spiegel_VN.ƒS.Speech.tell("Ich", "Auf dem Marktplatz ist ja was los ...");
         return "03_CS Kailani is missing";
     }
@@ -2314,6 +2481,7 @@ var Spiegel_VN;
 var Spiegel_VN;
 (function (Spiegel_VN) {
     async function Chp04_01_TalkWithFamily() {
+        await Spiegel_VN.ƒS.Location.show(Spiegel_VN.locations.Chp02_02_LivingRoom);
         Spiegel_VN.dataForSave.pickedChp04TalkToFamily = true;
         await Spiegel_VN.ƒS.Speech.tell("Ich", "Wir reden und reden und reden ... Kailani ist trotzdem einfach weg!");
         return "03_CS Kailani is missing";
@@ -2323,6 +2491,7 @@ var Spiegel_VN;
 var Spiegel_VN;
 (function (Spiegel_VN) {
     async function Chp04_02_TalkWithElena() {
+        await Spiegel_VN.ƒS.Location.show(Spiegel_VN.locations.Chp02_E_DiscoverKitchen);
         Spiegel_VN.dataForSave.pickedChp04TalkToElena = true;
         await Spiegel_VN.ƒS.Speech.tell("Ich", "Mutti, kann ich mit dir reden?");
         return "03_CS Kailani is missing";
@@ -2333,6 +2502,7 @@ var Spiegel_VN;
 (function (Spiegel_VN) {
     async function Chp04_03_ResearchLibrary() {
         Spiegel_VN.dataForSave.pickedChp04ResearchLibrary = true;
+        await Spiegel_VN.ƒS.Location.show(Spiegel_VN.locations.Chp03_E_DiscoverLibraryInside);
         await Spiegel_VN.ƒS.Speech.tell("Ich", "In der Bücherei finde ich bestimmt was.");
         return "03_CS Kailani is missing";
     }
@@ -2341,6 +2511,7 @@ var Spiegel_VN;
 var Spiegel_VN;
 (function (Spiegel_VN) {
     async function Chp04_E_ExamineMirror() {
+        await Spiegel_VN.ƒS.Location.show(Spiegel_VN.locations.Chp03_CS_KailaniMissing);
         await Spiegel_VN.ƒS.Speech.tell("Ich", "Der Spiegel glitzert so komisch ...");
         return "03_CS Kailani is missing";
     }
@@ -4353,10 +4524,10 @@ var Spiegel_VN;
             if (pickediSayBlue) {
                 delete TestDialogueAnswers.iSayBlue;
             }
-            else if (pickediSayGreen) {
+            if (pickediSayGreen) {
                 delete TestDialogueAnswers.iSayGreen;
             }
-            else if (pickediSayEyes) {
+            if (pickediSayEyes) {
                 delete TestDialogueAnswers.iSayEyes;
             }
             let TestDialogue = await Spiegel_VN.ƒS.Menu.getInput(TestDialogueAnswers, "choicesCSSclass");

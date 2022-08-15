@@ -29,6 +29,12 @@ namespace Spiegel_VN {
     // );
 
     // ***BEGINN SZENE***
+    await ƒS.Character.show(
+      characters.Kailani,
+      characters.Kailani.pose.worried, // pose muss in der main sein
+      ƒS.positions.bottomcenter //bei positions: gibts die normalen angaben (topleft ..) bei positionpercentage: gebe ich koordinaten an in pixel 70 in x und 100 in y
+      // ƒS.positionPercent(70,100)
+    );
 
     let randomTextChp01Marketplace = ƒ.Random.default.getRangeFloored(1, 5); //gerundet
     switch (randomTextChp01Marketplace) {
@@ -189,6 +195,5 @@ namespace Spiegel_VN {
         break;
     }
     // } while (dataForSave.pickedChoice);
-
   }
 }

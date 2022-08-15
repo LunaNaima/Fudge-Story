@@ -5,6 +5,13 @@ namespace Spiegel_VN {
     // await ƒS.update(2);
     await ƒS.Location.show(locations.Chp01_02_ConvoMother);
 
+    await ƒS.Character.show(
+      characters.Kailani,
+      characters.Kailani.pose.angry, // pose muss in der main sein
+      ƒS.positions.bottomcenter //bei positions: gibts die normalen angaben (topleft ..) bei positionpercentage: gebe ich koordinaten an in pixel 70 in x und 100 in y
+      // ƒS.positionPercent(70, 100)
+    );
+
     // await ƒS.update(2, transitions.fade.alpha, transitions.fade.edge);
 
     // *** BEGIN DIALOGUE ***

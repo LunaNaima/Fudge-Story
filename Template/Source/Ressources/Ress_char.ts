@@ -30,9 +30,10 @@ namespace Spiegel_VN {
     Kailani: {
       name: "Kailani",
       origin: ƒS.ORIGIN.BOTTOMRIGHT,
-      // pose: {
-
-      //  }
+      pose: {
+        worried: "./Assets/Characters/Kailani_3_4_worried.png",
+        angry: "./Assets/Characters/Kailani_3_4_worried_v2.png",
+      },
     },
 
     Evarius: {
@@ -46,9 +47,9 @@ namespace Spiegel_VN {
     Flynn: {
       name: "Flynn",
       origin: ƒS.ORIGIN.BOTTOMLEFT,
-      // pose: {
-
-      // }
+      pose: {
+        angry: "./Assets/Characters/Flynn_Whary_angry.png",
+      },
     },
 
     flowerMerchant: {

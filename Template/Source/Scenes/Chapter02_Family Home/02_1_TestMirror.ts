@@ -1,5 +1,7 @@
 namespace Spiegel_VN {
   export async function Chp02_021_TestMirror(): ƒS.SceneReturn {
+    await ƒS.Location.show(locations.Chp02_02_LivingRoom);
+
     await ƒS.Speech.tell("Ich", "Mit wem möchtest du den Spiegel testen?");
     let Chp02TestMirrorElementAnswers = {
       PickSceneTestWithElena: "Mit Mutti testen.",

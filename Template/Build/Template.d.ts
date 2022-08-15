@@ -104,6 +104,10 @@ declare namespace Spiegel_VN {
         Kailani: {
             name: string;
             origin: ƒ.ORIGIN2D;
+            pose: {
+                worried: string;
+                angry: string;
+            };
         };
         Evarius: {
             name: string;
@@ -112,6 +116,9 @@ declare namespace Spiegel_VN {
         Flynn: {
             name: string;
             origin: ƒ.ORIGIN2D;
+            pose: {
+                angry: string;
+            };
         };
         flowerMerchant: {
             name: string;
@@ -159,11 +166,95 @@ declare namespace Spiegel_VN {
             name: string;
             background: string;
         };
-        Chp02_E_DiscoverBedroom: {
+        Chp01_03_IntroMirror: {
+            name: string;
+            background: string;
+        };
+        Chp01_CS_ArrivalHome: {
             name: string;
             background: string;
         };
         Chp02_01_Dinner: {
+            name: string;
+            background: string;
+        };
+        Chp02_02_LivingRoom: {
+            name: string;
+            background: string;
+        };
+        Chp02_03_PickHerbs: {
+            name: string;
+            background: string;
+        };
+        Chp02_04_FightNeighbor: {
+            name: string;
+            background: string;
+        };
+        Chp02_E_DiscoverBedroom: {
+            name: string;
+            background: string;
+        };
+        Chp02_E_DiscoverBedroomDiary: {
+            name: string;
+            background: string;
+        };
+        Chp02_E_DiscoverBedroomBooks: {
+            name: string;
+            background: string;
+        };
+        Chp02_E_DiscoverKitchen: {
+            name: string;
+            background: string;
+        };
+        Chp02_E_DiscoverKitchenOven: {
+            name: string;
+            background: string;
+        };
+        Chp02_E_DiscoverKitchenPantry: {
+            name: string;
+            background: string;
+        };
+        Chp02_CS_Sleep: {
+            name: string;
+            background: string;
+        };
+        Chp03_01_Dressmaker: {
+            name: string;
+            background: string;
+        };
+        Chp03_021_FirewoodKailani: {
+            name: string;
+            background: string;
+        };
+        Chp03_022_WaterwellKailani: {
+            name: string;
+            background: string;
+        };
+        Chp03_E_DiscoverDonkey: {
+            name: string;
+            background: string;
+        };
+        Chp03_E_DiscoverDonkeyCloseup: {
+            name: string;
+            background: string;
+        };
+        Chp03_E_DiscoverForest: {
+            name: string;
+            background: string;
+        };
+        Chp03_E_DiscoverLibraryOutside: {
+            name: string;
+            background: string;
+        };
+        Chp03_E_DiscoverLibraryInside: {
+            name: string;
+            background: string;
+        };
+        Chp03_E_DiscoverLibraryCloseup: {
+            name: string;
+            background: string;
+        };
+        Chp03_CS_KailaniMissing: {
             name: string;
             background: string;
         };

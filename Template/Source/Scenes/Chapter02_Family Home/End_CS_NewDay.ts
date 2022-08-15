@@ -1,6 +1,11 @@
 namespace Spiegel_VN {
   export async function Chp02_CS_NewDay(): ƒS.SceneReturn {
-    await ƒS.Speech.tell("Ich", "New Day! New possibilities lol.");
+    await ƒS.update(
+      transitions.fade.duration,
+      transitions.fade.alpha,
+      transitions.fade.edge //edge ist der Härtegrad
+    );
+    await ƒS.Speech.tell("Ich", "Guten Morgen!");
 
     // ** RANDOM TEXT ***
     let randomTextChp03NewDay = ƒ.Random.default.getRangeFloored(1, 5); //gerundet

@@ -4,11 +4,11 @@ namespace Spiegel_VN {
 
     // await ƒS.update(2, "./Assets/Transitions/Black.png", 1);
 
-    await ƒS.update(
-      transitions.fade.duration,
-      transitions.fade.alpha,
-      transitions.fade.edge //edge ist der Härtegrad
-    );
+    // await ƒS.update(
+    //   transitions.fade.duration,
+    //   transitions.fade.alpha,
+    //   transitions.fade.edge //edge ist der Härtegrad
+    // );
     await ƒS.Speech.tell(
       "Ich",
       "My eigenes Reich. Wenigstens hier habe ich ein bisschen Privatsphäre..."

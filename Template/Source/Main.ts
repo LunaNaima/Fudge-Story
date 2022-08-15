@@ -235,11 +235,11 @@ namespace Spiegel_VN {
 
     let scenes: ƒS.Scenes = [
       // { scene: ScnTestzene01, name: "Testszene 01" }, // scene: hier muss name von funktion rein! Name ist was anderes, kann spaces enthalten wegen string
-      // {
-      //   id: "Auswahlmöglichkeiten",
-      //   scene: Auswahlmöglichkeiten,
-      //   name: "Testszene 1",
-      // },
+      {
+        id: "Auswahlmöglichkeiten",
+        scene: Auswahlmöglichkeiten,
+        name: "Testszene 1",
+      },
       // {
       //   scene: MinigameDemon,
       //   name: "Scene Minigame",
@@ -249,11 +249,11 @@ namespace Spiegel_VN {
       // { id: "00 Name Entry", scene: Chp00_00_NameEntry, name: "NameEntry" },
 
       // ***CHAPTER 01 ***
-      // {
-      //   id: "01_00 IntroNarration",
-      //   scene: Chp01_00_IntroNarration,
-      //   name: "Intro Narration",
-      // },
+      {
+        id: "01_00 IntroNarration",
+        scene: Chp01_00_IntroNarration,
+        name: "Intro Narration",
+      },
       {
         id: "01_01 Intro Marketplace",
         scene: Chp01_01_IntroMarketplace,

@@ -1,5 +1,6 @@
 namespace Spiegel_VN {
   export async function Chp03_CS_KailaniMissing(): ƒS.SceneReturn {
+    await ƒS.Location.show(locations.Chp03_CS_KailaniMissing);
     await ƒS.Speech.tell("Ich", "Kailani ist weg!");
 
     // ** RANDOM TEXT ***
@@ -61,13 +62,10 @@ namespace Spiegel_VN {
         await ƒS.Speech.tell("Ich", "Wir treffen uns im Esszimmer zum reden");
         // dataForSave.score.scoreEmpathyPoints += 10;
         ƒS.Speech.clear();
-        return "04_01 Talk with family"; // hier lieber: return "Chp ..."; if clause: ich nehm versch keys und sage: if dataforsave.pciekd = alle true, dann in der if clause return. if (dataforsave.pickedChoice, pickedotherchoice, usw. = true), dann gehts weiter
+        return "04_01 Talk with family";
         break;
 
       case Chp04PickSceneElementAnswers.PickSceneTalkToElena:
-        // continue path here
-        // if (dataForSave.score.scoreCouragePoints === 50)
-        // wie mindestens 50?
         await ƒS.Speech.tell("Ich", "Ich muss zuerst mit Mutti reden");
         ƒS.Speech.clear();
         // await ƒS.Character.show(characters.Mama, characters.aisaka.pose.happy, ƒS.positions.bottomcenter);

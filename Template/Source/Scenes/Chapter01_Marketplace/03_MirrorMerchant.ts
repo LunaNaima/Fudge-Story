@@ -1,6 +1,17 @@
 namespace Spiegel_VN {
   export async function Chp01_03_IntroMirror(): ƒS.SceneReturn {
+    await ƒS.Location.show(locations.Chp01_03_IntroMirror);
     dataForSave.pickedChp01_MirrorMerchant = true;
+
+    await ƒS.Character.show(
+      characters.Flynn,
+      characters.Flynn.pose.angry, // pose muss in der main sein
+      ƒS.positions.bottomright //bei positions: gibts die normalen angaben (topleft ..) bei positionpercentage: gebe ich koordinaten an in pixel 70 in x und 100 in y
+      // ƒS.positionPercent(70,100)
+    );
+
+    // await ƒS.update();
+
     await ƒS.Speech.tell(
       characters.mirrorMerchant.name,
       dlg_Chp01EntryMirrorMerchant.mirrorMerchant.T0000
@@ -57,7 +68,7 @@ namespace Spiegel_VN {
           '"Bist du sicher? Komm, schau mal ... "'
         );
         ƒS.Speech.clear();
-        return "01_01 Intro Marketplace"; 
+        return "01_01 Intro Marketplace";
         break;
     }
   }

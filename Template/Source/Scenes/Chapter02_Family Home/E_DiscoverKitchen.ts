@@ -1,5 +1,6 @@
 namespace Spiegel_VN {
   export async function Chp02_E_DiscoverKitchen(): ƒS.SceneReturn {
+    await ƒS.Location.show(locations.Chp02_E_DiscoverKitchen);
     await ƒS.Speech.tell("Ich", "Ich mache mir in der Küche was zu futtern.");
 
     let Chp02DiscoverKitchenElementAnswers = {
@@ -16,8 +17,7 @@ namespace Spiegel_VN {
     // *** RESPONSES ***
     switch (Chp02DiscoverKitchenElement) {
       case Chp02DiscoverKitchenElementAnswers.PickSceneDiscoverOven:
-        // pickediSayAskAboutTrip = true;
-        // dataForSave.pickedChoice = true;
+        await ƒS.Location.show(locations.Chp02_E_DiscoverKitchenOven);
         await ƒS.Speech.tell(
           "Ich",
           "Yay schauen wir uns den Ofen an, was gibts hier so."
@@ -27,6 +27,7 @@ namespace Spiegel_VN {
         break;
 
       case Chp02DiscoverKitchenElementAnswers.PickSceneDiscoverPantry:
+        await ƒS.Location.show(locations.Chp02_E_DiscoverKitchenPantry);
         await ƒS.Speech.tell("Ich", "Speisekammer anschauen juchu");
         ƒS.Speech.clear();
         break;

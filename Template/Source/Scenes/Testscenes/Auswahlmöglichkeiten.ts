@@ -24,9 +24,11 @@ namespace Spiegel_VN {
     do {
       if (pickediSayBlue) {
         delete TestDialogueAnswers.iSayBlue;
-      } else if (pickediSayGreen) {
+      }
+      if (pickediSayGreen) {
         delete TestDialogueAnswers.iSayGreen;
-      } else if (pickediSayEyes) {
+      }
+      if (pickediSayEyes) {
         delete TestDialogueAnswers.iSayEyes;
       }
 

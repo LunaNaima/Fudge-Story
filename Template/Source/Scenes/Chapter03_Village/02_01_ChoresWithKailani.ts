@@ -16,12 +16,14 @@ namespace Spiegel_VN {
     // *** RESPONSES ***
     switch (Chp02ChoresKailaniElement) {
       case Chp02ChoresKailaniElementAnswers.PickSceneWaterwell:
+        await ƒS.Location.show(locations.Chp03_022_WaterwellKailani);
         dataForSave.pickedChp03_WaterwellKailani = true;
         await ƒS.Speech.tell("Ich", "Okay wir gehen Wasser holen!");
         ƒS.Speech.clear();
         break;
 
       case Chp02ChoresKailaniElementAnswers.PickSceneWoodChopping:
+        await ƒS.Location.show(locations.Chp03_021_FirewoodKailani);
         dataForSave.pickedChp03_WoodChoppingKailani = true;
         await ƒS.Speech.tell("Ich", "Kailani und ich gehen Holz hacken!");
         ƒS.Speech.clear();
