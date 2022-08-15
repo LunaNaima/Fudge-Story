@@ -6,10 +6,10 @@ namespace Spiegel_VN {
 
     // let score = 13;
 
-    let TestDialogueAnswers = {
+    let testDialogueAnswers = {
       iSayGreen: "Green.",
       iSayBlue: "Blue",
-      iSayEyes: "I luv eyez",
+      iSayEyes: "I luv eyez"
     };
 
     // if (score <= 10) {
@@ -23,22 +23,22 @@ namespace Spiegel_VN {
 
     do {
       if (pickediSayBlue) {
-        delete TestDialogueAnswers.iSayBlue;
+        delete testDialogueAnswers.iSayBlue;
       }
       if (pickediSayGreen) {
-        delete TestDialogueAnswers.iSayGreen;
+        delete testDialogueAnswers.iSayGreen;
       }
       if (pickediSayEyes) {
-        delete TestDialogueAnswers.iSayEyes;
+        delete testDialogueAnswers.iSayEyes;
       }
 
-      let TestDialogue = await ƒS.Menu.getInput(
-        TestDialogueAnswers,
+      let testDialogue = await ƒS.Menu.getInput(
+        testDialogueAnswers,
         "choicesCSSclass"
       );
 
-      switch (TestDialogue) {
-        case TestDialogueAnswers.iSayBlue:
+      switch (testDialogue) {
+        case testDialogueAnswers.iSayBlue:
           // continue path here
           pickediSayBlue = true;
           dataForSave.pickedChoice = true;
@@ -46,7 +46,7 @@ namespace Spiegel_VN {
           // return "Auswahlmöglichkeiten";
           break;
 
-        case TestDialogueAnswers.iSayGreen:
+        case testDialogueAnswers.iSayGreen:
           // continue path here
           pickediSayGreen = true;
           dataForSave.pickedChoice = true;
@@ -54,7 +54,7 @@ namespace Spiegel_VN {
           // return "Auswahlmöglichkeiten";
           break;
 
-        case TestDialogueAnswers.iSayEyes:
+        case testDialogueAnswers.iSayEyes:
           pickediSayEyes = true;
           dataForSave.pickedChoice = true;
           await ƒS.Speech.tell("Hanahhh", "YOUR COLOR EYEZ ARE MY FAVORITE");

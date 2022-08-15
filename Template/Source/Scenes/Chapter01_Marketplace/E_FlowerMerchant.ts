@@ -26,39 +26,39 @@ namespace Spiegel_VN {
     );
 
     // *** DIALOGUE OPTIONS ***
-    let Chp01FlowerMerchantDialogueElementAnswers = {
+    let chp01FlowerMerchantDialogueElementAnswers = {
       iSayAskAboutTrip: "(Erkunden) Wie war denn die Reise ins Dorf?",
       iSayAskAboutFlowers: "(Erkunden) Warum habt ihr so wenige Blumen da?",
       iSayBuyFlowers: "(Erkunden) Blumen kaufen",
-      iSayLeave: "Auf Wiedersehen!",
+      iSayLeave: "Auf Wiedersehen!"
     };
 
     if (!dataForSave.pickedChp01_ConvoMother) {
-      delete Chp01FlowerMerchantDialogueElementAnswers.iSayBuyFlowers;
+      delete chp01FlowerMerchantDialogueElementAnswers.iSayBuyFlowers;
     }
 
     let pickediSayAskAboutTrip: boolean;
     let pickediSayAskAboutFlowers: boolean;
     let pickediSayBuyFlowers: boolean;
-    let pickediSayLeave: boolean;
+    // let pickediSayLeave: boolean;
 
     do {
       if (pickediSayAskAboutTrip) {
-        delete Chp01FlowerMerchantDialogueElementAnswers.iSayAskAboutTrip;
+        delete chp01FlowerMerchantDialogueElementAnswers.iSayAskAboutTrip;
       } else if (pickediSayAskAboutFlowers) {
-        delete Chp01FlowerMerchantDialogueElementAnswers.iSayAskAboutFlowers;
+        delete chp01FlowerMerchantDialogueElementAnswers.iSayAskAboutFlowers;
       } else if (pickediSayBuyFlowers) {
-        delete Chp01FlowerMerchantDialogueElementAnswers.iSayBuyFlowers;
+        delete chp01FlowerMerchantDialogueElementAnswers.iSayBuyFlowers;
       }
 
-      let Chp01FlowerMerchantDialogueElement = await ƒS.Menu.getInput(
-        Chp01FlowerMerchantDialogueElementAnswers,
+      let chp01FlowerMerchantDialogueElement = await ƒS.Menu.getInput(
+        chp01FlowerMerchantDialogueElementAnswers,
         "choicesCSSclass"
       );
 
       // *** RESPONSES ***
-      switch (Chp01FlowerMerchantDialogueElement) {
-        case Chp01FlowerMerchantDialogueElementAnswers.iSayAskAboutTrip:
+      switch (chp01FlowerMerchantDialogueElement) {
+        case chp01FlowerMerchantDialogueElementAnswers.iSayAskAboutTrip:
           pickediSayAskAboutTrip = true;
           dataForSave.pickedChoice = true;
           await ƒS.Speech.tell(
@@ -71,7 +71,7 @@ namespace Spiegel_VN {
           // return "01_E_FlowerMerchant";
           break;
 
-        case Chp01FlowerMerchantDialogueElementAnswers.iSayAskAboutFlowers:
+        case chp01FlowerMerchantDialogueElementAnswers.iSayAskAboutFlowers:
           pickediSayAskAboutFlowers = true;
           dataForSave.pickedChoice = true;
           await ƒS.Speech.tell(
@@ -84,7 +84,7 @@ namespace Spiegel_VN {
           // return "01_E_FlowerMerchant";
           break;
 
-        case Chp01FlowerMerchantDialogueElementAnswers.iSayBuyFlowers:
+        case chp01FlowerMerchantDialogueElementAnswers.iSayBuyFlowers:
           pickediSayBuyFlowers = true;
           dataForSave.pickedChoice = true;
           await ƒS.Speech.tell(
@@ -95,8 +95,8 @@ namespace Spiegel_VN {
           // return "01_E_FlowerMerchant";
           break;
 
-        case Chp01FlowerMerchantDialogueElementAnswers.iSayLeave:
-          pickediSayLeave = true;
+        case chp01FlowerMerchantDialogueElementAnswers.iSayLeave:
+          // pickediSayLeave = true;
           dataForSave.pickedChoice = true;
           await ƒS.Speech.tell(characters.maincharacter, "Machen Sies gut.");
           ƒS.Speech.clear();
