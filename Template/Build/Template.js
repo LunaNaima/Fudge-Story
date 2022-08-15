@@ -4796,16 +4796,32 @@ var Spiegel_VN;
             pose: { attack: "./Assets/Characters/Demon/Demon_smile.png" },
             origin: Spiegel_VN.ƒ.ORIGIN2D.CENTER
         };
+        let mirror = {
+            name: "Mirror",
+            pose: { normal: "./Assets/Items/Mirror_silver_front.png" },
+            origin: Spiegel_VN.ƒ.ORIGIN2D.CENTER
+        };
         await Spiegel_VN.ƒS.Location.show(locTunnel);
+        await Spiegel_VN.ƒS.Character.show(mirror, mirror.pose.normal, Spiegel_VN.ƒS.positionPercent(50, 50));
         await Spiegel_VN.ƒS.Character.show(demon, demon.pose.attack, Spiegel_VN.ƒS.positionPercent(50, 50));
         let nodeDemon = Spiegel_VN.ƒS.Character.get(demon).poses.get(demon.pose.attack);
+        let nodeMirror = Spiegel_VN.ƒS.Character.get(mirror).poses.get(mirror.pose.normal);
         let graph = Spiegel_VN.ƒS.Base.getGraph();
         console.log(graph);
         graph.addComponent(new Spiegel_VN.ƒ.ComponentTransform());
         let viewport = Reflect.get(Spiegel_VN.ƒS.Base, "viewport");
         let camera = viewport.camera;
         camera.projectCentral(camera.getAspect(), camera.getFieldOfView(), camera.getDirection(), camera.getNear(), 2 * camera.getFar());
+        viewport.getCanvas().addEventListener("mousemove", moveMirror);
         Spiegel_VN.ƒ.Loop.addEventListener("loopFrame" /* ƒ.EVENT.LOOP_FRAME */, loopFrame);
+        function moveMirror(_event) {
+            nodeMirror.mtxLocal.translateX(_event.movementX);
+            nodeMirror.mtxLocal.translateY(-_event.movementY);
+            // let offset: ƒ.Vector2 = new ƒ.Vector2(_event.offsetX, _event.offsetY);
+            // let pos: ƒ.Vector2 = viewport.pointClientToProjection(offset);
+            // console.log(pos.toString());
+        }
+        let demonMovement = Spiegel_VN.ƒ.Vector2.ZERO();
         function loopFrame(_event) {
             if (Spiegel_VN.ƒ.Keyboard.isPressedOne([Spiegel_VN.ƒ.KEYBOARD_CODE.A, Spiegel_VN.ƒ.KEYBOARD_CODE.ARROW_LEFT])) {
                 graph.mtxLocal.translateX(10);
@@ -4819,20 +4835,15 @@ var Spiegel_VN;
             if (Spiegel_VN.ƒ.Keyboard.isPressedOne([Spiegel_VN.ƒ.KEYBOARD_CODE.S, Spiegel_VN.ƒ.KEYBOARD_CODE.ARROW_DOWN])) {
                 graph.mtxLocal.translateZ(10);
             }
-            if (Spiegel_VN.ƒ.Keyboard.isPressedOne([Spiegel_VN.ƒ.KEYBOARD_CODE.Q])) {
-                nodeDemon.mtxLocal.translateX(-10);
-            }
-            if (Spiegel_VN.ƒ.Keyboard.isPressedOne([Spiegel_VN.ƒ.KEYBOARD_CODE.E])) {
-                nodeDemon.mtxLocal.translateX(10);
-            }
+            if (Spiegel_VN.ƒ.Random.default.getNorm() < 0.05)
+                demonMovement = Spiegel_VN.ƒ.Random.default.getVector2(Spiegel_VN.ƒ.Vector2.ONE(-5), Spiegel_VN.ƒ.Vector2.ONE(5));
+            nodeDemon.mtxLocal.translate(demonMovement.toVector3());
             Spiegel_VN.ƒS.update(0);
         }
-        let escape = {
-            iEscape: "Escape"
-        };
-        await Spiegel_VN.ƒS.Menu.getInput(escape, "choicesCSSclass");
+        await Spiegel_VN.ƒS.getKeypress(Spiegel_VN.ƒ.KEYBOARD_CODE.SPACE);
         graph.cmpTransform.mtxLocal = Spiegel_VN.ƒ.Matrix4x4.IDENTITY();
         Spiegel_VN.ƒ.Loop.removeEventListener("loopFrame" /* ƒ.EVENT.LOOP_FRAME */, loopFrame);
+        viewport.getCanvas().removeEventListener("mousemove", moveMirror);
         Spiegel_VN.ƒS.update(0);
     }
     Spiegel_VN.testTunnel = testTunnel;
