@@ -784,4 +784,5 @@ declare namespace Spiegel_VN {
     function ScnTestzene02(): ƒS.SceneReturn;
 }
 declare namespace Spiegel_VN {
+    function testTunnel(): ƒS.SceneReturn;
 }

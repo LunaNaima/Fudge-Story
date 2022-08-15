@@ -22,33 +22,33 @@ namespace Spiegel_VN {
     await ƒS.Speech.tell(characters.Mama.name, dlg_scn_02.Mama.T0000);
 
     //*** OPTIONS *//
-    let Chp01ConvoMotherElementAnswers = {
+    let chp01ConvoMotherElementAnswers = {
       iSayOk: "Okay.",
       iSayYes: "Ja.",
-      iSayEmpathyPoints: "10",
+      iSayEmpathyPoints: "10"
     };
 
     if (dataForSave.scoreEmpathyPoints < 20) {
-      delete Chp01ConvoMotherElementAnswers.iSayEmpathyPoints;
+      delete chp01ConvoMotherElementAnswers.iSayEmpathyPoints;
     }
     console.log(dataForSave.scoreEmpathyPoints);
 
     //*** CSS-CLASS */
-    let Chp01ConvoMotherElement = await ƒS.Menu.getInput(
-      Chp01ConvoMotherElementAnswers,
+    let chp01ConvoMotherElement = await ƒS.Menu.getInput(
+      chp01ConvoMotherElementAnswers,
       "choicesCSSclass"
     );
 
     //*** RESPONSES */
-    switch (Chp01ConvoMotherElement) {
-      case Chp01ConvoMotherElementAnswers.iSayOk:
+    switch (chp01ConvoMotherElement) {
+      case chp01ConvoMotherElementAnswers.iSayOk:
         console.log(dataForSave.scoreEmpathyPoints);
         await ƒS.Speech.tell(characters.maincharacter.name, "Choice Okay.");
         ƒS.Speech.clear();
         return "01_01 Intro Marketplace";
         break;
 
-      case Chp01ConvoMotherElementAnswers.iSayYes:
+      case chp01ConvoMotherElementAnswers.iSayYes:
         await ƒS.Speech.tell(characters.Mama, "Choice Yes");
         ƒS.Speech.clear();
         //   // await ƒS.Character.show(characters.Mama, characters.aisaka.pose.happy, ƒS.positions.bottomcenter);
@@ -56,7 +56,7 @@ namespace Spiegel_VN {
         return "01_01 Intro Marketplace";
         break;
 
-      case Chp01ConvoMotherElementAnswers.iSayEmpathyPoints:
+      case chp01ConvoMotherElementAnswers.iSayEmpathyPoints:
         dataForSave.scoreEmpathyPoints += 10;
         console.log(dataForSave.scoreEmpathyPoints);
         await ƒS.Speech.tell(

@@ -205,7 +205,11 @@ var Spiegel_VN;
         buttonFunctionalities("Close");
         let scenes = [
             // { scene: ScnTestzene01, name: "Testszene 01" }, // scene: hier muss name von funktion rein! Name ist was anderes, kann spaces enthalten wegen string
-            // {
+            {
+                id: "TestTunnel",
+                scene: Spiegel_VN.testTunnel,
+                name: "TestTunnel"
+            },
             //   id: "Auswahlmöglichkeiten",
             //   scene: Auswahlmöglichkeiten,
             //   name: "Testszene 1",
@@ -1096,122 +1100,122 @@ var Spiegel_VN;
             background: 
             // "./Assets/Backgrounds/Chapter01/Kap01_01_Intro_Marktplatz.png", //1280x853 (passt)
             // "./Assets/Backgrounds/Chapter01/Chp01_Marketplace.png", //1920x1080 (passt nicht)
-            "./Assets/Backgrounds/Chapter01/Chp01_Marketplace1.png",
+            "./Assets/Backgrounds/Chapter01/Chp01_Marketplace1.png"
         },
         Chp01_02_ConvoMother: {
             name: "Convo_Mother",
-            background: "./Assets/Backgrounds/BG_Wald_Test1.png",
+            background: "./Assets/Backgrounds/BG_Wald_Test1.png"
         },
         Chp01_E_FlowerMerchant: {
             name: "E_FlowerMerchant",
-            background: "./Assets/Backgrounds/Chapter01/Flowermerchant.png",
+            background: "./Assets/Backgrounds/Chapter01/Flowermerchant.png"
         },
         Chp01_E_LeatherMerchant: {
             name: "E_LeatherMerchant",
-            background: "./Assets/Backgrounds/Chapter01/Leathermerchant.png",
+            background: "./Assets/Backgrounds/Chapter01/Leathermerchant.png"
         },
         Chp01_03_IntroMirror: {
             name: "Mirror merchant",
-            background: "./Assets/Backgrounds/Chapter02/Dinner/DiningTable.jpeg",
+            background: "./Assets/Backgrounds/Chapter02/Dinner/DiningTable.jpeg"
         },
         Chp01_CS_ArrivalHome: {
             name: "House from outside",
-            background: "./Assets/Backgrounds/Chapter02/Dinner/DiningTable.jpeg",
+            background: "./Assets/Backgrounds/Chapter02/Dinner/DiningTable.jpeg"
         },
         // *** CHAPTER 02 ***
         Chp02_01_Dinner: {
             name: "Dinnertable",
-            background: "./Assets/Backgrounds/Chapter02/Dinner/DiningTable.jpeg",
+            background: "./Assets/Backgrounds/Chapter02/Dinner/DiningTable.jpeg"
         },
         Chp02_02_LivingRoom: {
             name: "Living room",
-            background: "./Assets/Backgrounds/Chapter02/Dinner/DiningTable.jpeg",
+            background: "./Assets/Backgrounds/Chapter02/Dinner/DiningTable.jpeg"
         },
         Chp02_03_PickHerbs: {
             name: "Garden",
-            background: "./Assets/Backgrounds/Chapter02/Dinner/DiningTable.jpeg",
+            background: "./Assets/Backgrounds/Chapter02/Dinner/DiningTable.jpeg"
         },
         Chp02_04_FightNeighbor: {
             name: "Neighbors house",
-            background: "./Assets/Backgrounds/Chapter02/Dinner/DiningTable.jpeg",
+            background: "./Assets/Backgrounds/Chapter02/Dinner/DiningTable.jpeg"
         },
         Chp02_E_DiscoverBedroom: {
             name: "My Bedroom",
-            background: "./Assets/Backgrounds/Chapter02/E_DiscoverBedroom/MyBedroom.jpg",
+            background: "./Assets/Backgrounds/Chapter02/E_DiscoverBedroom/MyBedroom.jpg"
         },
         Chp02_E_DiscoverBedroomDiary: {
             name: "Bedroom diary",
-            background: "./Assets/Backgrounds/Chapter02/E_DiscoverBedroom/MyBedroom.jpg",
+            background: "./Assets/Backgrounds/Chapter02/E_DiscoverBedroom/MyBedroom.jpg"
         },
         Chp02_E_DiscoverBedroomBooks: {
             name: "Bedroom books",
-            background: "./Assets/Backgrounds/Chapter02/E_DiscoverBedroom/MyBedroom.jpg",
+            background: "./Assets/Backgrounds/Chapter02/E_DiscoverBedroom/MyBedroom.jpg"
         },
         Chp02_E_DiscoverKitchen: {
             name: "Kitchen",
-            background: "./Assets/Backgrounds/Chapter02/E_DiscoverBedroom/MyBedroom.jpg",
+            background: "./Assets/Backgrounds/Chapter02/E_DiscoverBedroom/MyBedroom.jpg"
         },
         Chp02_E_DiscoverKitchenOven: {
             name: "Kitchen oven",
-            background: "./Assets/Backgrounds/Chapter02/E_DiscoverBedroom/MyBedroom.jpg",
+            background: "./Assets/Backgrounds/Chapter02/E_DiscoverBedroom/MyBedroom.jpg"
         },
         Chp02_E_DiscoverKitchenPantry: {
             name: "Kitchen pantry",
-            background: "./Assets/Backgrounds/Chapter02/E_DiscoverBedroom/MyBedroom.jpg",
+            background: "./Assets/Backgrounds/Chapter02/E_DiscoverBedroom/MyBedroom.jpg"
         },
         Chp02_CS_Sleep: {
             // night filter
             name: "Bedroom sleep",
-            background: "./Assets/Backgrounds/Chapter02/E_DiscoverBedroom/MyBedroom.jpg",
+            background: "./Assets/Backgrounds/Chapter02/E_DiscoverBedroom/MyBedroom.jpg"
         },
         // *** CHAPTER 03 ***
         Chp03_01_Dressmaker: {
             name: "Dressmaker",
-            background: "./Assets/Backgrounds/Chapter02/E_DiscoverBedroom/MyBedroom.jpg",
+            background: "./Assets/Backgrounds/Chapter02/E_DiscoverBedroom/MyBedroom.jpg"
         },
         Chp03_021_FirewoodKailani: {
             name: "Firewood chopping Kailani",
-            background: "./Assets/Backgrounds/Chapter02/E_DiscoverBedroom/MyBedroom.jpg",
+            background: "./Assets/Backgrounds/Chapter02/E_DiscoverBedroom/MyBedroom.jpg"
         },
         Chp03_022_WaterwellKailani: {
             // empty marketplace
             name: "Well empty marketplace",
-            background: "./Assets/Backgrounds/Chapter02/E_DiscoverBedroom/MyBedroom.jpg",
+            background: "./Assets/Backgrounds/Chapter02/E_DiscoverBedroom/MyBedroom.jpg"
         },
         Chp03_E_DiscoverDonkey: {
             name: "Discover donkey",
-            background: "./Assets/Backgrounds/Chapter02/E_DiscoverBedroom/MyBedroom.jpg",
+            background: "./Assets/Backgrounds/Chapter02/E_DiscoverBedroom/MyBedroom.jpg"
         },
         Chp03_E_DiscoverDonkeyCloseup: {
             name: "Discover donkey closeup",
-            background: "./Assets/Backgrounds/Chapter02/E_DiscoverBedroom/MyBedroom.jpg",
+            background: "./Assets/Backgrounds/Chapter02/E_DiscoverBedroom/MyBedroom.jpg"
         },
         Chp03_E_DiscoverForest: {
             name: "Discover forest",
-            background: "./Assets/Backgrounds/Chapter02/E_DiscoverBedroom/MyBedroom.jpg",
+            background: "./Assets/Backgrounds/Chapter02/E_DiscoverBedroom/MyBedroom.jpg"
         },
         Chp03_E_DiscoverLibraryOutside: {
             name: "Discover library",
-            background: "./Assets/Backgrounds/Chapter02/E_DiscoverBedroom/MyBedroom.jpg",
+            background: "./Assets/Backgrounds/Chapter02/E_DiscoverBedroom/MyBedroom.jpg"
         },
         Chp03_E_DiscoverLibraryInside: {
             name: "Discover library",
-            background: "./Assets/Backgrounds/Chapter02/E_DiscoverBedroom/MyBedroom.jpg",
+            background: "./Assets/Backgrounds/Chapter02/E_DiscoverBedroom/MyBedroom.jpg"
         },
         Chp03_E_DiscoverLibraryCloseup: {
             name: "Discover library closeup books",
-            background: "./Assets/Backgrounds/Chapter02/E_DiscoverBedroom/MyBedroom.jpg",
+            background: "./Assets/Backgrounds/Chapter02/E_DiscoverBedroom/MyBedroom.jpg"
         },
         Chp03_CS_KailaniMissing: {
             name: "Kailanis bedroom",
-            background: "./Assets/Backgrounds/Chapter02/E_DiscoverBedroom/MyBedroom.jpg",
+            background: "./Assets/Backgrounds/Chapter02/E_DiscoverBedroom/MyBedroom.jpg"
         },
         // *** CHAPTER 04 ***
         // *** TRANSITION BETWEEN CHAPTERS ***
         black: {
             name: "Black_BG",
-            background: "./Assets/Transitions/Black.png",
-        },
+            background: "./Assets/Transitions/Black.png"
+        }
     };
 })(Spiegel_VN || (Spiegel_VN = {}));
 var Spiegel_VN;
@@ -1260,8 +1264,8 @@ var Spiegel_VN;
 (function (Spiegel_VN) {
     Spiegel_VN.dlg_scn_00_IntroNarrator = {
         narratorEntry: {
-            T0000: '"Willkommen! Trete nur näher, sonst hörst du mich gar nicht."',
-            T0001: '"Ja, so is es schon besser. Du bist ja schließlich hergekommen, um meiner Geschichte zu lauschen, nicht wahr?"',
+            T0000: '"Willkommen! Tritt nur näher, sonst hörst du mich gar nicht."',
+            T0001: '"Ja, so ist es schon besser. Du bist ja schließlich hergekommen, um meiner Geschichte zu lauschen, nicht wahr?"',
             T0002: '"Wie heißt du denn?"',
             T0003: '"Schau, dass du es dir gemütlich machst. Das Märchen, das ich dir heute Abend erzähle, dauert etwas länger."',
             T0004: '"Bevor es aber losgeht, musst du mir eine wichtige Frage beantworten: Welche Eigenschaft ist dir am wichtigsten? Wähle mit Bedacht aus, denn deine Antwort kann auf den Verlauf der Geschichte Einfluss nehmen …"',
@@ -1542,33 +1546,33 @@ var Spiegel_VN;
         await Spiegel_VN.ƒS.Speech.tell(Spiegel_VN.characters.maincharacter.name, Spiegel_VN.dlg_scn_02.maincharacter.T0000);
         await Spiegel_VN.ƒS.Speech.tell(Spiegel_VN.characters.Mama.name, Spiegel_VN.dlg_scn_02.Mama.T0000);
         //*** OPTIONS *//
-        let Chp01ConvoMotherElementAnswers = {
+        let chp01ConvoMotherElementAnswers = {
             iSayOk: "Okay.",
             iSayYes: "Ja.",
-            iSayEmpathyPoints: "10",
+            iSayEmpathyPoints: "10"
         };
         if (Spiegel_VN.dataForSave.scoreEmpathyPoints < 20) {
-            delete Chp01ConvoMotherElementAnswers.iSayEmpathyPoints;
+            delete chp01ConvoMotherElementAnswers.iSayEmpathyPoints;
         }
         console.log(Spiegel_VN.dataForSave.scoreEmpathyPoints);
         //*** CSS-CLASS */
-        let Chp01ConvoMotherElement = await Spiegel_VN.ƒS.Menu.getInput(Chp01ConvoMotherElementAnswers, "choicesCSSclass");
+        let chp01ConvoMotherElement = await Spiegel_VN.ƒS.Menu.getInput(chp01ConvoMotherElementAnswers, "choicesCSSclass");
         //*** RESPONSES */
-        switch (Chp01ConvoMotherElement) {
-            case Chp01ConvoMotherElementAnswers.iSayOk:
+        switch (chp01ConvoMotherElement) {
+            case chp01ConvoMotherElementAnswers.iSayOk:
                 console.log(Spiegel_VN.dataForSave.scoreEmpathyPoints);
                 await Spiegel_VN.ƒS.Speech.tell(Spiegel_VN.characters.maincharacter.name, "Choice Okay.");
                 Spiegel_VN.ƒS.Speech.clear();
                 return "01_01 Intro Marketplace";
                 break;
-            case Chp01ConvoMotherElementAnswers.iSayYes:
+            case chp01ConvoMotherElementAnswers.iSayYes:
                 await Spiegel_VN.ƒS.Speech.tell(Spiegel_VN.characters.Mama, "Choice Yes");
                 Spiegel_VN.ƒS.Speech.clear();
                 //   // await ƒS.Character.show(characters.Mama, characters.aisaka.pose.happy, ƒS.positions.bottomcenter);
                 //   // ƒS.Character.hide(characters.Mama);
                 return "01_01 Intro Marketplace";
                 break;
-            case Chp01ConvoMotherElementAnswers.iSayEmpathyPoints:
+            case chp01ConvoMotherElementAnswers.iSayEmpathyPoints:
                 Spiegel_VN.dataForSave.scoreEmpathyPoints += 10;
                 console.log(Spiegel_VN.dataForSave.scoreEmpathyPoints);
                 await Spiegel_VN.ƒS.Speech.tell(Spiegel_VN.characters.Mama, "Hier kriegen wir 10 Empathiepunkte");
@@ -4774,5 +4778,18 @@ var Spiegel_VN;
         return ScnTestzene02();
     }
     Spiegel_VN.ScnTestzene02 = ScnTestzene02;
+})(Spiegel_VN || (Spiegel_VN = {}));
+var Spiegel_VN;
+(function (Spiegel_VN) {
+    async function testTunnel() {
+        let locTunnel = {
+            name: "Tunnel",
+            background: "./Assets/Test_Minigame_Demon/Standbild_Test.png"
+        };
+        await Spiegel_VN.ƒS.Location.show(locTunnel);
+        Spiegel_VN.ƒS.update(0);
+        await Spiegel_VN.ƒS.Speech.tell("Test", "Test");
+    }
+    Spiegel_VN.testTunnel = testTunnel;
 })(Spiegel_VN || (Spiegel_VN = {}));
 //# sourceMappingURL=Template.js.map
