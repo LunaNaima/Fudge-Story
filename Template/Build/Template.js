@@ -4512,10 +4512,10 @@ var Spiegel_VN;
         await Spiegel_VN.ƒS.Speech.tell("Luna", "Test Choices");
         // ---
         // let score = 13;
-        let TestDialogueAnswers = {
+        let testDialogueAnswers = {
             iSayGreen: "Green.",
             iSayBlue: "Blue",
-            iSayEyes: "I luv eyez",
+            iSayEyes: "I luv eyez"
         };
         // if (score <= 10) {
         //   //   delete TestDialogueAnswers.iSayBlue;
@@ -4526,31 +4526,31 @@ var Spiegel_VN;
         let pickediSayEyes;
         do {
             if (pickediSayBlue) {
-                delete TestDialogueAnswers.iSayBlue;
+                delete testDialogueAnswers.iSayBlue;
             }
             if (pickediSayGreen) {
-                delete TestDialogueAnswers.iSayGreen;
+                delete testDialogueAnswers.iSayGreen;
             }
             if (pickediSayEyes) {
-                delete TestDialogueAnswers.iSayEyes;
+                delete testDialogueAnswers.iSayEyes;
             }
-            let TestDialogue = await Spiegel_VN.ƒS.Menu.getInput(TestDialogueAnswers, "choicesCSSclass");
-            switch (TestDialogue) {
-                case TestDialogueAnswers.iSayBlue:
+            let testDialogue = await Spiegel_VN.ƒS.Menu.getInput(testDialogueAnswers, "choicesCSSclass");
+            switch (testDialogue) {
+                case testDialogueAnswers.iSayBlue:
                     // continue path here
                     pickediSayBlue = true;
                     Spiegel_VN.dataForSave.pickedChoice = true;
                     await Spiegel_VN.ƒS.Speech.tell("Hannahh", "I love blue yay");
                     // return "Auswahlmöglichkeiten";
                     break;
-                case TestDialogueAnswers.iSayGreen:
+                case testDialogueAnswers.iSayGreen:
                     // continue path here
                     pickediSayGreen = true;
                     Spiegel_VN.dataForSave.pickedChoice = true;
                     await Spiegel_VN.ƒS.Speech.tell("Luna", "I love green yay");
                     // return "Auswahlmöglichkeiten";
                     break;
-                case TestDialogueAnswers.iSayEyes:
+                case testDialogueAnswers.iSayEyes:
                     pickediSayEyes = true;
                     Spiegel_VN.dataForSave.pickedChoice = true;
                     await Spiegel_VN.ƒS.Speech.tell("Hanahhh", "YOUR COLOR EYEZ ARE MY FAVORITE");
@@ -4787,8 +4787,23 @@ var Spiegel_VN;
             background: "./Assets/Test_Minigame_Demon/Standbild_Test.png"
         };
         await Spiegel_VN.ƒS.Location.show(locTunnel);
+        let graph = Spiegel_VN.ƒS.Base.getGraph();
+        console.log(graph);
+        graph.addComponent(new Spiegel_VN.ƒ.ComponentTransform());
+        Spiegel_VN.ƒ.Loop.addEventListener("loopFrame" /* ƒ.EVENT.LOOP_FRAME */, loopFrame);
+        function loopFrame(_event) {
+            graph.mtxLocal.translateX(10);
+            // if (ƒ.Keyboard.isPressedOne([ƒ.KEYBOARD_CODE.ESC])) {
+            // }
+            Spiegel_VN.ƒS.update(0);
+        }
+        let escape = {
+            iEscape: "Escape"
+        };
+        await Spiegel_VN.ƒS.Menu.getInput(escape, "choicesCSSclass");
+        graph.cmpTransform.mtxLocal = Spiegel_VN.ƒ.Matrix4x4.IDENTITY();
+        Spiegel_VN.ƒ.Loop.removeEventListener("loopFrame" /* ƒ.EVENT.LOOP_FRAME */, loopFrame);
         Spiegel_VN.ƒS.update(0);
-        await Spiegel_VN.ƒS.Speech.tell("Test", "Test");
     }
     Spiegel_VN.testTunnel = testTunnel;
 })(Spiegel_VN || (Spiegel_VN = {}));
