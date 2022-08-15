@@ -188,12 +188,17 @@ namespace Spiegel_VN {
   document.addEventListener("keydown", hndKeyPress); // weil: es gibt versch arten von events, die wir für jeweiligen listener verwenden können. bei window gibts andere zur verfügung als bei doc
   // unterschied keypress & keydown: down = gedrückt halten, press = drücke und loslassen
   async function hndKeyPress(_event: KeyboardEvent): Promise<void> {
+    let ctrlPressed: boolean = ƒ.Keyboard.isPressedOne([ƒ.KEYBOARD_CODE.CTRL_LEFT, ƒ.KEYBOARD_CODE.CTRL_RIGHT]);
     switch (_event.code) {
-      case ƒ.KEYBOARD_CODE.ARROW_DOWN: // hier kann man taste auswählen, achtung: amerikanisches keyboard hier!
+      case ƒ.KEYBOARD_CODE.S: // hier kann man taste auswählen, achtung: amerikanisches keyboard hier!
+        if (!ctrlPressed)
+          break;
         console.log("Save");
         await ƒS.Progress.save();
         break;
-      case ƒ.KEYBOARD_CODE.ARROW_LEFT:
+      case ƒ.KEYBOARD_CODE.L:
+        if (!ctrlPressed)
+          break;
         console.log("Load");
         await ƒS.Progress.load();
         break;

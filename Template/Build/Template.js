@@ -162,12 +162,17 @@ var Spiegel_VN;
     document.addEventListener("keydown", hndKeyPress); // weil: es gibt versch arten von events, die wir für jeweiligen listener verwenden können. bei window gibts andere zur verfügung als bei doc
     // unterschied keypress & keydown: down = gedrückt halten, press = drücke und loslassen
     async function hndKeyPress(_event) {
+        let ctrlPressed = Spiegel_VN.ƒ.Keyboard.isPressedOne([Spiegel_VN.ƒ.KEYBOARD_CODE.CTRL_LEFT, Spiegel_VN.ƒ.KEYBOARD_CODE.CTRL_RIGHT]);
         switch (_event.code) {
-            case Spiegel_VN.ƒ.KEYBOARD_CODE.ARROW_DOWN: // hier kann man taste auswählen, achtung: amerikanisches keyboard hier!
+            case Spiegel_VN.ƒ.KEYBOARD_CODE.S: // hier kann man taste auswählen, achtung: amerikanisches keyboard hier!
+                if (!ctrlPressed)
+                    break;
                 console.log("Save");
                 await Spiegel_VN.ƒS.Progress.save();
                 break;
-            case Spiegel_VN.ƒ.KEYBOARD_CODE.ARROW_LEFT:
+            case Spiegel_VN.ƒ.KEYBOARD_CODE.L:
+                if (!ctrlPressed)
+                    break;
                 console.log("Load");
                 await Spiegel_VN.ƒS.Progress.load();
                 break;
@@ -4792,9 +4797,12 @@ var Spiegel_VN;
         graph.addComponent(new Spiegel_VN.ƒ.ComponentTransform());
         Spiegel_VN.ƒ.Loop.addEventListener("loopFrame" /* ƒ.EVENT.LOOP_FRAME */, loopFrame);
         function loopFrame(_event) {
-            graph.mtxLocal.translateX(10);
-            // if (ƒ.Keyboard.isPressedOne([ƒ.KEYBOARD_CODE.ESC])) {
-            // }
+            if (Spiegel_VN.ƒ.Keyboard.isPressedOne([Spiegel_VN.ƒ.KEYBOARD_CODE.A, Spiegel_VN.ƒ.KEYBOARD_CODE.ARROW_LEFT])) {
+                graph.mtxLocal.translateX(10);
+            }
+            if (Spiegel_VN.ƒ.Keyboard.isPressedOne([Spiegel_VN.ƒ.KEYBOARD_CODE.D, Spiegel_VN.ƒ.KEYBOARD_CODE.ARROW_RIGHT])) {
+                graph.mtxLocal.translateX(-10);
+            }
             Spiegel_VN.ƒS.update(0);
         }
         let escape = {
