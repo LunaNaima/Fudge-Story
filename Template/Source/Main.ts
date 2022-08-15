@@ -189,11 +189,12 @@ namespace Spiegel_VN {
   // unterschied keypress & keydown: down = gedrückt halten, press = drücke und loslassen
   async function hndKeyPress(_event: KeyboardEvent): Promise<void> {
     switch (_event.code) {
-      case ƒ.KEYBOARD_CODE.ARROW_DOWN: // hier kann man taste auswählen, achtung: amerikanisches keyboard hier!
-        console.log("Save");
+      case ƒ.KEYBOARD_CODE.S: // hier kann man taste auswählen, achtung: amerikanisches keyboard hier!
+      // if (!ƒ.Keyboard.isPressedOne()  
+      console.log("Save");
         await ƒS.Progress.save();
         break;
-      case ƒ.KEYBOARD_CODE.ARROW_LEFT:
+      case ƒ.KEYBOARD_CODE.L:
         console.log("Load");
         await ƒS.Progress.load();
         break;
