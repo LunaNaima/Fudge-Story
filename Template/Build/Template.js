@@ -4795,6 +4795,9 @@ var Spiegel_VN;
         let graph = Spiegel_VN.ƒS.Base.getGraph();
         console.log(graph);
         graph.addComponent(new Spiegel_VN.ƒ.ComponentTransform());
+        let viewport = Reflect.get(Spiegel_VN.ƒS.Base, "viewport");
+        let camera = viewport.camera;
+        camera.projectCentral(camera.getAspect(), camera.getFieldOfView(), camera.getDirection(), camera.getNear(), 2 * camera.getFar());
         Spiegel_VN.ƒ.Loop.addEventListener("loopFrame" /* ƒ.EVENT.LOOP_FRAME */, loopFrame);
         function loopFrame(_event) {
             if (Spiegel_VN.ƒ.Keyboard.isPressedOne([Spiegel_VN.ƒ.KEYBOARD_CODE.A, Spiegel_VN.ƒ.KEYBOARD_CODE.ARROW_LEFT])) {
@@ -4802,6 +4805,12 @@ var Spiegel_VN;
             }
             if (Spiegel_VN.ƒ.Keyboard.isPressedOne([Spiegel_VN.ƒ.KEYBOARD_CODE.D, Spiegel_VN.ƒ.KEYBOARD_CODE.ARROW_RIGHT])) {
                 graph.mtxLocal.translateX(-10);
+            }
+            if (Spiegel_VN.ƒ.Keyboard.isPressedOne([Spiegel_VN.ƒ.KEYBOARD_CODE.W, Spiegel_VN.ƒ.KEYBOARD_CODE.ARROW_UP])) {
+                graph.mtxLocal.translateZ(-10);
+            }
+            if (Spiegel_VN.ƒ.Keyboard.isPressedOne([Spiegel_VN.ƒ.KEYBOARD_CODE.S, Spiegel_VN.ƒ.KEYBOARD_CODE.ARROW_DOWN])) {
+                graph.mtxLocal.translateZ(10);
             }
             Spiegel_VN.ƒS.update(0);
         }
