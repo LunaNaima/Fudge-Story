@@ -1,0 +1,3 @@
+namespace Spiegel_VN {
+  
+}
