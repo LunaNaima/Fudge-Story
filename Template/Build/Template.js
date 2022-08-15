@@ -4791,7 +4791,14 @@ var Spiegel_VN;
             name: "Tunnel",
             background: "./Assets/Test_Minigame_Demon/Standbild_Test.png"
         };
+        let demon = {
+            name: "Demon",
+            pose: { attack: "./Assets/Characters/Demon/Demon_smile.png" },
+            origin: Spiegel_VN.ƒ.ORIGIN2D.CENTER
+        };
         await Spiegel_VN.ƒS.Location.show(locTunnel);
+        await Spiegel_VN.ƒS.Character.show(demon, demon.pose.attack, Spiegel_VN.ƒS.positionPercent(50, 50));
+        let nodeDemon = Spiegel_VN.ƒS.Character.get(demon).poses.get(demon.pose.attack);
         let graph = Spiegel_VN.ƒS.Base.getGraph();
         console.log(graph);
         graph.addComponent(new Spiegel_VN.ƒ.ComponentTransform());
@@ -4811,6 +4818,12 @@ var Spiegel_VN;
             }
             if (Spiegel_VN.ƒ.Keyboard.isPressedOne([Spiegel_VN.ƒ.KEYBOARD_CODE.S, Spiegel_VN.ƒ.KEYBOARD_CODE.ARROW_DOWN])) {
                 graph.mtxLocal.translateZ(10);
+            }
+            if (Spiegel_VN.ƒ.Keyboard.isPressedOne([Spiegel_VN.ƒ.KEYBOARD_CODE.Q])) {
+                nodeDemon.mtxLocal.translateX(-10);
+            }
+            if (Spiegel_VN.ƒ.Keyboard.isPressedOne([Spiegel_VN.ƒ.KEYBOARD_CODE.E])) {
+                nodeDemon.mtxLocal.translateX(10);
             }
             Spiegel_VN.ƒS.update(0);
         }
