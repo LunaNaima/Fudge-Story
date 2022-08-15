@@ -1,9 +1,9 @@
 namespace Spiegel_VN {
   export let dlg_scn_00_IntroNarrator = {
     narratorEntry: {
-      T0000: '"Willkommen! Trete nur näher, sonst hörst du mich gar nicht."',
+      T0000: '"Willkommen! Tritt nur näher, sonst hörst du mich gar nicht."',
       T0001:
-        '"Ja, so is es schon besser. Du bist ja schließlich hergekommen, um meiner Geschichte zu lauschen, nicht wahr?"',
+        '"Ja, so ist es schon besser. Du bist ja schließlich hergekommen, um meiner Geschichte zu lauschen, nicht wahr?"',
       T0002: '"Wie heißt du denn?"',
       T0003:
         '"Schau, dass du es dir gemütlich machst. Das Märchen, das ich dir heute Abend erzähle, dauert etwas länger."',
