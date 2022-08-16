@@ -4789,17 +4789,17 @@ var Spiegel_VN;
     async function testTunnel() {
         let locTunnel = {
             name: "Tunnel",
-            background: "./Assets/Test_Minigame_Demon/Standbild_Test.png"
+            background: "./Assets/Test_Minigame_Demon/Standbild_Test.png",
         };
         let demon = {
             name: "Demon",
             pose: { attack: "./Assets/Characters/Demon/Demon_smile.png" },
-            origin: Spiegel_VN.ƒ.ORIGIN2D.CENTER
+            origin: Spiegel_VN.ƒ.ORIGIN2D.CENTER,
         };
         let mirror = {
             name: "Mirror",
             pose: { normal: "./Assets/Items/Mirror_silver_front.png" },
-            origin: Spiegel_VN.ƒ.ORIGIN2D.CENTER
+            origin: Spiegel_VN.ƒ.ORIGIN2D.CENTER,
         };
         await Spiegel_VN.ƒS.Location.show(locTunnel);
         await Spiegel_VN.ƒS.Character.show(mirror, mirror.pose.normal, Spiegel_VN.ƒS.positionPercent(50, 50));
@@ -4824,19 +4824,22 @@ var Spiegel_VN;
         let demonMovement = Spiegel_VN.ƒ.Vector2.ZERO();
         function loopFrame(_event) {
             if (Spiegel_VN.ƒ.Keyboard.isPressedOne([Spiegel_VN.ƒ.KEYBOARD_CODE.A, Spiegel_VN.ƒ.KEYBOARD_CODE.ARROW_LEFT])) {
-                graph.mtxLocal.translateX(10);
+                graph.mtxLocal.translateX(20); // wie schnell wir uns bewegen
             }
-            if (Spiegel_VN.ƒ.Keyboard.isPressedOne([Spiegel_VN.ƒ.KEYBOARD_CODE.D, Spiegel_VN.ƒ.KEYBOARD_CODE.ARROW_RIGHT])) {
-                graph.mtxLocal.translateX(-10);
-            }
-            if (Spiegel_VN.ƒ.Keyboard.isPressedOne([Spiegel_VN.ƒ.KEYBOARD_CODE.W, Spiegel_VN.ƒ.KEYBOARD_CODE.ARROW_UP])) {
-                graph.mtxLocal.translateZ(-10);
+            if (Spiegel_VN.ƒ.Keyboard.isPressedOne([
+                Spiegel_VN.ƒ.KEYBOARD_CODE.D,
+                Spiegel_VN.ƒ.KEYBOARD_CODE.ARROW_RIGHT,
+            ])) {
+                graph.mtxLocal.translateX(-20);
             }
             if (Spiegel_VN.ƒ.Keyboard.isPressedOne([Spiegel_VN.ƒ.KEYBOARD_CODE.S, Spiegel_VN.ƒ.KEYBOARD_CODE.ARROW_DOWN])) {
-                graph.mtxLocal.translateZ(10);
+                graph.mtxLocal.translateZ(-20);
             }
-            if (Spiegel_VN.ƒ.Random.default.getNorm() < 0.05)
-                demonMovement = Spiegel_VN.ƒ.Random.default.getVector2(Spiegel_VN.ƒ.Vector2.ONE(-5), Spiegel_VN.ƒ.Vector2.ONE(5));
+            if (Spiegel_VN.ƒ.Keyboard.isPressedOne([Spiegel_VN.ƒ.KEYBOARD_CODE.W, Spiegel_VN.ƒ.KEYBOARD_CODE.ARROW_UP])) {
+                graph.mtxLocal.translateZ(20);
+            }
+            if (Spiegel_VN.ƒ.Random.default.getNorm() < 0.04)
+                demonMovement = Spiegel_VN.ƒ.Random.default.getVector2(Spiegel_VN.ƒ.Vector2.ONE(-8), Spiegel_VN.ƒ.Vector2.ONE(8));
             nodeDemon.mtxLocal.translate(demonMovement.toVector3());
             Spiegel_VN.ƒS.update(0);
         }

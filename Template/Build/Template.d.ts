@@ -84,6 +84,8 @@ declare namespace Spiegel_VN {
     function Scene(): ƒS.SceneReturn;
 }
 declare namespace Spiegel_VN {
+}
+declare namespace Spiegel_VN {
     let characters: {
         maincharacter: {
             name: string;
@@ -141,8 +143,6 @@ declare namespace Spiegel_VN {
             };
         };
     };
-}
-declare namespace Spiegel_VN {
 }
 declare namespace Spiegel_VN {
     function func_RandomNumberRange(// random nr zw 0-10. macht
